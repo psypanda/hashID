@@ -2,10 +2,10 @@
 /******************************************************************************
 * @name: hashIdentify.php
 * @author: c0re <http://psypanda.org/>							
-* @date: 2012/12/28
+* @date: 2013/01/26
 * @copyright: ©2012 c0re <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 ******************************************************************************/
-$version = "v0.3b";
+$version = "v0.4b";
 
 ?>
 
@@ -63,33 +63,21 @@ function IdentifyHash($str)
   if(preg_match('/^\$P\$B\w{0,8}[a-zA-Z0-9\/\.]{26,34}$/', $str)) {
     array_push($possibleHashes,'MD5(Wordpress)');
   }
-  //MD5(Unix)
-  //http://wiki.insidepro.com/index.php/MD5%28Unix%29
-  /*
-  if(preg_match('__REGEX NEEDED__', $str)) {
+  if(preg_match('/^\$1\$.{0,8}\$[a-z0-9\+/\.]{22}$/i', $str)) {
     array_push($possibleHashes,'MD5(Unix)');
   }
-  */
-  //MD5(APR)
-  //http://wiki.insidepro.com/index.php/MD5%28APR%29
-  /*
-  if(preg_match('__REGEX NEEDED__', $str)) {
+  if(preg_match('/^\$apr1\$.{0,8}\$[a-z0-9\+/\.]{22}$/i', $str)) {
     array_push($possibleHashes,'MD5(APR)');
   }
-  */
   if(preg_match('/^[a-f0-9]{40}$/i', $str)) {
     array_push($possibleHashes,'SHA-1','MySQL4.x','RIPEMD-160','Haval-160','SHA-1(MaNGOS)','SHA-1(MaNGOS2)','Tiger-160','Skein-256(160)','Skein-512(160)');
   }
   if(preg_match('/^\*[a-f0-9]{40}$/i', $str)) {
     array_push($possibleHashes,'MySQL5.x');
   }
-  //SHA-1(Django)
-  //http://wiki.insidepro.com/index.php/SHA-1%28Django%29
-  /*
-  if(preg_match('__REGEX NEEDED__', $str)) {
+  if(preg_match('/^sha1\$.{0,32}\$[a-f0-9]{40}$/i', $str)) {
     array_push($possibleHashes,'SHA-1(Django)');
   }
-  */
   if(preg_match('/^[a-f0-9]{48}$/i', $str)) {
     array_push($possibleHashes,'Haval-192','Tiger-192');
   }
@@ -99,71 +87,42 @@ function IdentifyHash($str)
   if(preg_match('/^[a-f0-9]{56}$/i', $str)) {
     array_push($possibleHashes,'SHA-224','Haval-224','Keccak-224','Skein-256(224)','Skein-512(224)');
   }
-  //MSSQL(2000)
-  //http://wiki.insidepro.com/index.php/MSSQL%282000%29
-  /*
-  //REGEX NOT WORKING
-  if(preg_match('/^0x0100[.]{0,8}[a-fA-F0-9\/\.]{46,62}$/', $str)) {
+  if(preg_match('/^0x0100[a-f0-9]{0,16}?[a-f0-9]{40}$/i', $str)) {
     array_push($possibleHashes,'MSSQL(2000)');
   }
-  */
-  //MSSQL(2005)
-  //http://wiki.insidepro.com/index.php/MSSQL%282005%29
-  /*
-  if(preg_match('__REGEX NEEDED__', $str)) {
+  if(preg_match('/^0x0100[a-f0-9]{0,16}?[a-f0-9]{40}$/i', $str)) {
     array_push($possibleHashes,'MSSQL(2005)');
   }
-  */
-  //Blowfish(OpenBSD)
-  //http://wiki.insidepro.com/index.php/Blowfish%28OpenBSD%29
-  /*
-  if(preg_match('__REGEX NEEDED__', $str)) {
+  if(preg_match('/^\$2a\$05\$.{0,22}?[a-z0-9\.]{31}$/i', $str)) {
     array_push($possibleHashes,'Blowfish(OpenBSD)');
   }
-  */
   if(preg_match('/^[a-f0-9]{64}$/i', $str)) {
-    array_push($possibleHashes,'SHA-256','RIPEMD-256','Haval-256','Snefru-256','Keccak-256','GOST R 34.11-94','Skein-256','Skein-512(256)');
+    array_push($possibleHashes,'SHA-256','RIPEMD-256','Haval-256','Snefru-256','GOST R 34.11-94','Keccak-256','Skein-256','Skein-512(256)');
   }
-  //SHA-256(Django)
-  //http://wiki.insidepro.com/index.php/SHA-256%28Django%29
-  /*
-  if(preg_match('__REGEX NEEDED__', $str)) {
+  if(preg_match('/^sha256\$.{0,32}\$[a-f0-9]{64}$/i', $str)) {
     array_push($possibleHashes,'SHA-256(Django)');
   }
-  */
-  //SHA-256(Unix)
-  //http://wiki.insidepro.com/index.php/SHA-256%28Unix%29
-  /*
-  if(preg_match('__REGEX NEEDED__', $str)) {
+  if(preg_match('/^\$5\$.{0,22}\$[a-z0-9\./]{43}$/i', $str)) {
     array_push($possibleHashes,'SHA-256(Unix)');
   }
-  */
   if(preg_match('/^[a-f0-9]{80}$/i', $str)) {
     array_push($possibleHashes,'RIPEMD-320');
   }
   if(preg_match('/^[a-f0-9]{96}$/i', $str)) {
     array_push($possibleHashes,'SHA-384','Keccak-384','Skein-512(384)','Skein-1024(384)');
   }
-  //SHA-512(Unix)
-  //http://wiki.insidepro.com/index.php/SHA-512%28Unix%29
-  /*
-  if(preg_match('__REGEX NEEDED__', $str)) {
+  if(preg_match('/^\$6\$.{0,22}\$[a-z0-9\./]{86}$/i', $str)) {
     array_push($possibleHashes,'SHA-512(Unix)');
   }
-  */
   if(preg_match('/^[a-f0-9]{128}$/i', $str)) {
-    array_push($possibleHashes,'SHA-512','Keccak-512','Whirlpool','Skein-512','Skein-1024(512)');
+    array_push($possibleHashes,'SHA-512','Whirlpool','Keccak-512','Skein-512','Skein-1024(512)');
   }
   if(preg_match('/^[a-f0-9]{256}$/i', $str)) {
     array_push($possibleHashes,'Skein-1024');
   }
-  //SHA-384Django
-  //http://wiki.insidepro.com/index.php/SHA-384%28Django%29
-  /*
-  if(strstr($str,'sha384') && preg_match('__REGEX NEEDED__', $str)) {
+  if(preg_match('/^sha384\$.{0,32}\$[a-f0-9]{96}$/i', $str)) {
     array_push($possibleHashes,'SHA-384(Django)');
   }
-  */
 	
   //no hash found
   if (empty($possibleHashes)) {
