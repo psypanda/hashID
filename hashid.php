@@ -2,11 +2,11 @@
 /******************************************************************************
 * @name: hashIdentify.php
 * @author: c0re <http://psypanda.org/>							
-* @date: 2013/01/27
+* @date: 2013/01/28
 * @copyright: ©2012 c0re <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 * @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 ******************************************************************************/
-$version = "v0.5b";
+$version = "v0.6b";
 
 ?>
 
@@ -94,11 +94,11 @@ function IdentifyHash($str)
   if(preg_match('/^\$S\$C.{0,8}[a-z0-9\/\.]{47,55}$/i', $str)) {
     array_push($possibleHashes,'SHA-512(Drupal)');
   }
-  if(preg_match('/^0x0100[a-f0-9]{0,16}?[a-f0-9]{40}$/i', $str)) { //needs proove
-    array_push($possibleHashes,'MSSQL(2000)');
+  if(preg_match('/^0x0100[a-f0-9]{0,8}?[a-f0-9]{40}$/i', $str)) {
+    array_push($possibleHashes,'MSSQL(2005)','MSSQL(2008)');
   }
-  if(preg_match('/^0x0100[a-f0-9]{0,16}?[a-f0-9]{40}$/i', $str)) { //needs proove
-    array_push($possibleHashes,'MSSQL(2005)');
+  if(preg_match('/^0x0100[a-f0-9]{0,8}?[a-f0-9]{80}$/i', $str)) {
+    array_push($possibleHashes,'MSSQL(2000)');
   }
   if(preg_match('/^\$2a\$05\$.{0,22}?[a-z0-9\.]{31}$/i', $str)) {
     array_push($possibleHashes,'Blowfish(OpenBSD)');
