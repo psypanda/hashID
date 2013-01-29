@@ -6,7 +6,7 @@
 * @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 * @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 ******************************************************************************/
-$version = "v0.7b";
+$version = "v1.0";
 
 ?>
 
