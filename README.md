@@ -3,6 +3,9 @@ hashID
 
 shows information of the input hash type
 
+this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/), which is outdated!
+
+
 ### currently supports:
 
 Adler32, Blowfish(Eggdrop), Blowfish(OpenBSD), CRC-32, CRC-32B, CRC-96(ZIP), CRC-16, CRC-16-CCITT, DCC, DCC2, DES(Oracle),
