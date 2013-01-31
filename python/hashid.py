@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                            
-# @date: 2013/01/31
+# @date: 2013/02/01
 # @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 # @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 
@@ -18,7 +18,7 @@ banner = '''
   #      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
   #       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
   #        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/       #
-  #                                                                  v1.2 #
+  #                                                                v1.2.1 #
   #                                                               by c0re #
   #                                    https://github.com/psypanda/hashID #
   #########################################################################
@@ -66,7 +66,8 @@ print (banner)
 #loop
 while (1):
     try:
-        print ("----------------------------------------------------------------------------")
+	    #show the seperator
+        print ("-" * 76)
         #wait for userinput
         hash = input("HASH: ")
     
