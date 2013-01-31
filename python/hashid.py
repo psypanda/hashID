@@ -2,7 +2,7 @@
 #
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                            
-# @date: 2013/01/29
+# @date: 2013/01/31
 # @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 # @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 
@@ -18,7 +18,7 @@ banner = '''
   #      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
   #       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
   #        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/       #
-  #                                                                  v1.1 #
+  #                                                                  v1.2 #
   #                                                               by c0re #
   #                                    https://github.com/psypanda/hashID #
   #########################################################################
@@ -63,35 +63,37 @@ def IdentifyHash(hash):
         
 #display the banner
 print (banner)
-#loop until CRTL+C
+#loop
 while (1):
-   
-    print ("----------------------------------------------------------------------------")
-    #wait for useriput
-    hash = input("HASH: ")
+    try:
+        print ("----------------------------------------------------------------------------")
+        #wait for userinput
+        hash = input("HASH: ")
     
-    #check for empty input
-    if ( len(hash) < 1 ):
-        print ("\nNo Input detected")
-    else:
-        #trim possible whitespace
-        hash = hash.strip()
-        #analyze the hash
-        hashes = IdentifyHash(hash)
-        
-        #no result found
-        if ( len(hashes) == 0 ):
-            print ("\nUnknown Hash")
-        #show most and less possible result
-        elif ( len(hashes)>2 ):
-            print ("\nMost Possible:")
-            print (" [+] ", hashes[0])
-            print (" [+] ", hashes[1])
-            print ("\nLess Possible:")
-            for i in range(int(len(hashes))-2):
-                print (" [+] ", hashes[i+2])
-        #show absolut result
+        #check for empty input
+        if ( len(hash) < 1 ):
+            print ("\nNo Input detected")
         else:
-            print ("\nMost Possible:")
-            for i in range(len(hashes)):
-                print (" [+] ", hashes[i])
+            #trim possible whitespace
+            hash = hash.strip()
+            #analyze the hash
+            hashes = IdentifyHash(hash)
+        
+            #no result found
+            if ( len(hashes) == 0 ):
+                print ("\nUnknown Hash")
+            #show most and less possible result
+            elif ( len(hashes) > 2 ):
+                print ("\nMost Possible:")
+                print (" [+] ", hashes[0])
+                print (" [+] ", hashes[1])
+                print ("\nLess Possible:")
+                for i in range(int(len(hashes))-2):
+                    print (" [+] ", hashes[i+2])
+            #show absolute result
+            else:
+                print ("\nMost Possible:")
+                for i in range(len(hashes)):
+                    print (" [+] ", hashes[i])
+    except:
+        raise SystemExit
