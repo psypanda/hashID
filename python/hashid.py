@@ -2,7 +2,7 @@
 #
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                            
-# @date: 2013/02/01
+# @date: 2013/02/05
 # @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 # @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 
@@ -18,7 +18,7 @@ banner = '''
   #      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
   #       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
   #        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/       #
-  #                                                                v1.2.1 #
+  #                                                                  v1.3 #
   #                                                               by c0re #
   #                                    https://github.com/psypanda/hashID #
   #########################################################################
@@ -50,13 +50,14 @@ def IdentifyHash(hash):
       ("^[a-f0-9]{80}$", ("RIPEMD-320")), ("^0x0100[a-f0-9]{0,8}?[a-f0-9]{80}$", ("MSSQL(2000)")),
       ("^\$6\$.{0,22}\$[a-z0-9\/\.]{86}$", ("SHA-512(Unix)")), ("^[a-f0-9]{96}$", ("SHA-384","Keccak-384","Skein-512(384)","Skein-1024(384)")),
       ("^sha384\$.{0,32}\$[a-f0-9]{96}$", ("SHA-384(Django)")), ("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Keccak-512","Skein-512","Skein-1024(512)")),
-      ("^[a-f0-9]{256}$", ("Skein-1024"))
+      ("^[a-f0-9]{256}$", ("Skein-1024")),
     )
-    
-    #loop through and find matches
-    for type in prototypes:
-        if( re.match(type[0], hash, re.IGNORECASE) ):
-            hashes += type[1]
+                 
+    #loop through
+    for hashtype in prototypes:
+        #find matches
+        if( re.match(hashtype[0], hash, re.IGNORECASE) ):
+            hashes += [hashtype[1]] if ( type(hashtype[1]) is str ) else hashtype[1]
     
     #return the list
     return hashes
@@ -66,7 +67,7 @@ print (banner)
 #loop
 while (1):
     try:
-	    #show the seperator
+        #show the seperator
         print ("-" * 76)
         #wait for userinput
         hash = input("HASH: ")
@@ -79,7 +80,7 @@ while (1):
             hash = hash.strip()
             #analyze the hash
             hashes = IdentifyHash(hash)
-        
+            
             #no result found
             if ( len(hashes) == 0 ):
                 print ("\nUnknown Hash")
