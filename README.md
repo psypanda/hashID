@@ -24,7 +24,9 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * Lineage II C4
 * LM
 * MD2, MD4, MD5
-* MD5(Palshop), MD5(APR), MD5(CiscoPIX), MD5(IP.Board), MD5(Joomla), MD5(MyBB), MD5(phpBB3), MD5(Unix), MD5(WordPress)
+* MD5(Joomla), MD5(PalshopCMS)
+* MD5(APR), MD5(Cisco PIX), MD5(Unix)
+* MD5(IP.Board), MD5(MyBB), MD5(phpBB3), MD5(WordPress)
 * MySQL3.x, MySQL4.x, MySQL5.x
 * MSSQL(2000), MSSQL(2005)
 * NTLM
