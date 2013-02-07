@@ -1,7 +1,7 @@
-hashID
+hash-identifier
 ======
 
-shows information of the input hash type
+identify the different types of hashes used to encrypt data and especially passwords.
 
 this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/), which is outdated!
 
@@ -31,7 +31,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * MSSQL(2000), MSSQL(2005)
 * NTLM
 * RIPEMD-128, RIPEMD-160, RIPEMD-256, RIPEMD-320
-* SHA-1, SHA-1(Django)
+* SHA-1, SHA-1(Django), SHA-1(MaNGOS), SHA-1(MaNGOS2)
 * SHA-224
 * SHA-256, SHA-256(Django), SHA-256(Unix)
 * SHA-384, SHA-384(Django)
