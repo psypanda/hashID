@@ -5,6 +5,7 @@ identify the different types of hashes used to encrypt data and especially passw
 
 this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/), which is outdated!
 
+![ScreenShot](https://raw.github.com/psypanda/hashID/master/screenshot.png)
 
 ### currently supports:
 
