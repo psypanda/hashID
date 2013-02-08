@@ -29,7 +29,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * MD5(APR), MD5(Cisco PIX), MD5(Unix)
 * MD5(IP.Board), MD5(MyBB), MD5(phpBB3), MD5(WordPress)
 * MySQL3.x, MySQL4.x, MySQL5.x
-* MSSQL(2000), MSSQL(2005)
+* MSSQL(2000), MSSQL(2005), MSSQL(2008)
 * NTLM
 * RAdmin v2.x
 * RIPEMD-128, RIPEMD-160, RIPEMD-256, RIPEMD-320
@@ -46,3 +46,5 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * Tiger-128, Tiger-160, Tiger-192
 * VNC
 * Whirlpool
+
+**Total:** 86 hash algorithms
