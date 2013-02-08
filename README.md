@@ -31,6 +31,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * MySQL3.x, MySQL4.x, MySQL5.x
 * MSSQL(2000), MSSQL(2005)
 * NTLM
+* RAdmin v2.x
 * RIPEMD-128, RIPEMD-160, RIPEMD-256, RIPEMD-320
 * SHA-1, SHA-1(Django), SHA-1(MaNGOS), SHA-1(MaNGOS2)
 * SHA-224
