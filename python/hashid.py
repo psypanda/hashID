@@ -18,7 +18,7 @@ banner = '''
   #      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
   #       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
   #        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/       #
-  #                                                                  v1.4 #
+  #                                                                v1.4.1 #
   #                                                               by c0re #
   #                                    https://github.com/psypanda/hashID #
   #########################################################################
@@ -51,7 +51,7 @@ def IdentifyHash(hash):
       ("^\$6\$.{0,22}\$[a-z0-9\/\.]{86}$", ("SHA-512(Unix)")), ("^[a-f0-9]{96}$", ("SHA-384","Keccak-384","Skein-512(384)","Skein-1024(384)")),
       ("^sha384\$.{0,32}\$[a-f0-9]{96}$", ("SHA-384(Django)")), ("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Keccak-512","Skein-512","Skein-1024(512)")),
       ("^[a-f0-9]{256}$", ("Skein-1024")), ("^({SSHA})?[a-z0-9\+\/]{32,38}?(==)?$", ("SSHA-1")),
-      ("^\(?[a-z0-9\+\/]{20}\)?$", "Lotus Domino")),
+      ("^\(?[a-z0-9\+\/]{20}\)?$", ("Lotus Domino")),
     )
                  
     #loop through
@@ -88,11 +88,11 @@ while (1):
             #show most and less possible result
             elif ( len(hashes) > 2 ):
                 print ("\nMost Possible:")
-                print (" [+] ", hashes[0])
-                print (" [+] ", hashes[1])
+                print ("[+] ", hashes[0])
+                print ("[+] ", hashes[1])
                 print ("\nLess Possible:")
                 for i in range(int(len(hashes))-2):
-                    print (" [+] ", hashes[i+2])
+                    print ("[+] ", hashes[i+2])
             #show absolute result
             else:
                 print ("\nMost Possible:")
