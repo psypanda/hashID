@@ -24,6 +24,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * Keccak-224, Keccak-256, Keccak-384, Keccak-512
 * Lineage II C4
 * LM
+* Lotus Domino
 * MD2, MD4, MD5
 * MD5(Joomla), MD5(PalshopCMS)
 * MD5(APR), MD5(Cisco PIX), MD5(Unix)
@@ -47,4 +48,4 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * VNC
 * Whirlpool
 
-**Total:** 86 hash algorithms
+**Total:** 87 hash algorithms
