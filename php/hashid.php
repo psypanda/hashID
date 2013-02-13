@@ -70,8 +70,8 @@ function IdentifyHash($str)
     '/^[a-f0-9]{128}$/i' => 'SHA-512,Whirlpool,Keccak-512,Skein-512,Skein-1024(512)',
     '/^[a-f0-9]{256}$/i' => 'Skein-1024',
     '/^({SSHA})?[a-z0-9\+\/]{32,38}?(==)?$/i' => 'SSHA-1',
-    '/^\(?[a-z0-9\+\/]{20}\)?$' => 'Lotus Domino',
-    '/^[a-f0-9]{32}:[a-z0-9]{2}$' => 'MD5(osCommerce)',
+    '/^\(?[a-z0-9\+\/]{20}\)?$/i' => 'Lotus Domino',
+    '/^[a-f0-9]{32}:[a-z0-9]{2}$/i' => 'MD5(osCommerce)',
   );
            
   //initialize the array
