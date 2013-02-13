@@ -2,7 +2,7 @@
 #
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                            
-# @date: 2013/02/11
+# @date: 2013/02/13
 # @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 # @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 
@@ -18,7 +18,7 @@ banner = '''
   #      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
   #       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
   #        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/       #
-  #                                                                v1.4.2 #
+  #                                                                  v1.5 #
   #                                                               by c0re #
   #                                    https://github.com/psypanda/hashID #
   #########################################################################
@@ -39,7 +39,7 @@ def IdentifyHash(hash):
       ("^\$1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(Unix)")), ("^\$apr1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(APR)")),
       ("^[a-f0-9]{24}$", ("CRC-96(ZIP)")), ("^\$H\$[a-z0-9\/\.]{31}$", ("MD5(phpBB3)")), ("^\$P\$[a-z0-9\/\.]{31}$", ("MD5(Wordpress)")),
       ("^[0-9a-f]{32}$", ("MD5","NTLM","Domain Cached Credentials","Domain Cached Credentials 2","MD4","MD2","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","Skein-256(128)","Skein-512(128)")),
-      ("^0x[a-f0-9]{32}$", ("Lineage II C4")), ("^[a-f0-9]{32}:[a-z0-9]{32}$", ("MD5(Joomla)")), ("^[a-f0-9]{32}:.{5}$", ("MD5(IP.Board)")),
+      ("^0x[a-f0-9]{32}$", ("Lineage II C4")), ("^[a-f0-9]{32}:[a-z0-9]{16,32}$", ("MD5(Joomla)")), ("^[a-f0-9]{32}:.{5}$", ("MD5(IP.Board)")),
       ("^[a-f-0-9]{32}:[a-z0-9]{8}$", ("MD5(MyBB)")), ("^[a-f0-9]{40}$", ("SHA-1","MySQL4.x","RIPEMD-160","Haval-160","SHA-1(MaNGOS)","SHA-1(MaNGOS2)","Tiger-160","Skein-256(160)","Skein-512(160)")),
       ("^\*[a-f0-9]{40}$", ("MySQL5.x")), ("^sha1\$.{0,32}\$[a-f0-9]{40}$", ("SHA-1(Django)")),
       ("^0x0100[a-f0-9]{0,8}?[a-f0-9]{40}$", ("MSSQL(2005)","MSSQL(2008)")), ("^[a-f0-9]{48}$", ("Haval-192","Tiger-192")),
@@ -51,7 +51,7 @@ def IdentifyHash(hash):
       ("^\$6\$.{0,22}\$[a-z0-9\/\.]{86}$", ("SHA-512(Unix)")), ("^[a-f0-9]{96}$", ("SHA-384","Keccak-384","Skein-512(384)","Skein-1024(384)")),
       ("^sha384\$.{0,32}\$[a-f0-9]{96}$", ("SHA-384(Django)")), ("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Keccak-512","Skein-512","Skein-1024(512)")),
       ("^[a-f0-9]{256}$", ("Skein-1024")), ("^({SSHA})?[a-z0-9\+\/]{32,38}?(==)?$", ("SSHA-1")),
-      ("^\(?[a-z0-9\+\/]{20}\)?$", ("Lotus Domino")),
+      ("^\(?[a-z0-9\+\/]{20}\)?$", ("Lotus Domino")), ("^[a-f0-9]{32}:[a-z0-9]{2}$", ("MD5(osCommerce)")),
     )
                  
     #loop through
@@ -97,6 +97,6 @@ while (1):
             else:
                 print ("\nMost Possible:")
                 for i in range(len(hashes)):
-                    print (" [+] ", hashes[i])
+                    print ("[+] ", hashes[i])
     except:
         raise SystemExit
