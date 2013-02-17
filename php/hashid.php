@@ -2,11 +2,11 @@
 /******************************************************************************
 * @name: hashIdentify.php
 * @author: c0re <https://psypanda.org/>							
-* @date: 2013/02/13
+* @date: 2013/02/17
 * @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 * @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 ******************************************************************************/
-$version = "v2.0";
+$version = "v2.1";
 
 ?>
 
@@ -35,7 +35,7 @@ function IdentifyHash($str)
   $hashes = array
   (
     '/^[a-f0-9]{4}$/i' => 'CRC-16,CRC-16-CCITT,FCS-16',
-    '/^[a-f0-9]{8}$/i' => 'Adler32,CRC-32,CRC-32B,FCS-32,GHash-32-3,GHash-32-5',
+    '/^[a-f0-9]{8}$/i' => 'Adler32,CRC-32,CRC-32B,FCS-32,GHash-32-3,GHash-32-5,XOR-32',
     '/^\+[a-z0-9\/\.]{12}$/i' => 'Blowfish(Eggdrop)',
     '/^.{0,2}[a-z0-9\/\.]{11}$/i' => 'DES(Unix)',
     '/^[a-f0-9]{16}$/i' => 'MySQL3.x,LM,DES(Oracle),VNC',
@@ -72,6 +72,7 @@ function IdentifyHash($str)
     '/^({SSHA})?[a-z0-9\+\/]{32,38}?(==)?$/i' => 'SSHA-1',
     '/^\(?[a-z0-9\+\/]{20}\)?$/i' => 'Lotus Domino',
     '/^[a-f0-9]{32}:[a-z0-9]{2}$/i' => 'MD5(osCommerce)',
+    '/^[a-f-0-9]{32}:[a-f-0-9]{32}$/i' => 'SAM(LM_Hash:NT_Hash)'
   );
            
   //initialize the array

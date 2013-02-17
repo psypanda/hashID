@@ -34,6 +34,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * NTLM
 * RAdmin v2.x
 * RIPEMD-128, RIPEMD-160, RIPEMD-256, RIPEMD-320
+* SAM(LM_Hash:NT_Hash)
 * SHA-1, SHA-1(Django), SHA-1(MaNGOS), SHA-1(MaNGOS2)
 * SHA-224
 * SHA-256, SHA-256(Django), SHA-256(Unix)
@@ -47,5 +48,6 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * Tiger-128, Tiger-160, Tiger-192
 * VNC
 * Whirlpool
+* XOR-32
 
-**Total:** 88 hash algorithms
+**Total:** 90 hash algorithms
