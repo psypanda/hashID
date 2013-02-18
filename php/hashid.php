@@ -2,11 +2,11 @@
 /******************************************************************************
 * @name: hashIdentify.php
 * @author: c0re <https://psypanda.org/>							
-* @date: 2013/02/17
+* @date: 2013/02/18
 * @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 * @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 ******************************************************************************/
-$version = "v2.1";
+$version = "v2.2";
 
 ?>
 
@@ -35,10 +35,10 @@ function IdentifyHash($str)
   $hashes = array
   (
     '/^[a-f0-9]{4}$/i' => 'CRC-16,CRC-16-CCITT,FCS-16',
-    '/^[a-f0-9]{8}$/i' => 'Adler32,CRC-32,CRC-32B,FCS-32,GHash-32-3,GHash-32-5,XOR-32',
+    '/^[a-f0-9]{8}$/i' => 'Adler32,CRC-32,CRC-32B,FCS-32,GHash-32-3,GHash-32-5,XOR-32,FNV-132,Joaat',
     '/^\+[a-z0-9\/\.]{12}$/i' => 'Blowfish(Eggdrop)',
     '/^.{0,2}[a-z0-9\/\.]{11}$/i' => 'DES(Unix)',
-    '/^[a-f0-9]{16}$/i' => 'MySQL3.x,LM,DES(Oracle),VNC',
+    '/^[a-f0-9]{16}$/i' => 'MySQL3.x,LM,DES(Oracle),VNC,FNV-164',
     '/^[a-z0-9\/\.]{16}$/i' => 'MD5(Cisco PIX)',
     '/^\$1\$.{0,8}\$[a-z0-9\/\.]{22}$/i' => 'MD5(Unix)',
     '/^\$apr1\$.{0,8}\$[a-z0-9\/\.]{22}$/i' => 'MD5(APR)',
