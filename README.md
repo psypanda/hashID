@@ -18,9 +18,12 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * DES(Unix), DES(Oracle)
 * FCS-16
 * FCS-32
+* FNV-132
+* FNV-164
 * GOST R 34.11-94
 * GHash-32-3, GHash-32-5
 * Haval-128, Haval-160, Haval-192, Haval-224, Haval-256
+* Joaat
 * Keccak-224, Keccak-256, Keccak-384, Keccak-512
 * Lineage II C4
 * LM
@@ -50,4 +53,4 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * Whirlpool
 * XOR-32
 
-**Total:** 90 hash algorithms
+**Total:** 93 hash algorithms

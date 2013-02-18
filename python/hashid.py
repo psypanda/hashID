@@ -2,7 +2,7 @@
 #
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                            
-# @date: 2013/02/17
+# @date: 2013/02/18
 # @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 # @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 
@@ -18,7 +18,7 @@ banner = '''
   #      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
   #       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
   #        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/       #
-  #                                                                  v1.6 #
+  #                                                                v1.6.1 #
   #                                                               by c0re #
   #                                    https://github.com/psypanda/hashID #
   #########################################################################
@@ -33,9 +33,9 @@ def IdentifyHash(hash):
     #set regex and algorithms
     prototypes = \
     (
-      ("^[a-f0-9]{4}$", ("CRC-16","CRC-16-CCITT","FCS-16")), ("^[a-f0-9]{8}$", ("Adler32","CRC-32","CRC-32B","FCS-32","GHash-32-3","GHash-32-5","XOR-32")),
+      ("^[a-f0-9]{4}$", ("CRC-16","CRC-16-CCITT","FCS-16")), ("^[a-f0-9]{8}$", ("Adler32","CRC-32","CRC-32B","FCS-32","GHash-32-3","GHash-32-5","XOR-32","FNV-132","Joaat")),
       ("^\+[a-z0-9\/\.]{12}$", ("Blowfish(Eggdrop)")), ("^.{0,2}[a-z0-9\/\.]{11}$", ("DES(Unix)")),
-      ("^[a-f0-9]{16}$", ("MySQL3.x","LM","DES(Oracle)","VNC")), ("^[a-z0-9\/\.]{16}$", ("MD5(Cisco PIX)")),
+      ("^[a-f0-9]{16}$", ("MySQL3.x","LM","DES(Oracle)","VNC","FNV-164")), ("^[a-z0-9\/\.]{16}$", ("MD5(Cisco PIX)")),
       ("^\$1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(Unix)")), ("^\$apr1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(APR)")),
       ("^[a-f0-9]{24}$", ("CRC-96(ZIP)")), ("^\$H\$[a-z0-9\/\.]{31}$", ("MD5(phpBB3)")), ("^\$P\$[a-z0-9\/\.]{31}$", ("MD5(Wordpress)")),
       ("^[0-9a-f]{32}$", ("MD5","NTLM","Domain Cached Credentials","Domain Cached Credentials 2","RAdmin v2.x","MD4","MD2","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","Skein-256(128)","Skein-512(128)")),
