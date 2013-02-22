@@ -16,10 +16,8 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * CRC-96(ZIP)
 * Domain Cached Credentials, Domain Cached Credentials 2
 * DES(Unix), DES(Oracle)
-* FCS-16
-* FCS-32
-* FNV-132
-* FNV-164
+* FCS-16, FCS-32
+* FNV-132, FNV-164
 * GOST R 34.11-94
 * GHash-32-3, GHash-32-5
 * Haval-128, Haval-160, Haval-192, Haval-224, Haval-256
