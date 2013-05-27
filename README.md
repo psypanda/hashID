@@ -30,6 +30,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * MD5(Joomla), MD5(osCommerce), MD5(PalshopCMS)
 * MD5(APR), MD5(Cisco PIX), MD5(Unix)
 * MD5(IP.Board), MD5(MyBB), MD5(phpBB3), MD5(WordPress)
+* Minecraft(AuthMe Reloaded)
 * MySQL3.x, MySQL4.x, MySQL5.x
 * MSSQL(2000), MSSQL(2005), MSSQL(2008)
 * NTLM

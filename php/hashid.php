@@ -2,11 +2,11 @@
 /******************************************************************************
 * @name: hashIdentify.php
 * @author: c0re <https://psypanda.org/>							
-* @date: 2013/02/18
+* @date: 2013/05/27
 * @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 * @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 ******************************************************************************/
-$version = "v2.2";
+$version = "v2.3";
 
 ?>
 
@@ -72,7 +72,8 @@ function IdentifyHash($str)
     '/^({SSHA})?[a-z0-9\+\/]{32,38}?(==)?$/i' => 'SSHA-1',
     '/^\(?[a-z0-9\+\/]{20}\)?$/i' => 'Lotus Domino',
     '/^[a-f0-9]{32}:[a-z0-9]{2}$/i' => 'MD5(osCommerce)',
-    '/^[a-f-0-9]{32}:[a-f-0-9]{32}$/i' => 'SAM(LM_Hash:NT_Hash)'
+    '/^[a-f-0-9]{32}:[a-f-0-9]{32}$/i' => 'SAM(LM_Hash:NT_Hash)',
+	'/^\$sha\$[a-z0-9]{0,16}\$[a-f0-9]{64}$/i' => 'Minecraft(AuthMe Reloaded)'
   );
            
   //initialize the array
