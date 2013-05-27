@@ -2,7 +2,7 @@
 #
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                            
-# @date: 2013/02/18
+# @date: 2013/05/19
 # @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 # @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 
@@ -18,7 +18,7 @@ banner = '''
   #      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
   #       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
   #        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/       #
-  #                                                                v1.6.1 #
+  #                                                                v1.6.2 #
   #                                                               by c0re #
   #                                    https://github.com/psypanda/hashID #
   #########################################################################
@@ -52,7 +52,7 @@ def IdentifyHash(hash):
       ("^sha384\$.{0,32}\$[a-f0-9]{96}$", ("SHA-384(Django)")), ("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Keccak-512","Skein-512","Skein-1024(512)")),
       ("^[a-f0-9]{256}$", ("Skein-1024")), ("^({SSHA})?[a-z0-9\+\/]{32,38}?(==)?$", ("SSHA-1")),
       ("^\(?[a-z0-9\+\/]{20}\)?$", ("Lotus Domino")), ("^[a-f0-9]{32}:[a-z0-9]{2}$", ("MD5(osCommerce)")),
-      ("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)")),
+      ("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)")), ("^\$sha\$[a-z0-9]{0,16}\$[a-f0-9]{64}$", ("Minecraft(AuthMe)")),
     )
                  
     #loop through
