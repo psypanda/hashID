@@ -32,7 +32,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * MD5(IP.Board), MD5(MyBB), MD5(phpBB3), MD5(WordPress)
 * Minecraft(AuthMe Reloaded)
 * MySQL3.x, MySQL4.x, MySQL5.x
-* MSSQL(2000), MSSQL(2005), MSSQL(2008)
+* MSSQL(2000), MSSQL(2005), MSSQL(2008), MSSQL(2012)
 * NTLM
 * RAdmin v2.x
 * RIPEMD-128, RIPEMD-160, RIPEMD-256, RIPEMD-320
@@ -42,7 +42,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * SHA-256, SHA-256(Django), SHA-256(Unix)
 * SHA-384, SHA-384(Django)
 * SHA-512, SHA-512(Drupal), SHA-512(Unix)
-* SSHA-1
+* SSHA-1, SSHA-512
 * Skein-256, Skein-256(128), Skein-256(160), Skein-256(224)
 * Skein-512, Skein-512(128), Skein-512(160), Skein-512(224), Skein-512(256), Skein-512(384)
 * Skein-1024, Skein-1024(384), Skein-1024(512)
