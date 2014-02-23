@@ -52,4 +52,4 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * Whirlpool
 * XOR-32
 
-**Total:** 93 hash algorithms
+**Total:** 95 hash algorithms
