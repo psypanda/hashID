@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 #
 # @name: hashID.py
-# @author: c0re <https://psypanda.org/>                            
-# @date: 2013/05/27
+# @author: c0re <https://psypanda.org/>                           
+# @date: 2014/02/23
 # @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
 # @readme: <http://wiki.insidepro.com/index.php/Algorithms>
 
 import re
+import sys
 
 #set the logo
 banner = '''
@@ -18,7 +19,7 @@ banner = '''
   #      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
   #       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
   #        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/       #
-  #                                                                v1.6.2 #
+  #                                                                v1.7.0 #
   #                                                               by c0re #
   #                                    https://github.com/psypanda/hashID #
   #########################################################################
@@ -63,41 +64,72 @@ def IdentifyHash(hash):
     
     #return the list
     return hashes
-        
-#display the banner
-print (banner)
-#loop
-while (1):
-    try:
-        #show the seperator
-        print ("-" * 76)
-        #wait for userinput
-        hash = input("HASH: ")
+
+	
+#check if argument passed
+if(len(sys.argv) > 1):
+	#set first argument as hash
+	hash = sys.argv[1]
+	try:
+		#trim possible whitespace
+		hash = hash.strip()
+		#analyze the hash
+		print ("Analyzing hash '" + hash + "'")
+		hashes = IdentifyHash(hash)
+           
+		#no result found
+		if ( len(hashes) == 0 ):
+			print (" Unknown Hash.")
+		#show most and less possible result
+		elif ( len(hashes) > 2 ):
+			print (" Most Possible:")
+			print (" [+] " + hashes[0])
+			print (" [+] " + hashes[1])
+			print (" Less possible:")
+			for i in range(int(len(hashes))-2):
+				print (" [+] " + hashes[i+2])
+		#show absolute result
+		else:
+			print ("Most Possible:")
+			for i in range(len(hashes)):
+				print (" [+] " + hashes[i])
+	except:
+		raise SystemExit
+else:
+	#display the banner
+	print (banner)
+	#loop until user exit
+	while (1):
+		try:
+			#show the seperator
+			print ("-" * 76)
+			#wait for userinput
+			hash = input("HASH: ")
     
-        #check for empty input
-        if ( len(hash) < 1 ):
-            print ("\nNo Input detected")
-        else:
-            #trim possible whitespace
-            hash = hash.strip()
-            #analyze the hash
-            hashes = IdentifyHash(hash)
+			#check for empty input
+			if ( len(hash) < 1 ):
+				print ("\nNo Input detected")
+			else:
+				#trim possible whitespace
+				hash = hash.strip()
+				#analyze the hash
+				hashes = IdentifyHash(hash)
             
-            #no result found
-            if ( len(hashes) == 0 ):
-                print ("\nUnknown Hash")
-            #show most and less possible result
-            elif ( len(hashes) > 2 ):
-                print ("\nMost Possible:")
-                print ("[+] ", hashes[0])
-                print ("[+] ", hashes[1])
-                print ("\nLess Possible:")
-                for i in range(int(len(hashes))-2):
-                    print ("[+] ", hashes[i+2])
-            #show absolute result
-            else:
-                print ("\nMost Possible:")
-                for i in range(len(hashes)):
-                    print ("[+] ", hashes[i])
-    except:
-        raise SystemExit
+				#no result found
+				if ( len(hashes) == 0 ):
+					print ("\nUnknown Hash")
+				#show most and less possible result
+				elif ( len(hashes) > 2 ):
+					print ("\nMost Possible:")
+					print ("[+] ", hashes[0])
+					print ("[+] ", hashes[1])
+					print ("\nLess Possible:")
+					for i in range(int(len(hashes))-2):
+						print ("[+] ", hashes[i+2])
+				#show absolute result
+				else:
+					print ("\nMost Possible:")
+					for i in range(len(hashes)):
+						print ("[+] ", hashes[i])
+		except:
+			raise SystemExit
