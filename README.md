@@ -5,7 +5,30 @@ identify the different types of hashes used to encrypt data and especially passw
 
 this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/), which is outdated!
 
-![ScreenShot](https://raw.github.com/psypanda/hashID/master/screenshot.png)
+
+### usage:
+
+	$ python hashid.py <hash>
+
+### screenshot:
+
+	$ python hashid.py 827ccb0eea8a706c4c34a16891f84e7b
+	Analysing '827ccb0eea8a706c4c34a16891f84e7b'
+	 Most possible:
+	 [+] MD5
+	 [+] NTLM
+	 Less possible:
+	 [+] Domain Cached Credentials
+	 [+] Domain Cached Credentials 2
+	 [+] RAdmin v2.x
+	 [+] MD4
+	 [+] MD2
+	 [+] RIPEMD-128
+	 [+] Haval-128
+	 [+] Tiger-128
+	 [+] Snefru-128
+	 [+] Skein256-(128)
+	 [+] Skein512-(128)
 
 ### currently supports:
 
