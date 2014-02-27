@@ -8,9 +8,9 @@
 import re, argparse
 
 #set the version
-version = "2.0.0"
+version = "v2.0.1"
 #set the banner
-banner = "%(prog)s v" + version + " by c0re\nhttps://github.com/psypanda/hashID"
+banner = "%(prog)s " + version + " by c0re\n<https://github.com/psypanda/hashID>"
 
 #identify the input hash
 def IdentifyHash(hash): 
@@ -37,7 +37,7 @@ def IdentifyHash(hash):
     ("^sha256\$.{0,32}\$[a-f0-9]{64}$", ("SHA-256(Django)",)), ("^\$5\$.{0,22}\$[a-z0-9\/\.]{43,69}$", ("SHA-256(Unix)",)), 
     ("^[a-f0-9]{80}$", ("RIPEMD-320",)), ("^0x0100[a-f0-9]{0,8}?[a-f0-9]{80}$", ("MSSQL(2000)",)),
     ("^\$6\$.{0,22}\$[a-z0-9\/\.]{86}$", ("SHA-512(Unix)",)), ("^[a-f0-9]{96}$", ("SHA-384","Keccak-384","Skein-512(384)","Skein-1024(384)")),
-    ("^sha384\$.{0,32}\$[a-f0-9]{96}$", ("SHA-384(Django)",)), ("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Keccak-512","Skein-512","Skein-1024(512)")),
+    ("^sha384\$.{0,32}\$[a-f0-9]{96}$", ("SHA-384(Django)",)), ("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Salsa10","Salsa20","Keccak-512","Skein-512","Skein-1024(512)")),
     ("^[a-f0-9]{256}$", ("Skein-1024",)), ("^({SSHA})[a-z0-9\+\/]{27,66}?={0,2}$", ("SSHA-1",)),
     ("^\(?[a-z0-9\+\/]{20}\)?$", ("Lotus Domino",)), ("^[a-f0-9]{32}:[a-z0-9]{2}$", ("MD5(osCommerce)",)),
     ("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)",)), ("^\$sha\$[a-z0-9]{0,16}\$[a-f0-9]{64}$", ("Minecraft(AuthMe Reloaded)",)),
@@ -79,7 +79,7 @@ def showResult(list):
 #setup argparse
 parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, description="identify the different types of hashes")
 parser.add_argument("input", help="analyse given input")
-parser.add_argument('--version', action='version', version=banner)
+parser.add_argument("--version", action="version", version=banner)
 args = parser.parse_args()	
 
 #print result
