@@ -66,6 +66,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * SHA-384, SHA-384(Django)
 * SHA-512, SHA-512(Drupal), SHA-512(Unix)
 * SSHA-1, SSHA-512
+* Salsa10, Salsa20
 * Skein-256, Skein-256(128), Skein-256(160), Skein-256(224)
 * Skein-512, Skein-512(128), Skein-512(160), Skein-512(224), Skein-512(256), Skein-512(384)
 * Skein-1024, Skein-1024(384), Skein-1024(512)
@@ -75,4 +76,4 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * Whirlpool
 * XOR-32
 
-**Total:** 95 hash algorithms
+**Total:** 97 hash algorithms
