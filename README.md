@@ -33,16 +33,23 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 ### currently supports:
 
 * Adler32
+* AIX(IBM)
 * Blowfish(Eggdrop), Blowfish(OpenBSD)
 * CRC-16, CRC-16-CCITT
 * CRC-32, CRC-32B
+* CRC-64
 * CRC-96(ZIP)
+* CiscoIOS(SHA256)
+* CryptoCurrency(Adress), CryptoCurrency(PrivateKey)
 * Domain Cached Credentials, Domain Cached Credentials 2
 * DES(Unix), DES(Oracle)
+* EPiServer 6.x <v4, EPiServer 6.x >v4
 * FCS-16, FCS-32
 * FNV-132, FNV-164
+* FortiOS
 * GOST R 34.11-94
 * GHash-32-3, GHash-32-5
+* GRUB 2
 * Haval-128, Haval-160, Haval-192, Haval-224, Haval-256
 * Joaat
 * Keccak-224, Keccak-256, Keccak-384, Keccak-512
@@ -57,6 +64,8 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * MySQL3.x, MySQL4.x, MySQL5.x
 * MSSQL(2000), MSSQL(2005), MSSQL(2008), MSSQL(2012)
 * NTLM
+* Oracle 11g
+* OSX v10.7, OSX v10.8
 * RAdmin v2.x
 * RIPEMD-128, RIPEMD-160, RIPEMD-256, RIPEMD-320
 * SAM(LM_Hash:NT_Hash)
@@ -73,7 +82,8 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * Snefru-128, Snefru-256
 * Tiger-128, Tiger-160, Tiger-192
 * VNC
+* vBulletin >v3.8.5
 * Whirlpool
 * XOR-32
 
-**Total:** 97 hash algorithms
+**Total:** 110 hash algorithms
