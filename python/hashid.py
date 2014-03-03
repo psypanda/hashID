@@ -8,7 +8,7 @@
 import re, argparse
 
 #set the version
-version = "v2.1.0"
+version = "v2.1.1"
 #set the banner
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
@@ -23,11 +23,11 @@ def identifyHash(hash):
   (
     ("^[a-f0-9]{4}$", ("CRC-16","CRC-16-CCITT","FCS-16")), ("^[a-f0-9]{8}$", ("Adler32","CRC-32","CRC-32B","FCS-32","GHash-32-3","GHash-32-5","XOR-32","FNV-132","Joaat")),
     ("^\+[a-z0-9\/\.]{12}$", ("Blowfish(Eggdrop)",)), ("^.{0,2}[a-z0-9\/\.]{11}$", ("DES(Unix)",)),
-    ("^[a-f0-9]{16}$", ("MySQL3.x","LM","DES(Oracle)","VNC","FNV-164")), ("^[a-z0-9\/\.]{16}$", ("MD5(Cisco PIX)",)),
+    ("^[a-f0-9]{16}$", ("MySQL3.x","LM","DES(Oracle)","VNC","FNV-164","CRC-64")), ("^[a-z0-9\/\.]{16}$", ("MD5(Cisco PIX)",)),
     ("^\$1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(Unix)",)), ("^\$apr1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(APR)",)),
     ("^[a-f0-9]{24}$", ("CRC-96(ZIP)",)), ("^\$H\$[a-z0-9\/\.]{31}$", ("MD5(phpBB3)",)), ("^\$P\$[a-z0-9\/\.]{31}$", ("MD5(Wordpress)",)),
     ("^[0-9a-f]{32}$", ("MD5","NTLM","Domain Cached Credentials","Domain Cached Credentials 2","RAdmin v2.x","MD4","MD2","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","Skein-256(128)","Skein-512(128)")),
-    ("^0x[a-f0-9]{32}$", ("Lineage II C4",)), ("^[a-f0-9]{32}:[a-z0-9]{16,32}$", ("MD5(Joomla)",)), ("^[a-f0-9]{32}:.{5}$", ("MD5(IP.Board)",)),
+    ("^0x[a-f0-9]{32}$", ("Lineage II C4",)), ("^[a-f0-9]{32}:[a-z0-9]{32}$", ("MD5(Joomla)",)), ("^[a-f0-9]{32}:.{5}$", ("MD5(IP.Board)",)),
     ("^[a-f-0-9]{32}:[a-z0-9]{8}$", ("MD5(MyBB)",)), ("^[a-f0-9]{40}$", ("SHA-1","MySQL4.x","RIPEMD-160","Haval-160","SHA-1(MaNGOS)","SHA-1(MaNGOS2)","Tiger-160","Skein-256(160)","Skein-512(160)")),
     ("^\*[a-f0-9]{40}$", ("MySQL5.x",)), ("^sha1\$.{0,32}\$[a-f0-9]{40}$", ("SHA-1(Django)",)),
     ("^0x0100[a-f0-9]{0,8}?[a-f0-9]{40}$", ("MSSQL(2005)","MSSQL(2008)")), ("^[a-f0-9]{48}$", ("Haval-192","Tiger-192")),
@@ -42,6 +42,12 @@ def identifyHash(hash):
     ("^\(?[a-z0-9\+\/]{20}\)?$", ("Lotus Domino",)), ("^[a-f0-9]{32}:[a-z0-9]{2}$", ("MD5(osCommerce)",)),
     ("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)",)), ("^\$sha\$[a-z0-9]{0,16}\$[a-f0-9]{64}$", ("Minecraft(AuthMe Reloaded)",)),
     ("^0x0200[a-f0-9]{0,8}?[a-f0-9]{128}$", ("MSSQL(2012",)), ("^({SSHA512})[a-z0-9\+\/]{90,160}?={0,2}$", ("SSHA-512",)),
+    ("^[a-z0-9]{34}$", ("CryptoCurrency(Adress)",)), ("^[a-z0-9]{51}$", ("CryptoCurrency(PrivateKey)",)),
+    ("^{smd5}.{31}$",("AIX(IBM)",)), ("^[a-z0-9]{43}$", ("CiscoIOS(SHA256)",)),
+    ("^[a-z0-9]{47}$", ("FortiOS",)), ("^S:[a-f0-9]{60}$", ("Oracle 11g",)),
+    ("^\$episerver\$\*1\*.+$", ("EPiServer 6.x >v4",)), ("^\$episerver\$\*0\*.+$", ("EPiServer 6.x <v4",)),
+    ("^[a-f0-9]{136}$", ("OSX v10.7",)), ("^\$ml\$.+$", ("OSX v10.8",)),
+    ("^grub\.pbkdf2.+$", ("GRUB 2",)), ("^[a-f0-9]{32}:[a-z0-9]{30}$", ("vBulletin >v3.8.5",))
   )
   for hashtype in prototypes:
     #try to find matches
