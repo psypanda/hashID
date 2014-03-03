@@ -1,12 +1,11 @@
 <?php
 /******************************************************************************
-* @name: hashIdentify.php
+* @name: hashid.php
 * @author: c0re <https://psypanda.org/>							
-* @date: 2013/02/23
-* @copyright: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
-* @readme: <http://wiki.insidepro.com/index.php/Algorithms>
+* @date: 2013/03/03
+* @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 ******************************************************************************/
-$version = "v2.3.1";
+$version = "v2.3.2";
 
 ?>
 
@@ -67,7 +66,7 @@ function IdentifyHash($str)
     '/^\$6\$.{0,22}\$[a-z0-9\/\.]{86}$/i' => 'SHA-512(Unix)',
     '/^[a-f0-9]{96}$/i' => 'SHA-384,Keccak-384,Skein-512(384),Skein-1024(384)',
     '/^sha384\$.{0,32}\$[a-f0-9]{96}$/i' => 'SHA-384(Django)',
-    '/^[a-f0-9]{128}$/i' => 'SHA-512,Whirlpool,Keccak-512,Skein-512,Skein-1024(512)',
+    '/^[a-f0-9]{128}$/i' => 'SHA-512,Whirlpool,Salsa10,Salsa20,Keccak-512,Skein-512,Skein-1024(512)',
     '/^[a-f0-9]{256}$/i' => 'Skein-1024',
     '/^({SSHA})?[a-z0-9\+\/]{32,38}?(==)?$/i' => 'SSHA-1',
     '/^\(?[a-z0-9\+\/]{20}\)?$/i' => 'Lotus Domino',
