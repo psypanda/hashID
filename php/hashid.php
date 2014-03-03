@@ -5,7 +5,7 @@
 * @date: 2013/03/03
 * @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 ******************************************************************************/
-$version = "v2.3.2";
+$version = "v2.3.3";
 
 ?>
 
@@ -74,7 +74,19 @@ function IdentifyHash($str)
     '/^[a-f-0-9]{32}:[a-f-0-9]{32}$/i' => 'SAM(LM_Hash:NT_Hash)',
     '/^\$sha\$[a-z0-9]{0,16}\$[a-f0-9]{64}$/i' => 'Minecraft(AuthMe Reloaded)',
     '/^0x0200[a-f0-9]{0,8}?[a-f0-9]{128}$/i' => 'MSSQL(2012)',
-    '/^({SSHA512})[a-z0-9\+\/]{90,160}?={0,2}$/i' => 'SSHA-512'
+    '/^({SSHA512})[a-z0-9\+\/]{90,160}?={0,2}$/i' => 'SSHA-512',
+    '/^[a-z0-9]{34}$/i' => 'CryptoCurrency(Adress)',
+    '/^[a-z0-9]{51}$/i' => 'CryptoCurrency(PrivateKey)',
+    '/^{smd5}.{31}$/i' => 'AIX(IBM)',
+    '/^[a-z0-9]{43}$/i' => 'CiscoIOS(SHA256)',
+    '/^[a-z0-9]{47}$/i' => 'FortiOS',
+    '/^S:[a-f0-9]{60}$/i' => 'Oracle 11g',
+    '/^\$episerver\$\*1\*.+$/i' => 'EPiServer 6.x >v4',
+    '/^\$episerver\$\*0\*.+$/i' => 'EPiServer 6.x <v4',
+    '/^[a-f0-9]{136}$/i' => 'OSX v10.7',
+    '/^\$ml\$.+$^/i' => 'OSX v10.8',
+    '/^grub\.pbkdf2.+$/i' => 'GRUB 2',
+    '/^[a-f0-9]{32}:[a-z0-9]{30}$/i' => 'vBulletin >v3.8.5'
   );
            
   //initialize the array
