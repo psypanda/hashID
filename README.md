@@ -8,7 +8,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 
 ### usage:
 
-	$ python hashid.py <hash>
+	$ python hashid.py <hash | file>
 
 ### screenshot:
 
