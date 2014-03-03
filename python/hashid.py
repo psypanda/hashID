@@ -2,18 +2,18 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/02/27
+# @date: 2014/03/03
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
 import re, argparse
 
 #set the version
-version = "v2.0.1"
+version = "v2.1.0"
 #set the banner
-banner = "%(prog)s " + version + " by c0re\n<https://github.com/psypanda/hashID>"
+banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
 #identify the input hash
-def IdentifyHash(hash): 
+def identifyHash(hash): 
   #define the list
   hashes=[]
   #trim possible whitespace
@@ -56,7 +56,7 @@ def showResult(list):
   result = []
   #no result found
   if (len(list) == 0):
-    return " [+] Unknown Hash"
+    return " [+] Unknown Hash\n"
   #show multiple results
   elif (len(list) > 2):
     result = " Most Possible:\n"
@@ -75,12 +75,28 @@ def showResult(list):
     #return the formatted text
     return result
 
-	
+
+#analyse the input file
+def analyseFile(handle):
+  for line in handle:
+    #trim possible whitespace
+    line = line.strip()
+    #print result
+    print ("Analysing '" + line + "'\n" + showResult(identifyHash(line)))
+
+
 #setup argparse
 parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, description="identify the different types of hashes")
 parser.add_argument("input", help="analyse given input")
 parser.add_argument("--version", action="version", version=banner)
-args = parser.parse_args()	
+args = parser.parse_args()
 
-#print result
-print ("Analysing '" + args.input + "'\n" + showResult(IdentifyHash(args.input)))
+
+try:
+  #check if argument is a file
+  with open(args.input, "r") as infile:
+    analyseFile(infile)
+  infile.close()
+#argument is not a file
+except:
+  print ("Analysing '" + args.input + "'\n" + showResult(identifyHash(args.input)))
