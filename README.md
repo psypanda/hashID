@@ -43,7 +43,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * CryptoCurrency(Adress), CryptoCurrency(PrivateKey)
 * Domain Cached Credentials, Domain Cached Credentials 2
 * DES(Unix), DES(Oracle)
-* EPiServer 6.x <v4, EPiServer 6.x >v4
+* EPiServer 6.x \<v4, EPiServer 6.x >v4
 * FCS-16, FCS-32
 * FNV-132, FNV-164
 * FortiOS
