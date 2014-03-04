@@ -2,18 +2,31 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/03/03
+# @date: 2014/03/04
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
-import re, argparse
+import re, os, argparse
 
 #set the version
-version = "v2.1.1"
+version = "v2.2.0"
 #set the banner
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
+#set the usage
+usage = "%(prog)s (-id HASH | -f FILE) [-o OUTFILE] [--help] [--version]"
+#set the description
+description = "identify the different types of hashes"
+
+#configure argparse | todo: alignment of help output
+parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter, usage=usage, description=description)
+group = parser.add_mutually_exclusive_group(required=True)
+group.add_argument("-id", "--identify", type=str, help="identify a single hash")
+group.add_argument("-f", "--file", type=argparse.FileType("r"), help="analyse a given file")
+parser.add_argument("-o", "--output", type=argparse.FileType("w"), default="hashid_output.txt", help="sets a different output filename (default: %(default)s)")
+parser.add_argument("--version", action="version", version=banner)
+args = parser.parse_args()
 
 #identify the input hash
-def identifyHash(hash): 
+def identifyHash(hash):
   #define the list
   hashes=[]
   #trim possible whitespace
@@ -21,33 +34,60 @@ def identifyHash(hash):
   #set regex and algorithms
   prototypes = \
   (
-    ("^[a-f0-9]{4}$", ("CRC-16","CRC-16-CCITT","FCS-16")), ("^[a-f0-9]{8}$", ("Adler32","CRC-32","CRC-32B","FCS-32","GHash-32-3","GHash-32-5","XOR-32","FNV-132","Joaat")),
-    ("^\+[a-z0-9\/\.]{12}$", ("Blowfish(Eggdrop)",)), ("^.{0,2}[a-z0-9\/\.]{11}$", ("DES(Unix)",)),
-    ("^[a-f0-9]{16}$", ("MySQL3.x","LM","DES(Oracle)","VNC","FNV-164","CRC-64")), ("^[a-z0-9\/\.]{16}$", ("MD5(Cisco PIX)",)),
-    ("^\$1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(Unix)",)), ("^\$apr1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(APR)",)),
-    ("^[a-f0-9]{24}$", ("CRC-96(ZIP)",)), ("^\$H\$[a-z0-9\/\.]{31}$", ("MD5(phpBB3)",)), ("^\$P\$[a-z0-9\/\.]{31}$", ("MD5(Wordpress)",)),
+    ("^[a-f0-9]{4}$", ("CRC-16","CRC-16-CCITT","FCS-16")),
+    ("^[a-f0-9]{8}$", ("Adler32","CRC-32","CRC-32B","FCS-32","GHash-32-3","GHash-32-5","XOR-32","FNV-132","Joaat")),
+    ("^\+[a-z0-9\/\.]{12}$", ("Blowfish(Eggdrop)",)),
+    ("^.{0,2}[a-z0-9\/\.]{11}$", ("DES(Unix)",)),
+    ("^[a-f0-9]{16}$", ("MySQL3.x","LM","DES(Oracle)","VNC","FNV-164","CRC-64")),
+    ("^[a-z0-9\/\.]{16}$", ("MD5(Cisco PIX)",)),
+    ("^\$1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(Unix)",)),
+    ("^\$apr1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(APR)",)),
+    ("^[a-f0-9]{24}$", ("CRC-96(ZIP)",)),
+    ("^\$H\$[a-z0-9\/\.]{31}$", ("MD5(phpBB3)",)),
+    ("^\$P\$[a-z0-9\/\.]{31}$", ("MD5(Wordpress)",)),
     ("^[0-9a-f]{32}$", ("MD5","NTLM","Domain Cached Credentials","Domain Cached Credentials 2","RAdmin v2.x","MD4","MD2","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","Skein-256(128)","Skein-512(128)")),
-    ("^0x[a-f0-9]{32}$", ("Lineage II C4",)), ("^[a-f0-9]{32}:[a-z0-9]{32}$", ("MD5(Joomla)",)), ("^[a-f0-9]{32}:.{5}$", ("MD5(IP.Board)",)),
-    ("^[a-f-0-9]{32}:[a-z0-9]{8}$", ("MD5(MyBB)",)), ("^[a-f0-9]{40}$", ("SHA-1","MySQL4.x","RIPEMD-160","Haval-160","SHA-1(MaNGOS)","SHA-1(MaNGOS2)","Tiger-160","Skein-256(160)","Skein-512(160)")),
-    ("^\*[a-f0-9]{40}$", ("MySQL5.x",)), ("^sha1\$.{0,32}\$[a-f0-9]{40}$", ("SHA-1(Django)",)),
-    ("^0x0100[a-f0-9]{0,8}?[a-f0-9]{40}$", ("MSSQL(2005)","MSSQL(2008)")), ("^[a-f0-9]{48}$", ("Haval-192","Tiger-192")),
-    ("^[a-f0-9]{51}$", ("MD5(Palshop)",)), ("^\$S\$[a-z0-9\/\.]{52}$", ("SHA-512(Drupal)",)),
-    ("^\$2a\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$", ("Blowfish(OpenBSD)",)), ("^[a-f0-9]{56}$", ("SHA-224","Haval-224","Keccak-224","Skein-256(224)","Skein-512(224)")),
+    ("^0x[a-f0-9]{32}$", ("Lineage II C4",)),
+    ("^[a-f0-9]{32}:[a-z0-9]{32}$", ("MD5(Joomla)",)),
+    ("^[a-f0-9]{32}:.{5}$", ("MD5(IP.Board)",)),
+    ("^[a-f-0-9]{32}:[a-z0-9]{8}$", ("MD5(MyBB)",)),
+    ("^[a-f0-9]{40}$", ("SHA-1","MySQL4.x","RIPEMD-160","Haval-160","SHA-1(MaNGOS)","SHA-1(MaNGOS2)","Tiger-160","Skein-256(160)","Skein-512(160)")),
+    ("^\*[a-f0-9]{40}$", ("MySQL5.x",)),
+    ("^sha1\$.{0,32}\$[a-f0-9]{40}$", ("SHA-1(Django)",)),
+    ("^0x0100[a-f0-9]{0,8}?[a-f0-9]{40}$", ("MSSQL(2005)","MSSQL(2008)")),
+    ("^[a-f0-9]{48}$", ("Haval-192","Tiger-192")),
+    ("^[a-f0-9]{51}$", ("MD5(Palshop)",)),
+    ("^\$S\$[a-z0-9\/\.]{52}$", ("SHA-512(Drupal)",)),
+    ("^\$2a\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$", ("Blowfish(OpenBSD)",)),
+    ("^[a-f0-9]{56}$", ("SHA-224","Haval-224","Keccak-224","Skein-256(224)","Skein-512(224)")),
     ("^[a-f0-9]{64}$", ("SHA-256","RIPEMD-256","Haval-256","Snefru-256","GOST R 34.11-94","Keccak-256","Skein-256","Skein-512(256)")),
-    ("^sha256\$.{0,32}\$[a-f0-9]{64}$", ("SHA-256(Django)",)), ("^\$5\$.{0,22}\$[a-z0-9\/\.]{43,69}$", ("SHA-256(Unix)",)), 
-    ("^[a-f0-9]{80}$", ("RIPEMD-320",)), ("^0x0100[a-f0-9]{0,8}?[a-f0-9]{80}$", ("MSSQL(2000)",)),
-    ("^\$6\$.{0,22}\$[a-z0-9\/\.]{86}$", ("SHA-512(Unix)",)), ("^[a-f0-9]{96}$", ("SHA-384","Keccak-384","Skein-512(384)","Skein-1024(384)")),
-    ("^sha384\$.{0,32}\$[a-f0-9]{96}$", ("SHA-384(Django)",)), ("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Salsa10","Salsa20","Keccak-512","Skein-512","Skein-1024(512)")),
-    ("^[a-f0-9]{256}$", ("Skein-1024",)), ("^({SSHA})[a-z0-9\+\/]{27,66}?={0,2}$", ("SSHA-1",)),
-    ("^\(?[a-z0-9\+\/]{20}\)?$", ("Lotus Domino",)), ("^[a-f0-9]{32}:[a-z0-9]{2}$", ("MD5(osCommerce)",)),
-    ("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)",)), ("^\$sha\$[a-z0-9]{0,16}\$[a-f0-9]{64}$", ("Minecraft(AuthMe Reloaded)",)),
-    ("^0x0200[a-f0-9]{0,8}?[a-f0-9]{128}$", ("MSSQL(2012",)), ("^({SSHA512})[a-z0-9\+\/]{90,160}?={0,2}$", ("SSHA-512",)),
-    ("^[a-z0-9]{34}$", ("CryptoCurrency(Adress)",)), ("^[a-z0-9]{51}$", ("CryptoCurrency(PrivateKey)",)),
-    ("^{smd5}.{31}$",("AIX(IBM)",)), ("^[a-z0-9]{43}$", ("CiscoIOS(SHA256)",)),
-    ("^[a-z0-9]{47}$", ("FortiOS",)), ("^S:[a-f0-9]{60}$", ("Oracle 11g",)),
-    ("^\$episerver\$\*1\*.+$", ("EPiServer 6.x >v4",)), ("^\$episerver\$\*0\*.+$", ("EPiServer 6.x <v4",)),
-    ("^[a-f0-9]{136}$", ("OSX v10.7",)), ("^\$ml\$.+$", ("OSX v10.8",)),
-    ("^grub\.pbkdf2.+$", ("GRUB 2",)), ("^[a-f0-9]{32}:[a-z0-9]{30}$", ("vBulletin >v3.8.5",))
+    ("^sha256\$.{0,32}\$[a-f0-9]{64}$", ("SHA-256(Django)",)),
+    ("^\$5\$.{0,22}\$[a-z0-9\/\.]{43,69}$", ("SHA-256(Unix)",)), 
+    ("^[a-f0-9]{80}$", ("RIPEMD-320",)),
+    ("^0x0100[a-f0-9]{0,8}?[a-f0-9]{80}$", ("MSSQL(2000)",)),
+    ("^\$6\$.{0,22}\$[a-z0-9\/\.]{86}$", ("SHA-512(Unix)",)),
+    ("^[a-f0-9]{96}$", ("SHA-384","Keccak-384","Skein-512(384)","Skein-1024(384)")),
+    ("^sha384\$.{0,32}\$[a-f0-9]{96}$", ("SHA-384(Django)",)),
+    ("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Salsa10","Salsa20","Keccak-512","Skein-512","Skein-1024(512)")),
+    ("^[a-f0-9]{256}$", ("Skein-1024",)),
+    ("^({SSHA})[a-z0-9\+\/]{27,66}?={0,2}$", ("SSHA-1",)),
+    ("^\(?[a-z0-9\+\/]{20}\)?$", ("Lotus Domino",)),
+    ("^[a-f0-9]{32}:[a-z0-9]{2}$", ("MD5(osCommerce)",)),
+    ("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)",)),
+    ("^\$sha\$[a-z0-9]{0,16}\$[a-f0-9]{64}$", ("Minecraft(AuthMe Reloaded)",)),
+    ("^0x0200[a-f0-9]{0,8}?[a-f0-9]{128}$", ("MSSQL(2012",)),
+    ("^({SSHA512})[a-z0-9\+\/]{90,160}?={0,2}$", ("SSHA-512",)),
+    ("^[a-z0-9]{34}$", ("CryptoCurrency(Adress)",)),
+    ("^[a-z0-9]{51}$", ("CryptoCurrency(PrivateKey)",)),
+    ("^{smd5}.{31}$", ("AIX(IBM)",)),
+    ("^[a-z0-9]{43}$", ("CiscoIOS(SHA256)",)),
+    ("^[a-z0-9]{47}$", ("FortiOS",)),
+    ("^S:[a-f0-9]{60}$", ("Oracle 11g",)),
+    ("^\$episerver\$\*1\*.+$", ("EPiServer 6.x >v4",)),
+    ("^\$episerver\$\*0\*.+$", ("EPiServer 6.x <v4",)),
+    ("^[a-f0-9]{136}$", ("OSX v10.7",)),
+    ("^\$ml\$.+$", ("OSX v10.8",)),
+    ("^grub\.pbkdf2.+$", ("GRUB 2",)),
+    ("^[a-f0-9]{32}:[a-z0-9]{30}$", ("vBulletin >v3.8.5",))
   )
   for hashtype in prototypes:
     #try to find matches
@@ -57,6 +97,7 @@ def identifyHash(hash):
   return hashes
 
 
+#create human readable output
 def showResult(list):
   #define the list
   result = []
@@ -81,28 +122,29 @@ def showResult(list):
     #return the formatted text
     return result
 
-
-#analyse the input file
-def analyseFile(handle):
-  for line in handle:
+#analyse and write file
+def analyseFile(infile,outfile):
+  hashesAnalysed = 0
+  for line in infile:
+    hashesAnalysed += 1
     #trim possible whitespace
     line = line.strip()
-    #print result
-    print ("Analysing '" + line + "'\n" + showResult(identifyHash(line)))
+    #write result
+    outfile.write("Analysing '" + line + "'\n" + showResult(identifyHash(line)) + "\n")
+  #show	number of hashes analysed
+  print ("Hashes analysed: " + str(hashesAnalysed))
+  #show output file path
+  print ("Output written: " + os.path.abspath(outfile.name))
 
 
-#setup argparse
-parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, description="identify the different types of hashes")
-parser.add_argument("input", help="analyse given input")
-parser.add_argument("--version", action="version", version=banner)
-args = parser.parse_args()
-
-
-try:
-  #check if argument is a file
-  with open(args.input, "r") as infile:
-    analyseFile(infile)
-  infile.close()
-#argument is not a file
-except:
-  print ("Analysing '" + args.input + "'\n" + showResult(identifyHash(args.input)))
+#analyse a single hash
+if args.identify:
+  print ("Analysing '" + args.identify + "'\n" + showResult(identifyHash(args.identify)))
+#analyse a file
+elif args.file:
+  #custom output file set
+  if args.output:
+    analyseFile(args.file,args.output)
+  #default output file
+  else:
+    analyseFile(args.file,args.output)
