@@ -8,7 +8,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 
 ### usage:
 
-	$ python hashid.py (-id HASH | -f FILE) [-o OUTFILE] [--help] [--version]
+	$ python hashid.py (-i HASH | -f FILE) [-o OUTFILE] [--help] [--version]
 
 ### screenshot:
 
@@ -40,7 +40,7 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 * CRC-32, CRC-32B
 * CRC-64
 * CRC-96(ZIP)
-* Cisco-IOS(MD5), Cisco-IOS(SHA256), Cisco-PIX MD5
+* Cisco-IOS(MD5), Cisco-IOS(SHA256), Cisco-PIX(MD5)
 * CryptoCurrency(Adress), CryptoCurrency(PrivateKey)
 * Domain Cached Credentials, Domain Cached Credentials 2
 * DES(Unix), DES(Oracle)
