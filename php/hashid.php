@@ -5,7 +5,7 @@
 * @date: 2013/03/05
 * @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 ******************************************************************************/
-$version = "v2.3.4";
+$version = "v2.3.5";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -38,7 +38,7 @@ function IdentifyHash($str)
     '/^[a-z0-9\/\.]{13}$/i' => 'DES(Unix),Traditional DES,DEScrypt',
     '/^[a-f0-9]{16}$/i' => 'MySQL3.x,DES(Oracle),VNC,Half MD5,FNV-164,CRC-64',
     '/^[a-z0-9\/\.]{16}$/i' => 'Cisco-PIX MD5',
-    '/^\\(?[a-z0-9\+\/]{20}\)?$/i' => 'Lotus Domino',
+    '/^\\([a-z0-9\+\/]{20}\)$/i' => 'Lotus Domino',
     '/^[a-f0-9]{24}$/i' => 'CRC-96(ZIP)',
     '/^[0-9a-f]{32}$/i' => 'MD5,NTLM,LM,MD4,MD2,RAdmin v2.x,RIPEMD-128,Haval-128,Tiger-128,Snefru-128,MD5(ZipMonster),Skein-256(128),Skein-512(128)',
     '/^{SHA}[a-z0-9\/\+]{27}=$/i' => 'SHA-1(Base64),Netscape LDAP SHA',
@@ -62,7 +62,7 @@ function IdentifyHash($str)
     '/^[a-f0-9]{51}$/i' => 'Palshop CMS',
     '/^[a-z0-9]{51}$/i' => 'CryptoCurrency(PrivateKey)',
     '/^{ssha1}[a-z0-9\.\$]{47}$/i' => 'AIX(ssha1)',
-    '/^0x0100[a-f0-9]{0,8}?[a-f0-9]{40}$/i' => 'MSSQL(2005),MSSQL(2008)',
+    '/^0x0100[a-f0-9]{48}$/i' => 'MSSQL(2005),MSSQL(2008)',
     '/^\$md5,rounds=[0-9]+\$[a-z0-9\.\/]{0,8}(\$|\$\$)[a-z0-9\.\/]{22}$/i' => 'MD5(Sun)',
     '/^[a-f0-9]{56}$/i' => 'SHA-224,Haval-224,Keccak-224,Skein-256(224),Skein-512(224)',
     '/^(\$2a|\$2y|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$/i' => 'Blowfish(OpenBSD)',
@@ -75,13 +75,13 @@ function IdentifyHash($str)
     '/^{ssha256}[a-z0-9\.\$]{63}$/i' => 'AIX(ssha256)',
     '/^[a-f0-9]{80}$/i' => 'RIPEMD-320',
     '/^\$episerver\$\*1\*[a-z0-9=\*+]{68}$/i' => 'EPiServer 6.x >v4',
-    '/^0x0100[a-f0-9]{0,8}?[a-f0-9]{80}$/i' => 'MSSQL(2000)',
+    '/^0x0100[a-f0-9]{88}$/i' => 'MSSQL(2000)',
     '/^[a-f0-9]{96}$/i' => 'SHA-384,Keccak-384,Skein-512(384),Skein-1024(384)',
     '/^{SSHA512}[a-z0-9\+\/]{96}={0,2}$/i' => 'SSHA-512(Base64),LDAP(SSHA512)',
     '/^{ssha512}[a-z0-9\.\$]{107}$/i' => 'AIX(ssha512)',
     '/^[a-f0-9]{128}$/i' => 'SHA-512,Whirlpool,Salsa10,Salsa20,Keccak-512,Skein-512,Skein-1024(512)',
     '/^[a-f0-9]{136}$/i' => 'OSX v10.7',
-    '/^0x0200[a-f0-9]{0,8}?[a-f0-9]{128}$/i' => 'MSSQL(2012)',
+    '/^0x0200[a-f0-9]{136}$/i' => 'MSSQL(2012)',
     '/^\$ml\$.+$/i' => 'OSX v10.8',
     '/^[a-f0-9]{256}$/i' => 'Skein-1024',
     '/^grub\.pbkdf2.+$/i' => 'GRUB 2',

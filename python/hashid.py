@@ -5,10 +5,11 @@
 # @date: 2014/03/05
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
+
 import re, os, argparse
 
 #set the version
-version = "v2.2.1"
+version = "v2.2.2"
 #set the banner
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 #set the usage
@@ -44,19 +45,19 @@ def identifyHash(hash):
     ("^[a-z0-9\/\.]{13}$", ("DES(Unix)","Traditional DES","DEScrypt")),
     ("^[a-f0-9]{16}$", ("MySQL3.x","DES(Oracle)","VNC","Half MD5","FNV-164","CRC-64")),
     ("^[a-z0-9\/\.]{16}$", ("Cisco-PIX MD5",)),
-    ("^\(?[a-z0-9\+\/]{20}\)?$", ("Lotus Domino",)),
+    ("^\([a-z0-9\+\/]{20}\)$", ("Lotus Domino",)),
     ("^[a-f0-9]{24}$", ("CRC-96(ZIP)",)),
     ("^[0-9a-f]{32}$", ("MD5","NTLM","LM","MD4","MD2","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","MD5(ZipMonster)","Skein-256(128)","Skein-512(128)")),
-    ("^{SHA}[a-z0-9\/\+]{27}=$", ("SHA-1(Base64)", "Netscape LDAP SHA")),
+    ("^{SHA}[a-z0-9\/\+]{27}=$", ("SHA-1(Base64)","Netscape LDAP SHA")),
     ("^\$1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(Unix)","Cisco-IOS MD5","FreeBSD MD5")),
     ("^0x[a-f0-9]{32}$", ("Lineage II C4",)), 
     ("^\$H\$[a-z0-9\/\.]{31}$", ("MD5(phpBB3)",)),
     ("^\$P\$[a-z0-9\/\.]{31}$", ("MD5(Wordpress)",)),
-    ("^[a-f0-9]{32}:[a-z0-9]{2}$", ("osCommerce", "xt:Commerce")),
+    ("^[a-f0-9]{32}:[a-z0-9]{2}$", ("osCommerce","xt:Commerce")),
     ("^\$apr1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(APR)","Apache MD5")),
     ("^{smd5}.{31}$", ("AIX(smd5)",)),
     ("^[a-f0-9]{32}:[0-9]{4}$", ("WebEdition CMS",)),
-    ("^[a-f0-9]{32}:.{5}$", ("IP.Board v2+", "MyBB v1.2+")),
+    ("^[a-f0-9]{32}:.{5}$", ("IP.Board v2+","MyBB v1.2+")),
     ("^[a-z0-9]{34}$", ("CryptoCurrency(Adress)",)),
     ("^[a-f0-9]{40}$", ("SHA-1","MySQL4.x","RIPEMD-160","Haval-160","SHA-1(MaNGOS)","SHA-1(MaNGOS2)","Tiger-160","Skein-256(160)","Skein-512(160)")),
     ("^\*[a-f0-9]{40}$", ("MySQL5.x",)),
@@ -68,7 +69,7 @@ def identifyHash(hash):
     ("^[a-f0-9]{51}$", ("Palshop CMS",)),
     ("^[a-z0-9]{51}$", ("CryptoCurrency(PrivateKey)",)),
     ("^{ssha1}[a-z0-9\.\$]{47}$", ("AIX(ssha1)",)),
-    ("^0x0100[a-f0-9]{0,8}?[a-f0-9]{40}$", ("MSSQL(2005)","MSSQL(2008)")),
+    ("^0x0100[a-f0-9]{48}$", ("MSSQL(2005)","MSSQL(2008)")),
     ("^\$md5,rounds=[0-9]+\$[a-z0-9\.\/]{0,8}(\$|\$\$)[a-z0-9\.\/]{22}$", ("MD5(Sun)",)),
     ("^[a-f0-9]{56}$", ("SHA-224","Haval-224","Keccak-224","Skein-256(224)","Skein-512(224)")),
     ("^(\$2a|\$2y|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$", ("Blowfish(OpenBSD)",)),
@@ -81,13 +82,13 @@ def identifyHash(hash):
     ("^{ssha256}[a-z0-9\.\$]{63}$", ("AIX(ssha256)",)),
     ("^[a-f0-9]{80}$", ("RIPEMD-320",)),
     ("^\$episerver\$\*1\*[a-z0-9=\*+]{68}$", ("EPiServer 6.x >v4",)),
-    ("^0x0100[a-f0-9]{0,8}?[a-f0-9]{80}$", ("MSSQL(2000)",)),
+    ("^0x0100[a-f0-9]{88}$", ("MSSQL(2000)",)),
     ("^[a-f0-9]{96}$", ("SHA-384","Keccak-384","Skein-512(384)","Skein-1024(384)")),
     ("^{SSHA512}[a-z0-9\+\/]{96}={0,2}$", ("SSHA-512(Base64)","LDAP(SSHA512)")),
     ("^{ssha512}[a-z0-9\.\$]{107}$", ("AIX(ssha512)",)),
     ("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Salsa10","Salsa20","Keccak-512","Skein-512","Skein-1024(512)")),
     ("^[a-f0-9]{136}$", ("OSX v10.7",)),
-    ("^0x0200[a-f0-9]{0,8}?[a-f0-9]{128}$", ("MSSQL(2012",)),
+    ("^0x0200[a-f0-9]{136}$", ("MSSQL(2012)",)),
     ("^\$ml\$.+$", ("OSX v10.8",)),
     ("^[a-f0-9]{256}$", ("Skein-1024",)),
     ("^grub\.pbkdf2.+$", ("GRUB 2",)),
