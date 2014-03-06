@@ -1,4 +1,4 @@
-hash-identifier
+hashID
 ======
 
 identify the different types of hashes used to encrypt data and especially passwords.
@@ -6,12 +6,12 @@ identify the different types of hashes used to encrypt data and especially passw
 this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/), which is outdated!
 
 
-### usage:
-
+Usage:
+------
 	$ python hashid.py (-i HASH | -f FILE) [-o OUTFILE] [--help] [--version]
 
-### screenshot:
-
+Screenshot:
+------
 	$ python hashid.py -i 827ccb0eea8a706c4c34a16891f84e7b
 	Analysing '827ccb0eea8a706c4c34a16891f84e7b'
 	Most Possible:
@@ -30,7 +30,8 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 	[+] Skein-256(128)
 	[+] Skein-512(128)
 
-### supported hashes:
+Supported hashes:
+------
 	Adler-32, Apache MD5, AIX(smd5), AIX(ssha1), AIX(ssha256), AIX(ssha512)
 	Blowfish(Eggdrop), Blowfish(OpenBSD), BSDi Crypt, BCrypt(SHA256)
 	CRC-16, CRC-16-CCITT, CRC-32, CRC-32B, CRC-64, CRC-96(ZIP), Cisco-IOS(MD5), Cisco-IOS(SHA256), Cisco-PIX(MD5)
@@ -63,5 +64,15 @@ this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 	XOR-32
 	xt:Commerce
 
-
 **Total:** 136 hash algorithms
+
+Known issues:
+------
+* number of found hashes is inaccurate
+* alignment of the help menu is messed up (--help)
+
+Resources:
+------
+* http://pythonhosted.org/passlib/index.html
+* http://wiki.insidepro.com/index.php/Algorithms
+* http://openwall.info/wiki/john
