@@ -25,13 +25,11 @@ Screenshot
 ```
 $ python hashid.py -i 827ccb0eea8a706c4c34a16891f84e7b
 Analysing '827ccb0eea8a706c4c34a16891f84e7b'
-Most Possible:
 [+] MD5
-[+] NTLM
-Less possible:
-[+] LM
 [+] MD4
 [+] MD2
+[+] NTLM
+[+] LM
 [+] RAdmin v2.x
 [+] RIPEMD-128
 [+] Haval-128
