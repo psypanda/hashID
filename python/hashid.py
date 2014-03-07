@@ -8,18 +8,19 @@
 import re, os, sys, argparse
 
 #set essential variables
-version = "v2.3.0"
-banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-usage = "%(prog)s (-i HASH | -f FILE) [-o OUTFILE] [--help] [--version]"
-description = "identify the different types of hashes"
+version = "v2.3.1"
+banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
+usage = "%(prog)s (-i HASH | -f FILE) [-o OUTFILE] [-n] [--help] [--version]"
+description = "Identify the different types of hashes"
+epilog = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
 #configure argparse
-parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter, usage=usage, description=description)
+parser = argparse.ArgumentParser(formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=36), usage=usage, description=description, epilog=epilog)
 group = parser.add_mutually_exclusive_group(required=True)
-group.add_argument("-i", "--identify", type=str, help="identify a single hash")
+group.add_argument("-i", "--hash", type=str, help="identify a single hash")
 group.add_argument("-f", "--file", type=argparse.FileType("r"), help="analyse a given file")
-parser.add_argument("-o", "--output", type=str, default="hashid_output.txt", help="sets a different output filename (default: %(default)s)")
-#parser.add_argument("-n", "--notfound", action='store_true', help="create a separate file containing all unknown hashes")
+parser.add_argument("-o", "--output", type=str, default="hashid_output.txt", help="set output filename (default: %(default)s)")
+#parser.add_argument("-n", "--notfound", action="store_true", default=False, help="set separate file containing all unknown hashes (default: hashid_notfound.txt)")
 parser.add_argument("--version", action="version", version=banner)
 args = parser.parse_args()
 
@@ -40,7 +41,7 @@ def identifyHash(phash):
 		("^_[a-z0-9\/\.]{19}$", ("BSDi Crypt",)),
 		("^[a-f0-9]{24}$", ("CRC-96(ZIP)",)),
 		("^[a-z0-9\/\.]{24}$", ("Crypt16",)),
-		("^[0-9a-f]{32}$", ("MD5","NTLM","LM","MD4","MD2","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","MD5(ZipMonster)","Skein-256(128)","Skein-512(128)")),
+		("^[0-9a-f]{32}$", ("MD5","MD4","MD2","NTLM","LM","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","MD5(ZipMonster)","Skein-256(128)","Skein-512(128)")),
 		("^{SHA}[a-z0-9\/\+]{27}=$", ("SHA-1(Base64)","Netscape LDAP SHA")),
 		("^\$1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(Unix)","Cisco-IOS(MD5)","FreeBSD MD5")),
 		("^0x[a-f0-9]{32}$", ("Lineage II C4",)), 
@@ -118,7 +119,7 @@ def analyseFile(infile, outfile):
 		#try to identify the hash
 		identify = identifyHash(line)
 		outfile.write("Analysing '" + line + "'\n")
-		hashesFound += showResult(identify, outfile)
+		hashesFound += writeResult(identify, outfile)
 		#add a newline
 		outfile.write("\n")
 	#show number of hashes analysed
@@ -130,15 +131,11 @@ def analyseFile(infile, outfile):
 
 
 #create human readable output
-def showResult(identify, outfile):
+def writeResult(identify, outfile):
 	#define the counter
 	count = 0
 	#iterate over matches
 	for result in identify:
-		if count == 0:
-			outfile.write("Most possible:\n")
-		elif count == 2:
-			outfile.write("Less possible:\n")	
 		#write the result
 		outfile.write("[+] " + result + "\n")
 		#increment counter
