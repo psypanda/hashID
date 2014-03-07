@@ -8,7 +8,7 @@
 import re, os, sys, argparse
 
 #set essential variables
-version = "v2.3.1"
+version = "v2.3.2"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s (-i HASH | -f FILE) [-o OUTFILE] [-n] [--help] [--version]"
 description = "Identify the different types of hashes"
@@ -147,9 +147,9 @@ def writeResult(identify, outfile):
 
 
 #analyse a single hash
-if args.identify:
-	print ("Analysing '" + args.identify + "'")
-	showResult(identifyHash(args.identify), sys.stdout)
+if args.hash:
+	print ("Analysing '" + args.hash + "'")
+	writeResult(identifyHash(args.hash), sys.stdout)
 #analyse a file
 elif args.file:
 	outfile = open(args.output, "w")
