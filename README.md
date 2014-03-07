@@ -1,16 +1,23 @@
 hashID
 ======
 
-identify the different types of hashes used to encrypt data and especially passwords.
+Identify the different types of hashes used to encrypt data and especially passwords.
 
-this tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/), which is outdated!
+This tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/), which is outdated!
+
+hashID supports the identification of over 130 unique hash types using regular expressions.           
+It is able to identify a single hash or parse a file and identify the hashes within it.    
+There is also a php version of hashID available which is easily set up to provide online hash identification.    
 
 
-Usage:
+_Note: the php version of hashID will only receive regex updates in the future_
+
+
+Usage
 ------
 	$ python hashid.py (-i HASH | -f FILE) [-o OUTFILE] [--help] [--version]
 
-Screenshot:
+Screenshot
 ------
 	$ python hashid.py -i 827ccb0eea8a706c4c34a16891f84e7b
 	Analysing '827ccb0eea8a706c4c34a16891f84e7b'
@@ -30,7 +37,7 @@ Screenshot:
 	[+] Skein-256(128)
 	[+] Skein-512(128)
 
-Supported hashes:
+Supported hashes
 ------
 	Adler-32, Apache MD5, AIX(smd5), AIX(ssha1), AIX(ssha256), AIX(ssha512)
 	Blowfish(Eggdrop), Blowfish(OpenBSD), BSDi Crypt, BCrypt(SHA256)
@@ -46,7 +53,7 @@ Supported hashes:
 	Keccak-224, Keccak-256, Keccak-384, Keccak-512
 	Lineage II C4, LDAP(SSHA512), LM, Lotus Domino
 	MD2, MD4, MD5, MD5(APR), MD5(Unix), MD5(phpBB3), MD5(WordPress), MD5(Zipmonster), MD5(Sun), Minecraft(AuthMe Reloaded)
-	MyBB1.2+, MySQL3.x, MySQL4.x, MySQL5.x, MSSQL(2000), MSSQL(2005), MSSQL(2008), MSSQL(2012)
+	MyBB1.2+, MySQL323, MySQL4.1, MySQL5.x, MSSQL(2000), MSSQL(2005), MSSQL(2008), MSSQL(2012)
 	NTLM, Netscape LDAP SHA
 	Oracle 7-10g, Oracle 11g, osCommerce, OSX v10.4, OSX v10.5, OSX v10.6, OSX v10.7, OSX v10.8
 	Palshop CMS, PHPass' Portable Hash
@@ -66,12 +73,15 @@ Supported hashes:
 
 **Total:** 136 hash algorithms
 
-Known issues:
+Known issues
 ------
-* number of found hashes is inaccurate
-* alignment of the help menu is messed up (--help)
+* The alignment of the help menu is messed up (--help)
 
-Resources:
+Credits
+------
+* Thanks to [sigkill](https://github.com/sigkill-rcode) who helped me numerous times fixing and optimizing the code
+
+Resources
 ------
 * http://pythonhosted.org/passlib/index.html
 * http://wiki.insidepro.com/index.php/Algorithms
