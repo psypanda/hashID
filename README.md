@@ -69,7 +69,7 @@ Skein-512, Skein-512(128), Skein-512(160), Skein-512(224), Skein-512(256), Skein
 Skein-1024(512), Snefru-128, Snefru-256, SCRAM Hash, SHA-1(LinkedIn), Samsung Android Password/PIN, Sybase ASE
 Tiger-128, Tiger-160, Tiger-192
 VNC
-vBulletin >v3.8.5
+vBulletin >=v3.8.5
 Whirlpool
 WebEdition CMS
 XOR-32
@@ -80,6 +80,7 @@ xt:Commerce
 Known issues
 ------
 * The alignment of the help menu is messed up (--help)
+* NetNTLMv1-VANILLA / NetNTLMv1+ESS and NetNTLMv2 regex not working in php version
 
 Credits
 ------
