@@ -97,6 +97,7 @@ def identifyHash(phash):
 		("^\$sha\$[a-z0-9]{1,16}\$[a-f0-9]{64}$", ("Minecraft(AuthMe Reloaded)",)),
 		("^sha256\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{64}$", ("SHA-256(Django)",)),
 		("^sha384\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{96}$", ("SHA-384(Django)",)),
+		("^crypt1:[a-z0-9\+\=]{12}:[a-z0-9\+\=]{12}$", ("Clavister Secure Gateway",)),
 		("^[^\\\/:*?\"\<\>\|]{1,15}::[^\\\/:*?\"\<\>\|]{1,15}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$", ("NetNTLMv1-VANILLA / NetNTLMv1+ESS",)),
 		("^[^\\\/:*?\"\<\>\|]{1,15}::[^\\\/:*?\"\<\>\|]{1,15}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$", ("NetNTLMv2",)),
 		("^\$krb5pa\$.+$", ("Kerberos 5 AS-REQ Pre-Auth",)),
