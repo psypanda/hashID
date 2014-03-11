@@ -5,12 +5,9 @@ Identify the different types of hashes used to encrypt data and especially passw
 
 This tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/), which is outdated!
 
-hashID supports the identification of over 150 unique hash types using regular expressions.           
+hashID supports the identification of over 155 unique hash types using regular expressions.           
 It is able to identify a single hash or parse a file and identify the hashes within it.    
 There is also a php version of hashID available which is easily set up to provide online hash identification.    
-
-
-_Note: the php version of hashID will only receive regex updates in the future_
 
 
 Usage
@@ -38,6 +35,12 @@ Analysing '827ccb0eea8a706c4c34a16891f84e7b'
 [+] MD5(ZipMonster)
 [+] Skein-256(128)
 [+] Skein-512(128)
+
+$ python hashid.py -f hashes.txt
+Analysing 'home/psypanda/hashes.txt'
+Hashes analysed: 259
+Hashes found: 231
+Output written: '/home/psypanda/hashid_output.txt'
 ```
 
 Contribute
@@ -46,7 +49,7 @@ Contributing to this project can be done in various ways:
 * Supply new regular expressions (please take a look at hashinfo.xlsx first)
 * Change existing regular expression (please provide a resource why the current regex might be wrong)
 * Work on the "hashid.xlsx" spreadsheet by providing example hashes or reading resources
-* Fix anything noted in the "Known issues" section below
+* Fix anything noted in the "Known issues" section
 
 Known issues
 ------
