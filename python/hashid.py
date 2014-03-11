@@ -8,7 +8,7 @@
 import re, os, sys, argparse
 
 #set essential variables
-version = "v2.3.3"
+version = "v2.3.4"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s (-i HASH | -f FILE) [-o OUTFILE] [-n] [--help] [--version]"
 description = "Identify the different types of hashes"
@@ -49,14 +49,14 @@ def identifyHash(phash):
 		("^\$P\$[a-z0-9\/\.]{31}$", ("MD5(Wordpress)","PHPass' Portable Hash")),
 		("^[a-f0-9]{32}:[a-z0-9]{2}$", ("osCommerce","xt:Commerce")),
 		("^\$apr1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(APR)","Apache MD5")),
-		("^{smd5}.{31}$", ("AIX(smd5)",)),
-		("^[a-f0-9]{32}:[0-9]{4}$", ("WebEdition CMS",)),
+		("^{smd5}[a-z0-9\.\$]{31}$", ("AIX(smd5)",)),
+		("^[a-f0-9]{32}:[a-f0-9]{32}$", ("WebEdition CMS",)),
 		("^[a-f0-9]{32}:.{5}$", ("IP.Board v2+","MyBB v1.2+")),
 		("^[a-z0-9]{34}$", ("CryptoCurrency(Adress)",)),
 		("^[a-f0-9]{40}$", ("SHA-1","SHA-1(MaNGOS)","SHA-1(MaNGOS2)","SHA-1(LinkedIn)","RIPEMD-160","Haval-160","Tiger-160","HAS-160","Skein-256(160)","Skein-512(160)")),
 		("^\*[a-f0-9]{40}$", ("MySQL5.x","MySQL4.1")),
 		("^[a-z0-9]{43}$", ("Cisco-IOS(SHA256)",)),
-		("^{SSHA}[a-z0-9\+\/]{38}={0,2}$", ("SSHA-1(Base64)","Netscape LDAP SSHA", "nsldaps")),
+		("^{SSHA}([a-z0-9\+\/]{40}|[a-z0-9\+\/]{38}==)$", ("SSHA-1(Base64)","Netscape LDAP SSHA", "nsldaps")),
 		("^[a-z0-9]{47}$", ("Fortigate(FortiOS)",)),
 		("^[a-f0-9]{48}$", ("Haval-192","Tiger-192","SHA-1(Oracle)","OSX v10.4","OSX v10.5","OSX v10.6")),
 		("^[a-f0-9]{51}$", ("Palshop CMS",)),
@@ -69,7 +69,8 @@ def identifyHash(phash):
 		("^[a-f0-9]{40}:[a-f0-9]{16}$", ("Samsung Android Password/PIN",)),
 		("^S:[a-f0-9]{60}$", ("Oracle 11g",)),
 		("^\$bcrypt-sha256\$.{5}\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$", ("BCrypt(SHA256)",)),
-		("^[a-f0-9]{32}:[a-z0-9]{30}$", ("vBulletin >v3.8.5",)),
+		("^[a-f0-9]{32}:[0-9]{3}$", ("vBulletin <v3.8.5",)),
+		("^[a-f0-9]{32}:[a-z0-9]{30}$", ("vBulletin >=v3.8.5",)),
 		("^[a-f0-9]{64}$", ("SHA-256","RIPEMD-256","Haval-256","Snefru-256","GOST R 34.11-94","Keccak-256","Skein-256","Skein-512(256)","Ventrilo")),
 		("^[a-f0-9]{32}:[a-z0-9]{32}$", ("Joomla",)),
 		("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)",)),
@@ -92,7 +93,7 @@ def identifyHash(phash):
 		("^[a-f0-9]{49}$", ("Citrix Netscaler",)),
 		("^\$S\$[a-z0-9\/\.]{52}$", ("Drupal7",)),
 		("^\$5\$(rounds=[0-9]+\$)?[a-z0-9\/\.]{0,16}\$[a-z0-9\/\.]{43}$", ("SHA-256(Unix)","sha256crypt")),
-		("^0x[a-f0-9]{4}[a-f0-9]{16}[a-f0-9]{64}$", ("Sybase ASE")),
+		("^0x[a-f0-9]{4}[a-f0-9]{16}[a-f0-9]{64}$", ("Sybase ASE",)),
 		("^\$6\$.{0,22}\$[a-z0-9\/\.]{86}$", ("SHA-512(Unix)",)),
 		("^\$sha\$[a-z0-9]{1,16}\$[a-f0-9]{64}$", ("Minecraft(AuthMe Reloaded)",)),
 		("^sha256\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{64}$", ("SHA-256(Django)",)),
@@ -103,7 +104,13 @@ def identifyHash(phash):
 		("^[^\\\/:*?\"\<\>\|]{1,15}::[^\\\/:*?\"\<\>\|]{1,15}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$", ("NetNTLMv1-VANILLA / NetNTLMv1+ESS",)),
 		("^[^\\\/:*?\"\<\>\|]{1,15}::[^\\\/:*?\"\<\>\|]{1,15}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$", ("NetNTLMv2",)),
 		("^\$krb5pa\$.+$", ("Kerberos 5 AS-REQ Pre-Auth",)),
-		("^\$scram\$.+$", ("SCRAM Hash",))
+		("^\$scram\$[0-9]+\$[a-z0-9\/\.]{16}\$sha-1=[a-z0-9\/\.]{27},sha-256=[a-z0-9\/\.]{43},sha-512=[a-z0-9\/\.]{86}$", ("SCRAM Hash",)),
+		("^[a-f0-9]{40}:[a-f0-9]{0,32}$", ("Redmine Project Management Web App",)),
+		("^[0-9]{12}\$[a-f0-9]{40}$", ("SAP CODVN F/G (PASSCODE)",)),
+		("^[0-9]{12}\$[a-f0-9]{16}$", ("SAP CODVN B (BCODE)",)),
+		("^[a-z0-9\/\.]{30}(:.+)?$", ("Juniper Netscreen/SSG (ScreenOS)",)),
+		("^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$", ("EPi",)),
+		("^[a-f0-9]{40}:[^*]{1,25}$", ("SMF >= v1.1",))
 	)
 	for hashtype in prototypes:
 		#try to find matches

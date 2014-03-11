@@ -5,7 +5,7 @@
 * @date: 2013/03/08
 * @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 ******************************************************************************/
-$version = "v2.3.7";
+$version = "v2.3.8";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -50,14 +50,14 @@ function IdentifyHash($str)
 		'/^\$P\$[a-z0-9\/\.]{31}$/i' => 'MD5(Wordpress),PHPass\' Portable Hash',
 		'/^[a-f0-9]{32}\:[a-z0-9]{2}$/i' => 'osCommerce,xt:Commerce',
 		'/^\$apr1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$/i' => 'MD5(APR),Apache MD5',
-		'/^{smd5}.{31}$/i' => 'AIX(smd5)',
-		'/^[a-f0-9]{32}\:[0-9]{4}$/i' => 'WebEdition CMS',
+		'/^{smd5}[a-z0-9\.\$]{31}$/i' => 'AIX(smd5)',
+		'/^[a-f0-9]{32}:[a-f0-9]{32}$/i' => 'WebEdition CMS',
 		'/^[a-f0-9]{32}\:.{5}$/i' => 'IP.Board v2+,MyBB v1.2+',
 		'/^[a-z0-9]{34}$/i' => 'CryptoCurrency(Adress)',
 		'/^[a-f0-9]{40}$/i' => 'SHA-1,SHA-1(MaNGOS),SHA-1(MaNGOS2),SHA-1(LinkedIn),RIPEMD-160,Haval-160,Tiger-160,HAS-160,Skein-256(160),Skein-512(160)',
 		'/^\*[a-f0-9]{40}$/i' => 'MySQL5.x,MySQL4.1',
 		'/^[a-z0-9]{43}$/i' => 'Cisco-IOS(SHA256)',
-		'/^{SSHA}[a-z0-9\+\/]{38}={0,2}$/i' => 'SSHA-1(Base64),Netscape LDAP SSHA,nsldaps',
+		'/^{SSHA}([a-z0-9\+\/]{40}|[a-z0-9\+\/]{38}==)$/i' => 'SSHA-1(Base64),Netscape LDAP SSHA,nsldaps',
 		'/^[a-z0-9]{47}$/i' => 'Fortigate(FortiOS)',
 		'/^[a-f0-9]{48}$/i' => 'Haval-192,Tiger-192,SHA-1(Oracle),OSX v10.4,OSX v10.5,OSX v10.6',
 		'/^[a-f0-9]{51}$/i' => 'Palshop CMS',
@@ -71,7 +71,8 @@ function IdentifyHash($str)
 		'/^[a-f0-9]{32}\:[0-9]{32}\:[0-9]{2}$/i' => 'MD5(Chap),iSCSI CHAP Authentication',
 		'/^S\:[a-f0-9]{60}$/i' => 'Oracle 11g',
 		'/^\$bcrypt-sha256\$.{5}\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$/i' => 'BCrypt(SHA256)',
-		'/^[a-f0-9]{32}\:[a-z0-9]{30}$/i' => 'vBulletin >v3.8.5',
+		'/^[a-f0-9]{32}:[0-9]{3}$/i' => 'vBulletin <v3.8.5',
+		'/^[a-f0-9]{32}\:[a-z0-9]{30}$/i' => 'vBulletin >=v3.8.5',
 		'/^[a-f0-9]{64}$/i' => 'SHA-256,RIPEMD-256,Haval-256,Snefru-256,GOST R 34.11-94,Keccak-256,Skein-256,Skein-512(256),Ventrilo',
 		'/^[a-f0-9]{32}\:[a-z0-9]{32}$/i' => 'Joomla',
 		'/^[a-f-0-9]{32}\:[a-f-0-9]{32}$/i' => 'SAM(LM_Hash:NT_Hash)',
@@ -104,7 +105,13 @@ function IdentifyHash($str)
 		#'/^[^\\\/\:\*\?\"\<\>\|]{1,15}\:\:[^\\\/\:\*\?\"\<\>\|]{1,15}\:[a-f0-9]{48}\:[a-f0-9]{48}\:[a-f0-9]{16}$/i' => 'NetNTLMv1-VANILLA / NetNTLMv1+ESS',
 		#'/^[^\\\/\:\*\?\"\<\>\|]{1,15}\:\:[^\\\/\:\*\?\"\<\>\|]{1,15}\:[a-f0-9]{16}\:[a-f0-9]{32}\:[a-f0-9]+$/i' => 'NetNTLMv2',
 		'/^\$krb5pa\$.+$/i' => 'Kerberos 5 AS-REQ Pre-Auth',
-		'/^\$scram\$.+$/i' => 'SCRAM Hash'
+		'/^\$scram\$[0-9]+\$[a-z0-9\/\.]{16}\$sha-1=[a-z0-9\/\.]{27},sha-256=[a-z0-9\/\.]{43},sha-512=[a-z0-9\/\.]{86}$/i' => 'SCRAM Hash',
+		'/^[a-f0-9]{40}:[a-f0-9]{0,32}$/i' => 'Redmine Project Management Web App',
+		'/^[0-9]{12}\$[a-f0-9]{40}$/i' => 'SAP CODVN F/G (PASSCODE)',
+		'/^[0-9]{12}\$[a-f0-9]{16}$/i' => 'SAP CODVN B (BCODE)',
+		'/^[a-z0-9\/\.]{30}(:.+)?$/i' => 'Juniper Netscreen/SSG (ScreenOS)',
+		'/^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$/i' => 'EPi',
+		'/^[a-f0-9]{40}:[^*]{1,25}$/i' => 'SMF >= v1.1'
 	);
 	
 	//initialize the array
