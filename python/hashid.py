@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/03/08
+# @date: 2014/03/11
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
 import re, os, sys, argparse
@@ -41,14 +41,14 @@ def identifyHash(phash):
 		("^_[a-z0-9\/\.]{19}$", ("BSDi Crypt",)),
 		("^[a-f0-9]{24}$", ("CRC-96(ZIP)",)),
 		("^[a-z0-9\/\.]{24}$", ("Crypt16",)),
-		("^[0-9a-f]{32}$", ("MD5","MD4","MD2","NTLM","LM","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","MD5(ZipMonster)","DCC","DCC v2","Skein-256(128)","Skein-512(128)")),
+		("^[a-f0-9]{32}$", ("MD5","MD4","MD2","NTLM","LM","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","MD5(ZipMonster)","DCC","DCC v2","Skein-256(128)","Skein-512(128)")),
 		("^{SHA}[a-z0-9\/\+]{27}=$", ("SHA-1(Base64)","Netscape LDAP SHA", "nsldap")),
 		("^\$1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(Unix)","Cisco-IOS(MD5)","FreeBSD MD5","md5crypt")),
 		("^0x[a-f0-9]{32}$", ("Lineage II C4",)), 
 		("^\$H\$[a-z0-9\/\.]{31}$", ("MD5(phpBB3)","PHPass' Portable Hash")),
 		("^\$P\$[a-z0-9\/\.]{31}$", ("MD5(Wordpress)","PHPass' Portable Hash")),
 		("^[a-f0-9]{32}:[a-z0-9]{2}$", ("osCommerce","xt:Commerce")),
-		("^\$apr1\$.{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(APR)","Apache MD5")),
+		("^\$apr1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(APR)","Apache MD5")),
 		("^{smd5}.{31}$", ("AIX(smd5)",)),
 		("^[a-f0-9]{32}:[0-9]{4}$", ("WebEdition CMS",)),
 		("^[a-f0-9]{32}:.{5}$", ("IP.Board v2+","MyBB v1.2+")),
@@ -58,7 +58,7 @@ def identifyHash(phash):
 		("^[a-z0-9]{43}$", ("Cisco-IOS(SHA256)",)),
 		("^{SSHA}[a-z0-9\+\/]{38}={0,2}$", ("SSHA-1(Base64)","Netscape LDAP SSHA", "nsldaps")),
 		("^[a-z0-9]{47}$", ("Fortigate(FortiOS)",)),
-		("^[a-f0-9]{48}$", ("Haval-192","Tiger-192","OSX v10.4","OSX v10.5","OSX v10.6")),
+		("^[a-f0-9]{48}$", ("Haval-192","Tiger-192","SHA-1(Oracle)","OSX v10.4","OSX v10.5","OSX v10.6")),
 		("^[a-f0-9]{51}$", ("Palshop CMS",)),
 		("^[a-z0-9]{51}$", ("CryptoCurrency(PrivateKey)",)),
 		("^{ssha1}[a-z0-9\.\$]{47}$", ("AIX(ssha1)",)),
@@ -70,7 +70,7 @@ def identifyHash(phash):
 		("^S:[a-f0-9]{60}$", ("Oracle 11g",)),
 		("^\$bcrypt-sha256\$.{5}\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$", ("BCrypt(SHA256)",)),
 		("^[a-f0-9]{32}:[a-z0-9]{30}$", ("vBulletin >v3.8.5",)),
-		("^[a-f0-9]{64}$", ("SHA-256","RIPEMD-256","Haval-256","Snefru-256","GOST R 34.11-94","Keccak-256","Skein-256","Skein-512(256)")),
+		("^[a-f0-9]{64}$", ("SHA-256","RIPEMD-256","Haval-256","Snefru-256","GOST R 34.11-94","Keccak-256","Skein-256","Skein-512(256)","Ventrilo")),
 		("^[a-f0-9]{32}:[a-z0-9]{32}$", ("Joomla",)),
 		("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)",)),
 		("^[a-f0-9]{32}:[0-9]{32}:[0-9]{2}$", ("MD5(Chap)","iSCSI CHAP Authentication")),
