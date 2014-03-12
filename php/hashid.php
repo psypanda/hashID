@@ -2,10 +2,10 @@
 /******************************************************************************
 * @name: hashID.php
 * @author: c0re <https://psypanda.org/>							
-* @date: 2013/03/08
+* @date: 2013/03/12
 * @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 ******************************************************************************/
-$version = "v2.3.8";
+$version = "v2.3.9";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -42,19 +42,20 @@ function IdentifyHash($str)
 		'/^_[a-z0-9\/\.]{19}$/i' => 'BSDi Crypt',
 		'/^[a-f0-9]{24}$/i' => 'CRC-96(ZIP)',
 		'/^[a-z0-9\/\.]{24}$/i' => 'Crypt16',
-		'/^[0-9a-f]{32}$/i' => 'MD5,MD4,MD2,NTLM,LM,RAdmin v2.x,RIPEMD-128,Haval-128,Tiger-128,Snefru-128,MD5(ZipMonster),DCC,DCC v2,Skein-256(128),Skein-512(128)',
+		'/^[0-9a-f]{32}$/i' => 'MD5,MD4,MD2,NTLM,LM,RAdmin v2.x,RIPEMD-128,Haval-128,Tiger-128,Snefru-128,ZipMonster,DCC,DCC v2,Skein-256(128),Skein-512(128)',
 		'/^{SHA}[a-z0-9\/\+]{27}=$/i' => 'SHA-1(Base64),Netscape LDAP SHA,nsldap',
 		'/^\$1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$/i' => 'MD5(Unix),Cisco-IOS(MD5),FreeBSD MD5,md5crypt',
 		'/^0x[a-f0-9]{32}$/i' => 'Lineage II C4',
-		'/^\$H\$[a-z0-9\/\.]{31}$/i' => 'MD5(phpBB3),PHPass\' Portable Hash',
-		'/^\$P\$[a-z0-9\/\.]{31}$/i' => 'MD5(Wordpress),PHPass\' Portable Hash',
+		'/^\$H\$[a-z0-9\/\.]{31}$/i' => 'phpBB v3.x,Wordpress v2.6.0/2.6.1,PHPass\' Portable Hash',
+		'/^\$P\$[a-z0-9\/\.]{31}$/i' => 'Wordpress ≥ 2.6.2,PHPass\' Portable Hash',
 		'/^[a-f0-9]{32}\:[a-z0-9]{2}$/i' => 'osCommerce,xt:Commerce',
 		'/^\$apr1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$/i' => 'MD5(APR),Apache MD5',
 		'/^{smd5}[a-z0-9\.\$]{31}$/i' => 'AIX(smd5)',
 		'/^[a-f0-9]{32}:[a-f0-9]{32}$/i' => 'WebEdition CMS',
-		'/^[a-f0-9]{32}\:.{5}$/i' => 'IP.Board v2+,MyBB v1.2+',
+		'/^[a-f0-9]{32}\:.{5}$/i' => 'IP.Board v2+',
+		'/^[a-f0-9]{32}\:.{8}$/i' => 'MyBB ≥ v1.2+',
 		'/^[a-z0-9]{34}$/i' => 'CryptoCurrency(Adress)',
-		'/^[a-f0-9]{40}$/i' => 'SHA-1,SHA-1(MaNGOS),SHA-1(MaNGOS2),SHA-1(LinkedIn),RIPEMD-160,Haval-160,Tiger-160,HAS-160,Skein-256(160),Skein-512(160)',
+		'/^[a-f0-9]{40}$/i' => 'SHA-1,MaNGOS CMS,MaNGOS CMS v2,LinkedIn,RIPEMD-160,Haval-160,Tiger-160,HAS-160,Skein-256(160),Skein-512(160)',
 		'/^\*[a-f0-9]{40}$/i' => 'MySQL5.x,MySQL4.1',
 		'/^[a-z0-9]{43}$/i' => 'Cisco-IOS(SHA256)',
 		'/^{SSHA}([a-z0-9\+\/]{40}|[a-z0-9\+\/]{38}==)$/i' => 'SSHA-1(Base64),Netscape LDAP SSHA,nsldaps',
@@ -71,37 +72,37 @@ function IdentifyHash($str)
 		'/^[a-f0-9]{32}\:[0-9]{32}\:[0-9]{2}$/i' => 'MD5(Chap),iSCSI CHAP Authentication',
 		'/^S\:[a-f0-9]{60}$/i' => 'Oracle 11g',
 		'/^\$bcrypt-sha256\$.{5}\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$/i' => 'BCrypt(SHA256)',
-		'/^[a-f0-9]{32}:[0-9]{3}$/i' => 'vBulletin <v3.8.5',
-		'/^[a-f0-9]{32}\:[a-z0-9]{30}$/i' => 'vBulletin >=v3.8.5',
+		'/^[a-f0-9]{32}:[0-9]{3}$/i' => 'vBulletin < v3.8.5',
+		'/^[a-f0-9]{32}\:[a-z0-9]{30}$/i' => 'vBulletin ≥ v3.8.5',
 		'/^[a-f0-9]{64}$/i' => 'SHA-256,RIPEMD-256,Haval-256,Snefru-256,GOST R 34.11-94,Keccak-256,Skein-256,Skein-512(256),Ventrilo',
 		'/^[a-f0-9]{32}\:[a-z0-9]{32}$/i' => 'Joomla',
 		'/^[a-f-0-9]{32}\:[a-f-0-9]{32}$/i' => 'SAM(LM_Hash:NT_Hash)',
-		'/^\$episerver\$\*0\*[a-z0-9=\*+]{52}$/i' => 'EPiServer 6.x <v4',
+		'/^\$episerver\$\*0\*[a-z0-9=\*+]{52}$/i' => 'EPiServer 6.x < v4',
 		'/^{ssha256}[a-z0-9\.\$]{63}$/i' => 'AIX(ssha256)',
 		'/^[a-f0-9]{80}$/i' => 'RIPEMD-320',
-		'/^\$episerver\$\*1\*[a-z0-9=\*+]{68}$/i' => 'EPiServer 6.x >v4',
+		'/^\$episerver\$\*1\*[a-z0-9=\*+]{68}$/i' => 'EPiServer 6.x ≥ v4',
 		'/^0x0100[a-f0-9]{88}$/i' => 'MSSQL(2000)',
 		'/^[a-f0-9]{96}$/i' => 'SHA-384,Keccak-384,Skein-512(384),Skein-1024(384)',
 		'/^{SSHA512}[a-z0-9\+\/]{96}={0,2}$/i' => 'SSHA-512(Base64),LDAP(SSHA512)',
-		'/^{ssha512}[a-z0-9\.\$]{107}$/i' => 'AIX(ssha512)',
+		'/^{ssha512}[0-9]{2}\$[a-z0-9\.\/]{16,48}\$[a-z0-9\.\/]{86}$/i' => 'AIX(ssha512)',
 		'/^[a-f0-9]{128}$/i' => 'SHA-512,Whirlpool,Salsa10,Salsa20,Keccak-512,Skein-512,Skein-1024(512)',
 		'/^[a-f0-9]{136}$/i' => 'OSX v10.7',
 		'/^0x0200[a-f0-9]{136}$/i' => 'MSSQL(2012)',
 		'/^\$ml\$.+$/i' => 'OSX v10.8,OSX v10.9',
 		'/^[a-f0-9]{256}$/i' => 'Skein-1024',
 		'/^grub\.pbkdf2\.sha512\..+$/i' => 'GRUB 2',
-		'/^sha1\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{40}$/i' => 'SHA-1(Django)',
+		'/^sha1\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{40}$/i' => 'Django CMS(SHA-1)',
 		'/^[a-f0-9]{49}$/i' => 'Citrix Netscaler',
 		'/^\$S\$[a-z0-9\/\.]{52}$/i' => 'Drupal7',
 		'/^\$5\$(rounds=[0-9]+\$)?[a-z0-9\/\.]{0,16}\$[a-z0-9\/\.]{43}$/i' => 'SHA-256(Unix),sha256crypt',
 		'/^0x[a-f0-9]{4}[a-f0-9]{16}[a-f0-9]{64}$/i' => 'Sybase ASE',
 		'/^\$6\$.{0,22}\$[a-z0-9\/\.]{86}$/i' => 'SHA-512(Unix)',
 		'/^\$sha\$[a-z0-9]{1,16}\$[a-f0-9]{64}$/i' => 'Minecraft(AuthMe Reloaded)',
-		'/^sha256\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{64}$/i' => 'SHA-256(Django)',
-		'/^sha384\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{96}$/i' => 'SHA-384(Django)',
+		'/^sha256\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{64}$/i' => 'Django CMS(SHA-256)',
+		'/^sha384\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{96}$/i' => 'Django CMS(SHA-384)',
 		'/^crypt1:[a-z0-9\+\=]{12}:[a-z0-9\+\=]{12}$/i' => 'Clavister Secure Gateway',
-		'/^[a-f0-9]{112}$/i' => 'Cisco VPN Client (PCF-File)',
-		'/^[a-f0-9]{1329}$/i' => 'Microsoft MSTSC (RDP-File)',
+		'/^[a-f0-9]{112}$/i' => 'Cisco VPN Client(PCF-File)',
+		'/^[a-f0-9]{1329}$/i' => 'Microsoft MSTSC(RDP-File)',
 		#'/^[^\\\/\:\*\?\"\<\>\|]{1,15}\:\:[^\\\/\:\*\?\"\<\>\|]{1,15}\:[a-f0-9]{48}\:[a-f0-9]{48}\:[a-f0-9]{16}$/i' => 'NetNTLMv1-VANILLA / NetNTLMv1+ESS',
 		#'/^[^\\\/\:\*\?\"\<\>\|]{1,15}\:\:[^\\\/\:\*\?\"\<\>\|]{1,15}\:[a-f0-9]{16}\:[a-f0-9]{32}\:[a-f0-9]+$/i' => 'NetNTLMv2',
 		'/^\$krb5pa\$.+$/i' => 'Kerberos 5 AS-REQ Pre-Auth',
@@ -109,9 +110,9 @@ function IdentifyHash($str)
 		'/^[a-f0-9]{40}:[a-f0-9]{0,32}$/i' => 'Redmine Project Management Web App',
 		'/^[0-9]{12}\$[a-f0-9]{40}$/i' => 'SAP CODVN F/G (PASSCODE)',
 		'/^[0-9]{12}\$[a-f0-9]{16}$/i' => 'SAP CODVN B (BCODE)',
-		'/^[a-z0-9\/\.]{30}(:.+)?$/i' => 'Juniper Netscreen/SSG (ScreenOS)',
+		'/^[a-z0-9\/\.]{30}(:.+)?$/i' => 'Juniper Netscreen/SSG(ScreenOS)',
 		'/^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$/i' => 'EPi',
-		'/^[a-f0-9]{40}:[^*]{1,25}$/i' => 'SMF >= v1.1'
+		'/^[a-f0-9]{40}:[^*]{1,25}$/i' => 'SMF ≥ v1.1'
 	);
 	
 	//initialize the array
