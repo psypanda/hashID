@@ -2,10 +2,10 @@
 /******************************************************************************
 * @name: hashID.php
 * @author: c0re <https://psypanda.org/>							
-* @date: 2013/03/12
+* @date: 2013/03/17
 * @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 ******************************************************************************/
-$version = "v2.3.9";
+$version = "v2.4.0";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -36,7 +36,7 @@ function IdentifyHash($str)
 		'/^[a-f0-9]{8}$/i' => 'Adler-32,CRC-32,CRC-32B,FCS-32,GHash-32-3,GHash-32-5,FNV-132,Fletcher-32,Joaat,ELF-32,XOR-32',
 		'/^\+[a-z0-9\/\.]{12}$/i' => 'Blowfish(Eggdrop)',
 		'/^[a-z0-9\/\.]{13}$/i' => 'DES(Unix),Traditional DES,DEScrypt',
-		'/^[a-f0-9]{16}$/i' => 'MySQL323,DES(Oracle),VNC,Half MD5,FNV-164,CRC-64',
+		'/^[a-f0-9]{16}$/i' => 'MySQL323,DES(Oracle),Half MD5,FNV-164,CRC-64',
 		'/^[a-z0-9\/\.]{16}$/i' => 'Cisco-PIX(MD5)',
 		'/^\\([a-z0-9\+\/]{20}\)$/i' => 'Lotus Domino',
 		'/^_[a-z0-9\/\.]{19}$/i' => 'BSDi Crypt',
@@ -66,7 +66,7 @@ function IdentifyHash($str)
 		'/^{ssha1}[a-z0-9\.\$]{47}$/i' => 'AIX(ssha1)',
 		'/^0x0100[a-f0-9]{48}$/i' => 'MSSQL(2005),MSSQL(2008)',
 		'/^(\$md5,rounds=[0-9]+\$|\$md5\$rounds=[0-9]+\$|\$md5\$)[a-z0-9\/\.]{0,16}(\$|\$\$)[a-z0-9\/\.]{22}$/i' => 'MD5(Sun)',
-		'/^[a-f0-9]{56}$/i' => 'SHA-224,Haval-224,Keccak-224,Skein-256(224),Skein-512(224)',
+		'/^[a-f0-9]{56}$/i' => 'SHA-224,Haval-224,SHA3-224,Skein-256(224),Skein-512(224)',
 		'/^(\$2a|\$2y|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$/i' => 'Blowfish(OpenBSD)',
 		'/^[a-f0-9]{40}\:[a-f0-9]{16}$/i' => 'Samsung Android Password/PIN',
 		'/^[a-f0-9]{32}\:[0-9]{32}\:[0-9]{2}$/i' => 'MD5(Chap),iSCSI CHAP Authentication',
@@ -74,7 +74,7 @@ function IdentifyHash($str)
 		'/^\$bcrypt-sha256\$.{5}\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$/i' => 'BCrypt(SHA256)',
 		'/^[a-f0-9]{32}:[0-9]{3}$/i' => 'vBulletin < v3.8.5',
 		'/^[a-f0-9]{32}\:[a-z0-9]{30}$/i' => 'vBulletin ≥ v3.8.5',
-		'/^[a-f0-9]{64}$/i' => 'SHA-256,RIPEMD-256,Haval-256,Snefru-256,GOST R 34.11-94,Keccak-256,Skein-256,Skein-512(256),Ventrilo',
+		'/^[a-f0-9]{64}$/i' => 'SHA-256,RIPEMD-256,Haval-256,Snefru-256,GOST R 34.11-94,SHA3-256,Skein-256,Skein-512(256),Ventrilo',
 		'/^[a-f0-9]{32}\:[a-z0-9]{32}$/i' => 'Joomla',
 		'/^[a-f-0-9]{32}\:[a-f-0-9]{32}$/i' => 'SAM(LM_Hash:NT_Hash)',
 		'/^\$episerver\$\*0\*[a-z0-9=\*+]{52}$/i' => 'EPiServer 6.x < v4',
@@ -82,10 +82,10 @@ function IdentifyHash($str)
 		'/^[a-f0-9]{80}$/i' => 'RIPEMD-320',
 		'/^\$episerver\$\*1\*[a-z0-9=\*+]{68}$/i' => 'EPiServer 6.x ≥ v4',
 		'/^0x0100[a-f0-9]{88}$/i' => 'MSSQL(2000)',
-		'/^[a-f0-9]{96}$/i' => 'SHA-384,Keccak-384,Skein-512(384),Skein-1024(384)',
+		'/^[a-f0-9]{96}$/i' => 'SHA-384,SHA3-384,Skein-512(384),Skein-1024(384)',
 		'/^{SSHA512}[a-z0-9\+\/]{96}={0,2}$/i' => 'SSHA-512(Base64),LDAP(SSHA512)',
 		'/^{ssha512}[0-9]{2}\$[a-z0-9\.\/]{16,48}\$[a-z0-9\.\/]{86}$/i' => 'AIX(ssha512)',
-		'/^[a-f0-9]{128}$/i' => 'SHA-512,Whirlpool,Salsa10,Salsa20,Keccak-512,Skein-512,Skein-1024(512)',
+		'/^[a-f0-9]{128}$/i' => 'SHA-512,Whirlpool,Salsa10,Salsa20,SHA3-512,Skein-512,Skein-1024(512)',
 		'/^[a-f0-9]{136}$/i' => 'OSX v10.7',
 		'/^0x0200[a-f0-9]{136}$/i' => 'MSSQL(2012)',
 		'/^\$ml\$.+$/i' => 'OSX v10.8,OSX v10.9',
@@ -112,7 +112,13 @@ function IdentifyHash($str)
 		'/^[0-9]{12}\$[a-f0-9]{16}$/i' => 'SAP CODVN B (BCODE)',
 		'/^[a-z0-9\/\.]{30}(:.+)?$/i' => 'Juniper Netscreen/SSG(ScreenOS)',
 		'/^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$/i' => 'EPi',
-		'/^[a-f0-9]{40}:[^*]{1,25}$/i' => 'SMF ≥ v1.1'
+		'/^[a-f0-9]{40}:[^*]{1,25}$/i' => 'SMF ≥ v1.1',
+		'/^[a-f0-9]{40}(:[a-f0-9]{40})?$/i' => 'Burning Board 3.x',
+		'/^[a-f0-9]{130}(:[a-f0-9]{40})?$/i' => 'IPMI2 RAKP HMAC-SHA1',
+		'/^[a-f0-9]{32}:[0-9]+:[a-z0-9_.+-]+@[a-z0-9-]+\.[a-z0-9-.]+$/i' => 'Lastpass',
+		'/^[a-z0-9\/\.]{16}(:[0-9]{2})?$/i' => 'Cisco-ASA(MD5)',
+		'/^\$vnc\$\*[a-f0-9]{32}\*[a-f0-9]{32}$/i' => 'VNC',
+		'/^[a-z0-9]{32}$/i' => 'DNSSEC(NSEC3)'
 	);
 	
 	//initialize the array

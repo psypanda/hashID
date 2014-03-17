@@ -8,7 +8,7 @@
 import re, os, sys, argparse
 
 #set essential variables
-version = "v2.3.5"
+version = "v2.3.6"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s (-i HASH | -f FILE) [-o OUTFILE] [-n] [--help] [--version]"
 description = "Identify the different types of hashes"
@@ -36,7 +36,7 @@ def identifyHash(phash):
 		("^[a-f0-9]{8}$", ("Adler-32","CRC-32","CRC-32B","FCS-32","GHash-32-3","GHash-32-5","FNV-132","Fletcher-32","Joaat","ELF-32","XOR-32")),
 		("^\+[a-z0-9\/\.]{12}$", ("Blowfish(Eggdrop)",)),
 		("^[a-z0-9\/\.]{13}$", ("DES(Unix)","Traditional DES","DEScrypt")),
-		("^[a-f0-9]{16}$", ("MySQL323","DES(Oracle)","VNC","Half MD5","Oracle 7-10g","FNV-164","CRC-64")),
+		("^[a-f0-9]{16}$", ("MySQL323","DES(Oracle)","Half MD5","Oracle 7-10g","FNV-164","CRC-64")),
 		("^[a-z0-9\/\.]{16}$", ("Cisco-PIX(MD5)",)),
 		("^\([a-z0-9\+\/]{20}\)$", ("Lotus Domino",)),
 		("^_[a-z0-9\/\.]{19}$", ("BSDi Crypt",)),
@@ -66,14 +66,14 @@ def identifyHash(phash):
 		("^{ssha1}[a-z0-9\.\$]{47}$", ("AIX(ssha1)",)),
 		("^0x0100[a-f0-9]{48}$", ("MSSQL(2005)","MSSQL(2008)")),
 		("^(\$md5,rounds=[0-9]+\$|\$md5\$rounds=[0-9]+\$|\$md5\$)[a-z0-9\/\.]{0,16}(\$|\$\$)[a-z0-9\/\.]{22}$", ("MD5(Sun)",)),
-		("^[a-f0-9]{56}$", ("SHA-224","Haval-224","Keccak-224","Skein-256(224)","Skein-512(224)")),
+		("^[a-f0-9]{56}$", ("SHA-224","Haval-224","SHA3-224","Skein-256(224)","Skein-512(224)")),
 		("^(\$2a|\$2y|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$", ("Blowfish(OpenBSD)",)),
 		("^[a-f0-9]{40}:[a-f0-9]{16}$", ("Samsung Android Password/PIN",)),
 		("^S:[a-f0-9]{60}$", ("Oracle 11g",)),
 		("^\$bcrypt-sha256\$.{5}\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$", ("BCrypt(SHA256)",)),
 		("^[a-f0-9]{32}:[0-9]{3}$", ("vBulletin < v3.8.5",)),
 		("^[a-f0-9]{32}:[a-z0-9]{30}$", ("vBulletin ≥ v3.8.5",)),
-		("^[a-f0-9]{64}$", ("SHA-256","RIPEMD-256","Haval-256","Snefru-256","GOST R 34.11-94","Keccak-256","Skein-256","Skein-512(256)","Ventrilo")),
+		("^[a-f0-9]{64}$", ("SHA-256","RIPEMD-256","Haval-256","Snefru-256","GOST R 34.11-94","SHA3-256","Skein-256","Skein-512(256)","Ventrilo")),
 		("^[a-f0-9]{32}:[a-z0-9]{32}$", ("Joomla",)),
 		("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)",)),
 		("^[a-f0-9]{32}:[0-9]{32}:[0-9]{2}$", ("MD5(Chap)","iSCSI CHAP Authentication")),
@@ -82,10 +82,10 @@ def identifyHash(phash):
 		("^[a-f0-9]{80}$", ("RIPEMD-320",)),
 		("^\$episerver\$\*1\*[a-z0-9=\*+]{68}$", ("EPiServer 6.x ≥ v4",)),
 		("^0x0100[a-f0-9]{88}$", ("MSSQL(2000)",)),
-		("^[a-f0-9]{96}$", ("SHA-384","Keccak-384","Skein-512(384)","Skein-1024(384)")),
+		("^[a-f0-9]{96}$", ("SHA-384","SHA3-384","Skein-512(384)","Skein-1024(384)")),
 		("^{SSHA512}[a-z0-9\+\/]{96}={0,2}$", ("SSHA-512(Base64)","LDAP(SSHA512)")),
 		("^{ssha512}[0-9]{2}\$[a-z0-9\.\/]{16,48}\$[a-z0-9\.\/]{86}$", ("AIX(ssha512)",)),
-		("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Salsa10","Salsa20","Keccak-512","Skein-512","Skein-1024(512)")),
+		("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Salsa10","Salsa20","SHA3-512","Skein-512","Skein-1024(512)")),
 		("^[a-f0-9]{136}$", ("OSX v10.7",)),
 		("^0x0200[a-f0-9]{136}$", ("MSSQL(2012)",)),
 		("^\$ml\$.+$", ("OSX v10.8","OSX v10.9")),
@@ -112,7 +112,13 @@ def identifyHash(phash):
 		("^[0-9]{12}\$[a-f0-9]{16}$", ("SAP CODVN B (BCODE)",)),
 		("^[a-z0-9\/\.]{30}(:.+)?$", ("Juniper Netscreen/SSG(ScreenOS)",)),
 		("^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$", ("EPi",)),
-		("^[a-f0-9]{40}:[^*]{1,25}$", ("SMF ≥ v1.1",))
+		("^[a-f0-9]{40}:[^*]{1,25}$", ("SMF ≥ v1.1",)),
+		("^[a-f0-9]{40}(:[a-f0-9]{40})?$", ("Burning Board 3.x",)),
+		("^[a-f0-9]{130}(:[a-f0-9]{40})?$", ("IPMI2 RAKP HMAC-SHA1",)),
+		("^[a-f0-9]{32}:[0-9]+:[a-z0-9_.+-]+@[a-z0-9-]+\.[a-z0-9-.]+$", ("Lastpass",)),
+		("^[a-z0-9\/\.]{16}(:[0-9]{2})?$", ("Cisco-ASA(MD5)",)),
+		("^\$vnc\$\*[a-f0-9]{32}\*[a-f0-9]{32}$", ("VNC",)),
+		("^[a-z0-9]{32}$", ("DNSSEC(NSEC3)",))
 	)
 	for hashtype in prototypes:
 		#try to find matches
@@ -129,16 +135,18 @@ def analyzeFile(infile, outfile):
 	#show input file path
 	print ("Analyzing '" + os.path.abspath(infile.name) + "'")
 	for line in infile:
-		#increment hash count
-		hashesAnalyzed += 1
-		#trim possible whitespace
-		line = line.strip()
-		#try to identify the hash
-		identify = identifyHash(line)
-		outfile.write("Analyzing '" + line + "'\n")
-		hashesFound += writeResult(identify, outfile)
-		#add a newline
-		outfile.write("\n")
+		#skip empty lines
+		if line.strip():
+			#increment hash count
+			hashesAnalyzed += 1
+			#trim possible whitespace
+			line = line.strip()
+			#try to identify the hash
+			identify = identifyHash(line)
+			outfile.write("Analyzing '" + line + "'\n")
+			hashesFound += writeResult(identify, outfile)
+			#add a newline
+			outfile.write("\n")
 	#show number of hashes analyzed
 	print ("Hashes analyzed: " + str(hashesAnalyzed))
 	#show number of hashes found
