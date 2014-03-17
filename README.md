@@ -7,7 +7,7 @@ This tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 
 hashID supports the identification of over 155 unique hash types using regular expressions.           
 It is able to identify a single hash or parse a file and identify the hashes within it.    
-There is also a php version of hashID available which is easily set up to provide online hash identification.    
+There is also a php and javascript version of hashID available which is easily set up to provide online hash identification.    
 
 
 Usage
@@ -32,9 +32,13 @@ Analysing '827ccb0eea8a706c4c34a16891f84e7b'
 [+] Haval-128
 [+] Tiger-128
 [+] Snefru-128
-[+] MD5(ZipMonster)
+[+] ZipMonster
+[+] DCC
+[+] DCC v2
 [+] Skein-256(128)
 [+] Skein-512(128)
+[+] DNSSEC(NSEC3)
+
 
 $ python hashid.py -f hashes.txt
 Analysing 'home/psypanda/hashes.txt'
