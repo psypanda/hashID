@@ -7,7 +7,7 @@ This tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 
 hashID supports the identification of over 170 unique hash types using regular expressions.           
 It is able to identify a single hash or parse a file and identify the hashes within it.    
-There is also a php and javascript version of hashID available which is easily set up to provide online hash identification.    
+There is also a javascript version of hashID available which is easily set up to provide online hash identification.    
 
 
 Usage
@@ -73,6 +73,8 @@ Contributing to this project can be done in various ways:
 Known issues
 ------
 * The alignment of the help menu is messed up (--help)
+* hashID isn't capable of handling piped input at the moment
+* The [javascript version](js) is untested and missing latest regex updates
 
 Credits
 ------
