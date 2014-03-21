@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/03/20
+# @date: 2014/03/21
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
 import re, os, sys, argparse
 
 #set essential variables
-version = "v2.4.2"
+version = "v2.4.3"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s (-i HASH | -f FILE) [-o OUTFILE] [-hc] [--help] [--version]"
 description = "Identify the different types of hashes"
@@ -20,7 +20,6 @@ group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument("-i", "--hash", type=str, help="identify a single hash")
 group.add_argument("-f", "--file", type=argparse.FileType("r"), help="analyze a given file")
 parser.add_argument("-o", "--output", type=str, default="hashid_output.txt", help="set output filename (default: %(default)s)")
-#parser.add_argument("-n", "--notfound", action="store_true", help="include unknown hashes in separate file")
 parser.add_argument("-hc", "--hashcat", action="store_true", help="include hashcat mode in output")
 parser.add_argument("--version", action="version", version=banner)
 args = parser.parse_args()
@@ -73,9 +72,9 @@ def identifyHash(phash):
 		("^(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$", ("Blowfish(OpenBSD)","bcrypt")),
 		("^[a-f0-9]{40}:[a-f0-9]{16}$", ("Samsung Android Password/PIN",)),
 		("^S:[a-f0-9]{60}$", ("Oracle 11g",)),
-		("^\$bcrypt-sha256\$.{5}\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$", ("BCrypt(SHA256)",)),
+		("^\$bcrypt-sha256\$.{5}\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$", ("BCrypt(SHA-256)",)),
 		("^[a-f0-9]{32}:[0-9]{3}$", ("vBulletin < v3.8.5",)),
-		("^[a-f0-9]{32}:[a-z0-9]{30}$", ("vBulletin ≥ v3.8.5",)),
+		("^[a-f0-9]{32}:.{30}$", ("vBulletin ≥ v3.8.5",)),
 		("^[a-f0-9]{64}$", ("SHA-256","RIPEMD-256","Haval-256","Snefru-256","GOST R 34.11-94","SHA3-256","Skein-256","Skein-512(256)","Ventrilo")),
 		("^[a-f0-9]{32}:[a-z0-9]{32}$", ("Joomla",)),
 		("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)",)),
@@ -119,12 +118,14 @@ def identifyHash(phash):
 		("^[a-f0-9]{40}(:[a-f0-9]{40})?$", ("Burning Board 3.x",)),
 		("^[a-f0-9]{130}(:[a-f0-9]{40})?$", ("IPMI2 RAKP HMAC-SHA1",)),
 		("^[a-f0-9]{32}:[0-9]+:[a-z0-9_.+-]+@[a-z0-9-]+\.[a-z0-9-.]+$", ("Lastpass",)),
-		("^[a-z0-9\/\.]{16}(:[0-9]{2})?$", ("Cisco-ASA(MD5)",)),
+		("^[a-z0-9\/\.]{16}(:.{1,})?$", ("Cisco-ASA(MD5)",)),
 		("^\$vnc\$\*[a-f0-9]{32}\*[a-f0-9]{32}$", ("VNC",)),
 		("^[a-z0-9]{32}$", ("DNSSEC(NSEC3)",)),
 		("^(user-.+:)?\$racf\$\*.+\*[a-f0-9]{16}$", ("RACF",)),
 		("^\$3\$\$[a-f0-9]{32}$", ("NTHash(FreeBSD Variant)",)),
-		("^\$sha1\$[0-9]+\$[a-z0-9\/\.]{0,64}\$[a-z0-9\/\.]{28}$", ("SHA-1 Crypt",))
+		("^\$sha1\$[0-9]+\$[a-z0-9\/\.]{0,64}\$[a-z0-9\/\.]{28}$", ("SHA-1 Crypt",)),
+		("^[a-f0-9]{70}$", ("hMailServer",)),
+		("^[:\$][AB][:\$]([a-f0-9]{1,8}[:\$])?[a-f0-9]{32}$", ("MediaWiki",))
 	)
 	#set hashcat dictionary
 	hashcatModes = \
@@ -164,7 +165,7 @@ def identifyHash(phash):
 
 
 #analyze a given file
-def analyzeFile(infile, outfile, hashcatMode=False, notfoundfile=None):
+def analyzeFile(infile, outfile, hashcatMode=False):
 	#define the counters
 	hashesAnalyzed = 0
 	hashesFound = 0
