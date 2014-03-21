@@ -1,5 +1,15 @@
 ### hashID Changelog
 
+**Version 2.4.3**
+* added hashes:
+	* hMailServer
+	* MediaWiki
+* changed regex for:
+	* vBulletin ≥ v3.8.5
+	* Cisco-ASA(MD5)
+* renamed:
+	* BCrypt(SHA256) to BCrypt(SHA-256)
+	
 **Version 2.4.2**
 * added hashes:
 	* SHA-1 Crypt
