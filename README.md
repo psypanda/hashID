@@ -4,16 +4,16 @@ hashID
 Identify the different types of hashes used to encrypt data and especially passwords.
 
 This tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/), which is outdated!
-
-hashID supports the identification of over 170 unique hash types using regular expressions.           
+ 
+hashID is a tool written in Python 3.x which supports the identification of over 170 unique hash types using regular expressions.           
 It is able to identify a single hash or parse a file and identify the hashes within it.    
-There is also a javascript version of hashID available which is easily set up to provide online hash identification.    
+There is also a javascript version of hashID available which is easily set up to provide online hash identification.  
 
 
 Usage
 ------
 ```
-$ python hashid.py (-i HASH | -f FILE) [-o OUTFILE] [--help] [--version]
+$ python3 hashid.py (-i HASH | -f FILE) [-o OUTFILE] [--help] [--version]
 ```
 
 | Parameter        				| Description      				  					|
@@ -29,8 +29,8 @@ $ python hashid.py (-i HASH | -f FILE) [-o OUTFILE] [--help] [--version]
 Screenshot
 ------
 ```
-$ python hashid.py -i 827ccb0eea8a706c4c34a16891f84e7b
-Analyzing '827ccb0eea8a706c4c34a16891f84e7b'
+$ python3 hashid.py -i d41d8cd98f00b204e9800998ecf8427e
+Analyzing 'd41d8cd98f00b204e9800998ecf8427e'
 [+] MD5
 [+] MD4
 [+] MD2
@@ -43,20 +43,22 @@ Analyzing '827ccb0eea8a706c4c34a16891f84e7b'
 [+] Tiger-128
 [+] Snefru-128
 [+] ZipMonster
-[+] DCC
-[+] DCC v2
 [+] Skein-256(128)
 [+] Skein-512(128)
+[+] Domain Cached Credentials
+[+] mscash
+[+] Domain Cached Credentials 2
+[+] mscash2
 [+] DNSSEC(NSEC3)
 
 
-$ python hashid.py -i ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686 -hc
+$ python3 hashid.py -i ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686 -hc
 Analyzing 'ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686'
 [+] Redmine Project Management Web App [Hashcat Mode: 7600]
 [+] SMF ≥ v1.1 [Hashcat Mode: 121]
 
 
-$ python hashid.py -f hashes.txt
+$ python3 hashid.py -f hashes.txt
 Analysing 'home/psypanda/hashes.txt'
 Hashes analysed: 259
 Hashes found: 231
