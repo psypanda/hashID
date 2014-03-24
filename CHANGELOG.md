@@ -1,5 +1,12 @@
 ### hashID Changelog
 
+**Version 2.4.4**
+* added hashes:
+	* xAuth
+	* PBKDF2(Generic)
+	* PBKDF2(Cryptacular)
+	* PBKDF2(Dwayne Litzenberger)
+
 **Version 2.4.3**
 * added hashes:
 	* hMailServer
