@@ -2,16 +2,16 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/03/21
+# @date: 2014/03/24
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
 import re, os, sys, argparse
 
 #set essential variables
-version = "v2.4.3"
+version = "v2.4.4"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s (-i HASH | -f FILE) [-o OUTFILE] [-hc] [--help] [--version]"
-description = "Identify the different types of hashes"
+description = "Identify the different types of hashes used to encrypt data"
 epilog = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
 #configure argparse
@@ -85,7 +85,7 @@ def identifyHash(phash):
 		("^\$episerver\$\*1\*[a-z0-9=\*+]{68}$", ("EPiServer 6.x ≥ v4",)),
 		("^0x0100[a-f0-9]{88}$", ("MSSQL(2000)",)),
 		("^[a-f0-9]{96}$", ("SHA-384","SHA3-384","Skein-512(384)","Skein-1024(384)")),
-		("^{SSHA512}[a-z0-9\+\/]{96}={0,2}$", ("SSHA-512(Base64)","LDAP(SSHA512)")),
+		("^{SSHA512}[a-z0-9\+\/]{96}={0,2}$", ("SSHA-512(Base64)","LDAP(SSHA-512)")),
 		("^{ssha512}[0-9]{2}\$[a-z0-9\.\/]{16,48}\$[a-z0-9\.\/]{86}$", ("AIX(ssha512)",)),
 		("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Salsa10","Salsa20","SHA3-512","Skein-512","Skein-1024(512)")),
 		("^[a-f0-9]{136}$", ("OSX v10.7",)),
@@ -125,7 +125,11 @@ def identifyHash(phash):
 		("^\$3\$\$[a-f0-9]{32}$", ("NTHash(FreeBSD Variant)",)),
 		("^\$sha1\$[0-9]+\$[a-z0-9\/\.]{0,64}\$[a-z0-9\/\.]{28}$", ("SHA-1 Crypt",)),
 		("^[a-f0-9]{70}$", ("hMailServer",)),
-		("^[:\$][AB][:\$]([a-f0-9]{1,8}[:\$])?[a-f0-9]{32}$", ("MediaWiki",))
+		("^[:\$][AB][:\$]([a-f0-9]{1,8}[:\$])?[a-f0-9]{32}$", ("MediaWiki",)),
+		("^[a-f0-9]{140}$", ("xAuth",)),
+		("^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/\.]{22}\$([a-z0-9\/\.]{27}|[a-z0-9\/\.]{43}|[a-z0-9\/\.]{86})$", ("PBKDF2(Generic)",)),
+		("^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/+=-]{28}$", ("PBKDF2(Cryptacular)",)),
+		("^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$", ("PBKDF2(Dwayne Litzenberger)",))
 	)
 	#set hashcat dictionary
 	hashcatModes = \
@@ -139,7 +143,7 @@ def identifyHash(phash):
 		"MD5 Crypt":"500", "Cisco-IOS(MD5)":"500", "FreeBSD MD5":"500", "Django CMS(SHA-1)":"800",
 		"MD4":"900", "NTLM":"1000", "Domain Cached Credentials":"1100", "mscash":"1100", "SHA-256":"1400", "EPiServer 6.x ≥ v4":"1441",
 		"DES(Unix)":"1500", "Traditional DES":"1500", "DEScrypt":"1500", "MD5(APR)":"1600", "Apache MD5":"1600", "md5apr1":"1600",
-		"SHA-512":"1700", "SSHA-512(Base64)":"1711", "LDAP(SSHA512)":"1711", "OSX v10.7":"1722", "MSSQL(2012)":"1731",
+		"SHA-512":"1700", "SSHA-512(Base64)":"1711", "LDAP(SSHA-512)":"1711", "OSX v10.7":"1722", "MSSQL(2012)":"1731",
 		"SHA-512 Crypt":"1800", "Domain Cached Credentials 2":"2100", "mscash2":"2100", "Cisco-PIX(MD5)":"2400",
 		"Cisco-ASA(MD5)":"2410", "Double MD5":"2600", "vBulletin < v3.8.5":"2611", "vBulletin ≥ v3.8.5":"2711", "IP.Board v2+":"2811",
 		"MyBB ≥ v1.2+":"2811", "LM":"3000", "DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200",
@@ -211,8 +215,8 @@ def writeResult(identify, outfile, hashcatMode=False):
 	if count == 0:
 		outfile.write("[+] Unknown hash\n")
 	return (count > 0)
-
-
+	
+	
 #analyze a single hash
 if args.hash:
 	#check for hashcat flag
