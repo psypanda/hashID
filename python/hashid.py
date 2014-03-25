@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/03/24
+# @date: 2014/03/25
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
 import re, os, sys, argparse
 
 #set essential variables
-version = "v2.4.4"
+version = "v2.4.5"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s (-i HASH | -f FILE) [-o OUTFILE] [-hc] [--help] [--version]"
 description = "Identify the different types of hashes used to encrypt data"
@@ -59,7 +59,7 @@ def identifyHash(phash):
 		("^[a-z0-9]{34}$", ("CryptoCurrency(Adress)",)),
 		("^[a-f0-9]{40}$", ("SHA-1","Double SHA-1","MaNGOS CMS","MaNGOS CMS v2","LinkedIn","RIPEMD-160","Haval-160","Tiger-160","HAS-160","Skein-256(160)","Skein-512(160)")),
 		("^\*[a-f0-9]{40}$", ("MySQL5.x","MySQL4.1")),
-		("^[a-z0-9]{43}$", ("Cisco-IOS(SHA256)",)),
+		("^[a-z0-9]{43}$", ("Cisco-IOS(SHA-256)",)),
 		("^{SSHA}([a-z0-9\+\/]{40}|[a-z0-9\+\/]{38}==)$", ("SSHA-1(Base64)","Netscape LDAP SSHA","nsldaps")),
 		("^[a-z0-9]{47}$", ("Fortigate(FortiOS)",)),
 		("^[a-f0-9]{48}$", ("Haval-192","Tiger-192","SHA-1(Oracle)","OSX v10.4","OSX v10.5","OSX v10.6")),
@@ -110,8 +110,8 @@ def identifyHash(phash):
 		("^\$krb5pa\$.+$", ("Kerberos 5 AS-REQ Pre-Auth",)),
 		("^\$scram\$[0-9]+\$[a-z0-9\/\.]{16}\$sha-1=[a-z0-9\/\.]{27},sha-256=[a-z0-9\/\.]{43},sha-512=[a-z0-9\/\.]{86}$", ("SCRAM Hash",)),
 		("^[a-f0-9]{40}:[a-f0-9]{0,32}$", ("Redmine Project Management Web App",)),
-		("^[0-9]{12}\$[a-f0-9]{40}$", ("SAP CODVN F/G (PASSCODE)",)),
-		("^[0-9]{12}\$[a-f0-9]{16}$", ("SAP CODVN B (BCODE)",)),
+		("^([0-9]{12})?\$[a-f0-9]{16}$", ("SAP CODVN B (BCODE)",)),
+		("^([0-9]{12})?\$[a-f0-9]{40}$", ("SAP CODVN F/G (PASSCODE)",)),
 		("^[a-z0-9\/\.]{30}(:.+)?$", ("Juniper Netscreen/SSG(ScreenOS)",)),
 		("^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$", ("EPi",)),
 		("^[a-f0-9]{40}:[^*]{1,25}$", ("SMF ≥ v1.1",)),
@@ -129,7 +129,8 @@ def identifyHash(phash):
 		("^[a-f0-9]{140}$", ("xAuth",)),
 		("^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/\.]{22}\$([a-z0-9\/\.]{27}|[a-z0-9\/\.]{43}|[a-z0-9\/\.]{86})$", ("PBKDF2(Generic)",)),
 		("^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/+=-]{28}$", ("PBKDF2(Cryptacular)",)),
-		("^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$", ("PBKDF2(Dwayne Litzenberger)",))
+		("^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$", ("PBKDF2(Dwayne Litzenberger)",)),
+		("^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/+=]+$", ("Fairly Secure Hashed Password",))
 	)
 	#set hashcat dictionary
 	hashcatModes = \
@@ -149,7 +150,7 @@ def identifyHash(phash):
 		"MyBB ≥ v1.2+":"2811", "LM":"3000", "DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200",
 		"bcrypt":"3200", "Sun MD5 Crypt":"3300", "WebEdition CMS":"3721", "Double SHA-1":"4500", "MD5(Chap)":"4800",
 		"iSCSI CHAP Authentication":"4800", "SHA3-256":"5000", "Half MD5":"5100", "NetNTLMv1-VANILLA / NetNTLMv1+ESS":"5500",
-		"NetNTLMv2":"5600", "Cisco-IOS(SHA256)":"5700", "Samsung Android Password/PIN":"5800", "RIPEMD-160":"6000",
+		"NetNTLMv2":"5600", "Cisco-IOS(SHA-256)":"5700", "Samsung Android Password/PIN":"5800", "RIPEMD-160":"6000",
 		"Whirlpool":"6100", "AIX(smd5)":"6300", "AIX(ssha256)":"6400", "AIX(ssha512)":"6500", "AIX(ssha1)":"6700",
 		"Lastpass":"6800", "GOST R 34.11-94":"6900", "Fortigate(FortiOS)":"7000", "OSX v10.8":"7100", "OSX v10.9":"7100",
 		"GRUB 2":"7200", "IPMI2 RAKP HMAC-SHA1":"7300", "SHA-256 Crypt":"7400", "Kerberos 5 AS-REQ Pre-Auth":"7500",
