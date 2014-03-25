@@ -1,5 +1,14 @@
 ### hashID Changelog
 
+**Version 2.4.5**
+* added hashes:
+	* Fairly Secure Hashed Password
+* changed regex for:
+	* SAP CODVN B (BCODE)
+	* SAP CODVN F/G (PASSCODE)
+* renamed:
+	* Cisco-IOS(SHA256) to Cisco-IOS(SHA-256)
+	
 **Version 2.4.4**
 * added hashes:
 	* xAuth
