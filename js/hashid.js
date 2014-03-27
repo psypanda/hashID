@@ -1,4 +1,6 @@
 (function(exports){
+	'use strict';
+	
 	// INPUT: a single line hash
 	// OUTPUT: an array of matches
 	// ERROR: an error is thrown if there are no matches
@@ -18,11 +20,11 @@
 			{regex: /^[a-f0-9]{24}$/i, hashes: ["CRC-96(ZIP)"]},
 			{regex: /^[a-z0-9\/\.]{24}$/i, hashes: ["Crypt16"]},
 			{regex: /^[a-f0-9]{32}$/i, hashes: ["MD5","MD4","MD2","Double MD5","NTLM","LM","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","ZipMonster","Skein-256(128)","Skein-512(128)"]},
-			{regex: /^[a-f0-9]{32}(:[^\\\/\:\*\?\"\<\>\|]{1,20})?$/i, hashes: ["Domain Cached Credentials", "mscash"]},
-			{regex: /^(\$DCC2\$10240#[^\\\/\:\*\?\"\<\>\|]{1,20}#)?[a-f0-9]{32}$/i, hashes: ["Domain Cached Credentials 2","mscash2"]},
+			{regex: /^[a-f0-9]{32}(:[^\\\/\:\*\?\"<\>\|]{1,20})?$/i, hashes: ["Domain Cached Credentials", "mscash"]},
+			{regex: /^(\$DCC2\$10240#[^\\\/\:\*\?\"<\>\|]{1,20}#)?[a-f0-9]{32}$/i, hashes: ["Domain Cached Credentials 2","mscash2"]},
 			{regex: /^{SHA}[a-z0-9\/\+]{27}=$/i, hashes: ["SHA-1(Base64)","Netscape LDAP SHA","nsldap"]},
 			{regex: /^\$1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$/i, hashes: ["MD5 Crypt","Cisco-IOS(MD5)","FreeBSD MD5"]},
-			{regex: /^0x[a-f0-9]{32}$/i, hashes: ["Lineage II C4"]}, 
+			{regex: /^0x[a-f0-9]{32}$/i, hashes: ["Lineage II C4"]},
 			{regex: /^\$H\$[a-z0-9\/\.]{31}$/i, hashes: ["phpBB v3.x","Wordpress v2.6.0/2.6.1","PHPass' Portable Hash"]},
 			{regex: /^\$P\$[a-z0-9\/\.]{31}$/i, hashes: ["Wordpress ≥ 2.6.2","PHPass' Portable Hash"]},
 			{regex: /^[a-f0-9]{32}:[a-z0-9]{2}$/i, hashes: ["osCommerce","xt:Commerce"]},
@@ -80,8 +82,8 @@
 			{regex: /^crypt1:[a-z0-9\+\=]{12}:[a-z0-9\+\=]{12}$/i, hashes: ["Clavister Secure Gateway"]},
 			{regex: /^[a-f0-9]{112}$/i, hashes: ["Cisco VPN Client(PCF-File)"]},
 			{regex: /^[a-f0-9]{1329}$/i, hashes: ["Microsoft MSTSC(RDP-File)"]},
-			{regex: /^[^\\\/\:\*\?\"\<\>\|]{1,20}::[^\\\/\:\*\?\"\<\>\|]{1,20}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$/i, hashes: ["NetNTLMv1-VANILLA / NetNTLMv1+ESS"]},
-			{regex: /^[^\\\/\:\*\?\"\<\>\|]{1,20}::[^\\\/\:\*\?\"\<\>\|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$/i, hashes: ["NetNTLMv2"]},
+			{regex: /^[^\\\/\:\*\?\"<\>\|]{1,20}::[^\\\/\:\*\?\"<\>\|]{1,20}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$/i, hashes: ["NetNTLMv1-VANILLA / NetNTLMv1+ESS"]},
+			{regex: /^[^\\\/\:\*\?\"<\>\|]{1,20}::[^\\\/\:\*\?\"<\>\|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$/i, hashes: ["NetNTLMv2"]},
 			{regex: /^\$krb5pa\$.+$/i, hashes: ["Kerberos 5 AS-REQ Pre-Auth"]},
 			{regex: /^\$scram\$[0-9]+\$[a-z0-9\/\.]{16}\$sha-1=[a-z0-9\/\.]{27},sha-256=[a-z0-9\/\.]{43},sha-512=[a-z0-9\/\.]{86}$/i, hashes: ["SCRAM Hash"]},
 			{regex: /^[a-f0-9]{40}:[a-f0-9]{0,32}$/i, hashes: ["Redmine Project Management Web App"]},
@@ -107,14 +109,19 @@
 			{regex: /^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$/i, hashes: ["PBKDF2(Dwayne Litzenberger)"]},
 			{regex: /^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/+=]+$/i, hashes: ["Fairly Secure Hashed Password"]}
 		];
+		var result = [];
 		for(var hash_id=0; hash_id < hash_arr.length; hash_id++){
 			var curr_hash = hash_arr[hash_id];
 			
 			//try to find matches
 			if (phash.match(curr_hash.regex)){
-				return curr_hash.hashes;
+				result = result.concat(curr_hash.hashes);
 			}
 		}
+		if(result.length > 0){
+			return result;
+		}
+		// else
 		return new Error("Did not find any matches.");
 	};
 })(typeof exports === 'undefined'? this['hashID']={}: exports);
