@@ -2,25 +2,24 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/03/25
+# @date: 2014/03/28
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
 import re, os, sys, argparse
 
 #set essential variables
-version = "v2.4.5"
+version = "v2.5.0"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
-usage = "%(prog)s (-i HASH | -f FILE) [-o OUTFILE] [-hc] [--help] [--version]"
+usage = "%(prog)s INPUT [-f] [-m] [-o OUTFILE] [--help] [--version]"
 description = "Identify the different types of hashes used to encrypt data"
 epilog = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
 #configure argparse
 parser = argparse.ArgumentParser(formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=36), usage=usage, description=description, epilog=epilog)
-group = parser.add_mutually_exclusive_group(required=True)
-group.add_argument("-i", "--hash", type=str, help="identify a single hash")
-group.add_argument("-f", "--file", type=argparse.FileType("r"), help="analyze a given file")
+parser.add_argument("input", type=str, help="identify given input")
+parser.add_argument("-f", "--file", action="store_true", help="enable file analyze")
+parser.add_argument("-m", "--mode", action="store_true", help="include hashcat mode in output")
 parser.add_argument("-o", "--output", type=str, default="hashid_output.txt", help="set output filename (default: %(default)s)")
-parser.add_argument("-hc", "--hashcat", action="store_true", help="include hashcat mode in output")
 parser.add_argument("--version", action="version", version=banner)
 args = parser.parse_args()
 
@@ -34,6 +33,7 @@ def identifyHash(phash):
 	(
 		("^[a-f0-9]{4}$", ("CRC-16","CRC-16-CCITT","FCS-16")),
 		("^[a-f0-9]{8}$", ("Adler-32","CRC-32","CRC-32B","FCS-32","GHash-32-3","GHash-32-5","FNV-132","Fletcher-32","Joaat","ELF-32","XOR-32")),
+		("^[a-f0-9]{6}$", ("CRC-24",)),
 		("^\+[a-z0-9\/\.]{12}$", ("Blowfish(Eggdrop)",)),
 		("^[a-z0-9\/\.]{13}$", ("DES(Unix)","Traditional DES","DEScrypt")),
 		("^[a-f0-9]{16}$", ("MySQL323","DES(Oracle)","Half MD5","Oracle 7-10g","FNV-164","CRC-64")),
@@ -49,7 +49,7 @@ def identifyHash(phash):
 		("^\$1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$", ("MD5 Crypt","Cisco-IOS(MD5)","FreeBSD MD5")),
 		("^0x[a-f0-9]{32}$", ("Lineage II C4",)), 
 		("^\$H\$[a-z0-9\/\.]{31}$", ("phpBB v3.x","Wordpress v2.6.0/2.6.1","PHPass' Portable Hash")),
-		("^\$P\$[a-z0-9\/\.]{31}$", ("Wordpress ≥ 2.6.2","PHPass' Portable Hash")),
+		("^\$P\$[a-z0-9\/\.]{31}$", ("Wordpress ≥ v2.6.2","Joomla ≥ v2.5.18","PHPass' Portable Hash")),
 		("^[a-f0-9]{32}:[a-z0-9]{2}$", ("osCommerce","xt:Commerce")),
 		("^\$apr1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$", ("MD5(APR)","Apache MD5","md5apr1")),
 		("^{smd5}[a-z0-9\.\$]{31}$", ("AIX(smd5)",)),
@@ -69,20 +69,20 @@ def identifyHash(phash):
 		("^0x0100[a-f0-9]{48}$", ("MSSQL(2005)","MSSQL(2008)")),
 		("^(\$md5,rounds=[0-9]+\$|\$md5\$rounds=[0-9]+\$|\$md5\$)[a-z0-9\/\.]{0,16}(\$|\$\$)[a-z0-9\/\.]{22}$", ("Sun MD5 Crypt",)),
 		("^[a-f0-9]{56}$", ("SHA-224","Haval-224","SHA3-224","Skein-256(224)","Skein-512(224)")),
-		("^(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$", ("Blowfish(OpenBSD)","bcrypt")),
+		("^(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$", ("Blowfish(OpenBSD)","Woltlab Burning Board 4.x","bcrypt")),
 		("^[a-f0-9]{40}:[a-f0-9]{16}$", ("Samsung Android Password/PIN",)),
 		("^S:[a-f0-9]{60}$", ("Oracle 11g",)),
-		("^\$bcrypt-sha256\$.{5}\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$", ("BCrypt(SHA-256)",)),
+		("^\$bcrypt-sha256\$(2[axy]|2)\,[0-9]+\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$", ("BCrypt(SHA-256)",)),
 		("^[a-f0-9]{32}:[0-9]{3}$", ("vBulletin < v3.8.5",)),
 		("^[a-f0-9]{32}:.{30}$", ("vBulletin ≥ v3.8.5",)),
 		("^[a-f0-9]{64}$", ("SHA-256","RIPEMD-256","Haval-256","Snefru-256","GOST R 34.11-94","SHA3-256","Skein-256","Skein-512(256)","Ventrilo")),
-		("^[a-f0-9]{32}:[a-z0-9]{32}$", ("Joomla",)),
+		("^[a-f0-9]{32}:[a-z0-9]{32}$", ("Joomla < v2.5.18",)),
 		("^[a-f-0-9]{32}:[a-f-0-9]{32}$", ("SAM(LM_Hash:NT_Hash)",)),
 		("^[a-f0-9]{32}:[0-9]{32}:[0-9]{2}$", ("MD5(Chap)","iSCSI CHAP Authentication")),
-		("^\$episerver\$\*0\*[a-z0-9=\*+]{52}$", ("EPiServer 6.x < v4",)),
+		("^\$episerver\$\*0\*[a-z0-9=\*\+]{52}$", ("EPiServer 6.x < v4",)),
 		("^{ssha256}[a-z0-9\.\$]{63}$", ("AIX(ssha256)",)),
 		("^[a-f0-9]{80}$", ("RIPEMD-320",)),
-		("^\$episerver\$\*1\*[a-z0-9=\*+]{68}$", ("EPiServer 6.x ≥ v4",)),
+		("^\$episerver\$\*1\*[a-z0-9=\*\+]{68}$", ("EPiServer 6.x ≥ v4",)),
 		("^0x0100[a-f0-9]{88}$", ("MSSQL(2000)",)),
 		("^[a-f0-9]{96}$", ("SHA-384","SHA3-384","Skein-512(384)","Skein-1024(384)")),
 		("^{SSHA512}[a-z0-9\+\/]{96}={0,2}$", ("SSHA-512(Base64)","LDAP(SSHA-512)")),
@@ -90,16 +90,16 @@ def identifyHash(phash):
 		("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Salsa10","Salsa20","SHA3-512","Skein-512","Skein-1024(512)")),
 		("^[a-f0-9]{136}$", ("OSX v10.7",)),
 		("^0x0200[a-f0-9]{136}$", ("MSSQL(2012)",)),
-		("^\$ml\$.+$", ("OSX v10.8","OSX v10.9")),
+		("^\$ml\$[0-9]+\$[a-f0-9]{64}\$[a-f0-9]{128}$", ("OSX v10.8","OSX v10.9")),
 		("^[a-f0-9]{256}$", ("Skein-1024",)),
-		("^grub\.pbkdf2\.sha512\..+$", ("GRUB 2",)),
+		("^grub\.pbkdf2\.sha512\.[0-9]+\.[a-f0-9]+\.[a-f0-9]+$", ("GRUB 2",)),
 		("^sha1\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{40}$", ("Django CMS(SHA-1)",)),
 		("^[a-f0-9]{49}$", ("Citrix Netscaler",)),
-		("^\$S\$[a-z0-9\/\.]{52}$", ("Drupal7",)),
+		("^\$S\$[a-z0-9\/\.]{52}$", ("Drupal ≥ v7.x",)),
 		("^\$5\$(rounds=[0-9]+\$)?[a-z0-9\/\.]{0,16}\$[a-z0-9\/\.]{43}$", ("SHA-256 Crypt",)),
 		("^0x[a-f0-9]{4}[a-f0-9]{16}[a-f0-9]{64}$", ("Sybase ASE",)),
 		("^\$6\$(rounds=[0-9]+\$)?[a-z0-9\/\.]{0,16}\$[a-z0-9\/\.]{86}$", ("SHA-512 Crypt",)),
-		("^\$sha\$[a-z0-9]{1,16}\$[a-f0-9]{64}$", ("Minecraft(AuthMe Reloaded)",)),
+		("^\$sha\$[a-z0-9]{1,16}\$([a-f0-9]{32}|[a-f0-9]{40}|[a-f0-9]{64}|[a-f0-9]{128}|[a-f0-9]{140})$", ("Minecraft(AuthMe Reloaded)",)),
 		("^sha256\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{64}$", ("Django CMS(SHA-256)",)),
 		("^sha384\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{96}$", ("Django CMS(SHA-384)",)),
 		("^crypt1:[a-z0-9\+\=]{12}:[a-z0-9\+\=]{12}$", ("Clavister Secure Gateway",)),
@@ -115,12 +115,12 @@ def identifyHash(phash):
 		("^[a-z0-9\/\.]{30}(:.+)?$", ("Juniper Netscreen/SSG(ScreenOS)",)),
 		("^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$", ("EPi",)),
 		("^[a-f0-9]{40}:[^*]{1,25}$", ("SMF ≥ v1.1",)),
-		("^[a-f0-9]{40}(:[a-f0-9]{40})?$", ("Burning Board 3.x",)),
+		("^[a-f0-9]{40}(:[a-f0-9]{40})?$", ("Woltlab Burning Board 3.x",)),
 		("^[a-f0-9]{130}(:[a-f0-9]{40})?$", ("IPMI2 RAKP HMAC-SHA1",)),
 		("^[a-f0-9]{32}:[0-9]+:[a-z0-9_.+-]+@[a-z0-9-]+\.[a-z0-9-.]+$", ("Lastpass",)),
 		("^[a-z0-9\/\.]{16}(:.{1,})?$", ("Cisco-ASA(MD5)",)),
 		("^\$vnc\$\*[a-f0-9]{32}\*[a-f0-9]{32}$", ("VNC",)),
-		("^[a-z0-9]{32}$", ("DNSSEC(NSEC3)",)),
+		("^[a-z0-9]{32}(:([a-z0-9-]+\.)?[a-z0-9-]+\.[a-z]{2,7}:.+:[0-9]+)?$", ("DNSSEC(NSEC3)",)),
 		("^(user-.+:)?\$racf\$\*.+\*[a-f0-9]{16}$", ("RACF",)),
 		("^\$3\$\$[a-f0-9]{32}$", ("NTHash(FreeBSD Variant)",)),
 		("^\$sha1\$[0-9]+\$[a-z0-9\/\.]{0,64}\$[a-z0-9\/\.]{28}$", ("SHA-1 Crypt",)),
@@ -128,45 +128,45 @@ def identifyHash(phash):
 		("^[:\$][AB][:\$]([a-f0-9]{1,8}[:\$])?[a-f0-9]{32}$", ("MediaWiki",)),
 		("^[a-f0-9]{140}$", ("xAuth",)),
 		("^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/\.]{22}\$([a-z0-9\/\.]{27}|[a-z0-9\/\.]{43}|[a-z0-9\/\.]{86})$", ("PBKDF2(Generic)",)),
-		("^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/+=-]{28}$", ("PBKDF2(Cryptacular)",)),
+		("^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/\+=-]{28}$", ("PBKDF2(Cryptacular)",)),
 		("^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$", ("PBKDF2(Dwayne Litzenberger)",)),
 		("^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/+=]+$", ("Fairly Secure Hashed Password",))
 	)
 	#set hashcat dictionary
 	hashcatModes = \
 	{
-		"MD5":"0", "Joomla":"11", "osCommerce":"21", "xt:Commerce":"21", "Juniper Netscreen/SSG(ScreenOS)":"22",
+		"MD5":"0", "Joomla < v2.5.18":"11", "osCommerce":"21", "xt:Commerce":"21", "Juniper Netscreen/SSG(ScreenOS)":"22",
 		"SHA-1":"100", "SHA-1(Base64)":"101", "Netscape LDAP SHA":"101", "nsldap":"101", "SSHA-1(Base64)":"111",
 		"Netscape LDAP SSHA":"111", "nsldaps":"111", "Oracle 11g":"112", "SMF ≥ v1.1":"121", "OSX v10.4":"122",
-		"OSX v10.5":"122", "OSX v10.6":"122", "EPi":"123", "MSSQL(2000)":"131", "MSSQL(2008)":"132",
-		"EPiServer 6.x < v4":"141", "LinkedIn":"190", "MySQL323":"200", "MySQL5.x":"300", "MySQL4.1":"300",
-		"phpBB v3.x":"400", "Wordpress v2.6.0/2.6.1":"400", "PHPass' Portable Hash":"400", "Wordpress ≥ 2.6.2":"400",
-		"MD5 Crypt":"500", "Cisco-IOS(MD5)":"500", "FreeBSD MD5":"500", "Django CMS(SHA-1)":"800",
-		"MD4":"900", "NTLM":"1000", "Domain Cached Credentials":"1100", "mscash":"1100", "SHA-256":"1400", "EPiServer 6.x ≥ v4":"1441",
+		"OSX v10.5":"122", "OSX v10.6":"122", "EPi":"123", "MSSQL(2000)":"131", "MSSQL(2005)":"132", "MSSQL(2008)":"132",
+		"EPiServer 6.x < v4":"141", "LinkedIn":"190", "MySQL323":"200", "MySQL5.x":"300", "MySQL4.1":"300", "phpBB v3.x":"400",
+		"Wordpress v2.6.0/2.6.1":"400", "PHPass' Portable Hash":"400", "Wordpress ≥ v2.6.2":"400", "Joomla ≥ v2.5.18":"400",
+		"MD5 Crypt":"500", "Cisco-IOS(MD5)":"500", "FreeBSD MD5":"500", "Django CMS(SHA-1)":"800", "MD4":"900", "NTLM":"1000",
+		"Domain Cached Credentials":"1100", "mscash":"1100", "SHA-256":"1400", "hMailServer":"1421", "EPiServer 6.x ≥ v4":"1441",
 		"DES(Unix)":"1500", "Traditional DES":"1500", "DEScrypt":"1500", "MD5(APR)":"1600", "Apache MD5":"1600", "md5apr1":"1600",
 		"SHA-512":"1700", "SSHA-512(Base64)":"1711", "LDAP(SSHA-512)":"1711", "OSX v10.7":"1722", "MSSQL(2012)":"1731",
-		"SHA-512 Crypt":"1800", "Domain Cached Credentials 2":"2100", "mscash2":"2100", "Cisco-PIX(MD5)":"2400",
-		"Cisco-ASA(MD5)":"2410", "Double MD5":"2600", "vBulletin < v3.8.5":"2611", "vBulletin ≥ v3.8.5":"2711", "IP.Board v2+":"2811",
-		"MyBB ≥ v1.2+":"2811", "LM":"3000", "DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200",
-		"bcrypt":"3200", "Sun MD5 Crypt":"3300", "WebEdition CMS":"3721", "Double SHA-1":"4500", "MD5(Chap)":"4800",
-		"iSCSI CHAP Authentication":"4800", "SHA3-256":"5000", "Half MD5":"5100", "NetNTLMv1-VANILLA / NetNTLMv1+ESS":"5500",
-		"NetNTLMv2":"5600", "Cisco-IOS(SHA-256)":"5700", "Samsung Android Password/PIN":"5800", "RIPEMD-160":"6000",
-		"Whirlpool":"6100", "AIX(smd5)":"6300", "AIX(ssha256)":"6400", "AIX(ssha512)":"6500", "AIX(ssha1)":"6700",
-		"Lastpass":"6800", "GOST R 34.11-94":"6900", "Fortigate(FortiOS)":"7000", "OSX v10.8":"7100", "OSX v10.9":"7100",
-		"GRUB 2":"7200", "IPMI2 RAKP HMAC-SHA1":"7300", "SHA-256 Crypt":"7400", "Kerberos 5 AS-REQ Pre-Auth":"7500",
-		"Redmine Project Management Web App":"7600", "SAP CODVN B (BCODE)":"7700", "SAP CODVN F/G (PASSCODE)":"7800", "Drupal7":"7900",
-		"Sybase ASE":"8000", "Citrix Netscaler":"8100", "DNSSEC(NSEC3)":"8300", "Burning Board 3.x":"8400", "RACF":"8500"
+		"SHA-512 Crypt":"1800", "Domain Cached Credentials 2":"2100", "mscash2":"2100", "Cisco-PIX(MD5)":"2400", "Cisco-ASA(MD5)":"2410",
+		"Double MD5":"2600", "vBulletin < v3.8.5":"2611", "vBulletin ≥ v3.8.5":"2711", "IP.Board v2+":"2811", "MyBB ≥ v1.2+":"2811",
+		"LM":"3000", "DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200", "bcrypt":"3200", "Sun MD5 Crypt":"3300",
+		"WebEdition CMS":"3721", "Double SHA-1":"4500", "MD5(Chap)":"4800", "iSCSI CHAP Authentication":"4800", "SHA3-256":"5000",
+		"Half MD5":"5100", "NetNTLMv1-VANILLA / NetNTLMv1+ESS":"5500", "NetNTLMv2":"5600", "Cisco-IOS(SHA-256)":"5700",
+		"Samsung Android Password/PIN":"5800", "RIPEMD-160":"6000", "Whirlpool":"6100", "AIX(smd5)":"6300", "AIX(ssha256)":"6400",
+		"AIX(ssha512)":"6500", "AIX(ssha1)":"6700", "Lastpass":"6800", "GOST R 34.11-94":"6900", "Fortigate(FortiOS)":"7000",
+		"OSX v10.8":"7100", "OSX v10.9":"7100", "GRUB 2":"7200", "IPMI2 RAKP HMAC-SHA1":"7300", "SHA-256 Crypt":"7400",
+		"Kerberos 5 AS-REQ Pre-Auth":"7500", "Redmine Project Management Web App":"7600", "SAP CODVN B (BCODE)":"7700",
+		"SAP CODVN F/G (PASSCODE)":"7800", "Drupal ≥ v7.x":"7900", "Sybase ASE":"8000", "Citrix Netscaler":"8100",
+		"DNSSEC(NSEC3)":"8300", "Woltlab Burning Board 3.x":"8400", "RACF":"8500"
 	}
 	#iterate over regex
 	for hashtype in prototypes:
 		#try to find matches
 		if (re.match(hashtype[0], phash, re.IGNORECASE)):
-			for h in hashtype[1]:
+			for match in hashtype[1]:
 				#check if a hashcatmode is found
-				if h in hashcatModes:
-					yield (h, hashcatModes[h])
+				if match in hashcatModes:
+					yield (match, hashcatModes[match])
 				else:
-					yield (h, False)
+					yield (match, False)
 
 
 #analyze a given file
@@ -193,6 +193,10 @@ def analyzeFile(infile, outfile, hashcatMode=False):
 	print ("Hashes analyzed: " + str(hashesAnalyzed))
 	#show number of hashes found
 	print ("Hashes found: " + str(hashesFound))
+	#check for hashcat flag
+	if hashcatMode:
+		#show hashcat mode notice
+		print ("Added Hashcat Modes")
 	#show output file path
 	print ("Output written: '" + os.path.abspath(outfile.name) + "'")
 
@@ -216,25 +220,30 @@ def writeResult(identify, outfile, hashcatMode=False):
 	if count == 0:
 		outfile.write("[+] Unknown hash\n")
 	return (count > 0)
+
 	
-	
-#analyze a single hash
-if args.hash:
-	#check for hashcat flag
-	if args.hashcat:
-		print ("Analyzing '" + args.hash + "'")
-		writeResult(identifyHash(args.hash), sys.stdout, True)
+if args.input:
+	#check for file flag
+	if args.file:
+		#check for hashcat flag
+		if args.mode:
+			with open(args.input, "r", encoding="utf-8") as infile:
+				with open(args.output, "w", encoding="utf-8") as outfile:
+					analyzeFile(infile, outfile, True)
+				outfile.close()
+			infile.close()
+		else:
+			with open(args.input, "r", encoding="utf-8") as infile:
+				with open(args.output, "w", encoding="utf-8") as outfile:
+					analyzeFile(infile, outfile)
+				outfile.close()
+			infile.close()
+	#analyze a single hash
 	else:
-		print ("Analyzing '" + args.hash + "'")
-		writeResult(identifyHash(args.hash), sys.stdout)
-#analyze a file
-elif args.file:
-	#check for hashcat flag
-	if args.hashcat:
-		with open(args.output, "w", encoding="utf-8") as outfile:
-			analyzeFile(args.file, outfile, True)
-		outfile.close()
-	else:
-		with open(args.output, "w", encoding="utf-8") as outfile:
-			analyzeFile(args.file, outfile)
-		outfile.close()
+		#check for hashcat flag
+		if args.mode:
+			print ("Analyzing '" + args.input + "'")
+			writeResult(identifyHash(args.input), sys.stdout, True)
+		else:
+			print ("Analyzing '" + args.input + "'")
+			writeResult(identifyHash(args.input), sys.stdout)

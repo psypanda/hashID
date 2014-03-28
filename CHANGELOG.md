@@ -1,5 +1,26 @@
 ### hashID Changelog
 
+**Version 2.5.0**
+* new syntax - see readme
+* added hashes:
+	* CRC-24
+	* Joomla ≥ 2.5.18
+	* Woltlab Burning Board 4.x
+* changed regex for:
+	* GRUB 2
+	* BCrypt(SHA-256)
+	* OSX v10.8
+	* OSX v10.9
+	* DNSSEC(NSEC3)
+	* Minecraft(AuthMe Reloaded)
+* renamed:
+	* Wordpress 2.6.2 to Wordpress v2.6.2
+	* Joomla to Joomla < 2.5.18
+	* Drupal7 to Drupal ≥ v7.x
+	* Burning Board 3.x to Woltlab Burning Board 3.x
+* new hashcat mode:
+	* hMailServer
+
 **Version 2.4.5**
 * added hashes:
 	* Fairly Secure Hashed Password

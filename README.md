@@ -7,7 +7,7 @@ This tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
  
 hashID is a tool written in Python 3.x which supports the identification of over 175 unique hash types using regular expressions.           
 It is able to identify a single hash or parse a file and identify the hashes within it.    
-There is also a javascript version of hashID available which is easily set up to provide online hash identification.  
+There is also a nodejs version of hashID available which is easily set up to provide online hash identification.  
 
 
 Install
@@ -23,15 +23,15 @@ exit
 Usage
 ------
 ```
-$ python3 hashid.py (-i HASH | -f FILE) [-o OUTFILE] [--help] [--version]
+$ python3 hashid.py INPUT [-f] [-m] [-o OUTFILE] [--help] [--version]
 ```
 
 | Parameter        				| Description      				  					|
 | ----------------------------- | -------------------------------------------------	|
-| -i HASH, --hash HASH      	| identify a single hash  		  					|  
-| -f FILE, --file FILE 			| analyze a given file     		  					|
+| input					      	| identify given input  		  					|  
+| -f, --file 					| enable file analyze     		  					|
+| -m, --mod		              	| include hashcat mode in output					|
 | -o OUTPUT, --output OUTPUT	| set output filename (default: hashid_output.txt)	|
-| -hc, --hashcat              	| include hashcat mode in output					|
 | --help	    				| show this help message and exit 					|
 | --version                   	| show program's version number and exit			|
 
@@ -39,7 +39,7 @@ $ python3 hashid.py (-i HASH | -f FILE) [-o OUTFILE] [--help] [--version]
 Screenshot
 ------
 ```
-$ python3 hashid.py -i d41d8cd98f00b204e9800998ecf8427e
+$ python3 hashid.py d41d8cd98f00b204e9800998ecf8427e
 Analyzing 'd41d8cd98f00b204e9800998ecf8427e'
 [+] MD5
 [+] MD4
@@ -62,13 +62,13 @@ Analyzing 'd41d8cd98f00b204e9800998ecf8427e'
 [+] DNSSEC(NSEC3)
 
 
-$ python3 hashid.py -i ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686 -hc
+$ python3 hashid.py ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686 -m
 Analyzing 'ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686'
 [+] Redmine Project Management Web App [Hashcat Mode: 7600]
 [+] SMF ≥ v1.1 [Hashcat Mode: 121]
 
 
-$ python3 hashid.py -f hashes.txt
+$ python3 hashid.py hashes.txt -f
 Analysing 'home/psypanda/hashes.txt'
 Hashes analysed: 259
 Hashes found: 231
