@@ -84,6 +84,7 @@ Contributing to this project can be done in various ways:
 
 Known issues
 ------
+* The alignment of the help menu is messed up (--help)
 * hashID isn't capable of handling piped input at the moment
 
 Credits
