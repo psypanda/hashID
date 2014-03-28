@@ -86,11 +86,11 @@ Known issues
 ------
 * The alignment of the help menu is messed up (--help)
 * hashID isn't capable of handling piped input at the moment
-* The [javascript version](js) is untested and missing latest regex updates
 
 Credits
 ------
 * Thanks to [sigkill](https://github.com/sigkill-rcode) who helped me numerous times fixing and optimizing the code
+* Thanks to [kmulvey](https://github.com/kmulvey) for supplying and maintaining a nodejs version of hashID
 
 Resources
 ------
