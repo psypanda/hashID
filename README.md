@@ -30,7 +30,7 @@ $ python3 hashid.py INPUT [-f] [-m] [-o OUTFILE] [--help] [--version]
 | ----------------------------- | -------------------------------------------------	|
 | input					      	| identify given input  		  					|  
 | -f, --file 					| enable file analyze     		  					|
-| -m, --mod		              	| include hashcat mode in output					|
+| -m, --mode	              	| include hashcat mode in output					|
 | -o OUTPUT, --output OUTPUT	| set output filename (default: hashid_output.txt)	|
 | --help	    				| show this help message and exit 					|
 | --version                   	| show program's version number and exit			|
@@ -84,7 +84,6 @@ Contributing to this project can be done in various ways:
 
 Known issues
 ------
-* The alignment of the help menu is messed up (--help)
 * hashID isn't capable of handling piped input at the moment
 
 Credits
