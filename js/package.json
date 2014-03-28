@@ -2,7 +2,9 @@
   "name": "hashID",
   "version": "0.0.4",
   "private": true,
-  "dependencies": {
-		"nodeunit": ""
-  }
+  "devDependencies": {
+    "grunt": "",
+		"grunt-contrib-jshint": "",
+  	"grunt-contrib-nodeunit": ""
+	}
 }
