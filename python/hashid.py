@@ -105,8 +105,8 @@ def identifyHash(phash):
 		("^crypt1:[a-z0-9\+\=]{12}:[a-z0-9\+\=]{12}$", ("Clavister Secure Gateway",)),
 		("^[a-f0-9]{112}$", ("Cisco VPN Client(PCF-File)",)),
 		("^[a-f0-9]{1329}$", ("Microsoft MSTSC(RDP-File)",)),
-		("^[^\\\/\:\*\?\"\<\>\|]{1,20}::[^\\\/\:\*\?\"\<\>\|]{1,20}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$", ("NetNTLMv1-VANILLA / NetNTLMv1+ESS",)),
-		("^[^\\\/\:\*\?\"\<\>\|]{1,20}::[^\\\/\:\*\?\"\<\>\|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$", ("NetNTLMv2",)),
+		("^[^\\\/:\*\?\"\<\>\|]{1,20}::[^\\\/:\*\?\"\<\>\|]{1,20}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$", ("NetNTLMv1-VANILLA / NetNTLMv1+ESS",)),
+		("^[^\\\/:\*\?\"\<\>\|]{1,20}::[^\\\/:\*\?\"\<\>\|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$", ("NetNTLMv2",)),
 		("^\$krb5pa\$.+$", ("Kerberos 5 AS-REQ Pre-Auth",)),
 		("^\$scram\$[0-9]+\$[a-z0-9\/\.]{16}\$sha-1=[a-z0-9\/\.]{27},sha-256=[a-z0-9\/\.]{43},sha-512=[a-z0-9\/\.]{86}$", ("SCRAM Hash",)),
 		("^[a-f0-9]{40}:[a-f0-9]{0,32}$", ("Redmine Project Management Web App",)),
@@ -130,7 +130,7 @@ def identifyHash(phash):
 		("^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/\.]{22}\$([a-z0-9\/\.]{27}|[a-z0-9\/\.]{43}|[a-z0-9\/\.]{86})$", ("PBKDF2(Generic)",)),
 		("^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/\+=-]{28}$", ("PBKDF2(Cryptacular)",)),
 		("^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$", ("PBKDF2(Dwayne Litzenberger)",)),
-		("^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/+=]+$", ("Fairly Secure Hashed Password",))
+		("^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/\+=]+$", ("Fairly Secure Hashed Password",))
 	)
 	#set hashcat dictionary
 	hashcatModes = \
@@ -221,7 +221,7 @@ def writeResult(identify, outfile, hashcatMode=False):
 		outfile.write("[+] Unknown hash\n")
 	return (count > 0)
 
-	
+
 if args.input:
 	#check for file flag
 	if args.file:
