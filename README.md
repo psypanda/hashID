@@ -23,13 +23,14 @@ exit
 Usage
 ------
 ```
-$ python3 hashid.py INPUT [-f] [-m] [-o OUTFILE] [--help] [--version]
+$ python3 hashid.py INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]
 ```
 
 | Parameter        				| Description      				  					|
 | ----------------------------- | -------------------------------------------------	|
 | input					      	| identify given input  		  					|  
-| -f, --file 					| enable file analyze     		  					|
+| -f, --file 					| analyze hashes in given file	  					|
+| -d, --dir 					| analyze hashes in given file path					|
 | -m, --mode	              	| include hashcat mode in output					|
 | -o OUTPUT, --output OUTPUT	| set output filename (default: hashid_output.txt)	|
 | --help	    				| show this help message and exit 					|

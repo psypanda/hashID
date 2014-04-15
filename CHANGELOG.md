@@ -1,5 +1,11 @@
 ### hashID Changelog
 
+**Version 2.6.0**
+* added directory analyze (parameter: "-d/--dir")
+* more error checking on userinput
+* changed regex for:
+	* vBulletin < v3.8.5
+
 **Version 2.5.0**
 * new syntax - see readme
 * added hashes:

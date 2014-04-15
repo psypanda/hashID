@@ -2,22 +2,25 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/03/28
+# @date: 2014/04/15
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
-import re, os, sys, argparse
+
+import re, os, sys, argparse, mimetypes
 
 #set essential variables
-version = "v2.5.0"
+version = "v2.6.0"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
-usage = "%(prog)s INPUT [-f] [-m] [-o OUTFILE] [--help] [--version]"
+usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
 description = "Identify the different types of hashes used to encrypt data"
 epilog = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
 #configure argparse
 parser = argparse.ArgumentParser(formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=36), usage=usage, description=description, epilog=epilog)
 parser.add_argument("input", type=str, help="identify given input")
-parser.add_argument("-f", "--file", action="store_true", help="enable file analyze")
+group = parser.add_mutually_exclusive_group()
+group.add_argument("-f", "--file", action="store_true", help="analyze hashes in given file")
+group.add_argument("-d", "--dir", action="store_true", help="analyze hashes in given file path")
 parser.add_argument("-m", "--mode", action="store_true", help="include hashcat mode in output")
 parser.add_argument("-o", "--output", type=str, default="hashid_output.txt", help="set output filename (default: %(default)s)")
 parser.add_argument("--version", action="version", version=banner)
@@ -45,7 +48,7 @@ def identifyHash(phash):
 		("^[a-f0-9]{32}$", ("MD5","MD4","MD2","Double MD5","NTLM","LM","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","ZipMonster","Skein-256(128)","Skein-512(128)")),
 		("^[a-f0-9]{32}(:[^\\\/\:\*\?\"\<\>\|]{1,20})?$", ("Domain Cached Credentials", "mscash")),
 		("^(\$DCC2\$10240#[^\\\/\:\*\?\"\<\>\|]{1,20}#)?[a-f0-9]{32}$", ("Domain Cached Credentials 2","mscash2")),
-		("^{SHA}[a-z0-9\/\+]{27}=$", ("SHA-1(Base64)","Netscape LDAP SHA","nsldap")),
+		("^{SHA}[a-z0-9\+\/=]{28}$", ("SHA-1(Base64)","Netscape LDAP SHA","nsldap")),
 		("^\$1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$", ("MD5 Crypt","Cisco-IOS(MD5)","FreeBSD MD5")),
 		("^0x[a-f0-9]{32}$", ("Lineage II C4",)), 
 		("^\$H\$[a-z0-9\/\.]{31}$", ("phpBB v3.x","Wordpress v2.6.0/2.6.1","PHPass' Portable Hash")),
@@ -60,7 +63,7 @@ def identifyHash(phash):
 		("^[a-f0-9]{40}$", ("SHA-1","Double SHA-1","MaNGOS CMS","MaNGOS CMS v2","LinkedIn","RIPEMD-160","Haval-160","Tiger-160","HAS-160","Skein-256(160)","Skein-512(160)")),
 		("^\*[a-f0-9]{40}$", ("MySQL5.x","MySQL4.1")),
 		("^[a-z0-9]{43}$", ("Cisco-IOS(SHA-256)",)),
-		("^{SSHA}([a-z0-9\+\/]{40}|[a-z0-9\+\/]{38}==)$", ("SSHA-1(Base64)","Netscape LDAP SSHA","nsldaps")),
+		("^{SSHA}[a-z0-9\+\/=]{40}$", ("SSHA-1(Base64)","Netscape LDAP SSHA","nsldaps")),
 		("^[a-z0-9]{47}$", ("Fortigate(FortiOS)",)),
 		("^[a-f0-9]{48}$", ("Haval-192","Tiger-192","SHA-1(Oracle)","OSX v10.4","OSX v10.5","OSX v10.6")),
 		("^[a-f0-9]{51}$", ("Palshop CMS",)),
@@ -73,7 +76,7 @@ def identifyHash(phash):
 		("^[a-f0-9]{40}:[a-f0-9]{16}$", ("Samsung Android Password/PIN",)),
 		("^S:[a-f0-9]{60}$", ("Oracle 11g",)),
 		("^\$bcrypt-sha256\$(2[axy]|2)\,[0-9]+\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$", ("BCrypt(SHA-256)",)),
-		("^[a-f0-9]{32}:[0-9]{3}$", ("vBulletin < v3.8.5",)),
+		("^[a-f0-9]{32}:.{3}$", ("vBulletin < v3.8.5",)),
 		("^[a-f0-9]{32}:.{30}$", ("vBulletin ≥ v3.8.5",)),
 		("^[a-f0-9]{64}$", ("SHA-256","RIPEMD-256","Haval-256","Snefru-256","GOST R 34.11-94","SHA3-256","Skein-256","Skein-512(256)","Ventrilo")),
 		("^[a-f0-9]{32}:[a-z0-9]{32}$", ("Joomla < v2.5.18",)),
@@ -169,7 +172,6 @@ def identifyHash(phash):
 					yield (match, False)
 
 
-#analyze a given file
 def analyzeFile(infile, outfile, hashcatMode=False):
 	#define the counters
 	hashesAnalyzed = 0
@@ -193,10 +195,44 @@ def analyzeFile(infile, outfile, hashcatMode=False):
 	print ("Hashes analyzed: " + str(hashesAnalyzed))
 	#show number of hashes found
 	print ("Hashes found: " + str(hashesFound))
-	#check for hashcat flag
-	if hashcatMode:
-		#show hashcat mode notice
-		print ("Added Hashcat Modes")
+	#show output file path
+	print ("Output written: '" + os.path.abspath(outfile.name) + "'")
+
+
+#analyze a given directory
+def analyzeDirectory(path, outfile, hashcatMode=False):
+	#define the counters
+	hashesAnalyzed = 0
+	hashesFound = 0
+	#show input directory path
+	print ("Found " + str(len(os.listdir(path))) + " files in directory '" + os.path.abspath(path) + "'")
+	#iterate over directory
+	for file in os.listdir(path):
+		#check if file is actually a file
+		if os.path.isfile(os.path.join(path, file)):
+			#process valid mimetypes files only
+			if mimetypes.guess_type(file)[0] == "text/plain":
+				print ("[+] Analyzing " + str(file))
+				with open(os.path.join(path, file), "r", encoding="utf-8") as infile:
+					for line in infile:
+						#skip empty lines
+						if line.strip():
+							#increment hash count
+							hashesAnalyzed += 1
+							#trim possible whitespace
+							line = line.strip()
+							#analyze current line
+							identify = identifyHash(line)
+							outfile.write("Analyzing '" + line + "'\n")
+							hashesFound += writeResult(identify, outfile, hashcatMode)
+							#add a newline
+							outfile.write("\n")
+			else:
+				print ("[-] Skipping " + str(file))
+	#show number of hashes analyzed
+	print ("\nHashes analyzed: " + str(hashesAnalyzed))
+	#show number of hashes found
+	print ("Hashes found: " + str(hashesFound))
 	#show output file path
 	print ("Output written: '" + os.path.abspath(outfile.name) + "'")
 
@@ -222,28 +258,52 @@ def writeResult(identify, outfile, hashcatMode=False):
 	return (count > 0)
 
 
+
 if args.input:
-	#check for file flag
+	#check for file parameter
 	if args.file:
-		#check for hashcat flag
-		if args.mode:
-			with open(args.input, "r", encoding="utf-8") as infile:
-				with open(args.output, "w", encoding="utf-8") as outfile:
+		#file analyze requires python 3.x
+		if sys.hexversion < 0x03000000:
+			parser.error("argument -f/--file: Python 3.x required for file analyzing")
+		#check if file exists
+		if not os.path.isfile(args.input):
+			parser.error("argument -f/--file: can't open '" + args.input + "'")
+		#open input and output file
+		with open(args.input, "r", encoding="utf-8") as infile:
+			with open(args.output, "w", encoding="utf-8") as outfile:
+				#check for hashcat parameter
+				if args.mode:
 					analyzeFile(infile, outfile, True)
-				outfile.close()
-			infile.close()
-		else:
-			with open(args.input, "r", encoding="utf-8") as infile:
-				with open(args.output, "w", encoding="utf-8") as outfile:
+				else:
 					analyzeFile(infile, outfile)
+			outfile.close()
+		infile.close()
+	#check for directory parameter
+	elif args.dir:
+		#directory analyze requires python 3.x
+		if sys.hexversion < 0x03000000:
+			parser.error("argument -f/--file: Python 3.x required for file analyzing")
+		#check if directory exists
+		if os.path.isdir(args.input):
+			#check if directory is not empty
+			if len(os.listdir(args.input)) > 0:
+				#open output file
+				with open(args.output, "w", encoding="utf-8") as outfile:
+					#check for hashcat parameter
+					if args.mode:
+						analyzeDirectory(args.input, outfile, True)
+					else:
+						analyzeDirectory(args.input, outfile)
 				outfile.close()
-			infile.close()
-	#analyze a single hash
+			else:
+				parser.error("argument -d/--dir: No files found in folder '" + args.input + "'")
+		else:
+			parser.error("argument -d/--dir: '" + args.input + "' is not a valid directory")		
+	#analyze single hash
 	else:
-		#check for hashcat flag
+		print ("Analyzing '" + args.input + "'")
+		#check for hashcat parameter
 		if args.mode:
-			print ("Analyzing '" + args.input + "'")
 			writeResult(identifyHash(args.input), sys.stdout, True)
 		else:
-			print ("Analyzing '" + args.input + "'")
 			writeResult(identifyHash(args.input), sys.stdout)
