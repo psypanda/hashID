@@ -5,10 +5,11 @@ Identify the different types of hashes used to encrypt data and especially passw
 
 This tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/), which is outdated!
  
-hashID is a tool written in Python 3.x which supports the identification of over 175 unique hash types using regular expressions.           
+hashID is a tool written in Python 3.x which supports the identification of over 180 unique hash types using regular expressions.           
 It is able to identify a single hash or parse a file and identify the hashes within it.    
 There is also a nodejs version of hashID available which is easily set up to provide online hash identification.  
 
+*Note: When identifying a single hash on *nix operating systems remember to use single quotes to prevent interpolation*
 
 Install
 ------
@@ -63,13 +64,13 @@ Analyzing 'd41d8cd98f00b204e9800998ecf8427e'
 [+] DNSSEC(NSEC3)
 
 
-$ python3 hashid.py ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686 -m
+$ python3 hashid.py -m ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686
 Analyzing 'ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686'
 [+] Redmine Project Management Web App [Hashcat Mode: 7600]
 [+] SMF ≥ v1.1 [Hashcat Mode: 121]
 
 
-$ python3 hashid.py hashes.txt -f
+$ python3 hashid.py -f hashes.txt
 Analysing 'home/psypanda/hashes.txt'
 Hashes analysed: 259
 Hashes found: 231
