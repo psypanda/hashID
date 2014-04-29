@@ -1,9 +1,15 @@
 ### hashID Changelog
+**Version 2.6.1**
+* additional mimetype check on file input
+* added hashes:
+	* MSSQL(2014)
+* renamed:
+	* Blowfish(Eggdrop) to Eggdrop IRC Bot
 
 **Version 2.6.0**
 * added directory analyze (parameter: "-d/--dir")
 * more error checking on userinput
-* changed regex for:
+* changed regex:
 	* vBulletin < v3.8.5
 
 **Version 2.5.0**
@@ -12,7 +18,7 @@
 	* CRC-24
 	* Joomla ≥ 2.5.18
 	* Woltlab Burning Board 4.x
-* changed regex for:
+* changed regex:
 	* GRUB 2
 	* BCrypt(SHA-256)
 	* OSX v10.8
@@ -30,7 +36,7 @@
 **Version 2.4.5**
 * added hashes:
 	* Fairly Secure Hashed Password
-* changed regex for:
+* changed regex:
 	* SAP CODVN B (BCODE)
 	* SAP CODVN F/G (PASSCODE)
 * renamed:
@@ -47,7 +53,7 @@
 * added hashes:
 	* hMailServer
 	* MediaWiki
-* changed regex for:
+* changed regex:
 	* vBulletin ≥ v3.8.5
 	* Cisco-ASA(MD5)
 * renamed:
@@ -65,7 +71,7 @@
 **Version 2.4.1**
 * added hashes:
 	* NTHash(FreeBSD Variant)
-* changed regex for:
+* changed regex:
 	* Domain Cached Credentials
 	* Domain Cached Credentials 2
 	* NetNTLMv1-VANILLA / NetNTLMv1+ESS
@@ -79,7 +85,7 @@
 	* Double SHA-1
 	* md5apr1
 	* bcrypt
-* changed regex for:
+* changed regex:
 	* NetNTLMv1-VANILLA / NetNTLMv1+ESS
 	* NetNTLMv2
 	
@@ -90,7 +96,7 @@
 	* Lastpass
 	* Cisco-ASA(MD5)
 	* DNSSEC(NSEC3)
-* changed regex for:
+* changed regex:
 	* VNC
 * renamed:
 	* Keccak to SHA3
@@ -98,7 +104,7 @@
 **Version 2.3.5**	
 * added hashes:
 	* Wordpress v2.6.0/2.6.1
-* changed regex for:
+* changed regex:
 	* MyBB ≥ v1.2+
 * renamed:
 	* MD5(phpBB) to phpBB 3.x

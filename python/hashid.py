@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/04/15
+# @date: 2014/04/29
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
 
 import re, os, sys, argparse, mimetypes
 
 #set essential variables
-version = "v2.6.0"
+version = "v2.6.1"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
 description = "Identify the different types of hashes used to encrypt data"
@@ -37,7 +37,7 @@ def identifyHash(phash):
 		("^[a-f0-9]{4}$", ("CRC-16","CRC-16-CCITT","FCS-16")),
 		("^[a-f0-9]{8}$", ("Adler-32","CRC-32","CRC-32B","FCS-32","GHash-32-3","GHash-32-5","FNV-132","Fletcher-32","Joaat","ELF-32","XOR-32")),
 		("^[a-f0-9]{6}$", ("CRC-24",)),
-		("^\+[a-z0-9\/\.]{12}$", ("Blowfish(Eggdrop)",)),
+		("^\+[a-z0-9\/\.]{12}$", ("Eggdrop IRC Bot",)),
 		("^[a-z0-9\/\.]{13}$", ("DES(Unix)","Traditional DES","DEScrypt")),
 		("^[a-f0-9]{16}$", ("MySQL323","DES(Oracle)","Half MD5","Oracle 7-10g","FNV-164","CRC-64")),
 		("^[a-z0-9\/\.]{16}$", ("Cisco-PIX(MD5)",)),
@@ -92,7 +92,7 @@ def identifyHash(phash):
 		("^{ssha512}[0-9]{2}\$[a-z0-9\.\/]{16,48}\$[a-z0-9\.\/]{86}$", ("AIX(ssha512)",)),
 		("^[a-f0-9]{128}$", ("SHA-512","Whirlpool","Salsa10","Salsa20","SHA3-512","Skein-512","Skein-1024(512)")),
 		("^[a-f0-9]{136}$", ("OSX v10.7",)),
-		("^0x0200[a-f0-9]{136}$", ("MSSQL(2012)",)),
+		("^0x0200[a-f0-9]{136}$", ("MSSQL(2012)","MSSQL(2014)")),
 		("^\$ml\$[0-9]+\$[a-f0-9]{64}\$[a-f0-9]{128}$", ("OSX v10.8","OSX v10.9")),
 		("^[a-f0-9]{256}$", ("Skein-1024",)),
 		("^grub\.pbkdf2\.sha512\.[0-9]+\.[a-f0-9]+\.[a-f0-9]+$", ("GRUB 2",)),
@@ -147,7 +147,7 @@ def identifyHash(phash):
 		"MD5 Crypt":"500", "Cisco-IOS(MD5)":"500", "FreeBSD MD5":"500", "Django CMS(SHA-1)":"800", "MD4":"900", "NTLM":"1000",
 		"Domain Cached Credentials":"1100", "mscash":"1100", "SHA-256":"1400", "hMailServer":"1421", "EPiServer 6.x ≥ v4":"1441",
 		"DES(Unix)":"1500", "Traditional DES":"1500", "DEScrypt":"1500", "MD5(APR)":"1600", "Apache MD5":"1600", "md5apr1":"1600",
-		"SHA-512":"1700", "SSHA-512(Base64)":"1711", "LDAP(SSHA-512)":"1711", "OSX v10.7":"1722", "MSSQL(2012)":"1731",
+		"SHA-512":"1700", "SSHA-512(Base64)":"1711", "LDAP(SSHA-512)":"1711", "OSX v10.7":"1722", "MSSQL(2012)":"1731", "MSSQL(2014)":"1731",
 		"SHA-512 Crypt":"1800", "Domain Cached Credentials 2":"2100", "mscash2":"2100", "Cisco-PIX(MD5)":"2400", "Cisco-ASA(MD5)":"2410",
 		"Double MD5":"2600", "vBulletin < v3.8.5":"2611", "vBulletin ≥ v3.8.5":"2711", "IP.Board v2+":"2811", "MyBB ≥ v1.2+":"2811",
 		"LM":"3000", "DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200", "bcrypt":"3200", "Sun MD5 Crypt":"3300",
@@ -210,7 +210,7 @@ def analyzeDirectory(path, outfile, hashcatMode=False):
 	for file in os.listdir(path):
 		#check if file is actually a file
 		if os.path.isfile(os.path.join(path, file)):
-			#process valid mimetypes files only
+			#process valid mimetype files only
 			if mimetypes.guess_type(file)[0] == "text/plain":
 				print ("[+] Analyzing " + str(file))
 				with open(os.path.join(path, file), "r", encoding="utf-8") as infile:
@@ -268,6 +268,9 @@ if args.input:
 		#check if file exists
 		if not os.path.isfile(args.input):
 			parser.error("argument -f/--file: can't open '" + args.input + "'")
+		#process valid mimetype files only
+		if not mimetypes.guess_type(args.input)[0] == "text/plain":
+			parser.error("argument -f/--file: not a valid mimetype for file '" + args.input + "'")
 		#open input and output file
 		with open(args.input, "r", encoding="utf-8") as infile:
 			with open(args.output, "w", encoding="utf-8") as outfile:
