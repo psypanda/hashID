@@ -51,7 +51,7 @@
 			{regex: /^[a-f0-9]{40}:[a-f0-9]{16}$/i, hashes: ["Samsung Android Password/PIN"]},
 			{regex: /^S:[a-f0-9]{60}$/i, hashes: ["Oracle 11g"]},
 			{regex: /^\$bcrypt-sha256\$(2[axy]|2)\,[0-9]+\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$/i, hashes: ["BCrypt(SHA-256)"]},
-			{regex: /^[a-f0-9]{32}:[0-9]{3}$/i, hashes: ["vBulletin < v3.8.5"]},
+			{regex: /^[a-f0-9]{32}:.{3}$/i, hashes: ["vBulletin < v3.8.5"]},
 			{regex: /^[a-f0-9]{32}:.{30}$/i, hashes: ["vBulletin ≥ v3.8.5"]},
 			{regex: /^[a-f0-9]{64}$/i, hashes: ["SHA-256","RIPEMD-256","Haval-256","Snefru-256","GOST R 34.11-94","SHA3-256","Skein-256","Skein-512(256)","Ventrilo"]},
 			{regex: /^[a-f0-9]{32}:[a-z0-9]{32}$/i, hashes: ["Joomla < v2.5.18"]},
