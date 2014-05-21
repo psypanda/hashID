@@ -1,4 +1,10 @@
 ### hashID Changelog
+**Version 2.6.2**
+* added JTR formats to hashinfo.xlsx
+* changed regex:
+	* Juniper Netscreen/SSG(ScreenOS)
+	* NTLM
+
 **Version 2.6.1**
 * additional mimetype check on file input
 * added hashes:

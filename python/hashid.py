@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/04/29
+# @date: 2014/05/21
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
 
 import re, os, sys, argparse, mimetypes
 
 #set essential variables
-version = "v2.6.1"
+version = "v2.6.2"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
 description = "Identify the different types of hashes used to encrypt data"
@@ -45,7 +45,8 @@ def identifyHash(phash):
 		("^_[a-z0-9\/\.]{19}$", ("BSDi Crypt",)),
 		("^[a-f0-9]{24}$", ("CRC-96(ZIP)",)),
 		("^[a-z0-9\/\.]{24}$", ("Crypt16",)),
-		("^[a-f0-9]{32}$", ("MD5","MD4","MD2","Double MD5","NTLM","LM","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","ZipMonster","Skein-256(128)","Skein-512(128)")),
+		("^[a-f0-9]{32}$", ("MD5","MD4","MD2","Double MD5","LM","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","ZipMonster","Skein-256(128)","Skein-512(128)")),
+		("^(\$NT\$)?[a-f0-9]{32}$", ("NTLM",)),
 		("^[a-f0-9]{32}(:[^\\\/\:\*\?\"\<\>\|]{1,20})?$", ("Domain Cached Credentials", "mscash")),
 		("^(\$DCC2\$10240#[^\\\/\:\*\?\"\<\>\|]{1,20}#)?[a-f0-9]{32}$", ("Domain Cached Credentials 2","mscash2")),
 		("^{SHA}[a-z0-9\+\/=]{28}$", ("SHA-1(Base64)","Netscape LDAP SHA","nsldap")),
@@ -115,7 +116,7 @@ def identifyHash(phash):
 		("^[a-f0-9]{40}:[a-f0-9]{0,32}$", ("Redmine Project Management Web App",)),
 		("^([0-9]{12})?\$[a-f0-9]{16}$", ("SAP CODVN B (BCODE)",)),
 		("^([0-9]{12})?\$[a-f0-9]{40}$", ("SAP CODVN F/G (PASSCODE)",)),
-		("^[a-z0-9\/\.]{30}(:.+)?$", ("Juniper Netscreen/SSG(ScreenOS)",)),
+		("^(.+\$)?[a-z0-9\/\.]{30}(:.+)?$", ("Juniper Netscreen/SSG(ScreenOS)",)),
 		("^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$", ("EPi",)),
 		("^[a-f0-9]{40}:[^*]{1,25}$", ("SMF ≥ v1.1",)),
 		("^[a-f0-9]{40}(:[a-f0-9]{40})?$", ("Woltlab Burning Board 3.x",)),
