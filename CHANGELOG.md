@@ -1,4 +1,10 @@
 ### hashID Changelog
+**Version 2.6.4**
+* added hashes:
+	* PHPS
+* new hashcat mode:
+	* PHPS
+
 **Version 2.6.3**
 * added hashes:
 	* Lotus Notes/Domino 5

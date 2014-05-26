@@ -8,7 +8,7 @@
 import re, os, sys, argparse, mimetypes
 
 #set essential variables
-version = "v2.6.3"
+version = "v2.6.4"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
 description = "Identify the different types of hashes used to encrypt data"
@@ -133,7 +133,8 @@ def identifyHash(phash):
 		("^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/\.]{22}\$([a-z0-9\/\.]{27}|[a-z0-9\/\.]{43}|[a-z0-9\/\.]{86})$", ("PBKDF2(Generic)",)),
 		("^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/\+=-]{28}$", ("PBKDF2(Cryptacular)",)),
 		("^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$", ("PBKDF2(Dwayne Litzenberger)",)),
-		("^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/\+=]+$", ("Fairly Secure Hashed Password",))
+		("^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/\+=]+$", ("Fairly Secure Hashed Password",)),
+		("^\$PHPS\$[^\$]+\$[a-f0-9]{32}$", ("PHPS",))
 	)
 	#set hashcat dictionary
 	hashcatModes = \
@@ -149,7 +150,7 @@ def identifyHash(phash):
 		"DES(Unix)":"1500", "Traditional DES":"1500", "DEScrypt":"1500", "MD5(APR)":"1600", "Apache MD5":"1600", "md5apr1":"1600",
 		"SHA-512":"1700", "SSHA-512(Base64)":"1711", "LDAP(SSHA-512)":"1711", "OSX v10.7":"1722", "MSSQL(2012)":"1731", "MSSQL(2014)":"1731",
 		"SHA-512 Crypt":"1800", "Domain Cached Credentials 2":"2100", "mscash2":"2100", "Cisco-PIX(MD5)":"2400", "Cisco-ASA(MD5)":"2410",
-		"Double MD5":"2600", "vBulletin < v3.8.5":"2611", "vBulletin ≥ v3.8.5":"2711", "IP.Board v2+":"2811",
+		"Double MD5":"2600", "vBulletin < v3.8.5":"2611", "PHPS":"2612", "vBulletin ≥ v3.8.5":"2711", "IP.Board v2+":"2811",
 		"MyBB ≥ v1.2+":"2811", "LM":"3000", "DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200", "bcrypt":"3200",
 		"Sun MD5 Crypt":"3300", "WebEdition CMS":"3721", "Double SHA-1":"4500", "MD5(Chap)":"4800", "iSCSI CHAP Authentication":"4800",
 		"SHA3-256":"5000", "Half MD5":"5100", "NetNTLMv1-VANILLA / NetNTLMv1+ESS":"5500", "NetNTLMv2":"5600", "Cisco-IOS(SHA-256)":"5700",

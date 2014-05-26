@@ -108,7 +108,8 @@
 			{regex: /^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/\.]{22}\$([a-z0-9\/\.]{27}|[a-z0-9\/\.]{43}|[a-z0-9\/\.]{86})$/i, hashes: ["PBKDF2(Generic)"]},
 			{regex: /^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/\+=-]{28}$/i, hashes: ["PBKDF2(Cryptacular)"]},
 			{regex: /^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$/i, hashes: ["PBKDF2(Dwayne Litzenberger)"]},
-			{regex: /^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/+=]+$/i, hashes: ["Fairly Secure Hashed Password"]}
+			{regex: /^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/+=]+$/i, hashes: ["Fairly Secure Hashed Password"]},
+			{regex: /^\$PHPS\$[^\$]+\$[a-f0-9]{32}$/i, hashes: ["PHPS"]}
 		];
 		var result = [];
 		for(var hash_id=0; hash_id < hash_arr.length; hash_id++){
