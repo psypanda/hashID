@@ -8,7 +8,7 @@
 import re, os, sys, argparse, mimetypes
 
 #set essential variables
-version = "v2.6.2"
+version = "v2.6.3"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
 description = "Identify the different types of hashes used to encrypt data"
