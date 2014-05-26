@@ -41,27 +41,11 @@ $ python3 hashid.py INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]
 Screenshot
 ------
 ```
-$ python3 hashid.py d41d8cd98f00b204e9800998ecf8427e
-Analyzing 'd41d8cd98f00b204e9800998ecf8427e'
-[+] MD5
-[+] MD4
-[+] MD2
-[+] Double MD5
-[+] NTLM
-[+] LM
-[+] RAdmin v2.x
-[+] RIPEMD-128
-[+] Haval-128
-[+] Tiger-128
-[+] Snefru-128
-[+] ZipMonster
-[+] Skein-256(128)
-[+] Skein-512(128)
-[+] Domain Cached Credentials
-[+] mscash
-[+] Domain Cached Credentials 2
-[+] mscash2
-[+] DNSSEC(NSEC3)
+$ python3 hashid.py $P$8ohUJ.1sdFw09/bMaAQPTGDNi2BIUt1
+Analyzing '$P$8ohUJ.1sdFw09/bMaAQPTGDNi2BIUt1'
+[+] Wordpress ≥ v2.6.2
+[+] Joomla ≥ v2.5.18
+[+] PHPass' Portable Hash
 
 
 $ python3 hashid.py -m ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686
@@ -80,8 +64,9 @@ Output written: '/home/psypanda/hashid_output.txt'
 Contribute
 ------
 Contributing to this project can be done in various ways:
-* Supply new regular expressions (take a look at [hashinfo.xlsx](hashinfo.xlsx) first)
-* Change existing regular expression (please provide a resource why the current regex might be wrong)
+* Add currently unsupported hash types
+* Change/Fix/Enhance existing regular expression
+* Provide reading resources on the specific hash types (see "Resources" section in [hashinfo.xlsx](hashinfo.xlsx))
 * Fix anything noted in the "Known issues" section
 
 Known issues
