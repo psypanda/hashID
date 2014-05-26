@@ -1,4 +1,15 @@
 ### hashID Changelog
+**Version 2.6.3**
+* added hashes:
+	* Lotus Notes/Domino 5
+* changed regex:
+	* DNSSEC(NSEC3)
+* renamed:
+	* Lotus Domino to Lotus Notes/Domino 6
+* new hashcat mode:
+	* Lotus Notes/Domino 5
+	* Lotus Notes/Domino 6
+
 **Version 2.6.2**
 * added JTR formats to hashinfo.xlsx
 * changed regex:

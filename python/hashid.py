@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/05/21
+# @date: 2014/05/26
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
-
 
 import re, os, sys, argparse, mimetypes
 
@@ -41,11 +40,11 @@ def identifyHash(phash):
 		("^[a-z0-9\/\.]{13}$", ("DES(Unix)","Traditional DES","DEScrypt")),
 		("^[a-f0-9]{16}$", ("MySQL323","DES(Oracle)","Half MD5","Oracle 7-10g","FNV-164","CRC-64")),
 		("^[a-z0-9\/\.]{16}$", ("Cisco-PIX(MD5)",)),
-		("^\([a-z0-9\+\/]{20}\)$", ("Lotus Domino",)),
+		("^\([a-z0-9\+\/]{20}\)$", ("Lotus Notes/Domino 6",)),
 		("^_[a-z0-9\/\.]{19}$", ("BSDi Crypt",)),
 		("^[a-f0-9]{24}$", ("CRC-96(ZIP)",)),
 		("^[a-z0-9\/\.]{24}$", ("Crypt16",)),
-		("^[a-f0-9]{32}$", ("MD5","MD4","MD2","Double MD5","LM","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","ZipMonster","Skein-256(128)","Skein-512(128)")),
+		("^[a-f0-9]{32}$", ("MD5","MD4","MD2","Double MD5","LM","RAdmin v2.x","RIPEMD-128","Haval-128","Tiger-128","Snefru-128","ZipMonster","Skein-256(128)","Skein-512(128)", "Lotus Notes/Domino 5")),
 		("^(\$NT\$)?[a-f0-9]{32}$", ("NTLM",)),
 		("^[a-f0-9]{32}(:[^\\\/\:\*\?\"\<\>\|]{1,20})?$", ("Domain Cached Credentials", "mscash")),
 		("^(\$DCC2\$10240#[^\\\/\:\*\?\"\<\>\|]{1,20}#)?[a-f0-9]{32}$", ("Domain Cached Credentials 2","mscash2")),
@@ -124,7 +123,7 @@ def identifyHash(phash):
 		("^[a-f0-9]{32}:[0-9]+:[a-z0-9_.+-]+@[a-z0-9-]+\.[a-z0-9-.]+$", ("Lastpass",)),
 		("^[a-z0-9\/\.]{16}(:.{1,})?$", ("Cisco-ASA(MD5)",)),
 		("^\$vnc\$\*[a-f0-9]{32}\*[a-f0-9]{32}$", ("VNC",)),
-		("^[a-z0-9]{32}(:([a-z0-9-]+\.)?[a-z0-9-]+\.[a-z]{2,7}:.+:[0-9]+)?$", ("DNSSEC(NSEC3)",)),
+		("^[a-z0-9]{32}(:([a-z0-9-]+\.)?[a-z0-9-.]+\.[a-z]{2,7}:.+:[0-9]+)?$", ("DNSSEC(NSEC3)",)),
 		("^(user-.+:)?\$racf\$\*.+\*[a-f0-9]{16}$", ("RACF",)),
 		("^\$3\$\$[a-f0-9]{32}$", ("NTHash(FreeBSD Variant)",)),
 		("^\$sha1\$[0-9]+\$[a-z0-9\/\.]{0,64}\$[a-z0-9\/\.]{28}$", ("SHA-1 Crypt",)),
@@ -150,16 +149,17 @@ def identifyHash(phash):
 		"DES(Unix)":"1500", "Traditional DES":"1500", "DEScrypt":"1500", "MD5(APR)":"1600", "Apache MD5":"1600", "md5apr1":"1600",
 		"SHA-512":"1700", "SSHA-512(Base64)":"1711", "LDAP(SSHA-512)":"1711", "OSX v10.7":"1722", "MSSQL(2012)":"1731", "MSSQL(2014)":"1731",
 		"SHA-512 Crypt":"1800", "Domain Cached Credentials 2":"2100", "mscash2":"2100", "Cisco-PIX(MD5)":"2400", "Cisco-ASA(MD5)":"2410",
-		"Double MD5":"2600", "vBulletin < v3.8.5":"2611", "vBulletin ≥ v3.8.5":"2711", "IP.Board v2+":"2811", "MyBB ≥ v1.2+":"2811",
-		"LM":"3000", "DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200", "bcrypt":"3200", "Sun MD5 Crypt":"3300",
-		"WebEdition CMS":"3721", "Double SHA-1":"4500", "MD5(Chap)":"4800", "iSCSI CHAP Authentication":"4800", "SHA3-256":"5000",
-		"Half MD5":"5100", "NetNTLMv1-VANILLA / NetNTLMv1+ESS":"5500", "NetNTLMv2":"5600", "Cisco-IOS(SHA-256)":"5700",
+		"Double MD5":"2600", "vBulletin < v3.8.5":"2611", "vBulletin ≥ v3.8.5":"2711", "IP.Board v2+":"2811",
+		"MyBB ≥ v1.2+":"2811", "LM":"3000", "DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200", "bcrypt":"3200",
+		"Sun MD5 Crypt":"3300", "WebEdition CMS":"3721", "Double SHA-1":"4500", "MD5(Chap)":"4800", "iSCSI CHAP Authentication":"4800",
+		"SHA3-256":"5000", "Half MD5":"5100", "NetNTLMv1-VANILLA / NetNTLMv1+ESS":"5500", "NetNTLMv2":"5600", "Cisco-IOS(SHA-256)":"5700",
 		"Samsung Android Password/PIN":"5800", "RIPEMD-160":"6000", "Whirlpool":"6100", "AIX(smd5)":"6300", "AIX(ssha256)":"6400",
 		"AIX(ssha512)":"6500", "AIX(ssha1)":"6700", "Lastpass":"6800", "GOST R 34.11-94":"6900", "Fortigate(FortiOS)":"7000",
 		"OSX v10.8":"7100", "OSX v10.9":"7100", "GRUB 2":"7200", "IPMI2 RAKP HMAC-SHA1":"7300", "SHA-256 Crypt":"7400",
 		"Kerberos 5 AS-REQ Pre-Auth":"7500", "Redmine Project Management Web App":"7600", "SAP CODVN B (BCODE)":"7700",
 		"SAP CODVN F/G (PASSCODE)":"7800", "Drupal ≥ v7.x":"7900", "Sybase ASE":"8000", "Citrix Netscaler":"8100",
-		"DNSSEC(NSEC3)":"8300", "Woltlab Burning Board 3.x":"8400", "RACF":"8500"
+		"DNSSEC(NSEC3)":"8300", "Woltlab Burning Board 3.x":"8400", "RACF":"8500", "Lotus Notes/Domino 5":"8600",
+		"Lotus Notes/Domino 6":"8700"
 	}
 	#iterate over regex
 	for hashtype in prototypes:
