@@ -14,17 +14,6 @@ usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
 description = "Identify the different types of hashes used to encrypt data"
 epilog = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
-#configure argparse
-parser = argparse.ArgumentParser(formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=36), usage=usage, description=description, epilog=epilog)
-parser.add_argument("input", type=str, help="identify given input")
-group = parser.add_mutually_exclusive_group()
-group.add_argument("-f", "--file", action="store_true", help="analyze hashes in given file")
-group.add_argument("-d", "--dir", action="store_true", help="analyze hashes in given file path")
-parser.add_argument("-m", "--mode", action="store_true", help="include hashcat mode in output")
-parser.add_argument("-o", "--output", type=str, default="hashid_output.txt", help="set output filename (default: %(default)s)")
-parser.add_argument("--version", action="version", version=banner)
-args = parser.parse_args()
-
 
 #identify the input hash
 def identifyHash(phash):
@@ -260,55 +249,70 @@ def writeResult(identify, outfile, hashcatMode=False):
 	return (count > 0)
 
 
+def main():
+	#configure argparse
+	parser = argparse.ArgumentParser(formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=36), usage=usage, description=description, epilog=epilog)
+	parser.add_argument("input", type=str, help="identify given input")
+	group = parser.add_mutually_exclusive_group()
+	group.add_argument("-f", "--file", action="store_true", help="analyze hashes in given file")
+	group.add_argument("-d", "--dir", action="store_true", help="analyze hashes in given file path")
+	parser.add_argument("-m", "--mode", action="store_true", help="include hashcat mode in output")
+	parser.add_argument("-o", "--output", type=str, default="hashid_output.txt", help="set output filename (default: %(default)s)")
+	parser.add_argument("--version", action="version", version=banner)
+	args = parser.parse_args()
 
-if args.input:
-	#check for file parameter
-	if args.file:
-		#file analyze requires python 3.x
-		if sys.hexversion < 0x03000000:
-			parser.error("argument -f/--file: Python 3.x required for file analyzing")
-		#check if file exists
-		if not os.path.isfile(args.input):
-			parser.error("argument -f/--file: can't open '" + args.input + "'")
-		#process valid mimetype files only
-		if not mimetypes.guess_type(args.input)[0] == "text/plain":
-			parser.error("argument -f/--file: not a valid mimetype for file '" + args.input + "'")
-		#open input and output file
-		with open(args.input, "r", encoding="utf-8") as infile:
-			with open(args.output, "w", encoding="utf-8") as outfile:
-				#check for hashcat parameter
-				if args.mode:
-					analyzeFile(infile, outfile, True)
-				else:
-					analyzeFile(infile, outfile)
-			outfile.close()
-		infile.close()
-	#check for directory parameter
-	elif args.dir:
-		#directory analyze requires python 3.x
-		if sys.hexversion < 0x03000000:
-			parser.error("argument -f/--file: Python 3.x required for file analyzing")
-		#check if directory exists
-		if os.path.isdir(args.input):
-			#check if directory is not empty
-			if len(os.listdir(args.input)) > 0:
-				#open output file
+	if args.input:
+		#check for file parameter
+		if args.file:
+			#file analyze requires python 3.x
+			if sys.hexversion < 0x03000000:
+				parser.error("argument -f/--file: Python 3.x required for file analyzing")
+			#check if file exists
+			if not os.path.isfile(args.input):
+				parser.error("argument -f/--file: can't open '" + args.input + "'")
+			#process valid mimetype files only
+			if not mimetypes.guess_type(args.input)[0] == "text/plain":
+				parser.error("argument -f/--file: not a valid mimetype for file '" + args.input + "'")
+			#open input and output file
+			with open(args.input, "r", encoding="utf-8") as infile:
 				with open(args.output, "w", encoding="utf-8") as outfile:
 					#check for hashcat parameter
 					if args.mode:
-						analyzeDirectory(args.input, outfile, True)
+						analyzeFile(infile, outfile, True)
 					else:
-						analyzeDirectory(args.input, outfile)
+						analyzeFile(infile, outfile)
 				outfile.close()
+			infile.close()
+		#check for directory parameter
+		elif args.dir:
+			#directory analyze requires python 3.x
+			if sys.hexversion < 0x03000000:
+				parser.error("argument -f/--file: Python 3.x required for file analyzing")
+			#check if directory exists
+			if os.path.isdir(args.input):
+				#check if directory is not empty
+				if len(os.listdir(args.input)) > 0:
+					#open output file
+					with open(args.output, "w", encoding="utf-8") as outfile:
+						#check for hashcat parameter
+						if args.mode:
+							analyzeDirectory(args.input, outfile, True)
+						else:
+							analyzeDirectory(args.input, outfile)
+					outfile.close()
+				else:
+					parser.error("argument -d/--dir: No files found in folder '" + args.input + "'")
 			else:
-				parser.error("argument -d/--dir: No files found in folder '" + args.input + "'")
+				parser.error("argument -d/--dir: '" + args.input + "' is not a valid directory")
+		#analyze single hash
 		else:
-			parser.error("argument -d/--dir: '" + args.input + "' is not a valid directory")		
-	#analyze single hash
-	else:
-		print ("Analyzing '" + args.input + "'")
-		#check for hashcat parameter
-		if args.mode:
-			writeResult(identifyHash(args.input), sys.stdout, True)
-		else:
-			writeResult(identifyHash(args.input), sys.stdout)
+			print ("Analyzing '" + args.input + "'")
+			#check for hashcat parameter
+			if args.mode:
+				writeResult(identifyHash(args.input), sys.stdout, True)
+			else:
+				writeResult(identifyHash(args.input), sys.stdout)
+
+
+if __name__ == "__main__":
+	main()
