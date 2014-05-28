@@ -7,13 +7,6 @@
 
 import re, os, sys, argparse, mimetypes
 
-#set essential variables
-version = "v2.6.5"
-banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
-usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
-description = "Identify the different types of hashes used to encrypt data"
-epilog = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-
 
 #set regex and algorithms
 prototypes = (
@@ -249,6 +242,13 @@ def writeResult(identify, outfile, hashcatMode=False):
 
 
 def main():
+	#set essential variables
+	version = "v2.6.5"
+	banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
+	usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
+	description = "Identify the different types of hashes used to encrypt data"
+	epilog = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
+
 	#configure argparse
 	parser = argparse.ArgumentParser(formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=36), usage=usage, description=description, epilog=epilog)
 	parser.add_argument("input", type=str, help="identify given input")
