@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 # @name: hashID.py
 # @author: c0re <https://psypanda.org/>                           
-# @date: 2014/05/26
+# @date: 2014/05/28
 # @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
 
 import re, os, sys, argparse, mimetypes
 
 #set essential variables
-version = "v2.6.4"
+version = "v2.6.5"
 banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
 description = "Identify the different types of hashes used to encrypt data"
@@ -99,7 +99,7 @@ def identifyHash(phash):
 		("^[a-f0-9]{1329}$", ("Microsoft MSTSC(RDP-File)",)),
 		("^[^\\\/:\*\?\"\<\>\|]{1,20}::[^\\\/:\*\?\"\<\>\|]{1,20}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$", ("NetNTLMv1-VANILLA / NetNTLMv1+ESS",)),
 		("^[^\\\/:\*\?\"\<\>\|]{1,20}::[^\\\/:\*\?\"\<\>\|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$", ("NetNTLMv2",)),
-		("^\$krb5pa\$.+$", ("Kerberos 5 AS-REQ Pre-Auth",)),
+		("^\$krb5pa\$23\$user\$realm\$salt\$[a-f0-9]{104}$", ("Kerberos 5 AS-REQ Pre-Auth",)),
 		("^\$scram\$[0-9]+\$[a-z0-9\/\.]{16}\$sha-1=[a-z0-9\/\.]{27},sha-256=[a-z0-9\/\.]{43},sha-512=[a-z0-9\/\.]{86}$", ("SCRAM Hash",)),
 		("^[a-f0-9]{40}:[a-f0-9]{0,32}$", ("Redmine Project Management Web App",)),
 		("^([0-9]{12})?\$[a-f0-9]{16}$", ("SAP CODVN B (BCODE)",)),
@@ -123,33 +123,30 @@ def identifyHash(phash):
 		("^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/\+=-]{28}$", ("PBKDF2(Cryptacular)",)),
 		("^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$", ("PBKDF2(Dwayne Litzenberger)",)),
 		("^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/\+=]+$", ("Fairly Secure Hashed Password",)),
-		("^\$PHPS\$[^\$]+\$[a-f0-9]{32}$", ("PHPS",))
+		("^\$PHPS\$.+\$[a-f0-9]{32}$", ("PHPS",))
 	)
 	#set hashcat dictionary
 	hashcatModes = \
 	{
-		"MD5":"0", "Joomla < v2.5.18":"11", "osCommerce":"21", "xt:Commerce":"21", "Juniper Netscreen/SSG(ScreenOS)":"22",
-		"SHA-1":"100", "SHA-1(Base64)":"101", "Netscape LDAP SHA":"101", "nsldap":"101", "SSHA-1(Base64)":"111",
-		"Netscape LDAP SSHA":"111", "nsldaps":"111", "Oracle 11g":"112", "SMF ≥ v1.1":"121", "OSX v10.4":"122",
-		"OSX v10.5":"122", "OSX v10.6":"122", "EPi":"123", "MSSQL(2000)":"131", "MSSQL(2005)":"132", "MSSQL(2008)":"132",
-		"EPiServer 6.x < v4":"141", "LinkedIn":"190", "MySQL323":"200", "MySQL5.x":"300", "MySQL4.1":"300", "phpBB v3.x":"400",
-		"Wordpress v2.6.0/2.6.1":"400", "PHPass' Portable Hash":"400", "Wordpress ≥ v2.6.2":"400", "Joomla ≥ v2.5.18":"400",
-		"MD5 Crypt":"500", "Cisco-IOS(MD5)":"500", "FreeBSD MD5":"500", "Django CMS(SHA-1)":"800", "MD4":"900", "NTLM":"1000",
-		"Domain Cached Credentials":"1100", "mscash":"1100", "SHA-256":"1400", "hMailServer":"1421", "EPiServer 6.x ≥ v4":"1441",
-		"DES(Unix)":"1500", "Traditional DES":"1500", "DEScrypt":"1500", "MD5(APR)":"1600", "Apache MD5":"1600", "md5apr1":"1600",
-		"SHA-512":"1700", "SSHA-512(Base64)":"1711", "LDAP(SSHA-512)":"1711", "OSX v10.7":"1722", "MSSQL(2012)":"1731", "MSSQL(2014)":"1731",
-		"SHA-512 Crypt":"1800", "Domain Cached Credentials 2":"2100", "mscash2":"2100", "Cisco-PIX(MD5)":"2400", "Cisco-ASA(MD5)":"2410",
-		"Double MD5":"2600", "vBulletin < v3.8.5":"2611", "PHPS":"2612", "vBulletin ≥ v3.8.5":"2711", "IP.Board v2+":"2811",
-		"MyBB ≥ v1.2+":"2811", "LM":"3000", "DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200", "bcrypt":"3200",
-		"Sun MD5 Crypt":"3300", "WebEdition CMS":"3721", "Double SHA-1":"4500", "MD5(Chap)":"4800", "iSCSI CHAP Authentication":"4800",
-		"SHA3-256":"5000", "Half MD5":"5100", "NetNTLMv1-VANILLA / NetNTLMv1+ESS":"5500", "NetNTLMv2":"5600", "Cisco-IOS(SHA-256)":"5700",
-		"Samsung Android Password/PIN":"5800", "RIPEMD-160":"6000", "Whirlpool":"6100", "AIX(smd5)":"6300", "AIX(ssha256)":"6400",
-		"AIX(ssha512)":"6500", "AIX(ssha1)":"6700", "Lastpass":"6800", "GOST R 34.11-94":"6900", "Fortigate(FortiOS)":"7000",
-		"OSX v10.8":"7100", "OSX v10.9":"7100", "GRUB 2":"7200", "IPMI2 RAKP HMAC-SHA1":"7300", "SHA-256 Crypt":"7400",
-		"Kerberos 5 AS-REQ Pre-Auth":"7500", "Redmine Project Management Web App":"7600", "SAP CODVN B (BCODE)":"7700",
-		"SAP CODVN F/G (PASSCODE)":"7800", "Drupal ≥ v7.x":"7900", "Sybase ASE":"8000", "Citrix Netscaler":"8100",
-		"DNSSEC(NSEC3)":"8300", "Woltlab Burning Board 3.x":"8400", "RACF":"8500", "Lotus Notes/Domino 5":"8600",
-		"Lotus Notes/Domino 6":"8700"
+		"MD5":"0", "Joomla < v2.5.18":"11", "osCommerce":"21", "xt:Commerce":"21", "Juniper Netscreen/SSG(ScreenOS)":"22", "SHA-1":"100",
+		"SHA-1(Base64)":"101", "Netscape LDAP SHA":"101", "nsldap":"101", "SSHA-1(Base64)":"111", "Netscape LDAP SSHA":"111", "nsldaps":"111",
+		"Oracle 11g":"112", "SMF ≥ v1.1":"121", "OSX v10.4":"122", "OSX v10.5":"122", "OSX v10.6":"122", "EPi":"123", "MSSQL(2000)":"131",
+		"MSSQL(2005)":"132", "MSSQL(2008)":"132", "EPiServer 6.x < v4":"141", "LinkedIn":"190", "MySQL323":"200", "MySQL5.x":"300",
+		"MySQL4.1":"300", "phpBB v3.x":"400", "Wordpress v2.6.0/2.6.1":"400", "PHPass' Portable Hash":"400", "Wordpress ≥ v2.6.2":"400",
+		"Joomla ≥ v2.5.18":"400", "MD5 Crypt":"500", "Cisco-IOS(MD5)":"500", "FreeBSD MD5":"500", "Django CMS(SHA-1)":"800", "MD4":"900",
+		"NTLM":"1000", "Domain Cached Credentials":"1100", "mscash":"1100", "SHA-256":"1400", "hMailServer":"1421", "EPiServer 6.x ≥ v4":"1441",
+		"DES(Unix)":"1500", "Traditional DES":"1500", "DEScrypt":"1500", "MD5(APR)":"1600", "Apache MD5":"1600", "md5apr1":"1600", "SHA-512":"1700",
+		"SSHA-512(Base64)":"1711", "LDAP(SSHA-512)":"1711", "OSX v10.7":"1722", "MSSQL(2012)":"1731", "MSSQL(2014)":"1731", "SHA-512 Crypt":"1800",
+		"Domain Cached Credentials 2":"2100", "mscash2":"2100", "Cisco-PIX(MD5)":"2400", "Cisco-ASA(MD5)":"2410", "Double MD5":"2600",
+		"vBulletin < v3.8.5":"2611", "PHPS":"2612", "vBulletin ≥ v3.8.5":"2711", "IP.Board v2+":"2811", "MyBB ≥ v1.2+":"2811", "LM":"3000",
+		"DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200", "bcrypt":"3200", "Sun MD5 Crypt":"3300", "WebEdition CMS":"3721",
+		"Double SHA-1":"4500", "MD5(Chap)":"4800", "iSCSI CHAP Authentication":"4800", "SHA3-256":"5000", "Half MD5":"5100",
+		"NetNTLMv1-VANILLA / NetNTLMv1+ESS":"5500", "NetNTLMv2":"5600", "Cisco-IOS(SHA-256)":"5700", "Samsung Android Password/PIN":"5800",
+		"RIPEMD-160":"6000", "Whirlpool":"6100", "AIX(smd5)":"6300", "AIX(ssha256)":"6400", "AIX(ssha512)":"6500", "AIX(ssha1)":"6700",
+		"Lastpass":"6800", "GOST R 34.11-94":"6900", "Fortigate(FortiOS)":"7000", "OSX v10.8":"7100", "OSX v10.9":"7100", "GRUB 2":"7200",
+		"IPMI2 RAKP HMAC-SHA1":"7300", "SHA-256 Crypt":"7400", "Kerberos 5 AS-REQ Pre-Auth":"7500", "Redmine Project Management Web App":"7600",
+		"SAP CODVN B (BCODE)":"7700", "SAP CODVN F/G (PASSCODE)":"7800", "Drupal ≥ v7.x":"7900", "Sybase ASE":"8000", "Citrix Netscaler":"8100",
+		"DNSSEC(NSEC3)":"8300", "Woltlab Burning Board 3.x":"8400", "RACF":"8500", "Lotus Notes/Domino 5":"8600", "Lotus Notes/Domino 6":"8700"
 	}
 	#iterate over regex
 	for hashtype in prototypes:
@@ -256,7 +253,7 @@ def main():
 	group = parser.add_mutually_exclusive_group()
 	group.add_argument("-f", "--file", action="store_true", help="analyze hashes in given file")
 	group.add_argument("-d", "--dir", action="store_true", help="analyze hashes in given file path")
-	parser.add_argument("-m", "--mode", action="store_true", help="include hashcat mode in output")
+	parser.add_argument("-m", "--mode", action="store_true", help="include corresponding hashcat mode in output")
 	parser.add_argument("-o", "--output", type=str, default="hashid_output.txt", help="set output filename (default: %(default)s)")
 	parser.add_argument("--version", action="version", version=banner)
 	args = parser.parse_args()

@@ -1,4 +1,10 @@
 ### hashID Changelog
+**Version 2.6.5**
+* make hashID usable as a python module
+* changed regex:
+	* PHPS
+	* Kerberos 5 AS-REQ Pre-Auth
+	
 **Version 2.6.4**
 * added hashes:
 	* PHPS

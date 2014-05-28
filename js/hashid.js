@@ -85,7 +85,7 @@
 			{regex: /^[a-f0-9]{1329}$/i, hashes: ["Microsoft MSTSC(RDP-File)"]},
 			{regex: /^[^\\\/\:\*\?\"<\>\|]{1,20}::[^\\\/\:\*\?\"<\>\|]{1,20}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$/i, hashes: ["NetNTLMv1-VANILLA / NetNTLMv1+ESS"]},
 			{regex: /^[^\\\/\:\*\?\"<\>\|]{1,20}::[^\\\/\:\*\?\"<\>\|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$/i, hashes: ["NetNTLMv2"]},
-			{regex: /^\$krb5pa\$.+$/i, hashes: ["Kerberos 5 AS-REQ Pre-Auth"]},
+			{regex: /^\$krb5pa\$23\$user\$realm\$salt\$[a-f0-9]{104}$/i, hashes: ["Kerberos 5 AS-REQ Pre-Auth"]},
 			{regex: /^\$scram\$[0-9]+\$[a-z0-9\/\.]{16}\$sha-1=[a-z0-9\/\.]{27},sha-256=[a-z0-9\/\.]{43},sha-512=[a-z0-9\/\.]{86}$/i, hashes: ["SCRAM Hash"]},
 			{regex: /^[a-f0-9]{40}:[a-f0-9]{0,32}$/i, hashes: ["Redmine Project Management Web App"]},
 			{regex: /^([0-9]{12})?\$[a-f0-9]{16}$/i, hashes: ["SAP CODVN B (BCODE)"]},
@@ -109,7 +109,7 @@
 			{regex: /^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/\+=-]{28}$/i, hashes: ["PBKDF2(Cryptacular)"]},
 			{regex: /^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$/i, hashes: ["PBKDF2(Dwayne Litzenberger)"]},
 			{regex: /^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/+=]+$/i, hashes: ["Fairly Secure Hashed Password"]},
-			{regex: /^\$PHPS\$[^\$]+\$[a-f0-9]{32}$/i, hashes: ["PHPS"]}
+			{regex: /^\$PHPS\$.+\$[a-f0-9]{32}$/i, hashes: ["PHPS"]}
 		];
 		var result = [];
 		for(var hash_id=0; hash_id < hash_arr.length; hash_id++){
