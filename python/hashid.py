@@ -252,7 +252,7 @@ def main():
 
 	#configure argparse
 	parser = argparse.ArgumentParser(formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=36), usage=usage, description=description, epilog=epilog)
-	parser.add_argument("input", type=str, help="identify given input")
+	parser.add_argument("input", type=str, help="identify given input", default="-")
 	group = parser.add_mutually_exclusive_group()
 	group.add_argument("-f", "--file", action="store_true", help="analyze hashes in given file")
 	group.add_argument("-d", "--dir", action="store_true", help="analyze hashes in given file path")
