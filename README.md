@@ -10,7 +10,7 @@ A full list of supported hashes is found [here](hashinfo.xlsx).
 It is able to identify a single hash, parse a file or read files in a directory and identify the hashes within them.    
 There is also a [nodejs](js) version of hashID available which is easily set up to provide online hash identification.  
 
-*Note: When identifying a single hash on *nix operating systems remember to use single quotes to prevent interpolation*
+*Note: When identifying a hash on *nix operating systems use single quotes to prevent interpolation*
 
 Install
 ------
@@ -28,15 +28,15 @@ Usage
 $ python3 hashid.py INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]
 ```
 
-| Parameter        				| Description      				  					|
-| ----------------------------- | -------------------------------------------------	|
-| input					      	| identify given input  		  					|  
-| -f, --file 					| analyze hashes in given file	  					|
-| -d, --dir 					| analyze hashes in given file path					|
-| -m, --mode	              	| include hashcat mode in output					|
-| -o OUTPUT, --output OUTPUT	| set output filename (default: hashid_output.txt)	|
-| --help	    				| show this help message and exit 					|
-| --version                   	| show program's version number and exit			|
+| Parameter        				 | Description      				  				  |
+| :----------------------------- | :------------------------------------------------- |
+| input					      	 | identify given input  		  					  |  
+| -f, --file 					 | analyze hashes in given file	  				 	  |
+| -d, --dir 					 | analyze hashes in given file path			      |
+| -m, --mode	              	 | include hashcat mode in output					  |
+| -o OUTPUT, --output OUTPUT	 | set output filename (default: hashid_output.txt)	  |
+| --help	    				 | show this help message and exit 					  |
+| --version                   	 | show program's version number and exit			  |
 
 
 Screenshot
