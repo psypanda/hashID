@@ -1,4 +1,16 @@
 ### hashID Changelog
+**Version 2.6.6**
+* added hashes:
+	* 1Password(Agile Keychain)
+	* 1Password(Cloud Keychain)
+	* IKE-PSK MD5
+	* IKE-PSK SHA1
+* new hashcat mode:
+	* 1Password(Agile Keychain)
+	* 1Password(Cloud Keychain)
+	* IKE-PSK MD5
+	* IKE-PSK SHA1
+
 **Version 2.6.5**
 * make hashID usable as a python module
 * changed regex:

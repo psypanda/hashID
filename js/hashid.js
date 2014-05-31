@@ -109,7 +109,11 @@
 			{regex: /^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/\+=-]{28}$/i, hashes: ["PBKDF2(Cryptacular)"]},
 			{regex: /^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$/i, hashes: ["PBKDF2(Dwayne Litzenberger)"]},
 			{regex: /^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/+=]+$/i, hashes: ["Fairly Secure Hashed Password"]},
-			{regex: /^\$PHPS\$.+\$[a-f0-9]{32}$/i, hashes: ["PHPS"]}
+			{regex: /^\$PHPS\$.+\$[a-f0-9]{32}$/i, hashes: ["PHPS"]},
+			{regex: /^[0-9]{4}:[a-f0-9]{16}:[a-f0-9]{2080}$/i, hashes: ["1Password(Agile Keychain)"]},
+			{regex: /^[a-f0-9]{64}:[a-f0-9]{32}:[0-9]{5}:[a-f0-9]{608}$/i, hashes: ["1Password(Cloud Keychain)"]},
+			{regex: /^[a-f0-9]{256}:[a-f0-9]{256}:[a-f0-9]{16}:[a-f0-9]{16}:[a-f0-9]{320}:[a-f0-9]{16}:[a-f0-9]{40}:[a-f0-9]{40}:[a-f0-9]{32}$/i, hashes: ["IKE-PSK MD5"]},
+			{regex: /^[a-f0-9]{256}:[a-f0-9]{256}:[a-f0-9]{16}:[a-f0-9]{16}:[a-f0-9]{320}:[a-f0-9]{16}:[a-f0-9]{40}:[a-f0-9]{40}:[a-f0-9]{40}$/i, hashes: ["IKE-PSK SHA1"]}
 		];
 		var result = [];
 		for(var hash_id=0; hash_id < hash_arr.length; hash_id++){
