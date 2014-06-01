@@ -1,4 +1,10 @@
 ### hashID Changelog
+**Version 2.7.0**
+* major rewrite
+* dropped "--file" and "--dir" (obsolete)
+* all output defaults to stdout
+* see readme.md for new usage
+
 **Version 2.6.7**
 * small cosmetic changes
 * new hashcat mode:
