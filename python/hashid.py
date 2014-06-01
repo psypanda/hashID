@@ -130,13 +130,13 @@ hashcatModes = {
 	"LDAP(SSHA-512)":"1711", "OSX v10.7":"1722", "MSSQL(2012)":"1731", "MSSQL(2014)":"1731", "SHA-512 Crypt":"1800", "Domain Cached Credentials 2":"2100",
 	"mscash2":"2100", "Cisco-PIX(MD5)":"2400", "Cisco-ASA(MD5)":"2410", "Double MD5":"2600", "vBulletin < v3.8.5":"2611", "PHPS":"2612", "vBulletin ≥ v3.8.5":"2711",
 	"IP.Board v2+":"2811", "MyBB ≥ v1.2+":"2811", "LM":"3000", "DES(Oracle)":"3100", "Oracle 7-10g":"3100", "Blowfish(OpenBSD)":"3200", "bcrypt":"3200",
-	"Sun MD5 Crypt":"3300", "WebEdition CMS":"3721", "Double SHA-1":"4500", "MD5(Chap)":"4800", "iSCSI CHAP Authentication":"4800", "SHA3-256":"5000", "Half MD5":"5100",
-	"IKE-PSK MD5":"5300", "IKE-PSK SHA1":"5400", "NetNTLMv1-VANILLA / NetNTLMv1+ESS":"5500", "NetNTLMv2":"5600", "Cisco-IOS(SHA-256)":"5700", "Samsung Android Password/PIN":"5800",
-	"RIPEMD-160":"6000", "Whirlpool":"6100", "AIX(smd5)":"6300", "AIX(ssha256)":"6400", "AIX(ssha512)":"6500", "1Password(Agile Keychain)":"6600", "AIX(ssha1)":"6700",
-	"Lastpass":"6800", "GOST R 34.11-94":"6900", "Fortigate(FortiOS)":"7000", "OSX v10.8":"7100", "OSX v10.9":"7100", "GRUB 2":"7200", "IPMI2 RAKP HMAC-SHA1":"7300",
-	"SHA-256 Crypt":"7400", "Kerberos 5 AS-REQ Pre-Auth":"7500", "Redmine Project Management Web App":"7600", "SAP CODVN B (BCODE)":"7700", "SAP CODVN F/G (PASSCODE)":"7800",
-	"Drupal ≥ v7.x":"7900", "Sybase ASE":"8000", "Citrix Netscaler":"8100", "1Password(Cloud Keychain)":"8200", "DNSSEC(NSEC3)":"8300", "Woltlab Burning Board 3.x":"8400",
-	"RACF":"8500", "Lotus Notes/Domino 5":"8600", "Lotus Notes/Domino 6":"8700"
+	"Sun MD5 Crypt":"3300", "MediaWiki":"3711", "WebEdition CMS":"3721", "Double SHA-1":"4500", "MD5(Chap)":"4800", "iSCSI CHAP Authentication":"4800", "SHA3-256":"5000",
+	"Half MD5":"5100", "IKE-PSK MD5":"5300", "IKE-PSK SHA1":"5400", "NetNTLMv1-VANILLA / NetNTLMv1+ESS":"5500", "NetNTLMv2":"5600", "Cisco-IOS(SHA-256)":"5700",
+	"Samsung Android Password/PIN":"5800", "RIPEMD-160":"6000", "Whirlpool":"6100", "AIX(smd5)":"6300", "AIX(ssha256)":"6400", "AIX(ssha512)":"6500",
+	"1Password(Agile Keychain)":"6600", "AIX(ssha1)":"6700", "Lastpass":"6800", "GOST R 34.11-94":"6900", "Fortigate(FortiOS)":"7000", "OSX v10.8":"7100", "OSX v10.9":"7100",
+	"GRUB 2":"7200", "IPMI2 RAKP HMAC-SHA1":"7300", "SHA-256 Crypt":"7400", "Kerberos 5 AS-REQ Pre-Auth":"7500", "Redmine Project Management Web App":"7600",
+	"SAP CODVN B (BCODE)":"7700", "SAP CODVN F/G (PASSCODE)":"7800", "Drupal ≥ v7.x":"7900", "Sybase ASE":"8000", "Citrix Netscaler":"8100", "1Password(Cloud Keychain)":"8200",
+	"DNSSEC(NSEC3)":"8300", "Woltlab Burning Board 3.x":"8400", "RACF":"8500", "Lotus Notes/Domino 5":"8600", "Lotus Notes/Domino 6":"8700"
 }
 
 
