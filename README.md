@@ -33,7 +33,7 @@ $ python3 hashid.py INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]
 | input					      	 | identify given input  		  					  |  
 | -f, --file 					 | analyze hashes in given file	  				 	  |
 | -d, --dir 					 | analyze hashes in given file path			      |
-| -m, --mode	              	 | include hashcat mode in output					  |
+| -m, --mode	              	 | include corresponding hashcat mode in output		  |
 | -o OUTPUT, --output OUTPUT	 | set output filename (default: hashid_output.txt)	  |
 | --help	    				 | show this help message and exit 					  |
 | --version                   	 | show program's version number and exit			  |
@@ -56,8 +56,8 @@ Analyzing 'ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686'
 
 
 $ python3 hashid.py -f hashes.txt
-Analysing 'home/psypanda/hashes.txt'
-Hashes analysed: 259
+Analyzing 'home/psypanda/hashes.txt'
+Hashes analyzed: 259
 Hashes found: 231
 Output written: '/home/psypanda/hashid_output.txt'
 ```
