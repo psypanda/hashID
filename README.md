@@ -8,6 +8,8 @@ This tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/),
 hashID is a tool written in Python 3.x which supports the identification of over 185 unique hash types using regular expressions.
 A full list of supported hashes is found [here](hashinfo.xlsx).    
 It is able to identify a single hash, parse a file or read files in a directory and identify the hashes within them.    
+Altough hashID is written in Python 3.x it should also work with Python 2.x except for the file and directory analyze.
+
 There is also a [nodejs](js) version of hashID available which is easily set up to provide online hash identification.  
 
 *Note: When identifying a hash on *nix operating systems use single quotes to prevent interpolation*
@@ -25,16 +27,13 @@ exit
 Usage
 ------
 ```
-$ python3 hashid.py INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]
+$ python3 hashid.py INPUT [-m] [--help] [--version]
 ```
 
 | Parameter        				 | Description      				  				  |
 | :----------------------------- | :------------------------------------------------- |
-| input					      	 | identify given input  		  					  |  
-| -f, --file 					 | analyze hashes in given file	  				 	  |
-| -d, --dir 					 | analyze hashes in given file path			      |
+| input					      	 | string or filename to analyze 					  |  
 | -m, --mode	              	 | include corresponding hashcat mode in output		  |
-| -o OUTPUT, --output OUTPUT	 | set output filename (default: hashid_output.txt)	  |
 | --help	    				 | show this help message and exit 					  |
 | --version                   	 | show program's version number and exit			  |
 
@@ -48,18 +47,38 @@ Analyzing '$P$8ohUJ.1sdFw09/bMaAQPTGDNi2BIUt1'
 [+] Joomla ≥ v2.5.18
 [+] PHPass' Portable Hash
 
-
 $ python3 hashid.py -m ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686
 Analyzing 'ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686'
 [+] Redmine Project Management Web App [Hashcat Mode: 7600]
 [+] SMF ≥ v1.1 [Hashcat Mode: 121]
 
+$ python3 hashid.py hashes.txt
+--File 'hashes.txt'--
+Analyzing '*85ADE5DDF71E348162894C71D73324C043838751'
+[+] MySQL5.x
+[+] MySQL4.1
+Analyzing '$2a$08$VPzNKPAY60FsAbnq.c.h5.XTCZtC1z.j3hnlDFGImN9FcpfR1QnLq'
+[+] Blowfish(OpenBSD)
+[+] Woltlab Burning Board 4.x
+[+] bcrypt
+--End of file 'hashes.txt'--
 
-$ python3 hashid.py -f hashes.txt
-Analyzing 'home/psypanda/hashes.txt'
-Hashes analyzed: 259
-Hashes found: 231
-Output written: '/home/psypanda/hashid_output.txt'
+$ python3 hashid.py folder/*.txt
+--File 'hashes.txt'--
+Analyzing '*85ADE5DDF71E348162894C71D73324C043838751'
+[+] MySQL5.x
+[+] MySQL4.1
+Analyzing '$2a$08$VPzNKPAY60FsAbnq.c.h5.XTCZtC1z.j3hnlDFGImN9FcpfR1QnLq'
+[+] Blowfish(OpenBSD)
+[+] Woltlab Burning Board 4.x
+[+] bcrypt
+--End of file 'hashes.txt'--
+--File 'hashes.txt'--
+Analyzing '{smd5}01234567$yOImZPvBC8dg1HjGYfH7j.'
+[+] AIX(smd5)
+Analyzing 'crypt1:fnd+8xl+U1E=:Wc30H8MPgAc='
+[+] Clavister Secure Gateway
+--End of file 'hashes.txt'--
 ```
 
 Contribute
