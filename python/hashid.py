@@ -16,9 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 __author__  = "c0re"
-__version__ = "2.6.7"
+__version__ = "2.7.0"
 __github__  = "https://github.com/psypanda/hashID"
-__banner__  = "hashID v%s (%s)" % (__version__, __github__)
 __license__ = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
 import re, os, sys, argparse, mimetypes
@@ -162,145 +161,55 @@ def identifyHash(phash):
         if (re.match(hashtype[0], phash, re.IGNORECASE)):
             for match in hashtype[1]:
                 if match in hashcatModes:
-                    #return algorithm and hashcat mode
                     yield (match, hashcatModes[match])
                 else:
-                    #return algorithm
                     yield (match, False)
 
 
-def analyzeFile(infile, outfile, hashcatMode=False):
-    """analyze input file and write output file"""
-    hashesAnalyzed = 0
-    hashesFound = 0 
-    print ("Analyzing '" + os.path.abspath(infile.name) + "'")
-    for line in infile:
-        #skip empty lines
-        if line.strip():
-            hashesAnalyzed += 1
-            line = line.strip()
-            #try to identify the input
-            identify = identifyHash(line)
-            outfile.write("Analyzing '" + line + "'\n")
-            hashesFound += writeResult(identify, outfile, hashcatMode)
-            outfile.write("\n")  #add cosmetic newline
-    print ("Hashes analyzed: " + str(hashesAnalyzed))
-    print ("Hashes found: " + str(hashesFound))
-    print ("Output written: '" + os.path.abspath(outfile.name) + "'")
-
-
-def analyzeDirectory(path, outfile, hashcatMode=False):
-    """analyze input directory and write output file"""
-    hashesAnalyzed = 0
-    hashesFound = 0
-    print ("Found " + str(len(os.listdir(path))) + " files in directory '" + os.path.abspath(path) + "'")
-    for file in os.listdir(path):
-        if os.path.isfile(os.path.join(path, file)):
-            #process valid mimetype files only
-            if mimetypes.guess_type(file)[0] == "text/plain":
-                print ("[+] Analyzing " + str(file))
-                with open(os.path.join(path, file), "r", encoding="utf-8") as infile:
-                    for line in infile:
-                        #skip empty lines
-                        if line.strip():
-                            hashesAnalyzed += 1
-                            line = line.strip()
-                            #try to identify the current line
-                            identify = identifyHash(line)
-                            outfile.write("Analyzing '" + line + "'\n")
-                            hashesFound += writeResult(identify, outfile, hashcatMode)
-                            outfile.write("\n")  #add cosmetic newline
-            else:
-                print ("[-] Skipping " + str(file))
-    print ("\nHashes analyzed: " + str(hashesAnalyzed))
-    print ("Hashes found: " + str(hashesFound))
-    print ("Output written: '" + os.path.abspath(outfile.name) + "'")
-
-
-def writeResult(identify, outfile, hashcatMode=False):
+def writeResult(candidate, identify, outfile=sys.stdout, hashcatMode=False):
     """create human readable output"""
+    outfile.write("Analyzing '" + candidate + "'\n")
     count = 0
     for result in identify:
-        #check for hashcat mode
         if hashcatMode and result[1]:
-            #write the result including hashcat mode
             outfile.write("[+] " + result[0] + " [Hashcat Mode: " + result[1] + "]\n")
         else:
-            #write the result
             outfile.write("[+] " + result[0] + "\n")
         count += 1
-    #check for unknown hash
     if count == 0:
         outfile.write("[+] Unknown hash\n")
     return (count > 0)
 
 
 def main():
-    usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
+    usage = "%(prog)s INPUT [-m] [--help] [--version]"
+    banner = "hashID v%s (%s)" % (__version__, __github__)
     description = "Identify the different types of hashes used to encrypt data"
 
-    #configure argparse
-    parser = argparse.ArgumentParser(formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=36), usage=usage, description=description, epilog=__license__)
-    parser.add_argument("input", type=str, help="identify input hash", default="-")
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument("-f", "--file", action="store_true", help="analyze hashes in given file")
-    group.add_argument("-d", "--dir", action="store_true", help="analyze hashes in given file path")
+    parser = argparse.ArgumentParser(usage=usage, description=description, epilog=__license__)
+    parser.add_argument("strings", metavar="input", type=str, nargs="+", help="string or filename to be analyzed")
     parser.add_argument("-m", "--mode", action="store_true", help="include corresponding hashcat mode in output")
-    parser.add_argument("-o", "--output", type=str, default="hashid_output.txt", help="set output filename (default: %(default)s)")
-    parser.add_argument("--version", action="version", version=__banner__)
+    parser.add_argument("--version", action="version", version=banner)
     args = parser.parse_args()
-
-    if args.input:
-        #check for file parameter
-        if args.file:
-            #file analyze requires python 3.x
-            if sys.hexversion < 0x03000000:
-                parser.error("argument -f/--file: Python 3.x required for file analyzing")
-            #check if file exists
-            if not os.path.isfile(args.input):
-                parser.error("argument -f/--file: can't open '" + args.input + "'")
-            #process valid mimetype files only
-            if not mimetypes.guess_type(args.input)[0] == "text/plain":
-                parser.error("argument -f/--file: not a valid mimetype for file '" + args.input + "'")
-            #open input and output file
-            with open(args.input, "r", encoding="utf-8") as infile:
-                with open(args.output, "w", encoding="utf-8") as outfile:
-                    #check for hashcat parameter
-                    if args.mode:
-                        analyzeFile(infile, outfile, True)
-                    else:
-                        analyzeFile(infile, outfile)
-                outfile.close()
-            infile.close()
-        #check for directory parameter
-        elif args.dir:
-            #directory analyze requires python 3.x
-            if sys.hexversion < 0x03000000:
-                parser.error("argument -f/--file: Python 3.x required for file analyzing")
-            #check if directory exists
-            if os.path.isdir(args.input):
-                #check if directory is not empty
-                if len(os.listdir(args.input)) > 0:
-                    #open output file
-                    with open(args.output, "w", encoding="utf-8") as outfile:
-                        #check for hashcat parameter
-                        if args.mode:
-                            analyzeDirectory(args.input, outfile, True)
-                        else:
-                            analyzeDirectory(args.input, outfile)
-                    outfile.close()
+    
+    if not args.strings:
+        for line in sys.stdin:
+            writeResult(line.strip(), identifyHash(line.strip()), sys.stdout, args.mode)
+    else:
+        for string in args.strings:
+            if os.path.isfile(string):
+                try:
+                    with open(string, "r", encoding="utf-8") as infile:
+                        print ("--File '%s'--" % string)
+                        for line in infile:
+                            writeResult(line.strip(), identifyHash(line.strip()), sys.stdout, args.mode)
+                    infile.close()
+                except:
+                    print ("--File '%s' - could not open--" % string)
                 else:
-                    parser.error("argument -d/--dir: No files found in folder '" + args.input + "'")
+                    print ("--End of file '%s'--" % string)
             else:
-                parser.error("argument -d/--dir: '" + args.input + "' is not a valid directory")
-        #analyze single hash
-        else:
-            print ("Analyzing '" + args.input + "'")
-            #check for hashcat parameter
-            if args.mode:
-                writeResult(identifyHash(args.input), sys.stdout, True)
-            else:
-                writeResult(identifyHash(args.input), sys.stdout)
+                writeResult(string, identifyHash(string), sys.stdout, args.mode)
 
 
 if __name__ == "__main__":
