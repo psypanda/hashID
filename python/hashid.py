@@ -1,9 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# @name: hashID.py
-# @author: c0re <https://psypanda.org/>                           
-# @date: 2014/05/31
-# @copyright: <https://www.gnu.org/licenses/gpl-3.0.html>
+#
+# Copyright (C) 2013-2014 by c0re
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+__author__  = "c0re"
+__version__ = "2.6.7"
+__github__  = "https://github.com/psypanda/hashID"
+__banner__  = "hashID v%s (%s)" % (__version__, __github__)
+__license__ = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
 import re, os, sys, argparse, mimetypes
 
@@ -243,22 +259,18 @@ def writeResult(identify, outfile, hashcatMode=False):
 
 
 def main():
-	#set essential variables
-	version = "v2.6.6"
-	banner = "%(prog)s " + version + " by c0re <https://github.com/psypanda/hashID>"
 	usage = "%(prog)s INPUT [-f | -d] [-m] [-o OUTFILE] [--help] [--version]"
 	description = "Identify the different types of hashes used to encrypt data"
-	epilog = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
 	#configure argparse
-	parser = argparse.ArgumentParser(formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=36), usage=usage, description=description, epilog=epilog)
-	parser.add_argument("input", type=str, help="identify given input", default="-")
+	parser = argparse.ArgumentParser(formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=36), usage=usage, description=description, epilog=__license__)
+	parser.add_argument("input", type=str, help="identify input hash", default="-")
 	group = parser.add_mutually_exclusive_group()
 	group.add_argument("-f", "--file", action="store_true", help="analyze hashes in given file")
 	group.add_argument("-d", "--dir", action="store_true", help="analyze hashes in given file path")
 	parser.add_argument("-m", "--mode", action="store_true", help="include corresponding hashcat mode in output")
 	parser.add_argument("-o", "--output", type=str, default="hashid_output.txt", help="set output filename (default: %(default)s)")
-	parser.add_argument("--version", action="version", version=banner)
+	parser.add_argument("--version", action="version", version=__banner__)
 	args = parser.parse_args()
 
 	if args.input:

@@ -1,4 +1,9 @@
 ### hashID Changelog
+**Version 2.6.7**
+* small cosmetic changes
+* new hashcat mode:
+	* MediaWiki
+
 **Version 2.6.6**
 * added hashes:
 	* 1Password(Agile Keychain)
