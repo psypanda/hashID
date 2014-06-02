@@ -254,7 +254,7 @@ def writeResult(candidate, identify, outfile=sys.stdout, hashcatMode=False):
 
 def main():
     usage = "%(prog)s INPUT [-m] [--help] [--version]"
-    banner = "hashID v%s (%s)" % (__version__, __github__)
+    banner = "hashID v{0} by {1} ({2})".format(__version__, __author__, __github__)
     description = "Identify the different types of hashes used to encrypt data"
 
     parser = argparse.ArgumentParser(usage=usage, description=description, epilog=__license__)
@@ -271,15 +271,15 @@ def main():
             if os.path.isfile(string):
                 try:
                     with open(string, "r", encoding="utf-8") as infile:
-                        print ("--File '%s'--" % string)
+                        print("--File '{0}'--".format(string))
                         for line in infile:
                             if line.strip():
                                 writeResult(line.strip(), identifyHash(line.strip()), sys.stdout, args.mode)
                     infile.close()
                 except:
-                    print("--File '%s' - could not open--" % string)
+                    print("--File '{0}' - could not open--".format(string))
                 else:
-                    print("--End of file '%s'--" % string)
+                    print("--End of file '{0}'--".format(string))
             else:
                 writeResult(string, identifyHash(string), sys.stdout, args.mode)
 
