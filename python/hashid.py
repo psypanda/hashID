@@ -149,8 +149,8 @@ prototypes = [
     Prototype(
         regex='^\\$P\\$[a-z0-9\\/\\.]{31}$',
         modes=[
-            HashMode(name='Wordpress \xe2\x89\xa5 v2.6.2', hashcat=400),
-            HashMode(name='Joomla \xe2\x89\xa5 v2.5.18', hashcat=400),
+            HashMode(name='Wordpress ≥ v2.6.2', hashcat=400),
+            HashMode(name='Joomla ≥ v2.5.18', hashcat=400),
             HashMode(name="PHPass' Portable Hash", hashcat=400)]),
     Prototype(
         regex='^[a-f0-9]{32}:[a-z0-9]{2}$',
@@ -178,7 +178,7 @@ prototypes = [
     Prototype(
         regex='^[a-f0-9]{32}:.{8}$',
         modes=[
-            HashMode(name='MyBB \xe2\x89\xa5 v1.2+', hashcat=2811)]),
+            HashMode(name='MyBB ≥ v1.2+', hashcat=2811)]),
     Prototype(
         regex='^[a-z0-9]{34}$',
         modes=[
@@ -279,7 +279,7 @@ prototypes = [
     Prototype(
         regex='^[a-f0-9]{32}:.{30}$',
         modes=[
-            HashMode(name='vBulletin \xe2\x89\xa5 v3.8.5', hashcat=2711)]),
+            HashMode(name='vBulletin ≥ v3.8.5', hashcat=2711)]),
     Prototype(
         regex='^[a-f0-9]{64}$',
         modes=[
@@ -320,7 +320,7 @@ prototypes = [
     Prototype(
         regex='^\\$episerver\\$\\*1\\*[a-z0-9=\\*\\+]{68}$',
         modes=[
-            HashMode(name='EPiServer 6.x \xe2\x89\xa5 v4', hashcat=1441)]),
+            HashMode(name='EPiServer 6.x ≥ v4', hashcat=1441)]),
     Prototype(
         regex='^0x0100[a-f0-9]{88}$',
         modes=[
@@ -384,7 +384,7 @@ prototypes = [
     Prototype(
         regex='^\\$S\\$[a-z0-9\\/\\.]{52}$',
         modes=[
-            HashMode(name='Drupal \xe2\x89\xa5 v7.x', hashcat=7900)]),
+            HashMode(name='Drupal > v7.x', hashcat=7900)]),
     Prototype(
         regex='^\\$5\\$(rounds=[0-9]+\\$)?[a-z0-9\\/\\.]{0,16}\\$[a-z0-9\\/\\.]{43}$',
         modes=[
@@ -460,7 +460,7 @@ prototypes = [
     Prototype(
         regex='^[a-f0-9]{40}:[^*]{1,25}$',
         modes=[
-            HashMode(name='SMF \xe2\x89\xa5 v1.1', hashcat=121)]),
+            HashMode(name='SMF ≥ v1.1', hashcat=121)]),
     Prototype(
         regex='^[a-f0-9]{40}(:[a-f0-9]{40})?$',
         modes=[
@@ -547,6 +547,7 @@ prototypes = [
             HashMode(name='IKE-PSK SHA1', hashcat=5400)])
 ]
 
+
 class HashID(object):
     """docstring for HashID"""
     def __init__(self, prototypes=prototypes):
@@ -581,8 +582,8 @@ def writeResult(candidate, identified_modes, outfile=sys.stdout, hashcatMode=Fal
 
 
 def main():
-    usage = "{0} INPUT [-m] [--help] [--version]".format(__file__)
-    banner = "hashID v{0} by {1} ({2})".format(__version__, __author__, __github__)
+    usage = "{} INPUT [-m] [--help] [--version]".format(__file__)
+    banner = "hashID v{} by {} ({})".format(__version__, __author__, __github__)
     description = "Identify the different types of hashes used to encrypt data"
 
     parser = argparse.ArgumentParser(usage=usage, description=description, epilog=__license__)
