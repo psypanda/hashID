@@ -547,14 +547,22 @@ prototypes = [
             HashMode(name='IKE-PSK SHA1', hashcat=5400)])
 ]
 
+class HashID(object):
+    """docstring for HashID"""
+    def __init__(self, prototypes=prototypes):
+        super(HashID, self).__init__()
 
-def identifyHash(phash):
-    """return algorithm and hashcat mode"""
-    phash = phash.strip()
-    for prototype in prototypes:
-        if (re.match(prototype.regex, phash, re.IGNORECASE)):
-            for mode in prototype.modes:
-                yield mode
+        # Set self.prototypes to a copy of prototypes to allow
+        # modification after instantiation
+        self.prototypes = list(prototypes)
+
+    def identifyHash(self, phash):
+        """return algorithm and hashcat mode"""
+        phash = phash.strip()
+        for prototype in prototypes:
+            if (re.match(prototype.regex, phash, re.IGNORECASE)):
+                for mode in prototype.modes:
+                    yield mode
 
 
 def writeResult(candidate, identified_modes, outfile=sys.stdout, hashcatMode=False):
@@ -583,9 +591,11 @@ def main():
     parser.add_argument("--version", action="version", version=banner)
     args = parser.parse_args()
 
+    hashID = HashID()
+
     if not args.strings:
         for line in sys.stdin:
-            writeResult(line.strip(), identifyHash(line.strip()), sys.stdout, args.mode)
+            writeResult(line.strip(), hashID.identifyHash(line.strip()), sys.stdout, args.mode)
     else:
         for string in args.strings:
             if os.path.isfile(string):
@@ -594,14 +604,14 @@ def main():
                         print("--File '{0}'--".format(string))
                         for line in infile:
                             if line.strip():
-                                writeResult(line.strip(), identifyHash(line.strip()), sys.stdout, args.mode)
+                                writeResult(line.strip(), hashID.identifyHash(line.strip()), sys.stdout, args.mode)
                     infile.close()
                 except:
                     print("--File '{0}' - could not open--".format(string))
                 else:
                     print("--End of file '{0}'--".format(string))
             else:
-                writeResult(string, identifyHash(string), sys.stdout, args.mode)
+                writeResult(string, hashID.identifyHash(string), sys.stdout, args.mode)
 
 
 if __name__ == "__main__":
