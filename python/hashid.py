@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
+
 # Copyright (C) 2013-2014 by c0re
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@ import re
 import os
 import sys
 import argparse
-import mimetypes
 
 # set regular expressions tuple
 prototypes = (
@@ -253,7 +252,7 @@ def writeResult(candidate, identify, outfile=sys.stdout, hashcatMode=False):
 
 
 def main():
-    usage = "%(prog)s INPUT [-m] [--help] [--version]"
+    usage = "{0} INPUT [-m] [--help] [--version]".format(__file__)
     banner = "hashID v{0} by {1} ({2})".format(__version__, __author__, __github__)
     description = "Identify the different types of hashes used to encrypt data"
 
