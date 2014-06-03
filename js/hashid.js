@@ -104,7 +104,7 @@
 			{regex: /^\$sha1\$[0-9]+\$[a-z0-9\/\.]{0,64}\$[a-z0-9\/\.]{28}$/i, hashes: ["SHA-1 Crypt"]},
 			{regex: /^[a-f0-9]{70}$/i, hashes: ["hMailServer"]},
 			{regex: /^[:\$][AB][:\$]([a-f0-9]{1,8}[:\$])?[a-f0-9]{32}$/i, hashes: ["MediaWiki"]},
-			{regex: /^[a-f0-9]{140}$/i, hashes: ["xAuth"]},
+			{regex: /^[a-f0-9]{140}$/i, hashes: ["Minecraft(xAuth)"]},
 			{regex: /^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/\.]{22}\$([a-z0-9\/\.]{27}|[a-z0-9\/\.]{43}|[a-z0-9\/\.]{86})$/i, hashes: ["PBKDF2(Generic)"]},
 			{regex: /^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/\+=-]{28}$/i, hashes: ["PBKDF2(Cryptacular)"]},
 			{regex: /^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$/i, hashes: ["PBKDF2(Dwayne Litzenberger)"]},
