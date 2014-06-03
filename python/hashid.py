@@ -174,7 +174,7 @@ prototypes = [
     Prototype(
         regex='^[a-f0-9]{32}:.{5}$',
         modes=[
-            HashMode(name='IP.Board v2+', hashcat=2811)]),
+            HashMode(name='IP.Board ≥ v2+', hashcat=2811)]),
     Prototype(
         regex='^[a-f0-9]{32}:.{8}$',
         modes=[
