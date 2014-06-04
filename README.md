@@ -30,12 +30,13 @@ Usage
 $ python3 hashid.py INPUT [-m] [--help] [--version]
 ```
 
-| Parameter        				 | Description      				  				  |
-| :----------------------------- | :------------------------------------------------- |
-| input					      	 | string or filename to analyze 					  |  
-| -m, --mode	              	 | include corresponding hashcat mode in output		  |
-| --help	    				 | show this help message and exit 					  |
-| --version                   	 | show program's version number and exit			  |
+| Parameter        				 | Description      				  				   |
+| :----------------------------- | :-------------------------------------------------- |
+| input		 			      	 | string or filename to analyze 					   |
+| -a, --all 	              	 | list all hash algorithms including salted passwords |
+| -m, --mode	              	 | include corresponding hashcat mode in output		   |
+| --help	    				 | show this help message and exit 					   |
+| --version                   	 | show program's version number and exit			   |
 
 
 Screenshot
@@ -97,6 +98,7 @@ Credits
 ------
 * Thanks to [sigkill](https://github.com/sigkill-rcode) who helped me numerous times fixing and optimizing the code
 * Thanks to [kmulvey](https://github.com/kmulvey) for supplying and maintaining a nodejs version of hashID
+* Thanks to [bburky](https://github.com/bburky) for extending hashIDs functionality and numerous ideas to improve it
 
 Resources
 ------
