@@ -31,13 +31,13 @@ HashMode = namedtuple('HashMode', ['name', 'hashcat'])
 
 prototypes = [
     Prototype(
-        regex='^[a-f0-9]{4}$',
+        regex=r'^[a-f0-9]{4}$',
         modes=[
             HashMode(name='CRC-16', hashcat=None),
             HashMode(name='CRC-16-CCITT', hashcat=None),
             HashMode(name='FCS-16', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{8}$',
+        regex=r'^[a-f0-9]{8}$',
         modes=[
             HashMode(name='Adler-32', hashcat=None),
             HashMode(name='CRC-32', hashcat=None),
@@ -51,21 +51,21 @@ prototypes = [
             HashMode(name='ELF-32', hashcat=None),
             HashMode(name='XOR-32', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{6}$',
+        regex=r'^[a-f0-9]{6}$',
         modes=[
             HashMode(name='CRC-24', hashcat=None)]),
     Prototype(
-        regex='^\+[a-z0-9\/\.]{12}$',
+        regex=r'^\+[a-z0-9\/\.]{12}$',
         modes=[
             HashMode(name='Eggdrop IRC Bot', hashcat=None)]),
     Prototype(
-        regex='^[a-z0-9\/\.]{13}$',
+        regex=r'^[a-z0-9\/\.]{13}$',
         modes=[
             HashMode(name='DES(Unix)', hashcat=1500),
             HashMode(name='Traditional DES', hashcat=1500),
             HashMode(name='DEScrypt', hashcat=1500)]),
     Prototype(
-        regex='^[a-f0-9]{16}$',
+        regex=r'^[a-f0-9]{16}$',
         modes=[
             HashMode(name='MySQL323', hashcat=200),
             HashMode(name='DES(Oracle)', hashcat=3100),
@@ -74,27 +74,27 @@ prototypes = [
             HashMode(name='FNV-164', hashcat=None),
             HashMode(name='CRC-64', hashcat=None)]),
     Prototype(
-        regex='^[a-z0-9\/\.]{16}$',
+        regex=r'^[a-z0-9\/\.]{16}$',
         modes=[
             HashMode(name='Cisco-PIX(MD5)', hashcat=2400)]),
     Prototype(
-        regex='^\([a-z0-9\+\/]{20}\)$',
+        regex=r'^\([a-z0-9\+\/]{20}\)$',
         modes=[
             HashMode(name='Lotus Notes/Domino 6', hashcat=8700)]),
     Prototype(
-        regex='^_[a-z0-9\/\.]{19}$',
+        regex=r'^_[a-z0-9\/\.]{19}$',
         modes=[
             HashMode(name='BSDi Crypt', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{24}$',
+        regex=r'^[a-f0-9]{24}$',
         modes=[
             HashMode(name='CRC-96(ZIP)', hashcat=None)]),
     Prototype(
-        regex='^[a-z0-9\/\.]{24}$',
+        regex=r'^[a-z0-9\/\.]{24}$',
         modes=[
             HashMode(name='Crypt16', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{32}$',
+        regex=r'^[a-f0-9]{32}$',
         modes=[
             HashMode(name='MD5', hashcat=0),
             HashMode(name='MD4', hashcat=900),
@@ -111,80 +111,80 @@ prototypes = [
             HashMode(name='Skein-512(128)', hashcat=None),
             HashMode(name='Lotus Notes/Domino 5', hashcat=8600)]),
     Prototype(
-        regex='^(\$NT\$)?[a-f0-9]{32}$',
+        regex=r'^(\$NT\$)?[a-f0-9]{32}$',
         modes=[
             HashMode(name='NTLM', hashcat=1000)]),
     Prototype(
-        regex='^[a-f0-9]{32}(:[^\\\/\:\*\?\"\<\>\|]{1,20})?$',
+        regex=r'^[a-f0-9]{32}(:[^\\\/\:\*\?\"\<\>\|]{1,20})?$',
         modes=[
             HashMode(name='Domain Cached Credentials', hashcat=1100),
             HashMode(name='mscash', hashcat=1100)]),
     Prototype(
-        regex='^(\$DCC2\$10240#[^\\\/\:\*\?\"\<\>\|]{1,20}#)?[a-f0-9]{32}$',
+        regex=r'^(\$DCC2\$10240#[^\\\/\:\*\?\"\<\>\|]{1,20}#)?[a-f0-9]{32}$',
         modes=[
             HashMode(name='Domain Cached Credentials 2', hashcat=2100),
             HashMode(name='mscash2', hashcat=2100)]),
     Prototype(
-        regex='^{SHA}[a-z0-9\+\/=]{28}$',
+        regex=r'^{SHA}[a-z0-9\+\/=]{28}$',
         modes=[
             HashMode(name='SHA-1(Base64)', hashcat=101),
             HashMode(name='Netscape LDAP SHA', hashcat=101),
             HashMode(name='nsldap', hashcat=101)]),
     Prototype(
-        regex='^\$1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$',
+        regex=r'^\$1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$',
         modes=[
             HashMode(name='MD5 Crypt', hashcat=500),
             HashMode(name='Cisco-IOS(MD5)', hashcat=500),
             HashMode(name='FreeBSD MD5', hashcat=500)]),
     Prototype(
-        regex='^0x[a-f0-9]{32}$',
+        regex=r'^0x[a-f0-9]{32}$',
         modes=[
             HashMode(name='Lineage II C4', hashcat=None)]),
     Prototype(
-        regex='^\$H\$[a-z0-9\/\.]{31}$',
+        regex=r'^\$H\$[a-z0-9\/\.]{31}$',
         modes=[
             HashMode(name='phpBB v3.x', hashcat=400),
             HashMode(name='Wordpress v2.6.0/2.6.1', hashcat=400),
             HashMode(name="PHPass' Portable Hash", hashcat=400)]),
     Prototype(
-        regex='^\$P\$[a-z0-9\/\.]{31}$',
+        regex=r'^\$P\$[a-z0-9\/\.]{31}$',
         modes=[
             HashMode(name='Wordpress ≥ v2.6.2', hashcat=400),
             HashMode(name='Joomla ≥ v2.5.18', hashcat=400),
             HashMode(name="PHPass' Portable Hash", hashcat=400)]),
     Prototype(
-        regex='^[a-f0-9]{32}:[a-z0-9]{2}$',
+        regex=r'^[a-f0-9]{32}:[a-z0-9]{2}$',
         modes=[
             HashMode(name='osCommerce', hashcat=21),
             HashMode(name='xt:Commerce', hashcat=21)]),
     Prototype(
-        regex='^\$apr1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$',
+        regex=r'^\$apr1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$',
         modes=[
             HashMode(name='MD5(APR)', hashcat=1600),
             HashMode(name='Apache MD5', hashcat=1600),
             HashMode(name='md5apr1', hashcat=1600)]),
     Prototype(
-        regex='^{smd5}[a-z0-9\.\$]{31}$',
+        regex=r'^{smd5}[a-z0-9\.\$]{31}$',
         modes=[
             HashMode(name='AIX(smd5)', hashcat=6300)]),
     Prototype(
-        regex='^[a-f0-9]{32}:[a-f0-9]{32}$',
+        regex=r'^[a-f0-9]{32}:[a-f0-9]{32}$',
         modes=[
             HashMode(name='WebEdition CMS', hashcat=3721)]),
     Prototype(
-        regex='^[a-f0-9]{32}:.{5}$',
+        regex=r'^[a-f0-9]{32}:.{5}$',
         modes=[
             HashMode(name='IP.Board ≥ v2+', hashcat=2811)]),
     Prototype(
-        regex='^[a-f0-9]{32}:.{8}$',
+        regex=r'^[a-f0-9]{32}:.{8}$',
         modes=[
             HashMode(name='MyBB ≥ v1.2+', hashcat=2811)]),
     Prototype(
-        regex='^[a-z0-9]{34}$',
+        regex=r'^[a-z0-9]{34}$',
         modes=[
             HashMode(name='CryptoCurrency(Adress)', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{40}$',
+        regex=r'^[a-f0-9]{40}$',
         modes=[
             HashMode(name='SHA-1', hashcat=100),
             HashMode(name='Double SHA-1', hashcat=4500),
@@ -198,26 +198,26 @@ prototypes = [
             HashMode(name='Skein-256(160)', hashcat=None),
             HashMode(name='Skein-512(160)', hashcat=None)]),
     Prototype(
-        regex='^\*[a-f0-9]{40}$',
+        regex=r'^\*[a-f0-9]{40}$',
         modes=[
             HashMode(name='MySQL5.x', hashcat=300),
             HashMode(name='MySQL4.1', hashcat=300)]),
     Prototype(
-        regex='^[a-z0-9]{43}$',
+        regex=r'^[a-z0-9]{43}$',
         modes=[
             HashMode(name='Cisco-IOS(SHA-256)', hashcat=5700)]),
     Prototype(
-        regex='^{SSHA}[a-z0-9\+\/=]{40}$',
+        regex=r'^{SSHA}[a-z0-9\+\/=]{40}$',
         modes=[
             HashMode(name='SSHA-1(Base64)', hashcat=111),
             HashMode(name='Netscape LDAP SSHA', hashcat=111),
             HashMode(name='nsldaps', hashcat=111)]),
     Prototype(
-        regex='^[a-z0-9]{47}$',
+        regex=r'^[a-z0-9]{47}$',
         modes=[
             HashMode(name='Fortigate(FortiOS)', hashcat=7000)]),
     Prototype(
-        regex='^[a-f0-9]{48}$',
+        regex=r'^[a-f0-9]{48}$',
         modes=[
             HashMode(name='Haval-192', hashcat=None),
             HashMode(name='Tiger-192', hashcat=None),
@@ -226,28 +226,28 @@ prototypes = [
             HashMode(name='OSX v10.5', hashcat=122),
             HashMode(name='OSX v10.6', hashcat=122)]),
     Prototype(
-        regex='^[a-f0-9]{51}$',
+        regex=r'^[a-f0-9]{51}$',
         modes=[
             HashMode(name='Palshop CMS', hashcat=None)]),
     Prototype(
-        regex='^[a-z0-9]{51}$',
+        regex=r'^[a-z0-9]{51}$',
         modes=[
             HashMode(name='CryptoCurrency(PrivateKey)', hashcat=None)]),
     Prototype(
-        regex='^{ssha1}[a-z0-9\.\$]{47}$',
+        regex=r'^{ssha1}[a-z0-9\.\$]{47}$',
         modes=[
             HashMode(name='AIX(ssha1)', hashcat=6700)]),
     Prototype(
-        regex='^0x0100[a-f0-9]{48}$',
+        regex=r'^0x0100[a-f0-9]{48}$',
         modes=[
             HashMode(name='MSSQL(2005)', hashcat=132),
             HashMode(name='MSSQL(2008)', hashcat=132)]),
     Prototype(
-        regex='^(\$md5,rounds=[0-9]+\$|\$md5\$rounds=[0-9]+\$|\$md5\$)[a-z0-9\/\.]{0,16}(\$|\$\$)[a-z0-9\/\.]{22}$',
+        regex=r'^(\$md5,rounds=[0-9]+\$|\$md5\$rounds=[0-9]+\$|\$md5\$)[a-z0-9\/\.]{0,16}(\$|\$\$)[a-z0-9\/\.]{22}$',
         modes=[
             HashMode(name='Sun MD5 Crypt', hashcat=3300)]),
     Prototype(
-        regex='^[a-f0-9]{56}$',
+        regex=r'^[a-f0-9]{56}$',
         modes=[
             HashMode(name='SHA-224', hashcat=None),
             HashMode(name='Haval-224', hashcat=None),
@@ -255,33 +255,33 @@ prototypes = [
             HashMode(name='Skein-256(224)', hashcat=None),
             HashMode(name='Skein-512(224)', hashcat=None)]),
     Prototype(
-        regex='^(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$',
+        regex=r'^(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$',
         modes=[
             HashMode(name='Blowfish(OpenBSD)', hashcat=3200),
             HashMode(name='Woltlab Burning Board 4.x', hashcat=None),
             HashMode(name='bcrypt', hashcat=3200)]),
     Prototype(
-        regex='^[a-f0-9]{40}:[a-f0-9]{16}$',
+        regex=r'^[a-f0-9]{40}:[a-f0-9]{16}$',
         modes=[
             HashMode(name='Samsung Android Password/PIN', hashcat=5800)]),
     Prototype(
-        regex='^S:[a-f0-9]{60}$',
+        regex=r'^S:[a-f0-9]{60}$',
         modes=[
             HashMode(name='Oracle 11g', hashcat=112)]),
     Prototype(
-        regex='^\$bcrypt-sha256\$(2[axy]|2)\,[0-9]+\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$',
+        regex=r'^\$bcrypt-sha256\$(2[axy]|2)\,[0-9]+\$[a-z0-9\/\.]{22}\$[a-z0-9\/\.]{31}$',
         modes=[
             HashMode(name='BCrypt(SHA-256)', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{32}:.{3}$',
+        regex=r'^[a-f0-9]{32}:.{3}$',
         modes=[
             HashMode(name='vBulletin < v3.8.5', hashcat=2611)]),
     Prototype(
-        regex='^[a-f0-9]{32}:.{30}$',
+        regex=r'^[a-f0-9]{32}:.{30}$',
         modes=[
             HashMode(name='vBulletin ≥ v3.8.5', hashcat=2711)]),
     Prototype(
-        regex='^[a-f0-9]{64}$',
+        regex=r'^[a-f0-9]{64}$',
         modes=[
             HashMode(name='SHA-256', hashcat=1400),
             HashMode(name='RIPEMD-256', hashcat=None),
@@ -293,56 +293,56 @@ prototypes = [
             HashMode(name='Skein-512(256)', hashcat=None),
             HashMode(name='Ventrilo', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{32}:[a-z0-9]{32}$',
+        regex=r'^[a-f0-9]{32}:[a-z0-9]{32}$',
         modes=[
             HashMode(name='Joomla < v2.5.18', hashcat=11)]),
     Prototype(
-        regex='^[a-f-0-9]{32}:[a-f-0-9]{32}$',
+        regex=r'^[a-f-0-9]{32}:[a-f-0-9]{32}$',
         modes=[
             HashMode(name='SAM(LM_Hash:NT_Hash)', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{32}:[0-9]{32}:[0-9]{2}$',
+        regex=r'^[a-f0-9]{32}:[0-9]{32}:[0-9]{2}$',
         modes=[
             HashMode(name='MD5(Chap)', hashcat=4800),
             HashMode(name='iSCSI CHAP Authentication', hashcat=4800)]),
     Prototype(
-        regex='^\$episerver\$\*0\*[a-z0-9=\*\+]{52}$',
+        regex=r'^\$episerver\$\*0\*[a-z0-9=\*\+]{52}$',
         modes=[
             HashMode(name='EPiServer 6.x < v4', hashcat=141)]),
     Prototype(
-        regex='^{ssha256}[a-z0-9\.\$]{63}$',
+        regex=r'^{ssha256}[a-z0-9\.\$]{63}$',
         modes=[
             HashMode(name='AIX(ssha256)', hashcat=6400)]),
     Prototype(
-        regex='^[a-f0-9]{80}$',
+        regex=r'^[a-f0-9]{80}$',
         modes=[
             HashMode(name='RIPEMD-320', hashcat=None)]),
     Prototype(
-        regex='^\$episerver\$\*1\*[a-z0-9=\*\+]{68}$',
+        regex=r'^\$episerver\$\*1\*[a-z0-9=\*\+]{68}$',
         modes=[
             HashMode(name='EPiServer 6.x ≥ v4', hashcat=1441)]),
     Prototype(
-        regex='^0x0100[a-f0-9]{88}$',
+        regex=r'^0x0100[a-f0-9]{88}$',
         modes=[
             HashMode(name='MSSQL(2000)', hashcat=131)]),
     Prototype(
-        regex='^[a-f0-9]{96}$',
+        regex=r'^[a-f0-9]{96}$',
         modes=[
             HashMode(name='SHA-384', hashcat=None),
             HashMode(name='SHA3-384', hashcat=None),
             HashMode(name='Skein-512(384)', hashcat=None),
             HashMode(name='Skein-1024(384)', hashcat=None)]),
     Prototype(
-        regex='^{SSHA512}[a-z0-9\+\/]{96}={0,2}$',
+        regex=r'^{SSHA512}[a-z0-9\+\/]{96}={0,2}$',
         modes=[
             HashMode(name='SSHA-512(Base64)', hashcat=1711),
             HashMode(name='LDAP(SSHA-512)', hashcat=1711)]),
     Prototype(
-        regex='^{ssha512}[0-9]{2}\$[a-z0-9\.\/]{16,48}\$[a-z0-9\.\/]{86}$',
+        regex=r'^{ssha512}[0-9]{2}\$[a-z0-9\.\/]{16,48}\$[a-z0-9\.\/]{86}$',
         modes=[
             HashMode(name='AIX(ssha512)', hashcat=6500)]),
     Prototype(
-        regex='^[a-f0-9]{128}$',
+        regex=r'^[a-f0-9]{128}$',
         modes=[
             HashMode(name='SHA-512', hashcat=1700),
             HashMode(name='Whirlpool', hashcat=6100),
@@ -352,197 +352,197 @@ prototypes = [
             HashMode(name='Skein-512', hashcat=None),
             HashMode(name='Skein-1024(512)', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{136}$',
+        regex=r'^[a-f0-9]{136}$',
         modes=[
             HashMode(name='OSX v10.7', hashcat=1722)]),
     Prototype(
-        regex='^0x0200[a-f0-9]{136}$',
+        regex=r'^0x0200[a-f0-9]{136}$',
         modes=[
             HashMode(name='MSSQL(2012)', hashcat=1731),
             HashMode(name='MSSQL(2014)', hashcat=1731)]),
     Prototype(
-        regex='^\$ml\$[0-9]+\$[a-f0-9]{64}\$[a-f0-9]{128}$',
+        regex=r'^\$ml\$[0-9]+\$[a-f0-9]{64}\$[a-f0-9]{128}$',
         modes=[
             HashMode(name='OSX v10.8', hashcat=7100),
             HashMode(name='OSX v10.9', hashcat=7100)]),
     Prototype(
-        regex='^[a-f0-9]{256}$',
+        regex=r'^[a-f0-9]{256}$',
         modes=[
             HashMode(name='Skein-1024', hashcat=None)]),
     Prototype(
-        regex='^grub\.pbkdf2\.sha512\.[0-9]+\.[a-f0-9]{128,2048}\.[a-f0-9]{128}$',
+        regex=r'^grub\.pbkdf2\.sha512\.[0-9]+\.[a-f0-9]{128,2048}\.[a-f0-9]{128}$',
         modes=[
             HashMode(name='GRUB 2', hashcat=7200)]),
     Prototype(
-        regex='^sha1\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{40}$',
+        regex=r'^sha1\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{40}$',
         modes=[
             HashMode(name='Django CMS(SHA-1)', hashcat=800)]),
     Prototype(
-        regex='^[a-f0-9]{49}$',
+        regex=r'^[a-f0-9]{49}$',
         modes=[
             HashMode(name='Citrix Netscaler', hashcat=8100)]),
     Prototype(
-        regex='^\$S\$[a-z0-9\/\.]{52}$',
+        regex=r'^\$S\$[a-z0-9\/\.]{52}$',
         modes=[
             HashMode(name='Drupal > v7.x', hashcat=7900)]),
     Prototype(
-        regex='^\$5\$(rounds=[0-9]+\$)?[a-z0-9\/\.]{0,16}\$[a-z0-9\/\.]{43}$',
+        regex=r'^\$5\$(rounds=[0-9]+\$)?[a-z0-9\/\.]{0,16}\$[a-z0-9\/\.]{43}$',
         modes=[
             HashMode(name='SHA-256 Crypt', hashcat=7400)]),
     Prototype(
-        regex='^0x[a-f0-9]{4}[a-f0-9]{16}[a-f0-9]{64}$',
+        regex=r'^0x[a-f0-9]{4}[a-f0-9]{16}[a-f0-9]{64}$',
         modes=[
             HashMode(name='Sybase ASE', hashcat=8000)]),
     Prototype(
-        regex='^\$6\$(rounds=[0-9]+\$)?[a-z0-9\/\.]{0,16}\$[a-z0-9\/\.]{86}$',
+        regex=r'^\$6\$(rounds=[0-9]+\$)?[a-z0-9\/\.]{0,16}\$[a-z0-9\/\.]{86}$',
         modes=[
             HashMode(name='SHA-512 Crypt', hashcat=1800)]),
     Prototype(
-        regex='^\$sha\$[a-z0-9]{1,16}\$([a-f0-9]{32}|[a-f0-9]{40}|[a-f0-9]{64}|[a-f0-9]{128}|[a-f0-9]{140})$',
+        regex=r'^\$sha\$[a-z0-9]{1,16}\$([a-f0-9]{32}|[a-f0-9]{40}|[a-f0-9]{64}|[a-f0-9]{128}|[a-f0-9]{140})$',
         modes=[
             HashMode(name='Minecraft(AuthMe Reloaded)', hashcat=None)]),
     Prototype(
-        regex='^sha256\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{64}$',
+        regex=r'^sha256\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{64}$',
         modes=[
             HashMode(name='Django CMS(SHA-256)', hashcat=None)]),
     Prototype(
-        regex='^sha384\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{96}$',
+        regex=r'^sha384\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{96}$',
         modes=[
             HashMode(name='Django CMS(SHA-384)', hashcat=None)]),
     Prototype(
-        regex='^crypt1:[a-z0-9\+\=]{12}:[a-z0-9\+\=]{12}$',
+        regex=r'^crypt1:[a-z0-9\+\=]{12}:[a-z0-9\+\=]{12}$',
         modes=[
             HashMode(name='Clavister Secure Gateway', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{112}$',
+        regex=r'^[a-f0-9]{112}$',
         modes=[
             HashMode(name='Cisco VPN Client(PCF-File)', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{1329}$',
+        regex=r'^[a-f0-9]{1329}$',
         modes=[
             HashMode(name='Microsoft MSTSC(RDP-File)', hashcat=None)]),
     Prototype(
-        regex='^[^\\\/:*?\"\<\>\|]{1,20}::[^\\\/:*?\"\<\>\|]{1,20}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$',
+        regex=r'^[^\\\/:*?\"\<\>\|]{1,20}::[^\\\/:*?\"\<\>\|]{1,20}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$',
         modes=[
             HashMode(name='NetNTLMv1-VANILLA / NetNTLMv1+ESS', hashcat=5500)]),
     Prototype(
-        regex='^[^\\\/:*?\"\<\>\|]{1,20}::[^\\\/:*?\"\<\>\|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$',
+        regex=r'^[^\\\/:*?\"\<\>\|]{1,20}::[^\\\/:*?\"\<\>\|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$',
         modes=[
             HashMode(name='NetNTLMv2', hashcat=5600)]),
     Prototype(
-        regex='^\$krb5pa\$23\$user\$realm\$salt\$[a-f0-9]{104}$',
+        regex=r'^\$krb5pa\$23\$user\$realm\$salt\$[a-f0-9]{104}$',
         modes=[
             HashMode(name='Kerberos 5 AS-REQ Pre-Auth', hashcat=7500)]),
     Prototype(
-        regex='^\$scram\$[0-9]+\$[a-z0-9\/\.]{16}\$sha-1=[a-z0-9\/\.]{27},sha-256=[a-z0-9\/\.]{43},sha-512=[a-z0-9\/\.]{86}$',
+        regex=r'^\$scram\$[0-9]+\$[a-z0-9\/\.]{16}\$sha-1=[a-z0-9\/\.]{27},sha-256=[a-z0-9\/\.]{43},sha-512=[a-z0-9\/\.]{86}$',
         modes=[
             HashMode(name='SCRAM Hash', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{40}:[a-f0-9]{0,32}$',
+        regex=r'^[a-f0-9]{40}:[a-f0-9]{0,32}$',
         modes=[
             HashMode(name='Redmine Project Management Web App', hashcat=7600)]),
     Prototype(
-        regex='^([0-9]{12})?\$[a-f0-9]{16}$',
+        regex=r'^([0-9]{12})?\$[a-f0-9]{16}$',
         modes=[
             HashMode(name='SAP CODVN B (BCODE)', hashcat=7700)]),
     Prototype(
-        regex='^([0-9]{12})?\$[a-f0-9]{40}$',
+        regex=r'^([0-9]{12})?\$[a-f0-9]{40}$',
         modes=[
             HashMode(name='SAP CODVN F/G (PASSCODE)', hashcat=7800)]),
     Prototype(
-        regex='^(.+\$)?[a-z0-9\/\.]{30}(:.+)?$',
+        regex=r'^(.+\$)?[a-z0-9\/\.]{30}(:.+)?$',
         modes=[
             HashMode(name='Juniper Netscreen/SSG(ScreenOS)', hashcat=22)]),
     Prototype(
-        regex='^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$',
+        regex=r'^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$',
         modes=[
             HashMode(name='EPi', hashcat=123)]),
     Prototype(
-        regex='^[a-f0-9]{40}:[^*]{1,25}$',
+        regex=r'^[a-f0-9]{40}:[^*]{1,25}$',
         modes=[
             HashMode(name='SMF ≥ v1.1', hashcat=121)]),
     Prototype(
-        regex='^[a-f0-9]{40}(:[a-f0-9]{40})?$',
+        regex=r'^[a-f0-9]{40}(:[a-f0-9]{40})?$',
         modes=[
             HashMode(name='Woltlab Burning Board 3.x', hashcat=8400)]),
     Prototype(
-        regex='^[a-f0-9]{130}(:[a-f0-9]{40})?$',
+        regex=r'^[a-f0-9]{130}(:[a-f0-9]{40})?$',
         modes=[
             HashMode(name='IPMI2 RAKP HMAC-SHA1', hashcat=7300)]),
     Prototype(
-        regex='^[a-f0-9]{32}:[0-9]+:[a-z0-9_.+-]+@[a-z0-9-]+\.[a-z0-9-.]+$',
+        regex=r'^[a-f0-9]{32}:[0-9]+:[a-z0-9_.+-]+@[a-z0-9-]+\.[a-z0-9-.]+$',
         modes=[
             HashMode(name='Lastpass', hashcat=6800)]),
     Prototype(
-        regex='^[a-z0-9\/\.]{16}(:.{1,})?$',
+        regex=r'^[a-z0-9\/\.]{16}(:.{1,})?$',
         modes=[
             HashMode(name='Cisco-ASA(MD5)', hashcat=2410)]),
     Prototype(
-        regex='^\$vnc\$\*[a-f0-9]{32}\*[a-f0-9]{32}$',
+        regex=r'^\$vnc\$\*[a-f0-9]{32}\*[a-f0-9]{32}$',
         modes=[
             HashMode(name='VNC', hashcat=None)]),
     Prototype(
-        regex='^[a-z0-9]{32}(:([a-z0-9-]+\.)?[a-z0-9-.]+\.[a-z]{2,7}:.+:[0-9]+)?$',
+        regex=r'^[a-z0-9]{32}(:([a-z0-9-]+\.)?[a-z0-9-.]+\.[a-z]{2,7}:.+:[0-9]+)?$',
         modes=[
             HashMode(name='DNSSEC(NSEC3)', hashcat=8300)]),
     Prototype(
-        regex='^(user-.+:)?\$racf\$\*.+\*[a-f0-9]{16}$',
+        regex=r'^(user-.+:)?\$racf\$\*.+\*[a-f0-9]{16}$',
         modes=[
             HashMode(name='RACF', hashcat=8500)]),
     Prototype(
-        regex='^\$3\$\$[a-f0-9]{32}$',
+        regex=r'^\$3\$\$[a-f0-9]{32}$',
         modes=[
             HashMode(name='NTHash(FreeBSD Variant)', hashcat=None)]),
     Prototype(
-        regex='^\$sha1\$[0-9]+\$[a-z0-9\/\.]{0,64}\$[a-z0-9\/\.]{28}$',
+        regex=r'^\$sha1\$[0-9]+\$[a-z0-9\/\.]{0,64}\$[a-z0-9\/\.]{28}$',
         modes=[
             HashMode(name='SHA-1 Crypt', hashcat=None)]),
     Prototype(
-        regex='^[a-f0-9]{70}$',
+        regex=r'^[a-f0-9]{70}$',
         modes=[
             HashMode(name='hMailServer', hashcat=1421)]),
     Prototype(
-        regex='^[:\$][AB][:\$]([a-f0-9]{1,8}[:\$])?[a-f0-9]{32}$',
+        regex=r'^[:\$][AB][:\$]([a-f0-9]{1,8}[:\$])?[a-f0-9]{32}$',
         modes=[
             HashMode(name='MediaWiki', hashcat=3711)]),
     Prototype(
-        regex='^[a-f0-9]{140}$',
+        regex=r'^[a-f0-9]{140}$',
         modes=[
             HashMode(name='Minecraft(xAuth)', hashcat=None)]),
     Prototype(
-        regex='^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/\.]{22}\$([a-z0-9\/\.]{27}|[a-z0-9\/\.]{43}|[a-z0-9\/\.]{86})$',
+        regex=r'^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/\.]{22}\$([a-z0-9\/\.]{27}|[a-z0-9\/\.]{43}|[a-z0-9\/\.]{86})$',
         modes=[
             HashMode(name='PBKDF2(Generic)', hashcat=None)]),
     Prototype(
-        regex='^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/+=-]{28}$',
+        regex=r'^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/+=-]{28}$',
         modes=[
             HashMode(name='PBKDF2(Cryptacular)', hashcat=None)]),
     Prototype(
-        regex='^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$',
+        regex=r'^\$p5k2\$[0-9]+\$[a-z0-9\/\.]+\$[a-z0-9\/\.]{32}$',
         modes=[
             HashMode(name='PBKDF2(Dwayne Litzenberger)', hashcat=None)]),
     Prototype(
-        regex='^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/\+=]+$',
+        regex=r'^{FSHP[0123]\|[0-9]+\|[0-9]+}[a-z0-9\/\+=]+$',
         modes=[
             HashMode(name='Fairly Secure Hashed Password', hashcat=None)]),
     Prototype(
-        regex='^\$PHPS\$.+\$[a-f0-9]{32}$',
+        regex=r'^\$PHPS\$.+\$[a-f0-9]{32}$',
         modes=[
             HashMode(name='PHPS', hashcat=2612)]),
     Prototype(
-        regex='^[0-9]{4}:[a-f0-9]{16}:[a-f0-9]{2080}$',
+        regex=r'^[0-9]{4}:[a-f0-9]{16}:[a-f0-9]{2080}$',
         modes=[
             HashMode(name='1Password(Agile Keychain)', hashcat=6600)]),
     Prototype(
-        regex='^[a-f0-9]{64}:[a-f0-9]{32}:[0-9]{5}:[a-f0-9]{608}$',
+        regex=r'^[a-f0-9]{64}:[a-f0-9]{32}:[0-9]{5}:[a-f0-9]{608}$',
         modes=[
             HashMode(name='1Password(Cloud Keychain)', hashcat=8200)]),
     Prototype(
-        regex='^[a-f0-9]{256}:[a-f0-9]{256}:[a-f0-9]{16}:[a-f0-9]{16}:[a-f0-9]{320}:[a-f0-9]{16}:[a-f0-9]{40}:[a-f0-9]{40}:[a-f0-9]{32}$',
+        regex=r'^[a-f0-9]{256}:[a-f0-9]{256}:[a-f0-9]{16}:[a-f0-9]{16}:[a-f0-9]{320}:[a-f0-9]{16}:[a-f0-9]{40}:[a-f0-9]{40}:[a-f0-9]{32}$',
         modes=[
             HashMode(name='IKE-PSK MD5', hashcat=5300)]),
     Prototype(
-        regex='^[a-f0-9]{256}:[a-f0-9]{256}:[a-f0-9]{16}:[a-f0-9]{16}:[a-f0-9]{320}:[a-f0-9]{16}:[a-f0-9]{40}:[a-f0-9]{40}:[a-f0-9]{40}$',
+        regex=r'^[a-f0-9]{256}:[a-f0-9]{256}:[a-f0-9]{16}:[a-f0-9]{16}:[a-f0-9]{320}:[a-f0-9]{16}:[a-f0-9]{40}:[a-f0-9]{40}:[a-f0-9]{40}$',
         modes=[
             HashMode(name='IKE-PSK SHA1', hashcat=5400)])
 ]
