@@ -110,6 +110,26 @@ prototypes = [
             HashMode(name='Skein-256(128)', hashcat=None),
             HashMode(name='Skein-512(128)', hashcat=None),
             HashMode(name='Lotus Notes/Domino 5', hashcat=8600)]),
+            #HashMode(name='md5(md5(md5($pass)))', hashcat=3500),
+            #HashMode(name='md5(strtoupper(md5($pass)))', hashcat=4300),
+            #HashMode(name='md5(sha1($pass))', hashcat=4400)]),
+    #Prototype(
+    #    regex=r'^[a-f0-9]{32}(:.+)?$',
+    #    modes=[
+    #        HashMode(name='md5($pass.$salt)', hashcat=10),
+    #        HashMode(name='md5($salt.$pass)', hashcat=20),
+    #        HashMode(name='md5(unicode($pass).$salt)', hashcat=30),
+    #        HashMode(name='md5($salt.unicode($pass))', hashcat=40),
+    #        HashMode(name='HMAC-MD5 (key = $pass)', hashcat=50),
+    #        HashMode(name='HMAC-MD5 (key = $salt)', hashcat=60),
+    #        HashMode(name='md5(md5($salt).$pass)', hashcat=3610),
+    #        HashMode(name='md5($salt.md5($pass))', hashcat=3710),
+    #        HashMode(name='md5($pass.md5($salt))', hashcat=3720),
+    #        HashMode(name='md5($salt.$pass.$salt)', hashcat=3810),
+    #        HashMode(name='md5(md5($pass).md5($salt))', hashcat=3910),
+    #        HashMode(name='md5($salt.md5($salt.$pass))', hashcat=4010),
+    #        HashMode(name='md5($salt.md5($pass.$salt))', hashcat=4110),
+    #        HashMode(name='md5($username.0.$pass)', hashcat=4210)]),
     Prototype(
         regex=r'^(\$NT\$)?[a-f0-9]{32}$',
         modes=[
@@ -197,6 +217,17 @@ prototypes = [
             HashMode(name='HAS-160', hashcat=None),
             HashMode(name='Skein-256(160)', hashcat=None),
             HashMode(name='Skein-512(160)', hashcat=None)]),
+            #HashMode(name='sha1(sha1(sha1($pass)))', hashcat=4600)]),
+            #HashMode(name='sha1(md5($pass))', hashcat=4700)]),
+    #Prototype(
+    #    regex=r'^[a-f0-9]{40}(:.+)?$',
+    #    modes=[
+    #        HashMode(name='sha1($pass.$salt)', hashcat=110),
+    #        HashMode(name='sha1($salt.$pass)', hashcat=120),
+    #        HashMode(name='sha1(unicode($pass).$salt)', hashcat=130),
+    #        HashMode(name='sha1($salt.unicode($pass))', hashcat=140),
+    #        HashMode(name='HMAC-SHA1 (key = $pass)', hashcat=150),
+    #        HashMode(name='HMAC-SHA1 (key = $salt)', hashcat=160)]),
     Prototype(
         regex=r'^\*[a-f0-9]{40}$',
         modes=[
@@ -292,6 +323,15 @@ prototypes = [
             HashMode(name='Skein-256', hashcat=None),
             HashMode(name='Skein-512(256)', hashcat=None),
             HashMode(name='Ventrilo', hashcat=None)]),
+    #Prototype(
+    #    regex=r'^[a-f0-9]{64}(:.+)?$',
+    #    modes=[
+    #        HashMode(name='sha256($pass.$salt)', hashcat=1410),
+    #        HashMode(name='sha256($salt.$pass)', hashcat=1420),
+    #        HashMode(name='sha256(unicode($pass).$salt)', hashcat=1430),
+    #        HashMode(name='sha256($salt.unicode($pass))', hashcat=1440),
+    #        HashMode(name='HMAC-SHA256 (key = $pass)', hashcat=1450),
+    #        HashMode(name='HMAC-SHA256 (key = $salt)', hashcat=1460)]),
     Prototype(
         regex=r'^[a-f0-9]{32}:[a-z0-9]{32}$',
         modes=[
@@ -351,6 +391,15 @@ prototypes = [
             HashMode(name='SHA3-512', hashcat=None),
             HashMode(name='Skein-512', hashcat=None),
             HashMode(name='Skein-1024(512)', hashcat=None)]),
+    #Prototype(
+    #    regex=r'^[a-f0-9]{128}(:.+)?$',
+    #    modes=[
+    #        HashMode(name='sha512($pass.$salt)', hashcat=1710),
+    #        HashMode(name='sha512($salt.$pass)', hashcat=1720),
+    #        HashMode(name='sha512(unicode($pass).$salt)', hashcat=1730),
+    #        HashMode(name='sha512($salt.unicode($pass))', hashcat=1740),
+    #        HashMode(name='HMAC-SHA512 (key = $pass)', hashcat=1750),
+    #        HashMode(name='HMAC-SHA512 (key = $salt)', hashcat=1760)]),
     Prototype(
         regex=r'^[a-f0-9]{136}$',
         modes=[
@@ -589,6 +638,7 @@ def main():
     parser = argparse.ArgumentParser(usage=usage, description=description, epilog=__license__)
     parser.add_argument("strings", metavar="input", type=str, nargs="+", help="string or filename to analyze")
     parser.add_argument("-m", "--mode", action="store_true", help="include corresponding hashcat mode in output")
+    # parser.add_argument("-a", "--all", action="store_true", help="--good description needed--")
     parser.add_argument("--version", action="version", version=banner)
     args = parser.parse_args()
 
