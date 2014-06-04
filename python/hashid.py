@@ -149,7 +149,7 @@ prototypes = [
         modes=[
             HashMode(name='SHA-1(Base64)', hashcat=101, extended=False),
             HashMode(name='Netscape LDAP SHA', hashcat=101, extended=False),
-            HashMode(name='nsldap', hashcat=101, extended=False)]),
+            HashMode(name='nsldap', hashcat=101, extended=True)]),
     Prototype(
         regex=r'^\$1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$',
         modes=[
@@ -182,7 +182,7 @@ prototypes = [
         modes=[
             HashMode(name='MD5(APR)', hashcat=1600, extended=False),
             HashMode(name='Apache MD5', hashcat=1600, extended=False),
-            HashMode(name='md5apr1', hashcat=1600, extended=False)]),
+            HashMode(name='md5apr1', hashcat=1600, extended=True)]),
     Prototype(
         regex=r'^{smd5}[a-z0-9\.\$]{31}$',
         modes=[
@@ -242,7 +242,7 @@ prototypes = [
         modes=[
             HashMode(name='SSHA-1(Base64)', hashcat=111, extended=False),
             HashMode(name='Netscape LDAP SSHA', hashcat=111, extended=False),
-            HashMode(name='nsldaps', hashcat=111, extended=False)]),
+            HashMode(name='nsldaps', hashcat=111, extended=True)]),
     Prototype(
         regex=r'^[a-z0-9]{47}$',
         modes=[
