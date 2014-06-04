@@ -138,12 +138,12 @@ prototypes = [
         regex=r'^[a-f0-9]{32}(:[^\\\/\:\*\?\"\<\>\|]{1,20})?$',
         modes=[
             HashMode(name='Domain Cached Credentials', hashcat=1100, extended=False),
-            HashMode(name='mscash', hashcat=1100, extended=False)]),
+            HashMode(name='mscash', hashcat=1100, extended=True)]),
     Prototype(
         regex=r'^(\$DCC2\$10240#[^\\\/\:\*\?\"\<\>\|]{1,20}#)?[a-f0-9]{32}$',
         modes=[
             HashMode(name='Domain Cached Credentials 2', hashcat=2100, extended=False),
-            HashMode(name='mscash2', hashcat=2100, extended=False)]),
+            HashMode(name='mscash2', hashcat=2100, extended=True)]),
     Prototype(
         regex=r'^{SHA}[a-z0-9\+\/=]{28}$',
         modes=[
@@ -634,14 +634,14 @@ def writeResult(candidate, identified_modes, outfile=sys.stdout, hashcatMode=Fal
 
 
 def main():
-    usage = "{} INPUT [-m] [--help] [--version]".format(__file__)
+    usage = "{} [-a] [-m] [--help] [--version] INPUT".format(__file__)
     banner = "hashID v{} by {} ({})".format(__version__, __author__, __github__)
     description = "Identify the different types of hashes used to encrypt data"
 
     parser = argparse.ArgumentParser(usage=usage, description=description, epilog=__license__)
     parser.add_argument("strings", metavar="input", type=str, nargs="+", help="string or filename to analyze")
-    parser.add_argument("-m", "--mode", action="store_true", help="include corresponding hashcat mode in output")
     parser.add_argument("-a", "--all", action="store_true", help="list all hash algorithms including salted passwords")
+    parser.add_argument("-m", "--mode", action="store_true", help="include corresponding hashcat mode in output")
     parser.add_argument("--version", action="version", version=banner)
     args = parser.parse_args()
 
