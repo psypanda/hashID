@@ -1,7 +1,13 @@
 ### hashID Changelog
+**Version 2.8.0**
+* added new parameter `-a / --all`
+* PEP8 optimization
+* renamed:
+    * xAuth to Minecraft(xAuth)
+
 **Version 2.7.0**
 * major rewrite
-* dropped "--file" and "--dir" (obsolete)
+* dropped `-f / --file` and `-d / --dir` (obsolete)
 * all output defaults to stdout
 * see readme.md for new usage
 
@@ -59,7 +65,7 @@
 	* Blowfish(Eggdrop) to Eggdrop IRC Bot
 
 **Version 2.6.0**
-* added directory analyze (parameter: "-d/--dir")
+* added directory analyze (parameter: `-d / --dir`)
 * more error checking on userinput
 * changed regex:
 	* vBulletin < v3.8.5

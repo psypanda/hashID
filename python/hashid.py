@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 __author__  = "c0re"
-__version__ = "2.7.0"
+__version__ = "2.8.0"
 __github__  = "https://github.com/psypanda/hashID"
 __license__ = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
@@ -619,14 +619,14 @@ class HashID(object):
 
 def writeResult(candidate, identified_modes, outfile=sys.stdout, hashcatMode=False, extended=False):
     """create human readable output"""
-    outfile.write("Analyzing '{}'\n".format(candidate))
+    outfile.write("Analyzing '{0}'\n".format(candidate))
     count = 0
     for mode in identified_modes:
         if not mode.extended or extended:
             if hashcatMode and mode.hashcat is not None:
-                outfile.write("[+] {} [Hashcat Mode: {}]\n".format(mode.name, mode.hashcat))
+                outfile.write("[+] {0} [Hashcat Mode: {1}]\n".format(mode.name, mode.hashcat))
             else:
-                outfile.write("[+] {}\n".format(mode.name))
+                outfile.write("[+] {0}\n".format(mode.name))
         count += 1
     if count == 0:
         outfile.write("[+] Unknown hash\n")
@@ -634,8 +634,8 @@ def writeResult(candidate, identified_modes, outfile=sys.stdout, hashcatMode=Fal
 
 
 def main():
-    usage = "{} [-a] [-m] [--help] [--version] INPUT".format(__file__)
-    banner = "hashID v{} by {} ({})".format(__version__, __author__, __github__)
+    usage = "{0} [-a] [-m] [--help] [--version] INPUT".format(__file__)
+    banner = "hashID v{0} by {1} ({2})".format(__version__, __author__, __github__)
     description = "Identify the different types of hashes used to encrypt data"
 
     parser = argparse.ArgumentParser(usage=usage, description=description, epilog=__license__)
