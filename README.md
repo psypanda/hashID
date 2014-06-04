@@ -27,7 +27,7 @@ exit
 Usage
 ------
 ```
-$ python3 hashid.py INPUT [-m] [--help] [--version]
+$ python3 hashid.py [-a] [-m] [--help] [--version] INPUT
 ```
 
 | Parameter        				 | Description      				  				   |
