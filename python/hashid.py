@@ -101,15 +101,15 @@ prototypes = [
             HashMode(name='MD2', hashcat=None, extended=False),
             HashMode(name='Double MD5', hashcat=2600, extended=False),
             HashMode(name='LM', hashcat=3000, extended=False),
-            HashMode(name='RAdmin v2.x', hashcat=None, extended=False),
             HashMode(name='RIPEMD-128', hashcat=None, extended=False),
             HashMode(name='Haval-128', hashcat=None, extended=False),
             HashMode(name='Tiger-128', hashcat=None, extended=False),
             HashMode(name='Snefru-128', hashcat=None, extended=False),
-            HashMode(name='ZipMonster', hashcat=None, extended=False),
             HashMode(name='Skein-256(128)', hashcat=None, extended=False),
             HashMode(name='Skein-512(128)', hashcat=None, extended=False),
             HashMode(name='Lotus Notes/Domino 5', hashcat=8600, extended=False),
+            HashMode(name='RAdmin v2.x', hashcat=None, extended=True),
+            HashMode(name='ZipMonster', hashcat=None, extended=True),
             HashMode(name='md5(md5(md5($pass)))', hashcat=3500, extended=True),
             HashMode(name='md5(strtoupper(md5($pass)))', hashcat=4300, extended=True),
             HashMode(name='md5(sha1($pass))', hashcat=4400, extended=True)]),
@@ -208,15 +208,14 @@ prototypes = [
         modes=[
             HashMode(name='SHA-1', hashcat=100, extended=False),
             HashMode(name='Double SHA-1', hashcat=4500, extended=False),
-            HashMode(name='MaNGOS CMS', hashcat=None, extended=False),
-            HashMode(name='MaNGOS CMS v2', hashcat=None, extended=False),
-            HashMode(name='LinkedIn', hashcat=190, extended=False),
             HashMode(name='RIPEMD-160', hashcat=6000, extended=False),
             HashMode(name='Haval-160', hashcat=None, extended=False),
             HashMode(name='Tiger-160', hashcat=None, extended=False),
             HashMode(name='HAS-160', hashcat=None, extended=False),
+            HashMode(name='LinkedIn', hashcat=190, extended=False),
             HashMode(name='Skein-256(160)', hashcat=None, extended=False),
             HashMode(name='Skein-512(160)', hashcat=None, extended=False),
+            HashMode(name='MangosWeb Enhanced CMS', hashcat=None, extended=True),
             HashMode(name='sha1(sha1(sha1($pass)))', hashcat=4600, extended=True),
             HashMode(name='sha1(md5($pass))', hashcat=4700, extended=True)]),
     Prototype(
@@ -290,7 +289,7 @@ prototypes = [
         modes=[
             HashMode(name='Blowfish(OpenBSD)', hashcat=3200, extended=False),
             HashMode(name='Woltlab Burning Board 4.x', hashcat=None, extended=False),
-            HashMode(name='bcrypt', hashcat=3200, extended=False)]),
+            HashMode(name='BCrypt', hashcat=3200, extended=False)]),
     Prototype(
         regex=r'^[a-f0-9]{40}:[a-f0-9]{16}$',
         modes=[
@@ -322,7 +321,7 @@ prototypes = [
             HashMode(name='SHA3-256', hashcat=5000, extended=False),
             HashMode(name='Skein-256', hashcat=None, extended=False),
             HashMode(name='Skein-512(256)', hashcat=None, extended=False),
-            HashMode(name='Ventrilo', hashcat=None, extended=False)]),
+            HashMode(name='Ventrilo', hashcat=None, extended=True)]),
     Prototype(
         regex=r'^[a-f0-9]{64}(:.+)$',
         modes=[
@@ -511,7 +510,7 @@ prototypes = [
         modes=[
             HashMode(name='SMF ≥ v1.1', hashcat=121, extended=False)]),
     Prototype(
-        regex=r'^[a-f0-9]{40}(:[a-f0-9]{40})?$',
+        regex=r'^[a-f0-9]{40}:[a-f0-9]{40}$',
         modes=[
             HashMode(name='Woltlab Burning Board 3.x', hashcat=8400, extended=False)]),
     Prototype(
@@ -640,7 +639,7 @@ def main():
 
     parser = argparse.ArgumentParser(usage=usage, description=description, epilog=__license__)
     parser.add_argument("strings", metavar="input", type=str, nargs="+", help="string or filename to analyze")
-    parser.add_argument("-a", "--all", action="store_true", help="list all hash algorithms including salted passwords")
+    parser.add_argument("-a", "--all", action="store_true", help="list all possible hash algorithms including salted passwords")
     parser.add_argument("-m", "--mode", action="store_true", help="include corresponding hashcat mode in output")
     parser.add_argument("--version", action="version", version=banner)
     args = parser.parse_args()
