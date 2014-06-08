@@ -22,6 +22,7 @@ __license__ = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licens
 
 import re
 import os
+import io
 import sys
 import argparse
 from collections import namedtuple
@@ -653,7 +654,7 @@ def main():
         for string in args.strings:
             if os.path.isfile(string):
                 try:
-                    with open(string, "r", encoding="utf-8") as infile:
+                    with io.open(string, "r", encoding="utf-8") as infile:
                         print("--File '{0}'--".format(string))
                         for line in infile:
                             if line.strip():
