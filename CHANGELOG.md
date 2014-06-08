@@ -1,4 +1,26 @@
 ### hashID Changelog
+**Version 2.8.1**
+* added hashes:
+    * PeopleSoft
+    * Django(DES Crypt Wrapper)
+    * Django(PBKDF2-HMAC-SHA256)
+    * Django(PBKDF2-HMAC-SHA1)
+    * Django(BCrypt)
+    * Django(MD5)
+* changed regex:
+    * Woltlab Burning Board 3.x
+* renamed:
+    * MaNGOS CMS to MangosWeb Enhanced CMS
+    * bcrypt to BCrypt
+    * Django CMS(SHA-1) to Django(SHA-1)
+    * Django CMS(SHA-256) to Django(SHA-256)
+    * Django CMS(SHA-384) to Django(SHA-384)
+* set extended flag for:
+    * MangosWeb Enhanced CMS
+    * RAdmin v2.x
+    * ZipMonster
+    * Ventrilo
+
 **Version 2.8.0**
 * added new parameter `-a / --all`
 * PEP8 optimization
