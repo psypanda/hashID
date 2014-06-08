@@ -593,7 +593,11 @@ prototypes = [
     Prototype(
         regex=r'^[a-f0-9]{256}:[a-f0-9]{256}:[a-f0-9]{16}:[a-f0-9]{16}:[a-f0-9]{320}:[a-f0-9]{16}:[a-f0-9]{40}:[a-f0-9]{40}:[a-f0-9]{40}$',
         modes=[
-            HashMode(name='IKE-PSK SHA1', hashcat=5400, extended=False)])
+            HashMode(name='IKE-PSK SHA1', hashcat=5400, extended=False)]),
+    Prototype(
+        regex=r'^[a-z0-9+\/]{27}=$',
+        modes=[
+            HashMode(name='PeopleSoft', hashcat=133, extended=False)])
 ]
 
 
