@@ -423,9 +423,9 @@ prototypes = [
         modes=[
             HashMode(name='GRUB 2', hashcat=7200, extended=False)]),
     Prototype(
-        regex=r'^sha1\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{40}$',
+        regex=r'^sha1\$[a-f0-9]{1,}\$[a-f0-9]{40}$',
         modes=[
-            HashMode(name='Django CMS(SHA-1)', hashcat=800, extended=False)]),
+            HashMode(name='Django(SHA-1)', hashcat=800, extended=False)]),
     Prototype(
         regex=r'^[a-f0-9]{49}$',
         modes=[
@@ -451,13 +451,13 @@ prototypes = [
         modes=[
             HashMode(name='Minecraft(AuthMe Reloaded)', hashcat=None, extended=False)]),
     Prototype(
-        regex=r'^sha256\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{64}$',
+        regex=r'^sha256\$[a-f0-9]{1,}\$[a-f0-9]{64}$',
         modes=[
-            HashMode(name='Django CMS(SHA-256)', hashcat=None, extended=False)]),
+            HashMode(name='Django(SHA-256)', hashcat=None, extended=False)]),
     Prototype(
-        regex=r'^sha384\$[a-z0-9\/\.]{1,12}\$[a-f0-9]{96}$',
+        regex=r'^sha384\$[a-f0-9]{1,}\$[a-f0-9]{96}$',
         modes=[
-            HashMode(name='Django CMS(SHA-384)', hashcat=None, extended=False)]),
+            HashMode(name='Django(SHA-384)', hashcat=None, extended=False)]),
     Prototype(
         regex=r'^crypt1:[a-z0-9\+\=]{12}:[a-z0-9\+\=]{12}$',
         modes=[
@@ -597,7 +597,27 @@ prototypes = [
     Prototype(
         regex=r'^[a-z0-9+\/]{27}=$',
         modes=[
-            HashMode(name='PeopleSoft', hashcat=133, extended=False)])
+            HashMode(name='PeopleSoft', hashcat=133, extended=False)]),
+    Prototype(
+        regex=r'^crypt\$[a-f0-9]{5}\$[a-z0-9.\/]{13}$',
+        modes=[
+            HashMode(name='Django(DES Crypt Wrapper)', hashcat=None, extended=False)]),
+    Prototype(
+        regex=r'^pbkdf2_sha256\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9+\/]{43}=$',
+        modes=[
+            HashMode(name='Django(PBKDF2-HMAC-SHA256)', hashcat=None, extended=False)]),
+    Prototype(
+        regex=r'^pbkdf2_sha1\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9+\/]{27}=$',
+        modes=[
+            HashMode(name='Django(PBKDF2-HMAC-SHA1)', hashcat=None, extended=False)]),
+    Prototype(
+        regex=r'^bcrypt(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$',
+        modes=[
+            HashMode(name='Django(BCrypt)', hashcat=None, extended=False)]),
+    Prototype(
+        regex=r'^md5\$[a-f0-9]{1,}\$[a-f0-9]{32}$',
+        modes=[
+            HashMode(name='Django(MD5)', hashcat=None, extended=False)])
 ]
 
 
