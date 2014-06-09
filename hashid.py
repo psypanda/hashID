@@ -643,17 +643,17 @@ class HashID(object):
 
 def writeResult(candidate, identified_modes, outfile=sys.stdout, hashcatMode=False, extended=False):
     """create human readable output"""
-    outfile.write("Analyzing '{0}'\n".format(candidate))
+    outfile.write(u"Analyzing '{0}'\n".format(candidate))
     count = 0
     for mode in identified_modes:
         if not mode.extended or extended:
             if hashcatMode and mode.hashcat is not None:
-                outfile.write("[+] {0} [Hashcat Mode: {1}]\n".format(mode.name, mode.hashcat))
+                outfile.write(u"[+] {0} [Hashcat Mode: {1}]\n".format(mode.name, mode.hashcat))
             else:
-                outfile.write("[+] {0}\n".format(mode.name))
+                outfile.write(u"[+] {0}\n".format(mode.name))
         count += 1
     if count == 0:
-        outfile.write("[+] Unknown hash\n")
+        outfile.write(u"[+] Unknown hash\n")
     return (count > 0)
 
 
@@ -684,7 +684,7 @@ def main():
                             if line.strip():
                                 writeResult(line.strip(), hashID.identifyHash(line.strip()), sys.stdout, args.mode, args.all)
                     infile.close()
-                except:
+                except IOError:
                     print("--File '{0}' - could not open--".format(string))
                 else:
                     print("--End of file '{0}'--".format(string))
