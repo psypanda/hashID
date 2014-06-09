@@ -1,0 +1,1777 @@
+[
+    {
+        "regex": "^[a-f0-9]{4}$",
+        "modes": [
+            {
+                "name": "CRC-16",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "CRC-16-CCITT",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "FCS-16",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{8}$",
+        "modes": [
+            {
+                "name": "Adler-32",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "CRC-32",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "CRC-32B",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "FCS-32",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "GHash-32-3",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "GHash-32-5",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "FNV-132",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Fletcher-32",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Joaat",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "ELF-32",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "XOR-32",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{6}$",
+        "modes": [
+            {
+                "name": "CRC-24",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\+[a-z0-9\\/\\.]{12}$",
+        "modes": [
+            {
+                "name": "Eggdrop IRC Bot",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-z0-9\\/\\.]{13}$",
+        "modes": [
+            {
+                "name": "DES(Unix)",
+                "hashcat": 1500,
+                "extended": false
+            },
+            {
+                "name": "Traditional DES",
+                "hashcat": 1500,
+                "extended": false
+            },
+            {
+                "name": "DEScrypt",
+                "hashcat": 1500,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{16}$",
+        "modes": [
+            {
+                "name": "MySQL323",
+                "hashcat": 200,
+                "extended": false
+            },
+            {
+                "name": "DES(Oracle)",
+                "hashcat": 3100,
+                "extended": false
+            },
+            {
+                "name": "Half MD5",
+                "hashcat": 5100,
+                "extended": false
+            },
+            {
+                "name": "Oracle 7-10g",
+                "hashcat": 3100,
+                "extended": false
+            },
+            {
+                "name": "FNV-164",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "CRC-64",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-z0-9\\/\\.]{16}$",
+        "modes": [
+            {
+                "name": "Cisco-PIX(MD5)",
+                "hashcat": 2400,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\([a-z0-9\\+\\/]{20}\\)$",
+        "modes": [
+            {
+                "name": "Lotus Notes/Domino 6",
+                "hashcat": 8700,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^_[a-z0-9\\/\\.]{19}$",
+        "modes": [
+            {
+                "name": "BSDi Crypt",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{24}$",
+        "modes": [
+            {
+                "name": "CRC-96(ZIP)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-z0-9\\/\\.]{24}$",
+        "modes": [
+            {
+                "name": "Crypt16",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "MD5",
+                "hashcat": 0,
+                "extended": false
+            },
+            {
+                "name": "MD4",
+                "hashcat": 900,
+                "extended": false
+            },
+            {
+                "name": "MD2",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Double MD5",
+                "hashcat": 2600,
+                "extended": false
+            },
+            {
+                "name": "LM",
+                "hashcat": 3000,
+                "extended": false
+            },
+            {
+                "name": "RIPEMD-128",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Haval-128",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Tiger-128",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Snefru-128",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Skein-256(128)",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Skein-512(128)",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Lotus Notes/Domino 5",
+                "hashcat": 8600,
+                "extended": false
+            },
+            {
+                "name": "RAdmin v2.x",
+                "hashcat": null,
+                "extended": true
+            },
+            {
+                "name": "ZipMonster",
+                "hashcat": null,
+                "extended": true
+            },
+            {
+                "name": "md5(md5(md5($pass)))",
+                "hashcat": 3500,
+                "extended": true
+            },
+            {
+                "name": "md5(strtoupper(md5($pass)))",
+                "hashcat": 4300,
+                "extended": true
+            },
+            {
+                "name": "md5(sha1($pass))",
+                "hashcat": 4400,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}(:.+)$",
+        "modes": [
+            {
+                "name": "md5($pass.$salt)",
+                "hashcat": 10,
+                "extended": true
+            },
+            {
+                "name": "md5($salt.$pass)",
+                "hashcat": 20,
+                "extended": true
+            },
+            {
+                "name": "md5(unicode($pass).$salt)",
+                "hashcat": 30,
+                "extended": true
+            },
+            {
+                "name": "md5($salt.unicode($pass))",
+                "hashcat": 40,
+                "extended": true
+            },
+            {
+                "name": "HMAC-MD5 (key = $pass)",
+                "hashcat": 50,
+                "extended": true
+            },
+            {
+                "name": "HMAC-MD5 (key = $salt)",
+                "hashcat": 60,
+                "extended": true
+            },
+            {
+                "name": "md5(md5($salt).$pass)",
+                "hashcat": 3610,
+                "extended": true
+            },
+            {
+                "name": "md5($salt.md5($pass))",
+                "hashcat": 3710,
+                "extended": true
+            },
+            {
+                "name": "md5($pass.md5($salt))",
+                "hashcat": 3720,
+                "extended": true
+            },
+            {
+                "name": "md5($salt.$pass.$salt)",
+                "hashcat": 3810,
+                "extended": true
+            },
+            {
+                "name": "md5(md5($pass).md5($salt))",
+                "hashcat": 3910,
+                "extended": true
+            },
+            {
+                "name": "md5($salt.md5($salt.$pass))",
+                "hashcat": 4010,
+                "extended": true
+            },
+            {
+                "name": "md5($salt.md5($pass.$salt))",
+                "hashcat": 4110,
+                "extended": true
+            },
+            {
+                "name": "md5($username.0.$pass)",
+                "hashcat": 4210,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^(\\$NT\\$)?[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "NTLM",
+                "hashcat": 1000,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}(:[^\\\\\\/\\:\\*\\?\\\"\\<\\>\\|]{1,20})?$",
+        "modes": [
+            {
+                "name": "Domain Cached Credentials",
+                "hashcat": 1100,
+                "extended": false
+            },
+            {
+                "name": "mscash",
+                "hashcat": 1100,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^(\\$DCC2\\$10240#[^\\\\\\/\\:\\*\\?\\\"\\<\\>\\|]{1,20}#)?[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "Domain Cached Credentials 2",
+                "hashcat": 2100,
+                "extended": false
+            },
+            {
+                "name": "mscash2",
+                "hashcat": 2100,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^{SHA}[a-z0-9\\+\\/=]{28}$",
+        "modes": [
+            {
+                "name": "SHA-1(Base64)",
+                "hashcat": 101,
+                "extended": false
+            },
+            {
+                "name": "Netscape LDAP SHA",
+                "hashcat": 101,
+                "extended": false
+            },
+            {
+                "name": "nsldap",
+                "hashcat": 101,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^\\$1\\$[a-z0-9\\/\\.]{0,8}\\$[a-z0-9\\/\\.]{22}$",
+        "modes": [
+            {
+                "name": "MD5 Crypt",
+                "hashcat": 500,
+                "extended": false
+            },
+            {
+                "name": "Cisco-IOS(MD5)",
+                "hashcat": 500,
+                "extended": false
+            },
+            {
+                "name": "FreeBSD MD5",
+                "hashcat": 500,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^0x[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "Lineage II C4",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$H\\$[a-z0-9\\/\\.]{31}$",
+        "modes": [
+            {
+                "name": "phpBB v3.x",
+                "hashcat": 400,
+                "extended": false
+            },
+            {
+                "name": "Wordpress v2.6.0/2.6.1",
+                "hashcat": 400,
+                "extended": false
+            },
+            {
+                "name": "PHPass' Portable Hash",
+                "hashcat": 400,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$P\\$[a-z0-9\\/\\.]{31}$",
+        "modes": [
+            {
+                "name": "Wordpress \u2265 v2.6.2",
+                "hashcat": 400,
+                "extended": false
+            },
+            {
+                "name": "Joomla \u2265 v2.5.18",
+                "hashcat": 400,
+                "extended": false
+            },
+            {
+                "name": "PHPass' Portable Hash",
+                "hashcat": 400,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}:[a-z0-9]{2}$",
+        "modes": [
+            {
+                "name": "osCommerce",
+                "hashcat": 21,
+                "extended": false
+            },
+            {
+                "name": "xt:Commerce",
+                "hashcat": 21,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$apr1\\$[a-z0-9\\/\\.]{0,8}\\$[a-z0-9\\/\\.]{22}$",
+        "modes": [
+            {
+                "name": "MD5(APR)",
+                "hashcat": 1600,
+                "extended": false
+            },
+            {
+                "name": "Apache MD5",
+                "hashcat": 1600,
+                "extended": false
+            },
+            {
+                "name": "md5apr1",
+                "hashcat": 1600,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^{smd5}[a-z0-9\\.\\$]{31}$",
+        "modes": [
+            {
+                "name": "AIX(smd5)",
+                "hashcat": 6300,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}:[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "WebEdition CMS",
+                "hashcat": 3721,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}:.{5}$",
+        "modes": [
+            {
+                "name": "IP.Board \u2265 v2+",
+                "hashcat": 2811,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}:.{8}$",
+        "modes": [
+            {
+                "name": "MyBB \u2265 v1.2+",
+                "hashcat": 2811,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-z0-9]{34}$",
+        "modes": [
+            {
+                "name": "CryptoCurrency(Adress)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{40}$",
+        "modes": [
+            {
+                "name": "SHA-1",
+                "hashcat": 100,
+                "extended": false
+            },
+            {
+                "name": "Double SHA-1",
+                "hashcat": 4500,
+                "extended": false
+            },
+            {
+                "name": "RIPEMD-160",
+                "hashcat": 6000,
+                "extended": false
+            },
+            {
+                "name": "Haval-160",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Tiger-160",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "HAS-160",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "LinkedIn",
+                "hashcat": 190,
+                "extended": false
+            },
+            {
+                "name": "Skein-256(160)",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Skein-512(160)",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "MangosWeb Enhanced CMS",
+                "hashcat": null,
+                "extended": true
+            },
+            {
+                "name": "sha1(sha1(sha1($pass)))",
+                "hashcat": 4600,
+                "extended": true
+            },
+            {
+                "name": "sha1(md5($pass))",
+                "hashcat": 4700,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{40}(:.+)$",
+        "modes": [
+            {
+                "name": "sha1($pass.$salt)",
+                "hashcat": 110,
+                "extended": true
+            },
+            {
+                "name": "sha1($salt.$pass)",
+                "hashcat": 120,
+                "extended": true
+            },
+            {
+                "name": "sha1(unicode($pass).$salt)",
+                "hashcat": 130,
+                "extended": true
+            },
+            {
+                "name": "sha1($salt.unicode($pass))",
+                "hashcat": 140,
+                "extended": true
+            },
+            {
+                "name": "HMAC-SHA1 (key = $pass)",
+                "hashcat": 150,
+                "extended": true
+            },
+            {
+                "name": "HMAC-SHA1 (key = $salt)",
+                "hashcat": 160,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^\\*[a-f0-9]{40}$",
+        "modes": [
+            {
+                "name": "MySQL5.x",
+                "hashcat": 300,
+                "extended": false
+            },
+            {
+                "name": "MySQL4.1",
+                "hashcat": 300,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-z0-9]{43}$",
+        "modes": [
+            {
+                "name": "Cisco-IOS(SHA-256)",
+                "hashcat": 5700,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^{SSHA}[a-z0-9\\+\\/=]{40}$",
+        "modes": [
+            {
+                "name": "SSHA-1(Base64)",
+                "hashcat": 111,
+                "extended": false
+            },
+            {
+                "name": "Netscape LDAP SSHA",
+                "hashcat": 111,
+                "extended": false
+            },
+            {
+                "name": "nsldaps",
+                "hashcat": 111,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^[a-z0-9]{47}$",
+        "modes": [
+            {
+                "name": "Fortigate(FortiOS)",
+                "hashcat": 7000,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{48}$",
+        "modes": [
+            {
+                "name": "Haval-192",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Tiger-192",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "SHA-1(Oracle)",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "OSX v10.4",
+                "hashcat": 122,
+                "extended": false
+            },
+            {
+                "name": "OSX v10.5",
+                "hashcat": 122,
+                "extended": false
+            },
+            {
+                "name": "OSX v10.6",
+                "hashcat": 122,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{51}$",
+        "modes": [
+            {
+                "name": "Palshop CMS",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-z0-9]{51}$",
+        "modes": [
+            {
+                "name": "CryptoCurrency(PrivateKey)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^{ssha1}[a-z0-9\\.\\$]{47}$",
+        "modes": [
+            {
+                "name": "AIX(ssha1)",
+                "hashcat": 6700,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^0x0100[a-f0-9]{48}$",
+        "modes": [
+            {
+                "name": "MSSQL(2005)",
+                "hashcat": 132,
+                "extended": false
+            },
+            {
+                "name": "MSSQL(2008)",
+                "hashcat": 132,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^(\\$md5,rounds=[0-9]+\\$|\\$md5\\$rounds=[0-9]+\\$|\\$md5\\$)[a-z0-9\\/\\.]{0,16}(\\$|\\$\\$)[a-z0-9\\/\\.]{22}$",
+        "modes": [
+            {
+                "name": "Sun MD5 Crypt",
+                "hashcat": 3300,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{56}$",
+        "modes": [
+            {
+                "name": "SHA-224",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Haval-224",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "SHA3-224",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Skein-256(224)",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Skein-512(224)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^(\\$2[axy]|\\$2)\\$[0-9]{0,2}?\\$[a-z0-9\\/\\.]{53}$",
+        "modes": [
+            {
+                "name": "Blowfish(OpenBSD)",
+                "hashcat": 3200,
+                "extended": false
+            },
+            {
+                "name": "Woltlab Burning Board 4.x",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "BCrypt",
+                "hashcat": 3200,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{40}:[a-f0-9]{16}$",
+        "modes": [
+            {
+                "name": "Samsung Android Password/PIN",
+                "hashcat": 5800,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^S:[a-f0-9]{60}$",
+        "modes": [
+            {
+                "name": "Oracle 11g",
+                "hashcat": 112,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$bcrypt-sha256\\$(2[axy]|2)\\,[0-9]+\\$[a-z0-9\\/\\.]{22}\\$[a-z0-9\\/\\.]{31}$",
+        "modes": [
+            {
+                "name": "BCrypt(SHA-256)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}:.{3}$",
+        "modes": [
+            {
+                "name": "vBulletin < v3.8.5",
+                "hashcat": 2611,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}:.{30}$",
+        "modes": [
+            {
+                "name": "vBulletin \u2265 v3.8.5",
+                "hashcat": 2711,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{64}$",
+        "modes": [
+            {
+                "name": "SHA-256",
+                "hashcat": 1400,
+                "extended": false
+            },
+            {
+                "name": "RIPEMD-256",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Haval-256",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Snefru-256",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "GOST R 34.11-94",
+                "hashcat": 6900,
+                "extended": false
+            },
+            {
+                "name": "SHA3-256",
+                "hashcat": 5000,
+                "extended": false
+            },
+            {
+                "name": "Skein-256",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Skein-512(256)",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Ventrilo",
+                "hashcat": null,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{64}(:.+)$",
+        "modes": [
+            {
+                "name": "sha256($pass.$salt)",
+                "hashcat": 1410,
+                "extended": true
+            },
+            {
+                "name": "sha256($salt.$pass)",
+                "hashcat": 1420,
+                "extended": true
+            },
+            {
+                "name": "sha256(unicode($pass).$salt)",
+                "hashcat": 1430,
+                "extended": true
+            },
+            {
+                "name": "sha256($salt.unicode($pass))",
+                "hashcat": 1440,
+                "extended": true
+            },
+            {
+                "name": "HMAC-SHA256 (key = $pass)",
+                "hashcat": 1450,
+                "extended": true
+            },
+            {
+                "name": "HMAC-SHA256 (key = $salt)",
+                "hashcat": 1460,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}:[a-z0-9]{32}$",
+        "modes": [
+            {
+                "name": "Joomla < v2.5.18",
+                "hashcat": 11,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f-0-9]{32}:[a-f-0-9]{32}$",
+        "modes": [
+            {
+                "name": "SAM(LM_Hash:NT_Hash)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}:[0-9]{32}:[0-9]{2}$",
+        "modes": [
+            {
+                "name": "MD5(Chap)",
+                "hashcat": 4800,
+                "extended": false
+            },
+            {
+                "name": "iSCSI CHAP Authentication",
+                "hashcat": 4800,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$episerver\\$\\*0\\*[a-z0-9=\\*\\+]{52}$",
+        "modes": [
+            {
+                "name": "EPiServer 6.x < v4",
+                "hashcat": 141,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^{ssha256}[a-z0-9\\.\\$]{63}$",
+        "modes": [
+            {
+                "name": "AIX(ssha256)",
+                "hashcat": 6400,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{80}$",
+        "modes": [
+            {
+                "name": "RIPEMD-320",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$episerver\\$\\*1\\*[a-z0-9=\\*\\+]{68}$",
+        "modes": [
+            {
+                "name": "EPiServer 6.x \u2265 v4",
+                "hashcat": 1441,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^0x0100[a-f0-9]{88}$",
+        "modes": [
+            {
+                "name": "MSSQL(2000)",
+                "hashcat": 131,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{96}$",
+        "modes": [
+            {
+                "name": "SHA-384",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "SHA3-384",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Skein-512(384)",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Skein-1024(384)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^{SSHA512}[a-z0-9\\+\\/]{96}={0,2}$",
+        "modes": [
+            {
+                "name": "SSHA-512(Base64)",
+                "hashcat": 1711,
+                "extended": false
+            },
+            {
+                "name": "LDAP(SSHA-512)",
+                "hashcat": 1711,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^{ssha512}[0-9]{2}\\$[a-z0-9\\.\\/]{16,48}\\$[a-z0-9\\.\\/]{86}$",
+        "modes": [
+            {
+                "name": "AIX(ssha512)",
+                "hashcat": 6500,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{128}$",
+        "modes": [
+            {
+                "name": "SHA-512",
+                "hashcat": 1700,
+                "extended": false
+            },
+            {
+                "name": "Whirlpool",
+                "hashcat": 6100,
+                "extended": false
+            },
+            {
+                "name": "Salsa10",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Salsa20",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "SHA3-512",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Skein-512",
+                "hashcat": null,
+                "extended": false
+            },
+            {
+                "name": "Skein-1024(512)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{128}(:.+)$",
+        "modes": [
+            {
+                "name": "sha512($pass.$salt)",
+                "hashcat": 1710,
+                "extended": true
+            },
+            {
+                "name": "sha512($salt.$pass)",
+                "hashcat": 1720,
+                "extended": true
+            },
+            {
+                "name": "sha512(unicode($pass).$salt)",
+                "hashcat": 1730,
+                "extended": true
+            },
+            {
+                "name": "sha512($salt.unicode($pass))",
+                "hashcat": 1740,
+                "extended": true
+            },
+            {
+                "name": "HMAC-SHA512 (key = $pass)",
+                "hashcat": 1750,
+                "extended": true
+            },
+            {
+                "name": "HMAC-SHA512 (key = $salt)",
+                "hashcat": 1760,
+                "extended": true
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{136}$",
+        "modes": [
+            {
+                "name": "OSX v10.7",
+                "hashcat": 1722,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^0x0200[a-f0-9]{136}$",
+        "modes": [
+            {
+                "name": "MSSQL(2012)",
+                "hashcat": 1731,
+                "extended": false
+            },
+            {
+                "name": "MSSQL(2014)",
+                "hashcat": 1731,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$ml\\$[0-9]+\\$[a-f0-9]{64}\\$[a-f0-9]{128}$",
+        "modes": [
+            {
+                "name": "OSX v10.8",
+                "hashcat": 7100,
+                "extended": false
+            },
+            {
+                "name": "OSX v10.9",
+                "hashcat": 7100,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{256}$",
+        "modes": [
+            {
+                "name": "Skein-1024",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^grub\\.pbkdf2\\.sha512\\.[0-9]+\\.[a-f0-9]{128,2048}\\.[a-f0-9]{128}$",
+        "modes": [
+            {
+                "name": "GRUB 2",
+                "hashcat": 7200,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^sha1\\$[a-f0-9]{1,}\\$[a-f0-9]{40}$",
+        "modes": [
+            {
+                "name": "Django(SHA-1)",
+                "hashcat": 800,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{49}$",
+        "modes": [
+            {
+                "name": "Citrix Netscaler",
+                "hashcat": 8100,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$S\\$[a-z0-9\\/\\.]{52}$",
+        "modes": [
+            {
+                "name": "Drupal > v7.x",
+                "hashcat": 7900,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$5\\$(rounds=[0-9]+\\$)?[a-z0-9\\/\\.]{0,16}\\$[a-z0-9\\/\\.]{43}$",
+        "modes": [
+            {
+                "name": "SHA-256 Crypt",
+                "hashcat": 7400,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^0x[a-f0-9]{4}[a-f0-9]{16}[a-f0-9]{64}$",
+        "modes": [
+            {
+                "name": "Sybase ASE",
+                "hashcat": 8000,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$6\\$(rounds=[0-9]+\\$)?[a-z0-9\\/\\.]{0,16}\\$[a-z0-9\\/\\.]{86}$",
+        "modes": [
+            {
+                "name": "SHA-512 Crypt",
+                "hashcat": 1800,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$sha\\$[a-z0-9]{1,16}\\$([a-f0-9]{32}|[a-f0-9]{40}|[a-f0-9]{64}|[a-f0-9]{128}|[a-f0-9]{140})$",
+        "modes": [
+            {
+                "name": "Minecraft(AuthMe Reloaded)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^sha256\\$[a-f0-9]{1,}\\$[a-f0-9]{64}$",
+        "modes": [
+            {
+                "name": "Django(SHA-256)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^sha384\\$[a-f0-9]{1,}\\$[a-f0-9]{96}$",
+        "modes": [
+            {
+                "name": "Django(SHA-384)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^crypt1:[a-z0-9\\+\\=]{12}:[a-z0-9\\+\\=]{12}$",
+        "modes": [
+            {
+                "name": "Clavister Secure Gateway",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{112}$",
+        "modes": [
+            {
+                "name": "Cisco VPN Client(PCF-File)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{1329}$",
+        "modes": [
+            {
+                "name": "Microsoft MSTSC(RDP-File)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[^\\\\\\/:*?\\\"\\<\\>\\|]{1,20}::[^\\\\\\/:*?\\\"\\<\\>\\|]{1,20}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$",
+        "modes": [
+            {
+                "name": "NetNTLMv1-VANILLA / NetNTLMv1+ESS",
+                "hashcat": 5500,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[^\\\\\\/:*?\\\"\\<\\>\\|]{1,20}::[^\\\\\\/:*?\\\"\\<\\>\\|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$",
+        "modes": [
+            {
+                "name": "NetNTLMv2",
+                "hashcat": 5600,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$krb5pa\\$23\\$user\\$realm\\$salt\\$[a-f0-9]{104}$",
+        "modes": [
+            {
+                "name": "Kerberos 5 AS-REQ Pre-Auth",
+                "hashcat": 7500,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$scram\\$[0-9]+\\$[a-z0-9\\/\\.]{16}\\$sha-1=[a-z0-9\\/\\.]{27},sha-256=[a-z0-9\\/\\.]{43},sha-512=[a-z0-9\\/\\.]{86}$",
+        "modes": [
+            {
+                "name": "SCRAM Hash",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{40}:[a-f0-9]{0,32}$",
+        "modes": [
+            {
+                "name": "Redmine Project Management Web App",
+                "hashcat": 7600,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^([0-9]{12})?\\$[a-f0-9]{16}$",
+        "modes": [
+            {
+                "name": "SAP CODVN B (BCODE)",
+                "hashcat": 7700,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^([0-9]{12})?\\$[a-f0-9]{40}$",
+        "modes": [
+            {
+                "name": "SAP CODVN F/G (PASSCODE)",
+                "hashcat": 7800,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^(.+\\$)?[a-z0-9\\/\\.]{30}(:.+)?$",
+        "modes": [
+            {
+                "name": "Juniper Netscreen/SSG(ScreenOS)",
+                "hashcat": 22,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^0x[a-f0-9]{60}\\s0x[a-f0-9]{40}$",
+        "modes": [
+            {
+                "name": "EPi",
+                "hashcat": 123,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{40}:[^*]{1,25}$",
+        "modes": [
+            {
+                "name": "SMF \u2265 v1.1",
+                "hashcat": 121,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{40}:[a-f0-9]{40}$",
+        "modes": [
+            {
+                "name": "Woltlab Burning Board 3.x",
+                "hashcat": 8400,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{130}(:[a-f0-9]{40})?$",
+        "modes": [
+            {
+                "name": "IPMI2 RAKP HMAC-SHA1",
+                "hashcat": 7300,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{32}:[0-9]+:[a-z0-9_.+-]+@[a-z0-9-]+\\.[a-z0-9-.]+$",
+        "modes": [
+            {
+                "name": "Lastpass",
+                "hashcat": 6800,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-z0-9\\/\\.]{16}(:.{1,})?$",
+        "modes": [
+            {
+                "name": "Cisco-ASA(MD5)",
+                "hashcat": 2410,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$vnc\\$\\*[a-f0-9]{32}\\*[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "VNC",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-z0-9]{32}(:([a-z0-9-]+\\.)?[a-z0-9-.]+\\.[a-z]{2,7}:.+:[0-9]+)?$",
+        "modes": [
+            {
+                "name": "DNSSEC(NSEC3)",
+                "hashcat": 8300,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^(user-.+:)?\\$racf\\$\\*.+\\*[a-f0-9]{16}$",
+        "modes": [
+            {
+                "name": "RACF",
+                "hashcat": 8500,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$3\\$\\$[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "NTHash(FreeBSD Variant)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$sha1\\$[0-9]+\\$[a-z0-9\\/\\.]{0,64}\\$[a-z0-9\\/\\.]{28}$",
+        "modes": [
+            {
+                "name": "SHA-1 Crypt",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{70}$",
+        "modes": [
+            {
+                "name": "hMailServer",
+                "hashcat": 1421,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[:\\$][AB][:\\$]([a-f0-9]{1,8}[:\\$])?[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "MediaWiki",
+                "hashcat": 3711,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{140}$",
+        "modes": [
+            {
+                "name": "Minecraft(xAuth)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$pbkdf2-sha(1|256|512)\\$[0-9]+\\$[a-z0-9\\/\\.]{22}\\$([a-z0-9\\/\\.]{27}|[a-z0-9\\/\\.]{43}|[a-z0-9\\/\\.]{86})$",
+        "modes": [
+            {
+                "name": "PBKDF2(Generic)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$p5k2\\$[0-9]+\\$[a-z0-9\\/+=-]+\\$[a-z0-9\\/+=-]{28}$",
+        "modes": [
+            {
+                "name": "PBKDF2(Cryptacular)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$p5k2\\$[0-9]+\\$[a-z0-9\\/\\.]+\\$[a-z0-9\\/\\.]{32}$",
+        "modes": [
+            {
+                "name": "PBKDF2(Dwayne Litzenberger)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^{FSHP[0123]\\|[0-9]+\\|[0-9]+}[a-z0-9\\/\\+=]+$",
+        "modes": [
+            {
+                "name": "Fairly Secure Hashed Password",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^\\$PHPS\\$.+\\$[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "PHPS",
+                "hashcat": 2612,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[0-9]{4}:[a-f0-9]{16}:[a-f0-9]{2080}$",
+        "modes": [
+            {
+                "name": "1Password(Agile Keychain)",
+                "hashcat": 6600,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{64}:[a-f0-9]{32}:[0-9]{5}:[a-f0-9]{608}$",
+        "modes": [
+            {
+                "name": "1Password(Cloud Keychain)",
+                "hashcat": 8200,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{256}:[a-f0-9]{256}:[a-f0-9]{16}:[a-f0-9]{16}:[a-f0-9]{320}:[a-f0-9]{16}:[a-f0-9]{40}:[a-f0-9]{40}:[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "IKE-PSK MD5",
+                "hashcat": 5300,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-f0-9]{256}:[a-f0-9]{256}:[a-f0-9]{16}:[a-f0-9]{16}:[a-f0-9]{320}:[a-f0-9]{16}:[a-f0-9]{40}:[a-f0-9]{40}:[a-f0-9]{40}$",
+        "modes": [
+            {
+                "name": "IKE-PSK SHA1",
+                "hashcat": 5400,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^[a-z0-9+\\/]{27}=$",
+        "modes": [
+            {
+                "name": "PeopleSoft",
+                "hashcat": 133,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^crypt\\$[a-f0-9]{5}\\$[a-z0-9.\\/]{13}$",
+        "modes": [
+            {
+                "name": "Django(DES Crypt Wrapper)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^pbkdf2_sha256\\$[0-9]+\\$[a-z0-9]{1,}\\$[a-z0-9+\\/]{43}=$",
+        "modes": [
+            {
+                "name": "Django(PBKDF2-HMAC-SHA256)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^pbkdf2_sha1\\$[0-9]+\\$[a-z0-9]{1,}\\$[a-z0-9+\\/]{27}=$",
+        "modes": [
+            {
+                "name": "Django(PBKDF2-HMAC-SHA1)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^bcrypt(\\$2[axy]|\\$2)\\$[0-9]{0,2}?\\$[a-z0-9\\/\\.]{53}$",
+        "modes": [
+            {
+                "name": "Django(BCrypt)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    },
+    {
+        "regex": "^md5\\$[a-f0-9]{1,}\\$[a-f0-9]{32}$",
+        "modes": [
+            {
+                "name": "Django(MD5)",
+                "hashcat": null,
+                "extended": false
+            }
+        ]
+    }
+]
