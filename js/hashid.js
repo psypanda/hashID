@@ -119,7 +119,9 @@
             {regex: /^pbkdf2_sha256\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9+\/]{43}=$/i, hashes: ["Django(PBKDF2-HMAC-SHA256)"]},
             {regex: /^pbkdf2_sha1\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9+\/]{27}=$/i, hashes: ["Django(PBKDF2-HMAC-SHA1)"]},
             {regex: /^bcrypt(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$/i, hashes: ["Django(BCrypt)"]},
-            {regex: /^md5\$[a-f0-9]{1,}\$[a-f0-9]{32}$/i, hashes: ["Django(MD5)"]}
+            {regex: /^md5\$[a-f0-9]{1,}\$[a-f0-9]{32}$/i, hashes: ["Django(MD5)"]},
+            {regex: /^\{PKCS5S2\}[a-z0-9+\/]{64}$/i, hashes: ["PBKDF2(Atlassian)"]},
+            {regex: /^md5[a-f0-9]{32}$/i, hashes: ["PostgreSQL MD5"]}
 		];
 		var result = [];
 		for(var hash_id=0; hash_id < hash_arr.length; hash_id++){
