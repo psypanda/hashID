@@ -617,7 +617,15 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^md5\$[a-f0-9]{1,}\$[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Django(MD5)', hashcat=None, extended=False)])
+            HashMode(name='Django(MD5)', hashcat=None, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^\{PKCS5S2\}[a-z0-9+\/]{64}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='PBKDF2(Atlassian)', hashcat=None, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^md5[a-f0-9]{32}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='PostgreSQL MD5', hashcat=None, extended=False)])
 ]
 
 
