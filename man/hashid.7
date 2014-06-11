@@ -1,0 +1,22 @@
+.\" Manpage for hashid
+.TH hashid 7 "11 June 2014" "v1.0" "hashid man page"
+.SH NAME
+hashid \- Identify the different types of hashes used to encrypt data
+.SH SYNOPSIS
+hashid [-a] [-m] [--help] [--version] INPUT
+.SH DESCRIPTION
+hashID is a tool written in Python 3.x which supports the identification of over 190 unique hash types using regular expressions.
+It is able to identify a single hash, parse a file or read files in a directory and identify the hashes within them.
+hashID is also capable of including the corresponding hashcat mode in its output.
+Altough hashID is written in Python 3.x it should also work with Python 2.7.
+.SH OPTIONS
+.IP -a
+list all hash algorithms including salted passwords
+.IP -m
+include corresponding hashcat mode in output
+.IP --help
+show help message and exit
+.IP --version
+show program's version number and exit
+.SH AUTHOR
+c0re (c0re@psypanda.org)

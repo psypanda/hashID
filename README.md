@@ -21,6 +21,8 @@ Install
 sudo apt-get install python3 git
 git clone https://github.com/psypanda/hashid.git
 chmod +x hashid.py
+sudo install -g 0 -o 0 -m 0644 man/hashid.7 /usr/local/man/man7/
+sudo gzip /usr/local/man/man7/hashid.7
 exit
 ```
 
