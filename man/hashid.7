@@ -1,22 +1,55 @@
 .\" Manpage for hashid
-.TH hashid 7 "11 June 2014" "v1.0" "hashid man page"
+.\" This file is part of hashID.
+.\" 
+.\" hashID is free software: you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation, either version 3 of the License, or
+.\" (at your option) any later version.
+.\" 
+.\" hashID is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\" 
+.\" You should have received a copy of the GNU General Public License
+.\" along with hashID.  If not, see <http://www.gnu.org/licenses/>.
+.\" 
+.TH hashid 7 "12 June 2014" "v1.1" "hashid man page"
 .SH NAME
-hashid \- Identify the different types of hashes used to encrypt data
+\fBhashid\fP \- Identify the different types of hashes used to encrypt data
+
 .SH SYNOPSIS
-hashid [-a] [-m] [--help] [--version] INPUT
+.br
+.B hashid
+[\fIOPTION\fR...] INPUT
+
 .SH DESCRIPTION
-hashID is a tool written in Python 3.x which supports the identification of over 190 unique hash types using regular expressions.
+.B hashID 
+is a tool written in Python 3.x which supports the identification of over 190 unique hash types using regular expressions.
+
 It is able to identify a single hash, parse a file or read files in a directory and identify the hashes within them.
-hashID is also capable of including the corresponding hashcat mode in its output.
-Altough hashID is written in Python 3.x it should also work with Python 2.7.
+.B hashID
+is also capable of including the corresponding hashcat mode in its output.
+Altough
+.B hashID
+is written in Python 3.x it should also work with Python 2.7.
+
 .SH OPTIONS
-.IP -a
+.TP
+\fB\-a, \-\-all\fR
 list all hash algorithms including salted passwords
-.IP -m
+.TP
+\fB\-m, \-\-mode\fR
 include corresponding hashcat mode in output
-.IP --help
+.TP
+\fB\-h, \-\-help\fR
 show help message and exit
-.IP --version
+.TP
+\fB\-\-version\fR
 show program's version number and exit
+
+.SH BUGS
+If you find a bug, please report it at https://github.com/psypanda/hashID/issues
+
 .SH AUTHOR
 c0re (c0re@psypanda.org)
