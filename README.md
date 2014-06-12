@@ -21,8 +21,8 @@ Install
 sudo apt-get install python3 git
 git clone https://github.com/psypanda/hashid.git
 cd hashid && chmod +x hashid.py
-sudo install -g 0 -o 0 -m 0644 man/hashid.7 /usr/local/man/man7/
-sudo gzip /usr/local/man/man7/hashid.7
+sudo install -g 0 -o 0 -m 0644 man/hashid.7 /usr/share/man/man7/
+sudo gzip /usr/share/man/man7/hashid.7
 exit
 ```
 
@@ -32,13 +32,13 @@ Usage
 $ hashid.py [-a] [-m] [--help] [--version] INPUT
 ```
 
-| Parameter        				 | Description      				  				   |
+| Parameter                      | Description                                         |
 | :----------------------------- | :-------------------------------------------------- |
-| input		 			      	 | string or filename to analyze 					   |
-| -a, --all 	              	 | list all hash algorithms including salted passwords |
-| -m, --mode	              	 | include corresponding hashcat mode in output		   |
-| --help	    				 | show this help message and exit 					   |
-| --version                   	 | show program's version number and exit			   |
+| input                          | string or filename to analyze                       |
+| -a, --all                      | list all hash algorithms including salted passwords |
+| -m, --mode                     | include corresponding hashcat mode in output        |
+| --help                         | show this help message and exit                     |
+| --version                      | show program's version number and exit              |
 
 
 Screenshot
