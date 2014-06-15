@@ -146,7 +146,7 @@ prototypes = [
             HashMode(name='Domain Cached Credentials 2', hashcat=2100, extended=False),
             HashMode(name='mscash2', hashcat=2100, extended=True)]),
     Prototype(
-        regex=re.compile(r'^{SHA}[a-z0-9\/+=]{28}$', re.IGNORECASE),
+        regex=re.compile(r'^{SHA}[a-z0-9\/+]{27}=$', re.IGNORECASE),
         modes=[
             HashMode(name='SHA-1(Base64)', hashcat=101, extended=False),
             HashMode(name='Netscape LDAP SHA', hashcat=101, extended=False),
@@ -238,7 +238,7 @@ prototypes = [
         modes=[
             HashMode(name='Cisco-IOS(SHA-256)', hashcat=5700, extended=False)]),
     Prototype(
-        regex=re.compile(r'^{SSHA}[a-z0-9\/+=]{40}$', re.IGNORECASE),
+        regex=re.compile(r'^{SSHA}[a-z0-9\/+]{38}==$', re.IGNORECASE),
         modes=[
             HashMode(name='SSHA-1(Base64)', hashcat=111, extended=False),
             HashMode(name='Netscape LDAP SSHA', hashcat=111, extended=False),
@@ -373,7 +373,7 @@ prototypes = [
             HashMode(name='Skein-512(384)', hashcat=None, extended=False),
             HashMode(name='Skein-1024(384)', hashcat=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^{SSHA512}[a-z0-9\/+]{96}={0,2}$', re.IGNORECASE),
+        regex=re.compile(r'^{SSHA512}[a-z0-9\/+]{96}$', re.IGNORECASE),
         modes=[
             HashMode(name='SSHA-512(Base64)', hashcat=1711, extended=False),
             HashMode(name='LDAP(SSHA-512)', hashcat=1711, extended=False)]),
@@ -563,7 +563,7 @@ prototypes = [
         modes=[
             HashMode(name='PBKDF2(Generic)', hashcat=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/+=-]{28}$', re.IGNORECASE),
+        regex=re.compile(r'^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/+-]{27}=$', re.IGNORECASE),
         modes=[
             HashMode(name='PBKDF2(Cryptacular)', hashcat=None, extended=False)]),
     Prototype(
