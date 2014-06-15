@@ -17,7 +17,7 @@ There is also a [nodejs](js) version of hashID available which is easily set up 
 
 Install
 ------
-```
+```bash
 sudo apt-get install python3 git
 git clone https://github.com/psypanda/hashid.git
 cd hashid && chmod +x hashid.py
