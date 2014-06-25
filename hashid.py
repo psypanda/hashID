@@ -130,7 +130,8 @@ prototypes = [
             HashMode(name='md5(md5($pass).md5($salt))', hashcat=3910, extended=True),
             HashMode(name='md5($salt.md5($salt.$pass))', hashcat=4010, extended=True),
             HashMode(name='md5($salt.md5($pass.$salt))', hashcat=4110, extended=True),
-            HashMode(name='md5($username.0.$pass)', hashcat=4210, extended=True)]),
+            HashMode(name='md5($username.0.$pass)', hashcat=4210, extended=True),
+            HashMode(name='Skype', hashcat=23, extended=False)]),
     Prototype(
         regex=re.compile(r'^(\$NT\$)?[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
