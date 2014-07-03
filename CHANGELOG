@@ -1,5 +1,11 @@
 ### Changelog
 
+v2.8.3
+- removed unnecessary escaping of literal characters in regexes
+- reworked man page and added license notice
+- fixed some lenght bugs mainly in the base64 hash formats
+- added Skype hash format
+
 v2.8.2
 - massive speed improvements
 - added man page for hashID
