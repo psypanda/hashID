@@ -153,7 +153,7 @@ prototypes = [
             HashMode(name='Netscape LDAP SHA', hashcat=101, extended=False),
             HashMode(name='nsldap', hashcat=101, extended=True)]),
     Prototype(
-        regex=re.compile(r'^\$1\$[a-z0-9\/.]{0,8}\$[a-z0-9\/.]{22}$', re.IGNORECASE),
+        regex=re.compile(r'^\$1\$[a-z0-9\/.]{0,8}\$[a-z0-9\/.]{22}(:.*)?$', re.IGNORECASE),
         modes=[
             HashMode(name='MD5 Crypt', hashcat=500, extended=False),
             HashMode(name='Cisco-IOS(MD5)', hashcat=500, extended=False),
