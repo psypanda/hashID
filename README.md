@@ -11,13 +11,13 @@ It is able to identify a single hash, parse a file or read files in a directory 
 hashID is also capable of including the corresponding [hashcat](https://hashcat.net/oclhashcat/ "hashcat") mode in its output.    
 Altough hashID is written in Python 3.x it should also work with Python 2.7.
 
-There is also a [nodejs](js) version of hashID available which is easily set up to provide online hash identification.  
+There is also a [nodejs](https://github.com/psypanda/hashID/tree/js "hashID-nodejs") version of hashID available which is easily set up to provide online hash identification.  
 
 *Note: When identifying a hash on *nix operating systems use single quotes to prevent interpolation*
 
 Install
 ------
-```bash
+```
 sudo apt-get install python3 git
 git clone https://github.com/psypanda/hashid.git
 cd hashid && chmod +x hashid.py
@@ -63,7 +63,7 @@ Analyzing '*85ADE5DDF71E348162894C71D73324C043838751'
 Analyzing '$2a$08$VPzNKPAY60FsAbnq.c.h5.XTCZtC1z.j3hnlDFGImN9FcpfR1QnLq'
 [+] Blowfish(OpenBSD)
 [+] Woltlab Burning Board 4.x
-[+] bcrypt
+[+] BCrypt
 --End of file 'hashes.txt'--
 
 $ ./hashid.py folder/*.txt
@@ -74,7 +74,7 @@ Analyzing '*85ADE5DDF71E348162894C71D73324C043838751'
 Analyzing '$2a$08$VPzNKPAY60FsAbnq.c.h5.XTCZtC1z.j3hnlDFGImN9FcpfR1QnLq'
 [+] Blowfish(OpenBSD)
 [+] Woltlab Burning Board 4.x
-[+] bcrypt
+[+] BCrypt
 --End of file 'hashes.txt'--
 --File 'hashes.txt'--
 Analyzing '{smd5}01234567$yOImZPvBC8dg1HjGYfH7j.'
@@ -97,8 +97,8 @@ Known issues
 
 Credits
 ------
-* Thanks to [sigkill](https://github.com/sigkill-rcode) who helped me numerous times fixing and optimizing the code
-* Thanks to [kmulvey](https://github.com/kmulvey) for supplying a [nodejs](js) version of hashID
+* Thanks to [sigkill](https://github.com/sigkill-rcode) who helped numerous times fixing and optimizing the code
+* Thanks to [kmulvey](https://github.com/kmulvey) for supplying a [nodejs](https://github.com/psypanda/hashID/tree/js) version of hashID
 * Thanks to [bburky](https://github.com/bburky) for extending hashIDs functionality and numerous ideas to improve it
 
 Resources
