@@ -295,11 +295,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^[a-f0-9]{40}:[a-f0-9]{16}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Samsung Android Password/PIN', hashcat=5800, extended=False)]),
+            HashMode(name='Android PIN', hashcat=5800, extended=False)]),
     Prototype(
         regex=re.compile(r'^S:[a-f0-9]{60}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Oracle 11g', hashcat=112, extended=False)]),
+            HashMode(name='Oracle 11g/12c', hashcat=112, extended=False)]),
     Prototype(
         regex=re.compile(r'^\$bcrypt-sha256\$(2[axy]|2)\,[0-9]+\$[a-z0-9\/.]{22}\$[a-z0-9\/.]{31}$', re.IGNORECASE),
         modes=[
