@@ -1,9 +1,16 @@
 ### Changelog
 
+v2.8.4
+- added Lotus Notes/Domino 8 hash format
+- added scrypt hash format
+- added support for raw passwd & shadow files without preprocessing
+- renamed Oracle 11g to Oracle 11g/12c
+- renamed Samsung Android Password/PIN to Android PIN
+
 v2.8.3
 - removed unnecessary escaping of literal characters in regexes
 - reworked man page and added license notice
-- fixed some lenght bugs mainly in the base64 hash formats
+- fixed some length bugs mainly in the base64 hash formats
 - added Skype hash format
 
 v2.8.2
