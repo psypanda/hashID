@@ -24,7 +24,7 @@
 			{regex: /^[a-f0-9]{32}(:[^\\\/\:\*\?\"<\>\|]{1,20})?$/i, hashes: ["Domain Cached Credentials", "mscash"]},
 			{regex: /^(\$DCC2\$10240#[^\\\/\:\*\?\"<\>\|]{1,20}#)?[a-f0-9]{32}$/i, hashes: ["Domain Cached Credentials 2","mscash2"]},
 			{regex: /^{SHA}[a-z0-9\/\+]{27}=$/i, hashes: ["SHA-1(Base64)","Netscape LDAP SHA","nsldap"]},
-			{regex: /^\$1\$[a-z0-9\/\.]{0,8}\$[a-z0-9\/\.]{22}$/i, hashes: ["MD5 Crypt","Cisco-IOS(MD5)","FreeBSD MD5"]},
+			{regex: /^\$1\$[a-z0-9\/.]{0,8}\$[a-z0-9\/.]{22}(:.*)?$/i, hashes: ["MD5 Crypt","Cisco-IOS(MD5)","FreeBSD MD5"]},
 			{regex: /^0x[a-f0-9]{32}$/i, hashes: ["Lineage II C4"]},
 			{regex: /^\$H\$[a-z0-9\/\.]{31}$/i, hashes: ["phpBB v3.x","Wordpress v2.6.0/2.6.1","PHPass' Portable Hash"]},
 			{regex: /^\$P\$[a-z0-9\/\.]{31}$/i, hashes: ["Wordpress ≥ 2.6.2","Joomla ≥ v2.5.18","PHPass' Portable Hash"]},
@@ -121,7 +121,10 @@
             {regex: /^bcrypt(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/\.]{53}$/i, hashes: ["Django(BCrypt)"]},
             {regex: /^md5\$[a-f0-9]{1,}\$[a-f0-9]{32}$/i, hashes: ["Django(MD5)"]},
             {regex: /^\{PKCS5S2\}[a-z0-9+\/]{64}$/i, hashes: ["PBKDF2(Atlassian)"]},
-            {regex: /^md5[a-f0-9]{32}$/i, hashes: ["PostgreSQL MD5"]}
+            {regex: /^md5[a-f0-9]{32}$/i, hashes: ["PostgreSQL MD5"]},
+            {regex: /^[a-f0-9]{32}(:.+)$/i, hashes: ["Skype"]},
+            {regex: /^\([a-z0-9\/+]{49}\)$/i, hashes: ["Lotus Notes/Domino 8"]},
+            {regex: /^SCRYPT:[0-9]{5}:[0-9]{1}:[0-9]{1}:[a-z0-9\/+]{14}==:[a-z0-9\/+]{43}=$/i, hashes: ["scrypt"]}
 		];
 		var result = [];
 		for(var hash_id=0; hash_id < hash_arr.length; hash_id++){
