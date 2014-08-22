@@ -630,11 +630,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\([a-z0-9\/+]{49}\)$', re.IGNORECASE),
         modes=[
-            HashMode(name='Lotus Notes/Domino 8+', hashcat=9100, extended=False)]),
+            HashMode(name='Lotus Notes/Domino 8', hashcat=9100, extended=False)]),
     Prototype(
         regex=re.compile(r'^SCRYPT:[0-9]{5}:[0-9]{1}:[0-9]{1}:[a-z0-9\/+]{14}==:[a-z0-9\/+]{43}=$', re.IGNORECASE),
         modes=[
-            HashMode(name='Scrypt', hashcat=8900, extended=False)])
+            HashMode(name='scrypt', hashcat=8900, extended=False)])
 ]
 
 
