@@ -634,7 +634,15 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^SCRYPT:[0-9]{5}:[0-9]{1}:[0-9]{1}:[a-z0-9\/+]{14}==:[a-z0-9\/+]{43}=$', re.IGNORECASE),
         modes=[
-            HashMode(name='scrypt', hashcat=8900, extended=False)])
+            HashMode(name='scrypt', hashcat=8900, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^\$8\$[a-z0-9\/.]{14}\$[a-z0-9\/.]{43}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='Cisco Type 8', hashcat=9200, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^\$9\$[a-z0-9\/.]{14}\$[a-z0-9\/.]{43}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='Cisco Type 9', hashcat=9300, extended=False)])
 ]
 
 
