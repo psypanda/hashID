@@ -642,7 +642,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$9\$[a-z0-9\/.]{14}\$[a-z0-9\/.]{43}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Cisco Type 9', hashcat=9300, extended=False)])
+            HashMode(name='Cisco Type 9', hashcat=9300, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^\$office\$\*2007\*[0-9]{2}\*[0-9]{3}\*[0-9]{2}\*[a-z0-9]{32}\*[a-z0-9]{32}\*[a-z0-9]{40}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='Office 2007', hashcat=9400, extended=False)])
 ]
 
 
