@@ -650,7 +650,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$office\$\*2010\*[0-9]{6}\*[0-9]{3}\*[0-9]{2}\*[a-z0-9]{32}\*[a-z0-9]{32}\*[a-z0-9]{64}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Office 2010', hashcat=9500, extended=False)])
+            HashMode(name='Office 2010', hashcat=9500, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^\$office\$\*2013\*[0-9]{6}\*[0-9]{3}\*[0-9]{2}\*[a-z0-9]{32}\*[a-z0-9]{32}\*[a-z0-9]{64}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='Office 2013', hashcat=9600, extended=False)])
 ]
 
 
