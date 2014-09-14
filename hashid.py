@@ -109,7 +109,7 @@ prototypes = [
             HashMode(name='Skein-256(128)', hashcat=None, extended=False),
             HashMode(name='Skein-512(128)', hashcat=None, extended=False),
             HashMode(name='Lotus Notes/Domino 5', hashcat=8600, extended=False),
-            HashMode(name='RAdmin v2.x', hashcat=None, extended=True),
+            HashMode(name='RAdmin v2.x', hashcat=9900, extended=False),
             HashMode(name='ZipMonster', hashcat=None, extended=True),
             HashMode(name='md5(md5(md5($pass)))', hashcat=3500, extended=True),
             HashMode(name='md5(strtoupper(md5($pass)))', hashcat=4300, extended=True),
