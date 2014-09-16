@@ -1,5 +1,14 @@
 ### Changelog
 
+v2.8.5
+- added Cisco Type 8 & 9 hash format
+- added Android FDE ≤ 4.3 hash format
+- added Microsoft Office ≤ 2003 hash format
+- added Microsoft Office 2007 hash format
+- added Microsoft Office 2010 hash format
+- added Microsoft Office 2013 hash format
+- RAdmin v2.x hashcat mode added
+
 v2.8.4
 - added Lotus Notes/Domino 8 hash format
 - added scrypt hash format
