@@ -658,7 +658,15 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$fde\$[0-9]{2}\$[a-f0-9]{32}\$[0-9]{2}\$[a-f0-9]{32}\$[a-f0-9]{3072}$', re.IGNORECASE),
         modes=[
-            HashMode(name=u'Android FDE ≤ 4.3', hashcat=8800, extended=False)])
+            HashMode(name=u'Android FDE ≤ 4.3', hashcat=8800, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^\$oldoffice\$[01]\*[0-9]{32}\*[a-f0-9]{32}\*[a-f0-9]{32}$', re.IGNORECASE),
+        modes=[
+            HashMode(name=u'Microsoft Office ≤ 2003 (MD5+RC4)', hashcat=9700, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^\$oldoffice\$[34]\*[0-9]{32}\*[a-f0-9]{32}\*[a-f0-9]{40}$', re.IGNORECASE),
+        modes=[
+            HashMode(name=u'Microsoft Office ≤ 2003 (SHA1+RC4)', hashcat=9800, extended=False)])
 ]
 
 
