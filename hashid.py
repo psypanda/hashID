@@ -606,7 +606,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^pbkdf2_sha256\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9\/+]{43}=$', re.IGNORECASE),
         modes=[
-            HashMode(name='Django(PBKDF2-HMAC-SHA256)', hashcat=None, extended=False)]),
+            HashMode(name='Django(PBKDF2-HMAC-SHA256)', hashcat=10000, extended=False)]),
     Prototype(
         regex=re.compile(r'^pbkdf2_sha1\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9\/+]{27}=$', re.IGNORECASE),
         modes=[
