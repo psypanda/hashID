@@ -721,8 +721,12 @@ def main():
     hashID = HashID()
 
     if not args.strings or args.strings[0] == "-":
-        for line in sys.stdin:
+        while True:
+            line = sys.stdin.readline()
+            if not line:
+                break
             writeResult(line.strip(), hashID.identifyHash(line.strip()), sys.stdout, args.mode, args.all)
+            sys.stdout.flush()
     else:
         for string in args.strings:
             if os.path.isfile(string):
