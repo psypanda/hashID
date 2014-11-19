@@ -427,7 +427,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^sha1\$[a-f0-9]{1,}\$[a-f0-9]{40}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Django(SHA-1)', hashcat=800, extended=False)]),
+            HashMode(name='Django(SHA-1)', hashcat=124, extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{49}$', re.IGNORECASE),
         modes=[
