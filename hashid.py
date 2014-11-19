@@ -712,7 +712,7 @@ def main():
     description = "Identify the different types of hashes used to encrypt data"
 
     parser = argparse.ArgumentParser(usage=usage, description=description, epilog=__license__)
-    parser.add_argument("strings", metavar="input", type=str, nargs="+", help="string or filename to analyze")
+    parser.add_argument("strings", metavar="input", type=str, nargs="*", help="string or filename to analyze")
     parser.add_argument("-a", "--all", action="store_true", help="list all possible hash algorithms including salted passwords")
     parser.add_argument("-m", "--mode", action="store_true", help="include corresponding hashcat mode in output")
     parser.add_argument("--version", action="version", version=banner)
@@ -720,7 +720,7 @@ def main():
 
     hashID = HashID()
 
-    if not args.strings:
+    if not args.strings or args.strings[0] == "-":
         for line in sys.stdin:
             writeResult(line.strip(), hashID.identifyHash(line.strip()), sys.stdout, args.mode, args.all)
     else:
