@@ -91,10 +91,6 @@ Contributing to this project can be done in various ways:
 * Change/Fix/Enhance existing regular expression
 * Provide reading resources on specific hash types in [hashinfo.xlsx](hashinfo.xlsx)
 
-Known issues
-------
-* hashID isn't capable of handling piped input at the moment
-
 Credits
 ------
 * Thanks to [sigkill](https://github.com/sigkill-rcode) who helped numerous times fixing and optimizing the code
