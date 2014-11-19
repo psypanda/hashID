@@ -228,7 +228,8 @@ prototypes = [
             HashMode(name='sha1(unicode($pass).$salt)', hashcat=130, extended=True),
             HashMode(name='sha1($salt.unicode($pass))', hashcat=140, extended=True),
             HashMode(name='HMAC-SHA1 (key = $pass)', hashcat=150, extended=True),
-            HashMode(name='HMAC-SHA1 (key = $salt)', hashcat=160, extended=True)]),
+            HashMode(name='HMAC-SHA1 (key = $salt)', hashcat=160, extended=True),
+            HashMode(name='sha1($salt.$pass.$salt)', hashcat=4710, extended=True)]),
     Prototype(
         regex=re.compile(r'^\*[a-f0-9]{40}$', re.IGNORECASE),
         modes=[
