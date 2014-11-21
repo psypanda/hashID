@@ -1,5 +1,10 @@
 ### Changelog
 
+v2.9.0
+- added support for piped input (thanks Max)
+- added SHA1($salt.$pass.$salt) hash format
+- Django(PBKDF2-HMAC-SHA256) hashcat mode added
+
 v2.8.5
 - added Cisco Type 8 & 9 hash format
 - added Android FDE ≤ 4.3 hash format
