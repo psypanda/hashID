@@ -17,19 +17,18 @@ There is also a [nodejs](https://github.com/psypanda/hashID/tree/js "hashID-node
 
 Install
 ------
-```
-sudo apt-get install python3 git
-git clone https://github.com/psypanda/hashid.git
-cd hashid && chmod +x hashid.py
-sudo install -g 0 -o 0 -m 0644 man/hashid.7 /usr/share/man/man7/
-sudo gzip /usr/share/man/man7/hashid.7
-exit
+```console
+$ sudo apt-get install python3 git
+$ git clone https://github.com/psypanda/hashid.git
+$ cd hashid
+$ sudo install -g 0 -o 0 -m 0644 man/hashid.7 /usr/share/man/man7/
+$ sudo gzip /usr/share/man/man7/hashid.7
 ```
 
 Usage
 ------
-```
-$ hashid.py [-a] [-m] [--help] [--version] INPUT
+```console
+$ ./hashid.py [-a] [-m] [--help] [--version] INPUT
 ```
 
 | Parameter                      | Description                                         |
@@ -43,7 +42,7 @@ $ hashid.py [-a] [-m] [--help] [--version] INPUT
 
 Screenshot
 ------
-```
+```console
 $ ./hashid.py $P$8ohUJ.1sdFw09/bMaAQPTGDNi2BIUt1
 Analyzing '$P$8ohUJ.1sdFw09/bMaAQPTGDNi2BIUt1'
 [+] Wordpress ≥ v2.6.2
