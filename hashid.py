@@ -683,7 +683,7 @@ class HashID(object):
         self.prototypes = list(prototypes)
 
     def identifyHash(self, phash):
-        """return algorithm and hashcat mode"""
+        """Returns identified algorithm and matching hasdhcat mode"""
         phash = phash.strip()
         for prototype in self.prototypes:
             if prototype.regex.match(phash):
@@ -692,7 +692,7 @@ class HashID(object):
 
 
 def writeResult(candidate, identified_modes, outfile=sys.stdout, hashcatMode=False, extended=False):
-    """create human readable output"""
+    """Create human readable output from identifyHash"""
     outfile.write(u"Analyzing '{0}'\n".format(candidate))
     count = 0
     for mode in identified_modes:
