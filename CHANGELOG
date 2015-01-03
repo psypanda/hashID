@@ -1,5 +1,12 @@
 ### Changelog
 
+v2.9.1
+- SAP CODVN B (BCODE) regex fixes
+- SAP CODVN F/G (PASSCODE) regex fixes
+- AIX(smd5) regex fixes
+- AIX(ssha1) regex fixes
+- AIX(ssha256) regex fixes
+
 v2.9.0
 - added support for piped input (thanks Max)
 - added SHA1($salt.$pass.$salt) hash format
