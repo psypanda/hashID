@@ -99,7 +99,6 @@ Credits
 Resources
 ------
 * http://pythonhosted.org/passlib/index.html
-* http://wiki.insidepro.com/index.php/Algorithms
 * http://openwall.info/wiki/john
 * http://openwall.info/wiki/john/sample-hashes
 * http://hashcat.net/wiki/doku.php?id=example_hashes
