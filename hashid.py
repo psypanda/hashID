@@ -186,7 +186,7 @@ prototypes = [
             HashMode(name='Apache MD5', hashcat=1600, extended=False),
             HashMode(name='md5apr1', hashcat=1600, extended=True)]),
     Prototype(
-        regex=re.compile(r'^{smd5}[a-z0-9.$]{31}$', re.IGNORECASE),
+        regex=re.compile(r'^{smd5}[a-z0-9$\/.]{31}$', re.IGNORECASE),
         modes=[
             HashMode(name='AIX(smd5)', hashcat=6300, extended=False)]),
     Prototype(
@@ -267,7 +267,7 @@ prototypes = [
         modes=[
             HashMode(name='CryptoCurrency(PrivateKey)', hashcat=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^{ssha1}[a-z0-9.$]{47}$', re.IGNORECASE),
+        regex=re.compile(r'^{ssha1}[a-z0-9$\/.]{47}$', re.IGNORECASE),
         modes=[
             HashMode(name='AIX(ssha1)', hashcat=6700, extended=False)]),
     Prototype(
@@ -352,7 +352,7 @@ prototypes = [
         modes=[
             HashMode(name='EPiServer 6.x < v4', hashcat=141, extended=False)]),
     Prototype(
-        regex=re.compile(r'^{ssha256}[a-z0-9.$]{63}$', re.IGNORECASE),
+        regex=re.compile(r'^{ssha256}[a-z0-9$\/.]{63}$', re.IGNORECASE),
         modes=[
             HashMode(name='AIX(ssha256)', hashcat=6400, extended=False)]),
     Prototype(
@@ -493,11 +493,11 @@ prototypes = [
         modes=[
             HashMode(name='Redmine Project Management Web App', hashcat=7600, extended=False)]),
     Prototype(
-        regex=re.compile(r'^([0-9]{12})?\$[a-f0-9]{16}$', re.IGNORECASE),
+        regex=re.compile(r'^(.+)?\$[a-f0-9]{16}$', re.IGNORECASE),
         modes=[
             HashMode(name='SAP CODVN B (BCODE)', hashcat=7700, extended=False)]),
     Prototype(
-        regex=re.compile(r'^([0-9]{12})?\$[a-f0-9]{40}$', re.IGNORECASE),
+        regex=re.compile(r'^(.+)?\$[a-f0-9]{40}$', re.IGNORECASE),
         modes=[
             HashMode(name='SAP CODVN F/G (PASSCODE)', hashcat=7800, extended=False)]),
     Prototype(
