@@ -6,10 +6,10 @@ Identify the different types of hashes used to encrypt data and especially passw
 This tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/ "hash-identifier"), which is outdated!
  
 hashID is a tool written in Python 3.x which supports the identification of over 200 unique hash types using regular expressions.
-A full list of supported hashes is found [here](hashinfo.xlsx "hashinfo.xlsx").    
-It is able to identify a single hash, parse a file or read files in a directory and identify the hashes within them.    
+A detailed list of supported hashes can be found [here](hashinfo.xlsx "hashinfo.xlsx").    
+It is able to identify a single hash, parse a file or read multiple files in a directory and identify the hashes within them.    
 hashID is also capable of including the corresponding [hashcat](https://hashcat.net/oclhashcat/ "hashcat") mode in its output.    
-Altough hashID is written in Python 3.x it should also work with Python 2.7.
+Altough hashID is written in Python 3.x it should also work using Python 2.7.
 
 There is also a [nodejs](https://github.com/psypanda/hashID/tree/js "hashID-nodejs") version of hashID available which is easily set up to provide online hash identification.  
 
@@ -86,8 +86,8 @@ Analyzing 'crypt1:fnd+8xl+U1E=:Wc30H8MPgAc='
 Contribute
 ------
 Contributing to this project can be done in various ways:
-* Add currently unsupported hash types
-* Change/Fix/Enhance existing regular expression
+* Add currently unsupported hashes
+* Change/Fix/Enhance existing regular expressions
 * Provide reading resources on specific hash types in [hashinfo.xlsx](hashinfo.xlsx)
 
 Credits
