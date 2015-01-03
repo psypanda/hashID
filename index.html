@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>hashID by psypanda</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/psypanda/hashID">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/psypanda/hashID/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/psypanda/hashID/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>hashID</h1>
+          <p>Software to identify the different types of hashes used to encrypt data</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/psypanda">psypanda</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="hashid" class="anchor" href="#hashid" aria-hidden="true"><span class="octicon octicon-link"></span></a>hashID</h1>
+
+<p>Identify the different types of hashes used to encrypt data and especially passwords.</p>
+
+<p>This tool replaces <a href="http://code.google.com/p/hash-identifier/" title="hash-identifier">hash-identifier</a>, which is outdated!</p>
+
+<p>hashID is a tool written in Python 3.x which supports the identification of over 200 unique hash types using regular expressions.
+A detailed list of supported hashes can be found <a href="hashinfo.xlsx" title="hashinfo.xlsx">here</a>.<br>
+It is able to identify a single hash, parse a file or read multiple files in a directory and identify the hashes within them.<br>
+hashID is also capable of including the corresponding <a href="https://hashcat.net/oclhashcat/" title="hashcat">hashcat</a> mode in its output.<br>
+Altough hashID is written in Python 3.x it should also work using Python 2.7.</p>
+
+<p>There is also a <a href="https://github.com/psypanda/hashID/tree/js" title="hashID-nodejs">nodejs</a> version of hashID available which is easily set up to provide online hash identification.  </p>
+
+<p><em>Note: When identifying a hash on *nix operating systems use single quotes to prevent interpolation</em></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-console"><pre>$ <span class="pl-s2">./hashid.py [-a] [-m] [--help] [--version] INPUT</span></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">input</td>
+<td align="left">string or filename to analyze</td>
+</tr>
+<tr>
+<td align="left">-a, --all</td>
+<td align="left">list all hash algorithms including salted passwords</td>
+</tr>
+<tr>
+<td align="left">-m, --mode</td>
+<td align="left">include corresponding hashcat mode in output</td>
+</tr>
+<tr>
+<td align="left">--help</td>
+<td align="left">show this help message and exit</td>
+</tr>
+<tr>
+<td align="left">--version</td>
+<td align="left">show program's version number and exit</td>
+</tr>
+</tbody>
+</table>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
