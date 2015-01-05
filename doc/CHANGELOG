@@ -1,5 +1,18 @@
 ### Changelog
 
+v2.9.2
+- added SAP CODVN H (PWDSALTEDHASH) iSSHA-1 hash format
+- EPi regex fixes
+- Fortigate(FortiOS) regex fixes
+- iSCSI CHAP Authentication regex fixes
+- MD2 regex fixes
+- MD5(Chap) regex fixes
+- Microsoft Office ≤ 2003 (MD5+RC4) regex fixes
+- Microsoft Office ≤ 2003 (SHA1+RC4) regex fixes
+- Oracle 11g/12c regex fixes
+- RAdmin v2.x regex fixes
+- Snefru-256 regex fixes
+
 v2.9.1
 - SAP CODVN B (BCODE) regex fixes
 - SAP CODVN F/G (PASSCODE) regex fixes
