@@ -696,7 +696,7 @@ class HashID(object):
         self.prototypes = list(prototypes)
 
     def identifyHash(self, phash):
-        """Returns identified algorithm and matching hasdhcat mode"""
+        """Returns identified HashMode"""
         phash = phash.strip()
         for prototype in self.prototypes:
             if prototype.regex.match(phash):
@@ -709,7 +709,13 @@ def writeResult(candidate, identified_modes, outfile=sys.stdout, hashcatMode=Fal
     outfile.write(u"Analyzing '{0}'\n".format(candidate))
     count = 0
     for mode in identified_modes:
-        if not mode.extended or extended:
+        if not extended:
+            if not mode.extended:
+                if hashcatMode and mode.hashcat is not None:
+                    outfile.write(u"[+] {0} [Hashcat Mode: {1}]\n".format(mode.name, mode.hashcat))
+                else:
+                    outfile.write(u"[+] {0}\n".format(mode.name))
+        else:
             if hashcatMode and mode.hashcat is not None:
                 outfile.write(u"[+] {0} [Hashcat Mode: {1}]\n".format(mode.name, mode.hashcat))
             else:
