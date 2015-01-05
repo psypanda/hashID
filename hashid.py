@@ -734,7 +734,8 @@ def main():
     parser = argparse.ArgumentParser(usage=usage, description=description, epilog=__license__)
     parser.add_argument("strings", metavar="input", type=str, nargs="*", help="string or filename to analyze")
     parser.add_argument("-a", "--all", action="store_true", help="list all possible hash algorithms including salted passwords")
-    parser.add_argument("-m", "--mode", action="store_true", help="include corresponding hashcat mode in output")
+    parser.add_argument("-m", "--mode", action="store_true", help="include corresponding Hashcat mode in output")
+    parser.add_argument("-j", "--john", action="store_true", help="include corresponding JohnTheRipper format in output")
     parser.add_argument("--version", action="version", version=banner)
     args = parser.parse_args()
 
