@@ -676,7 +676,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^(\$radmin2\$)?[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
-            HashMode(name='RAdmin v2.x', hashcat=9900, extended=False)])
+            HashMode(name='RAdmin v2.x', hashcat=9900, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^{x-issha,\s[0-9]{4}}[a-z0-9\/+=]+$', re.IGNORECASE),
+        modes=[
+            HashMode(name='SAP CODVN H (PWDSALTEDHASH) iSSHA-1', hashcat=10300, extended=False)])
 ]
 
 
