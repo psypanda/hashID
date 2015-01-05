@@ -109,7 +109,6 @@ prototypes = [
             HashMode(name='Skein-256(128)', hashcat=None, extended=False),
             HashMode(name='Skein-512(128)', hashcat=None, extended=False),
             HashMode(name='Lotus Notes/Domino 5', hashcat=8600, extended=False),
-            HashMode(name='RAdmin v2.x', hashcat=9900, extended=False),
             HashMode(name='ZipMonster', hashcat=None, extended=True),
             HashMode(name='md5(md5(md5($pass)))', hashcat=3500, extended=True),
             HashMode(name='md5(strtoupper(md5($pass)))', hashcat=4300, extended=True),
@@ -246,7 +245,7 @@ prototypes = [
             HashMode(name='Netscape LDAP SSHA', hashcat=111, extended=False),
             HashMode(name='nsldaps', hashcat=111, extended=True)]),
     Prototype(
-        regex=re.compile(r'^[a-z0-9]{47}$', re.IGNORECASE),
+        regex=re.compile(r'^[a-z0-9=]{47}$', re.IGNORECASE),
         modes=[
             HashMode(name='Fortigate(FortiOS)', hashcat=7000, extended=False)]),
     Prototype(
@@ -343,7 +342,7 @@ prototypes = [
         modes=[
             HashMode(name='SAM(LM_Hash:NT_Hash)', hashcat=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^[a-f0-9]{32}:[0-9]{32}:[0-9]{2}$', re.IGNORECASE),
+        regex=re.compile(r'^(\$chap\$0\*)?[a-f0-9]{32}[\*:][a-f0-9]{32}(:[0-9]{2})?$', re.IGNORECASE),
         modes=[
             HashMode(name='MD5(Chap)', hashcat=4800, extended=False),
             HashMode(name='iSCSI CHAP Authentication', hashcat=4800, extended=False)]),
@@ -505,7 +504,7 @@ prototypes = [
         modes=[
             HashMode(name='Juniper Netscreen/SSG(ScreenOS)', hashcat=22, extended=False)]),
     Prototype(
-        regex=re.compile(r'^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$', re.IGNORECASE),
+        regex=re.compile(r'^0x[a-f0-9]{60}(\s0x[a-f0-9]{40})?$', re.IGNORECASE),
         modes=[
             HashMode(name='EPi', hashcat=123, extended=False)]),
     Prototype(
@@ -661,13 +660,17 @@ prototypes = [
         modes=[
             HashMode(name=u'Android FDE ≤ 4.3', hashcat=8800, extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$oldoffice\$[01]\*[0-9]{32}\*[a-f0-9]{32}\*[a-f0-9]{32}$', re.IGNORECASE),
+        regex=re.compile(r'^\$oldoffice\$[01]\*[a-f0-9]{32}\*[a-f0-9]{32}\*[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
             HashMode(name=u'Microsoft Office ≤ 2003 (MD5+RC4)', hashcat=9700, extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$oldoffice\$[34]\*[0-9]{32}\*[a-f0-9]{32}\*[a-f0-9]{40}$', re.IGNORECASE),
+        regex=re.compile(r'^\$oldoffice\$[34]\*[a-f0-9]{32}\*[a-f0-9]{32}\*[a-f0-9]{40}$', re.IGNORECASE),
         modes=[
-            HashMode(name=u'Microsoft Office ≤ 2003 (SHA1+RC4)', hashcat=9800, extended=False)])
+            HashMode(name=u'Microsoft Office ≤ 2003 (SHA1+RC4)', hashcat=9800, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^(\$radmin2\$)?[a-f0-9]{32}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='RAdmin v2.x', hashcat=9900, extended=False)])
 ]
 
 
