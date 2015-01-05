@@ -95,11 +95,14 @@ prototypes = [
         modes=[
             HashMode(name='Crypt16', hashcat=None, extended=False)]),
     Prototype(
+        regex=re.compile(r'^(\$md2\$)?[a-f0-9]{32}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='MD2', hashcat=None, extended=False)]),      
+    Prototype(
         regex=re.compile(r'^[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
             HashMode(name='MD5', hashcat=0, extended=False),
             HashMode(name='MD4', hashcat=900, extended=False),
-            HashMode(name='MD2', hashcat=None, extended=False),
             HashMode(name='Double MD5', hashcat=2600, extended=False),
             HashMode(name='LM', hashcat=3000, extended=False),
             HashMode(name='RIPEMD-128', hashcat=None, extended=False),
@@ -297,7 +300,7 @@ prototypes = [
         modes=[
             HashMode(name='Android PIN', hashcat=5800, extended=False)]),
     Prototype(
-        regex=re.compile(r'^S:[a-f0-9]{60}$', re.IGNORECASE),
+        regex=re.compile(r'^(S:)?[a-f0-9]{40}(:)?[a-f0-9]{20}$', re.IGNORECASE),
         modes=[
             HashMode(name='Oracle 11g/12c', hashcat=112, extended=False)]),
     Prototype(
@@ -313,12 +316,15 @@ prototypes = [
         modes=[
             HashMode(name=u'vBulletin ≥ v3.8.5', hashcat=2711, extended=False)]),
     Prototype(
+        regex=re.compile(r'^(\$snefru\$)?[a-f0-9]{64}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='Snefru-256', hashcat=None, extended=False)]),    
+    Prototype(
         regex=re.compile(r'^[a-f0-9]{64}$', re.IGNORECASE),
         modes=[
             HashMode(name='SHA-256', hashcat=1400, extended=False),
             HashMode(name='RIPEMD-256', hashcat=None, extended=False),
             HashMode(name='Haval-256', hashcat=None, extended=False),
-            HashMode(name='Snefru-256', hashcat=None, extended=False),
             HashMode(name='GOST R 34.11-94', hashcat=6900, extended=False),
             HashMode(name='SHA3-256', hashcat=5000, extended=False),
             HashMode(name='Skein-256', hashcat=None, extended=False),
