@@ -353,7 +353,7 @@ prototypes = [
             HashMode(name='MD5(Chap)', hashcat=4800, john='chap', extended=False),
             HashMode(name='iSCSI CHAP Authentication', hashcat=4800, john='chap', extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$episerver\$\*0\*[a-z0-9=*+]{52}$', re.IGNORECASE),
+        regex=re.compile(r'^\$episerver\$\*0\*[a-z0-9*\/=+]{52,53}$', re.IGNORECASE),
         modes=[
             HashMode(name='EPiServer 6.x < v4', hashcat=141, john='episerver', extended=False)]),
     Prototype(
@@ -419,8 +419,8 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$ml\$[0-9]+\$[a-f0-9]{64}\$[a-f0-9]{128}$', re.IGNORECASE),
         modes=[
-            HashMode(name='OSX v10.8', hashcat=7100, john='PBKDF2-HMAC-SHA512', extended=False),
-            HashMode(name='OSX v10.9', hashcat=7100, john='PBKDF2-HMAC-SHA512', extended=False)]),
+            HashMode(name='OSX v10.8', hashcat=7100, john='pbkdf2-hmac-sha512', extended=False),
+            HashMode(name='OSX v10.9', hashcat=7100, john='pbkdf2-hmac-sha512', extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{256}$', re.IGNORECASE),
         modes=[
@@ -486,7 +486,7 @@ prototypes = [
         modes=[
             HashMode(name='NetNTLMv2', hashcat=5600, john='netntlmv2', extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$krb5pa\$23\$user\$realm\$salt\$[a-f0-9]{104}$', re.IGNORECASE),
+        regex=re.compile(r'^\$(krb5pa|mskrb5)\$([0-9]{2})?\$.+\$[a-f0-9]{1,}$', re.IGNORECASE),
         modes=[
             HashMode(name='Kerberos 5 AS-REQ Pre-Auth', hashcat=7500, john='krb5pa-md5', extended=False)]),
     Prototype(
@@ -510,7 +510,7 @@ prototypes = [
         modes=[
             HashMode(name='Juniper Netscreen/SSG(ScreenOS)', hashcat=22, john='md5ns', extended=False)]),
     Prototype(
-        regex=re.compile(r'^0x[a-f0-9]{60}(\s0x[a-f0-9]{40})?$', re.IGNORECASE),
+        regex=re.compile(r'^0x[a-f0-9]{60}\s0x[a-f0-9]{40}$', re.IGNORECASE),
         modes=[
             HashMode(name='EPi', hashcat=123, john=None, extended=False)]),
     Prototype(
@@ -518,9 +518,9 @@ prototypes = [
         modes=[
             HashMode(name=u'SMF ≥ v1.1', hashcat=121, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^[a-f0-9]{40}:[a-f0-9]{40}$', re.IGNORECASE),
+        regex=re.compile(r'^(\$wbb3\$\*1\*)?[a-f0-9]{40}[:*][a-f0-9]{40}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Woltlab Burning Board 3.x', hashcat=8400, john=None, extended=False)]),
+            HashMode(name='Woltlab Burning Board 3.x', hashcat=8400, john='wbb3', extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{130}(:[a-f0-9]{40})?$', re.IGNORECASE),
         modes=[
@@ -530,9 +530,9 @@ prototypes = [
         modes=[
             HashMode(name='Lastpass', hashcat=6800, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^[a-z0-9\/.]{16}(:.{1,})?$', re.IGNORECASE),
+        regex=re.compile(r'^[a-z0-9\/.]{16}([:$].{1,})?$', re.IGNORECASE),
         modes=[
-            HashMode(name='Cisco-ASA(MD5)', hashcat=2410, john=None, extended=False)]),
+            HashMode(name='Cisco-ASA(MD5)', hashcat=2410, john='asa-md5', extended=False)]),
     Prototype(
         regex=re.compile(r'^\$vnc\$\*[a-f0-9]{32}\*[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
@@ -610,9 +610,9 @@ prototypes = [
         modes=[
             HashMode(name='Django(DES Crypt Wrapper)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^pbkdf2_sha256\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9\/+]{43}=$', re.IGNORECASE),
+        regex=re.compile(r'^(\$django\$\*1\*)?pbkdf2_sha256\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9\/+]{43}=$', re.IGNORECASE),
         modes=[
-            HashMode(name='Django(PBKDF2-HMAC-SHA256)', hashcat=10000, john=None, extended=False)]),
+            HashMode(name='Django(PBKDF2-HMAC-SHA256)', hashcat=10000, john='django', extended=False)]),
     Prototype(
         regex=re.compile(r'^pbkdf2_sha1\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9\/+]{27}=$', re.IGNORECASE),
         modes=[
