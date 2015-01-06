@@ -62,9 +62,9 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^[a-z0-9\/.]{13}$', re.IGNORECASE),
         modes=[
-            HashMode(name='DES(Unix)', hashcat=1500, john='crypt', extended=False),
-            HashMode(name='Traditional DES', hashcat=1500, john='des', extended=False),
-            HashMode(name='DEScrypt', hashcat=1500, john=None, extended=False)]),
+            HashMode(name='DES(Unix)', hashcat=1500, john='descrypt', extended=False),
+            HashMode(name='Traditional DES', hashcat=1500, john='descrypt', extended=False),
+            HashMode(name='DEScrypt', hashcat=1500, john='descrypt', extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{16}$', re.IGNORECASE),
         modes=[
@@ -151,15 +151,15 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^{SHA}[a-z0-9\/+]{27}=$', re.IGNORECASE),
         modes=[
-            HashMode(name='SHA-1(Base64)', hashcat=101, john=None, extended=False),
+            HashMode(name='SHA-1(Base64)', hashcat=101, john='nsldap', extended=False),
             HashMode(name='Netscape LDAP SHA', hashcat=101, john='nsldap', extended=False),
-            HashMode(name='nsldap', hashcat=101, john=None, extended=True)]),
+            HashMode(name='nsldap', hashcat=101, john='nsldap', extended=True)]),
     Prototype(
         regex=re.compile(r'^\$1\$[a-z0-9\/.]{0,8}\$[a-z0-9\/.]{22}(:.*)?$', re.IGNORECASE),
         modes=[
-            HashMode(name='MD5 Crypt', hashcat=500, john=None, extended=False),
-            HashMode(name='Cisco-IOS(MD5)', hashcat=500, john=None, extended=False),
-            HashMode(name='FreeBSD MD5', hashcat=500, john='md5', extended=False)]),
+            HashMode(name='MD5 Crypt', hashcat=500, john='md5crypt', extended=False),
+            HashMode(name='Cisco-IOS(MD5)', hashcat=500, john='md5crypt', extended=False),
+            HashMode(name='FreeBSD MD5', hashcat=500, john='md5crypt', extended=False)]),
     Prototype(
         regex=re.compile(r'^0x[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
@@ -292,7 +292,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/.]{53}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Blowfish(OpenBSD)', hashcat=3200, john='bf', extended=False),
+            HashMode(name='Blowfish(OpenBSD)', hashcat=3200, john='bcrypt', extended=False),
             HashMode(name='Woltlab Burning Board 4.x', hashcat=None, john=None, extended=False),
             HashMode(name='BCrypt', hashcat=3200, john='bcrypt', extended=False)]),
     Prototype(
@@ -410,7 +410,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^[a-f0-9]{136}$', re.IGNORECASE),
         modes=[
-            HashMode(name='OSX v10.7', hashcat=1722, john=None, extended=False)]),
+            HashMode(name='OSX v10.7', hashcat=1722, john='xsha512', extended=False)]),
     Prototype(
         regex=re.compile(r'^0x0200[a-f0-9]{136}$', re.IGNORECASE),
         modes=[
@@ -419,8 +419,8 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$ml\$[0-9]+\$[a-f0-9]{64}\$[a-f0-9]{128}$', re.IGNORECASE),
         modes=[
-            HashMode(name='OSX v10.8', hashcat=7100, john=None, extended=False),
-            HashMode(name='OSX v10.9', hashcat=7100, john=None, extended=False)]),
+            HashMode(name='OSX v10.8', hashcat=7100, john='PBKDF2-HMAC-SHA512', extended=False),
+            HashMode(name='OSX v10.9', hashcat=7100, john='PBKDF2-HMAC-SHA512', extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{256}$', re.IGNORECASE),
         modes=[
@@ -484,11 +484,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^[^\\\/:*?"<>|]{1,20}::[^\\\/:*?"<>|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$', re.IGNORECASE),
         modes=[
-            HashMode(name='NetNTLMv2', hashcat=5600, john=None, extended=False)]),
+            HashMode(name='NetNTLMv2', hashcat=5600, john='netntlmv2', extended=False)]),
     Prototype(
         regex=re.compile(r'^\$krb5pa\$23\$user\$realm\$salt\$[a-f0-9]{104}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Kerberos 5 AS-REQ Pre-Auth', hashcat=7500, john=None, extended=False)]),
+            HashMode(name='Kerberos 5 AS-REQ Pre-Auth', hashcat=7500, john='krb5pa-md5', extended=False)]),
     Prototype(
         regex=re.compile(r'^\$scram\$[0-9]+\$[a-z0-9\/.]{16}\$sha-1=[a-z0-9\/.]{27},sha-256=[a-z0-9\/.]{43},sha-512=[a-z0-9\/.]{86}$', re.IGNORECASE),
         modes=[
@@ -736,7 +736,7 @@ def writeResult(candidate, identified_modes, outfile=sys.stdout, hashcatMode=Fal
 
 
 def main():
-    usage = "{0} [-a] [-m] [-j] [--help] [--version] INPUT".format(__file__)
+    usage = "{0} [-a] [-m] [-j] [--help] [--version] INPUT".format(os.path.basename(__file__))
     banner = "hashID v{0} by {1} ({2})".format(__version__, __author__, __github__)
     description = "Identify the different types of hashes used to encrypt data"
 
