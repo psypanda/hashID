@@ -5,13 +5,11 @@ Identify the different types of hashes used to encrypt data and especially passw
 
 This tool replaces [hash-identifier](http://code.google.com/p/hash-identifier/ "hash-identifier"), which is outdated!
  
-hashID is a tool written in Python 3.x which supports the identification of over 200 unique hash types using regular expressions.
+hashID is a tool written in Python 3.x which supports the identification of over 205 unique hash types using regular expressions.
 A detailed list of supported hashes can be found [here](doc/hashinfo.xlsx).    
 It is able to identify a single hash, parse a file or read multiple files in a directory and identify the hashes within them.    
-hashID is also capable of including the corresponding [hashcat](https://hashcat.net/oclhashcat/ "hashcat") mode in its output.    
-Altough hashID is written in Python 3.x it should also work using Python 2.7.
-
-There is also a [nodejs](https://github.com/psypanda/hashID/tree/js "hashID-nodejs") version of hashID available which is easily set up to provide online hash identification.  
+hashID is also capable of including the corresponding [hashcat](https://hashcat.net/oclhashcat/ "hashcat") mode and/or [JohnTheRipper](http://www.openwall.com/john/) format in its output.    
+Altough hashID is written in Python 3.x it should also work using Python 2.7. 
 
 *Note: When identifying a hash on *nix operating systems use single quotes to prevent interpolation*
 
@@ -28,7 +26,7 @@ $ sudo gzip /usr/share/man/man7/hashid.7
 Usage
 ------
 ```console
-$ ./hashid.py [-a] [-m] [--help] [--version] INPUT
+$ ./hashid.py [-a] [-m] [-j] [--help] [--version] INPUT
 ```
 
 | Parameter                      | Description                                         |
@@ -36,6 +34,7 @@ $ ./hashid.py [-a] [-m] [--help] [--version] INPUT
 | input                          | string or filename to analyze                       |
 | -a, --all                      | list all hash algorithms including salted passwords |
 | -m, --mode                     | include corresponding hashcat mode in output        |
+| -j, --john                     | include corresponding JohnTheRipper format in output|
 | --help                         | show this help message and exit                     |
 | --version                      | show program's version number and exit              |
 

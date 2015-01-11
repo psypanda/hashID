@@ -97,7 +97,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^(\$md2\$)?[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
-            HashMode(name='MD2', hashcat=None, john=None, extended=False)]),      
+            HashMode(name='MD2', hashcat=None, john=None, extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
@@ -318,7 +318,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^(\$snefru\$)?[a-f0-9]{64}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Snefru-256', hashcat=None, john='snefru-256', extended=False)]),    
+            HashMode(name='Snefru-256', hashcat=None, john='snefru-256', extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{64}$', re.IGNORECASE),
         modes=[
@@ -714,19 +714,15 @@ def writeResult(candidate, identified_modes, outfile=sys.stdout, hashcatMode=Fal
             if not mode.extended:
                 if hashcatMode and mode.hashcat is not None:
                     append += "[Hashcat Mode: {0}]".format(mode.hashcat)
-                    
                 if johnFormat and mode.john is not None:
                     append += "[JtR Format: {0}]".format(mode.john)
-                    
                 outfile.write(u"[+] {0} {1}\n".format(mode.name, append))
                 append = ""
         else:
             if hashcatMode and mode.hashcat is not None:
                 append += "[Hashcat Mode: {0}]".format(mode.hashcat)
-                  
             if johnFormat and mode.john is not None:
                 append += "[JtR Format: {0}]".format(mode.john)
-                    
             outfile.write(u"[+] {0} {1}\n".format(mode.name, append))
             append = ""
         count += 1
