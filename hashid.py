@@ -680,7 +680,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^{x-issha,\s[0-9]{4}}[a-z0-9\/+=]+$', re.IGNORECASE),
         modes=[
-            HashMode(name='SAP CODVN H (PWDSALTEDHASH) iSSHA-1', hashcat=10300, john='saph', extended=False)])
+            HashMode(name='SAP CODVN H (PWDSALTEDHASH) iSSHA-1', hashcat=10300, john='saph', extended=False)]),
+    Prototype(
+        regex=re.compile(r'^\$cram_md5\$[a-z0-9\/+=-]+\$[a-z0-9\/+=-]{52}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='CRAM-MD5', hashcat=10200, john=None, extended=False)])
 ]
 
 
