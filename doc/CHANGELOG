@@ -1,7 +1,17 @@
 ### Changelog
 
+v3.0.0
+- Added JohnTheRipper formats to hashIDs output using "-j / --john"
+- Fixed "-a / -all" argument not working properly
+- Woltlab Burning Board 3.x regex fixes
+- Cisco-ASA(MD5) regex fixes
+- EPiServer 6.x < v4 regex fixes
+- EPi regex fixes
+- Django(PBKDF2-HMAC-SHA256) regex fixes
+- Kerberos 5 AS-REQ Pre-Auth regex fixes
+
 v2.9.2
-- added SAP CODVN H (PWDSALTEDHASH) iSSHA-1 hash format
+- Added SAP CODVN H (PWDSALTEDHASH) iSSHA-1 hash format
 - EPi regex fixes
 - Fortigate(FortiOS) regex fixes
 - iSCSI CHAP Authentication regex fixes
@@ -21,75 +31,75 @@ v2.9.1
 - AIX(ssha256) regex fixes
 
 v2.9.0
-- added support for piped input (thanks Max)
-- added SHA1($salt.$pass.$salt) hash format
+- Added support for piped input (thanks Max)
+- Added SHA1($salt.$pass.$salt) hash format
 - Django(PBKDF2-HMAC-SHA256) hashcat mode added
 
 v2.8.5
-- added Cisco Type 8 & 9 hash format
-- added Android FDE ≤ 4.3 hash format
-- added Microsoft Office ≤ 2003 hash format
-- added Microsoft Office 2007 hash format
-- added Microsoft Office 2010 hash format
-- added Microsoft Office 2013 hash format
+- Added Cisco Type 8 & 9 hash format
+- Added Android FDE ≤ 4.3 hash format
+- Added Microsoft Office ≤ 2003 hash format
+- Added Microsoft Office 2007 hash format
+- Added Microsoft Office 2010 hash format
+- Added Microsoft Office 2013 hash format
 - RAdmin v2.x hashcat mode added
 
 v2.8.4
-- added Lotus Notes/Domino 8 hash format
-- added scrypt hash format
-- added support for raw passwd & shadow files without preprocessing
-- renamed Oracle 11g to Oracle 11g/12c
-- renamed Samsung Android Password/PIN to Android PIN
+- Added Lotus Notes/Domino 8 hash format
+- Added scrypt hash format
+- Added support for raw passwd & shadow files without preprocessing
+- Renamed Oracle 11g to Oracle 11g/12c
+- Renamed Samsung Android Password/PIN to Android PIN
 
 v2.8.3
-- removed unnecessary escaping of literal characters in regexes
-- reworked man page and added license notice
-- fixed some length bugs mainly in the base64 hash formats
-- added Skype hash format
+- Removed unnecessary escaping of literal characters in regexes
+- Reworked man page and added license notice
+- Fixed some length bugs mainly in the base64 hash formats
+- Added Skype hash format
 
 v2.8.2
-- massive speed improvements
-- added man page for hashID
-- added PBKDF2(Atlassian) hash format
-- added PostgreSQL MD5 hash format
+- Massive speed improvements
+- Added man page for hashID
+- Added PBKDF2(Atlassian) hash format
+- Added PostgreSQL MD5 hash format
 
 v2.8.1
-- added PeopleSoft hash format
-- added Django(DES Crypt Wrapper) hash format
-- added Django(PBKDF2-HMAC-SHA256) hash format
-- added Django(PBKDF2-HMAC-SHA1) hash format
-- added Django(BCrypt) hash format
-- added Django(MD5) hash format
+- Added PeopleSoft hash format
+- Added Django(DES Crypt Wrapper) hash format
+- Added Django(PBKDF2-HMAC-SHA256) hash format
+- Added Django(PBKDF2-HMAC-SHA1) hash format
+- Added Django(BCrypt) hash format
+- Added Django(MD5) hash format
 - Woltlab Burning Board 3.x regex fixes
-- renamed MaNGOS CMS to MangosWeb Enhanced CMS
-- renamed bcrypt to BCrypt
-- renamed Django CMS(SHA-1) to Django(SHA-1)
-- renamed Django CMS(SHA-256) to Django(SHA-256)
-- renamed Django CMS(SHA-384) to Django(SHA-384)
+- Renamed MaNGOS CMS to MangosWeb Enhanced CMS
+- Renamed bcrypt to BCrypt
+- Renamed Django CMS(SHA-1) to Django(SHA-1)
+- Renamed Django CMS(SHA-256) to Django(SHA-256)
+- Renamed Django CMS(SHA-384) to Django(SHA-384)
 - MangosWeb Enhanced CMS flagged as extended
 - RAdmin v2.x flagged as extended
 - ZipMonster flagged as extended
 - Ventrilo flagged as extended
 
 v2.8.0
-- added new parameter "-a / --all"
+- Added new parameter "-a / --all"
 - PEP8 optimization
-- renamed xAuth to Minecraft(xAuth)
+- Renamed xAuth to Minecraft(xAuth)
 
 v2.7.0
-- major rewrite
-- dropped obsolete "-f / --file" and "-d / --dir" parameter
-- all output defaults to stdout now
+- Major rewrite
+- Dropped obsolete "-f / --file" and "-d / --dir" parameter
+- All output defaults to STDOUT now
 
 v2.6.7
-- small cosmetic changes
+- Small cosmetic changes
 - MediaWiki hashcat mode added
 
 v2.6.6
-- added 1Password(Agile Keychain) hash format
-- added 1Password(Cloud Keychain) hash format
-- added IKE-PSK MD5 hash format
-- added IKE-PSK SHA1 hash format
+- Added 1Password(Agile Keychain) hash format
+- Added 1Password(Cloud Keychain) hash format
+- Added IKE-PSK MD5 hash format
+- Added IKE-PSK SHA1 hash format
 - 1Password(Agile Keychain) hashcat mode added
 - 1Password(Cloud Keychain) hashcat mode added
 - IKE-PSK MD5 hashcat mode added
@@ -101,108 +111,108 @@ v2.6.5
 - Kerberos 5 AS-REQ Pre-Auth regex changes
     
 v2.6.4
-- added PHPS hash format
+- Added PHPS hash format
 - PHPS hashcat mode added
 
 v2.6.3
-- added Lotus Notes/Domino 5 hash format
+- Added Lotus Notes/Domino 5 hash format
 - DNSSEC(NSEC3) regex fixes
-- renamed Lotus Domino to Lotus Notes/Domino 6
+- Renamed Lotus Domino to Lotus Notes/Domino 6
 - Lotus Notes/Domino 5 hashcat mode added
 - Lotus Notes/Domino 6 hashcat mode added
 
 v2.6.2
-- added JTR formats to hashinfo.xlsx
+- Added JTR formats to hashinfo.xlsx
 - Juniper Netscreen/SSG(ScreenOS) regex changes
 - NTLM regex changes
 
 v2.6.1
-- additional mimetype check on file input
-- added MSSQL(2014) hash format
-- renamed Blowfish(Eggdrop) to Eggdrop IRC Bot
+- Additional mimetype check on file input
+- Added MSSQL(2014) hash format
+- Renamed Blowfish(Eggdrop) to Eggdrop IRC Bot
 
 v2.6.0
-- added directory analyze using parameter "-d / --dir"
-- more error checking on user input
+- Added directory analyze using parameter "-d / --dir"
+- More error checking on user input
 - vBulletin < v3.8.5 regex fixes
 
 v2.5.0
-- added CRC-24 hash format
-- added Joomla ≥ 2.5.18 hash format
-- added Woltlab Burning Board 4.x hash format
+- Added CRC-24 hash format
+- Added Joomla ≥ 2.5.18 hash format
+- Added Woltlab Burning Board 4.x hash format
 - GRUB 2 regex changes
 - BCrypt(SHA-256) regex changes
 - OSX v10.8 regex changes
 - OSX v10.9 regex changes
 - DNSSEC(NSEC3) regex changes
 - Minecraft(AuthMe Reloaded) regex changes
-- renamed Wordpress 2.6.2 to Wordpress v2.6.2
-- renamed Joomla to Joomla < 2.5.18
-- renamed Drupal7 to Drupal ≥ v7.x
-- renamed  Burning Board 3.x to Woltlab Burning Board 3.x
+- Renamed Wordpress 2.6.2 to Wordpress v2.6.2
+- Renamed Joomla to Joomla < 2.5.18
+- Renamed Drupal7 to Drupal ≥ v7.x
+- Renamed  Burning Board 3.x to Woltlab Burning Board 3.x
 - hMailServer hashcat mode added
 
 v2.4.5
-- added Fairly Secure Hashed Password hash format
+- Added Fairly Secure Hashed Password hash format
 - SAP CODVN B (BCODE) regex changes
 - SAP CODVN F/G (PASSCODE) regex changes
-- renamed Cisco-IOS(SHA256) to Cisco-IOS(SHA-256)
+- Renamed Cisco-IOS(SHA256) to Cisco-IOS(SHA-256)
     
 v2.4.4
-- added xAuth hash format
-- added PBKDF2(Generic) hash format
-- added PBKDF2(Cryptacular) hash format
-- added PBKDF2(Dwayne Litzenberger) hash format
+- Added xAuth hash format
+- Added PBKDF2(Generic) hash format
+- Added PBKDF2(Cryptacular) hash format
+- Added PBKDF2(Dwayne Litzenberger) hash format
 
 v2.4.3
--  added hMailServer hash format
--  added MediaWiki hash format
--  vBulletin ≥ v3.8.5 regex changes
--  Cisco-ASA(MD5) regex changes
--  renamed BCrypt(SHA256) to BCrypt(SHA-256)
+- Added hMailServer hash format
+- Added MediaWiki hash format
+- vBulletin ≥ v3.8.5 regex changes
+- Cisco-ASA(MD5) regex changes
+- Renamed BCrypt(SHA256) to BCrypt(SHA-256)
     
 v2.4.2
-- added SHA-1 Crypt hash format
-- renamed MD5(Sun) to Sun MD5 Crypt
-- renamed SHA-256(Unix) to SHA-256 Crypt
-- renamed SHA-512(Unix) to SHA-512 Crypt
-- renamed MD5(Unix) to MD5 Crypt
+- Added SHA-1 Crypt hash format
+- Renamed MD5(Sun) to Sun MD5 Crypt
+- Renamed SHA-256(Unix) to SHA-256 Crypt
+- Renamed SHA-512(Unix) to SHA-512 Crypt
+- Renamed MD5(Unix) to MD5 Crypt
 
 v2.4.1
-- added NTHash(FreeBSD Variant) hash format
+- Added NTHash(FreeBSD Variant) hash format
 - Domain Cached Credentials regex changes
 - Domain Cached Credentials 2 regex changes
 - NetNTLMv1-VANILLA / NetNTLMv1+ESS regex changes
 - NetNTLMv2 regex changes
 
 v2.4.0
-- added Hashcat Mode output using parameter "-hc / --hashcat"
-- added RACF hash format
-- added Double MD5 hash format
-- added Double SHA-1 hash format
-- added md5apr1 hash format
-- added bcrypt hash format
+- Added Hashcat Mode output using parameter "-hc / --hashcat"
+- Added RACF hash format
+- Added Double MD5 hash format
+- Added Double SHA-1 hash format
+- Added md5apr1 hash format
+- Added bcrypt hash format
 - NetNTLMv1-VANILLA / NetNTLMv1+ESS regex changes
 - NetNTLMv2 regex changes
     
 v2.3.6
-- added Burning Board 3.x hash format
-- added IPMI2 RAKP HMAC-SHA1 hash format
-- added Lastpass hash format
-- added Cisco-ASA(MD5) hash format
-- added DNSSEC(NSEC3) hash format
+- Added Burning Board 3.x hash format
+- Added IPMI2 RAKP HMAC-SHA1 hash format
+- Added Lastpass hash format
+- Added Cisco-ASA(MD5) hash format
+- Added DNSSEC(NSEC3) hash format
 - VNC regex changes
-- renamed Keccak to SHA3
+- Renamed Keccak to SHA3
 
 v2.3.5
-- added Wordpress v2.6.0/2.6.1 hash format
+- Added Wordpress v2.6.0/2.6.1 hash format
 - MyBB ≥ v1.2+ regex changes
-- renamed MD5(phpBB) to phpBB 3.x
-- renamed MD5(Wordpress) to Wordpress ≥ v2.6.2
-- renamed MD5(ZipMonster) to ZipMonster
-- renamed MD5(MaNGOS) to MaNGOS CMS
-- renamed MD5(MaNGOS2) to MaNGOS CMS v2
-- renamed SHA1(LinkedIn)to LinkedIn
-- renamed SHA-1(Django) to Django CMS(SHA-1)
-- renamed SHA-256(Django) to Django CMS(SHA-256)
-- renamed SHA-384(Django) to Django CMS(SHA-384)
+- Renamed MD5(phpBB) to phpBB 3.x
+- Renamed MD5(Wordpress) to Wordpress ≥ v2.6.2
+- Renamed MD5(ZipMonster) to ZipMonster
+- Renamed MD5(MaNGOS) to MaNGOS CMS
+- Renamed MD5(MaNGOS2) to MaNGOS CMS v2
+- Renamed SHA1(LinkedIn)to LinkedIn
+- Renamed SHA-1(Django) to Django CMS(SHA-1)
+- Renamed SHA-256(Django) to Django CMS(SHA-256)
+- Renamed SHA-384(Django) to Django CMS(SHA-384)
