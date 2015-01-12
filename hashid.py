@@ -684,7 +684,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$cram_md5\$[a-z0-9\/+=-]+\$[a-z0-9\/+=-]{52}$', re.IGNORECASE),
         modes=[
-            HashMode(name='CRAM-MD5', hashcat=10200, john=None, extended=False)])
+            HashMode(name='CRAM-MD5', hashcat=10200, john=None, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^[a-f0-9]{16}:2:4:[a-f0-9]{32}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='SipHash', hashcat=10100, john=None, extended=False)])
 ]
 
 
