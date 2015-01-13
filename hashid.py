@@ -41,7 +41,6 @@ prototypes = [
         regex=re.compile(r'^[a-f0-9]{8}$', re.IGNORECASE),
         modes=[
             HashMode(name='Adler-32', hashcat=None, john=None, extended=False),
-            HashMode(name='CRC-32', hashcat=None, john=None, extended=False),
             HashMode(name='CRC-32B', hashcat=None, john=None, extended=False),
             HashMode(name='FCS-32', hashcat=None, john=None, extended=False),
             HashMode(name='GHash-32-3', hashcat=None, john=None, extended=False),
@@ -55,6 +54,10 @@ prototypes = [
         regex=re.compile(r'^[a-f0-9]{6}$', re.IGNORECASE),
         modes=[
             HashMode(name='CRC-24', hashcat=None, john=None, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^(\$crc32\$[a-f0-9]{8}.)?[a-f0-9]{8}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='CRC-32', hashcat=None, john='crc32', extended=False)]),
     Prototype(
         regex=re.compile(r'^\+[a-z0-9\/.]{12}$', re.IGNORECASE),
         modes=[
