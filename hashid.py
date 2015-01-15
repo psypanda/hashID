@@ -102,7 +102,7 @@ prototypes = [
         modes=[
             HashMode(name='MD2', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^[a-f0-9]{32}$', re.IGNORECASE),
+        regex=re.compile(r'^[a-f0-9]{32}(:.+)?$', re.IGNORECASE),
         modes=[
             HashMode(name='MD5', hashcat=0, john='raw-md5', extended=False),
             HashMode(name='MD4', hashcat=900, john='raw-md4', extended=False),
@@ -118,10 +118,7 @@ prototypes = [
             HashMode(name='ZipMonster', hashcat=None, john=None, extended=True),
             HashMode(name='md5(md5(md5($pass)))', hashcat=3500, john=None, extended=True),
             HashMode(name='md5(strtoupper(md5($pass)))', hashcat=4300, john=None, extended=True),
-            HashMode(name='md5(sha1($pass))', hashcat=4400, john=None, extended=True)]),
-    Prototype(
-        regex=re.compile(r'^[a-f0-9]{32}(:.+)$', re.IGNORECASE),
-        modes=[
+            HashMode(name='md5(sha1($pass))', hashcat=4400, john=None, extended=True),
             HashMode(name='md5($pass.$salt)', hashcat=10, john=None, extended=True),
             HashMode(name='md5($salt.$pass)', hashcat=20, john=None, extended=True),
             HashMode(name='md5(unicode($pass).$salt)', hashcat=30, john=None, extended=True),
@@ -211,7 +208,7 @@ prototypes = [
         modes=[
             HashMode(name='CryptoCurrency(Adress)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^[a-f0-9]{40}$', re.IGNORECASE),
+        regex=re.compile(r'^[a-f0-9]{40}(:.+)?$', re.IGNORECASE),
         modes=[
             HashMode(name='SHA-1', hashcat=100, john='raw-sha1', extended=False),
             HashMode(name='Double SHA-1', hashcat=4500, john=None, extended=False),
@@ -224,10 +221,7 @@ prototypes = [
             HashMode(name='Skein-512(160)', hashcat=None, john=None, extended=False),
             HashMode(name='MangosWeb Enhanced CMS', hashcat=None, john=None, extended=True),
             HashMode(name='sha1(sha1(sha1($pass)))', hashcat=4600, john=None, extended=True),
-            HashMode(name='sha1(md5($pass))', hashcat=4700, john=None, extended=True)]),
-    Prototype(
-        regex=re.compile(r'^[a-f0-9]{40}(:.+)$', re.IGNORECASE),
-        modes=[
+            HashMode(name='sha1(md5($pass))', hashcat=4700, john=None, extended=True),
             HashMode(name='sha1($pass.$salt)', hashcat=110, john=None, extended=True),
             HashMode(name='sha1($salt.$pass)', hashcat=120, john=None, extended=True),
             HashMode(name='sha1(unicode($pass).$salt)', hashcat=130, john=None, extended=True),
@@ -323,7 +317,7 @@ prototypes = [
         modes=[
             HashMode(name='Snefru-256', hashcat=None, john='snefru-256', extended=False)]),
     Prototype(
-        regex=re.compile(r'^[a-f0-9]{64}$', re.IGNORECASE),
+        regex=re.compile(r'^[a-f0-9]{64}(:.+)?$', re.IGNORECASE),
         modes=[
             HashMode(name='SHA-256', hashcat=1400, john='raw-sha256', extended=False),
             HashMode(name='RIPEMD-256', hashcat=None, john=None, extended=False),
@@ -332,10 +326,7 @@ prototypes = [
             HashMode(name='SHA3-256', hashcat=5000, john='raw-keccak-256', extended=False),
             HashMode(name='Skein-256', hashcat=None, john='skein-256', extended=False),
             HashMode(name='Skein-512(256)', hashcat=None, john=None, extended=False),
-            HashMode(name='Ventrilo', hashcat=None, john=None, extended=True)]),
-    Prototype(
-        regex=re.compile(r'^[a-f0-9]{64}(:.+)$', re.IGNORECASE),
-        modes=[
+            HashMode(name='Ventrilo', hashcat=None, john=None, extended=True),
             HashMode(name='sha256($pass.$salt)', hashcat=1410, john=None, extended=True),
             HashMode(name='sha256($salt.$pass)', hashcat=1420, john=None, extended=True),
             HashMode(name='sha256(unicode($pass).$salt)', hashcat=1430, john=None, extended=True),
@@ -392,7 +383,7 @@ prototypes = [
         modes=[
             HashMode(name='AIX(ssha512)', hashcat=6500, john='aix-ssha512', extended=False)]),
     Prototype(
-        regex=re.compile(r'^[a-f0-9]{128}$', re.IGNORECASE),
+        regex=re.compile(r'^[a-f0-9]{128}(:.+)$', re.IGNORECASE),
         modes=[
             HashMode(name='SHA-512', hashcat=1700, john='raw-sha512', extended=False),
             HashMode(name='Whirlpool', hashcat=6100, john='whirlpool', extended=False),
@@ -400,10 +391,7 @@ prototypes = [
             HashMode(name='Salsa20', hashcat=None, john=None, extended=False),
             HashMode(name='SHA3-512', hashcat=None, john='raw-keccak', extended=False),
             HashMode(name='Skein-512', hashcat=None, john='skein-512', extended=False),
-            HashMode(name='Skein-1024(512)', hashcat=None, john=None, extended=False)]),
-    Prototype(
-        regex=re.compile(r'^[a-f0-9]{128}(:.+)$', re.IGNORECASE),
-        modes=[
+            HashMode(name='Skein-1024(512)', hashcat=None, john=None, extended=False),
             HashMode(name='sha512($pass.$salt)', hashcat=1710, john=None, extended=True),
             HashMode(name='sha512($salt.$pass)', hashcat=1720, john=None, extended=True),
             HashMode(name='sha512(unicode($pass).$salt)', hashcat=1730, john=None, extended=True),
