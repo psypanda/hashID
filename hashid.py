@@ -383,7 +383,7 @@ prototypes = [
         modes=[
             HashMode(name='AIX(ssha512)', hashcat=6500, john='aix-ssha512', extended=False)]),
     Prototype(
-        regex=re.compile(r'^[a-f0-9]{128}(:.+)$', re.IGNORECASE),
+        regex=re.compile(r'^[a-f0-9]{128}(:.+)?$', re.IGNORECASE),
         modes=[
             HashMode(name='SHA-512', hashcat=1700, john='raw-sha512', extended=False),
             HashMode(name='Whirlpool', hashcat=6100, john='whirlpool', extended=False),
