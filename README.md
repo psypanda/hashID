@@ -89,12 +89,6 @@ Contributing to this project can be done in various ways:
 * Change/Fix/Enhance existing regular expressions
 * Provide reading resources on specific hash types in [hashinfo.xlsx](doc/hashinfo.xlsx)
 
-Credits
-------
-* Thanks to [sigkill](https://github.com/sigkill-rcode) who helped numerous times fixing and optimizing the code
-* Thanks to [kmulvey](https://github.com/kmulvey) for supplying a [nodejs](https://github.com/psypanda/hashID/tree/js) version of hashID
-* Thanks to [bburky](https://github.com/bburky) for extending hashIDs functionality and numerous ideas to improve it
-
 Resources
 ------
 * http://pythonhosted.org/passlib/index.html
