@@ -1,4 +1,4 @@
-hashID
+hashID | hash-identifier
 ======
 
 Identify the different types of hashes used to encrypt data and especially passwords.
@@ -13,7 +13,7 @@ Altough hashID is written in Python 3.x it should also work using Python 2.7.
 
 *Note: When identifying a hash on *nix operating systems use single quotes to prevent interpolation*
 
-Install
+Installation
 ------
 ```console
 $ sudo apt-get install python3 git
@@ -31,7 +31,7 @@ $ ./hashid.py [-a] [-m] [-j] [--help] [--version] INPUT
 
 | Parameter                      | Description                                         |
 | :----------------------------- | :-------------------------------------------------- |
-| input                          | string or filename to analyze                       |
+| input                          | input to analyze (default: STDIN)                   |
 | -a, --all                      | list all hash algorithms including salted passwords |
 | -m, --mode                     | include corresponding hashcat mode in output        |
 | -j, --john                     | include corresponding JohnTheRipper format in output|
@@ -80,13 +80,6 @@ Analyzing 'crypt1:fnd+8xl+U1E=:Wc30H8MPgAc='
 [+] Clavister Secure Gateway
 --End of file 'hashes.txt'--
 ```
-
-Contribute
-------
-Contributing to this project can be done in various ways:
-* Add currently unsupported hashes
-* Change/Fix/Enhance existing regular expressions
-* Provide reading resources on specific hash types in [hashinfo.xlsx](doc/hashinfo.xlsx)
 
 Resources
 ------
