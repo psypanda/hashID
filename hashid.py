@@ -291,7 +291,7 @@ prototypes = [
         modes=[
             HashMode(name='Blowfish(OpenBSD)', hashcat=3200, john='bcrypt', extended=False),
             HashMode(name='Woltlab Burning Board 4.x', hashcat=None, john=None, extended=False),
-            HashMode(name='BCrypt', hashcat=3200, john='bcrypt', extended=False)]),
+            HashMode(name='bcrypt', hashcat=3200, john='bcrypt', extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{40}:[a-f0-9]{16}$', re.IGNORECASE),
         modes=[
@@ -303,7 +303,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$bcrypt-sha256\$(2[axy]|2)\,[0-9]+\$[a-z0-9\/.]{22}\$[a-z0-9\/.]{31}$', re.IGNORECASE),
         modes=[
-            HashMode(name='BCrypt(SHA-256)', hashcat=None, john=None, extended=False)]),
+            HashMode(name='bcrypt(SHA-256)', hashcat=None, john=None, extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{32}:.{3}$', re.IGNORECASE),
         modes=[
@@ -611,7 +611,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^bcrypt(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/.]{53}$', re.IGNORECASE),
         modes=[
-            HashMode(name='Django(BCrypt)', hashcat=None, john=None, extended=False)]),
+            HashMode(name='Django(bcrypt)', hashcat=None, john=None, extended=False)]),
     Prototype(
         regex=re.compile(r'^md5\$[a-f0-9]{1,}\$[a-f0-9]{32}$', re.IGNORECASE),
         modes=[

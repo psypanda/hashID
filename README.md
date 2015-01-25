@@ -60,7 +60,7 @@ Analyzing '*85ADE5DDF71E348162894C71D73324C043838751'
 Analyzing '$2a$08$VPzNKPAY60FsAbnq.c.h5.XTCZtC1z.j3hnlDFGImN9FcpfR1QnLq'
 [+] Blowfish(OpenBSD)
 [+] Woltlab Burning Board 4.x
-[+] BCrypt
+[+] bcrypt
 --End of file 'hashes.txt'--
 
 $ ./hashid.py folder/*.txt
@@ -71,7 +71,7 @@ Analyzing '*85ADE5DDF71E348162894C71D73324C043838751'
 Analyzing '$2a$08$VPzNKPAY60FsAbnq.c.h5.XTCZtC1z.j3hnlDFGImN9FcpfR1QnLq'
 [+] Blowfish(OpenBSD)
 [+] Woltlab Burning Board 4.x
-[+] BCrypt
+[+] bcrypt
 --End of file 'hashes.txt'--
 --File 'hashes.txt'--
 Analyzing '{smd5}01234567$yOImZPvBC8dg1HjGYfH7j.'
