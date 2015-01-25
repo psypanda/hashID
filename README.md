@@ -48,10 +48,9 @@ Analyzing '$P$8ohUJ.1sdFw09/bMaAQPTGDNi2BIUt1'
 [+] Joomla ≥ v2.5.18
 [+] PHPass' Portable Hash
 
-$ ./hashid.py -m ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686
-Analyzing 'ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686'
-[+] Redmine Project Management Web App [Hashcat Mode: 7600]
-[+] SMF ≥ v1.1 [Hashcat Mode: 121]
+$ ./hashid.py -mj $racf$*AAAAAAAA*3c44ee7f409c9a9b
+Analyzing '$racf$*AAAAAAAA*3c44ee7f409c9a9b'
+[+] RACF [Hashcat Mode: 8500][JtR Format: racf]
 
 $ ./hashid.py hashes.txt
 --File 'hashes.txt'--
