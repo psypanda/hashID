@@ -369,7 +369,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^[a-f0-9]{96}$', re.IGNORECASE),
         modes=[
-            HashMode(name='SHA-384', hashcat=None, john='raw-sha384', extended=False),
+            HashMode(name='SHA-384', hashcat=10800, john='raw-sha384', extended=False),
             HashMode(name='SHA3-384', hashcat=None, john=None, extended=False),
             HashMode(name='Skein-512(384)', hashcat=None, john=None, extended=False),
             HashMode(name='Skein-1024(384)', hashcat=None, john=None, extended=False)]),
