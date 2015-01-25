@@ -1,5 +1,12 @@
 ### Changelog
 
+v3.0.1
+- Added CRAM-MD5 hash format (Closes #17)
+- Added SipHash hash format (Closes #18)
+- Added hashcat mode for SHA-384
+- Fixed CRC-32 regular expression
+- Fixed scrypt regular expression
+
 v3.0.0
 - Added JohnTheRipper formats to hashIDs output using "-j / --john"
 - Fixed "-a / -all" argument not working properly
