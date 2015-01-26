@@ -42,13 +42,13 @@ $ ./hashid.py [-a] [-m] [-j] [--help] [--version] INPUT
 Screenshot
 ------
 ```console
-$ ./hashid.py $P$8ohUJ.1sdFw09/bMaAQPTGDNi2BIUt1
+$ ./hashid.py '$P$8ohUJ.1sdFw09/bMaAQPTGDNi2BIUt1'
 Analyzing '$P$8ohUJ.1sdFw09/bMaAQPTGDNi2BIUt1'
 [+] Wordpress ≥ v2.6.2
 [+] Joomla ≥ v2.5.18
 [+] PHPass' Portable Hash
 
-$ ./hashid.py -mj $racf$*AAAAAAAA*3c44ee7f409c9a9b
+$ ./hashid.py -mj '$racf$*AAAAAAAA*3c44ee7f409c9a9b'
 Analyzing '$racf$*AAAAAAAA*3c44ee7f409c9a9b'
 [+] RACF [Hashcat Mode: 8500][JtR Format: racf]
 
