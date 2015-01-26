@@ -64,7 +64,7 @@ Analyzing '$2a$08$VPzNKPAY60FsAbnq.c.h5.XTCZtC1z.j3hnlDFGImN9FcpfR1QnLq'
 --End of file 'hashes.txt'--
 
 $ ./hashid.py folder/*.txt
---File 'hashes.txt'--
+--File 'folder/hashes.txt'--
 Analyzing '*85ADE5DDF71E348162894C71D73324C043838751'
 [+] MySQL5.x
 [+] MySQL4.1
@@ -72,13 +72,13 @@ Analyzing '$2a$08$VPzNKPAY60FsAbnq.c.h5.XTCZtC1z.j3hnlDFGImN9FcpfR1QnLq'
 [+] Blowfish(OpenBSD)
 [+] Woltlab Burning Board 4.x
 [+] bcrypt
---End of file 'hashes.txt'--
---File 'hashes.txt'--
+--End of file 'folder/hashes.txt'--
+--File 'folder/hashlist.txt'--
 Analyzing '{smd5}01234567$yOImZPvBC8dg1HjGYfH7j.'
 [+] AIX(smd5)
 Analyzing 'crypt1:fnd+8xl+U1E=:Wc30H8MPgAc='
 [+] Clavister Secure Gateway
---End of file 'hashes.txt'--
+--End of file 'folder/hashlist.txt'--
 ```
 
 Resources
