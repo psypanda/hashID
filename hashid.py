@@ -679,7 +679,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^[a-f0-9]{16}:2:4:[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
-            HashMode(name='SipHash', hashcat=10100, john=None, extended=False)])
+            HashMode(name='SipHash', hashcat=10100, john=None, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^[a-f0-9]{4,}$', re.IGNORECASE),
+        modes=[
+            HashMode(name='Cisco Type 7', hashcat=None, john=None, extended=True)])
 ]
 
 
