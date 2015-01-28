@@ -344,7 +344,7 @@ prototypes = [
             HashInfo(name='MD5(Chap)', hashcat=4800, john='chap', extended=False),
             HashInfo(name='iSCSI CHAP Authentication', hashcat=4800, john='chap', extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$episerver\$\*0\*[a-z0-9*\/=+]{52,53}$', re.IGNORECASE),
+        regex=re.compile(r'^\$episerver\$\*0\*[a-z0-9\/=+]+\*[a-z0-9\/=+]{27,28}$', re.IGNORECASE),
         modes=[
             HashInfo(name='EPiServer 6.x < v4', hashcat=141, john='episerver', extended=False)]),
     Prototype(
@@ -356,7 +356,7 @@ prototypes = [
         modes=[
             HashInfo(name='RIPEMD-320', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$episerver\$\*1\*[a-z0-9=*+]{68}$', re.IGNORECASE),
+        regex=re.compile(r'^\$episerver\$\*1\*[a-z0-9\/=+]+\*[a-z0-9\/=+]{42,43}$', re.IGNORECASE),
         modes=[
             HashInfo(name=u'EPiServer 6.x ≥ v4', hashcat=1441, john=None, extended=False)]),
     Prototype(
