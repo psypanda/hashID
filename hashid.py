@@ -751,14 +751,11 @@ def main():
 
     if not args.strings or args.strings[0] == "-":
         while True:
-            try:
-                line = sys.stdin.readline()
-                if not line:
-                    break
-                writeResult(line, hashID.identifyHash(line), args.outfile, args.mode, args.john, args.all)
-                sys.stdout.flush()
-            except KeyboardInterrupt:
-                sys.exit(0)
+            line = sys.stdin.readline()
+            if not line:
+                break
+            writeResult(line, hashID.identifyHash(line), args.outfile, args.mode, args.john, args.all)
+            sys.stdout.flush()
     else:
         for string in args.strings:
             if os.path.isfile(string):
@@ -778,4 +775,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
