@@ -414,7 +414,7 @@ prototypes = [
         modes=[
             HashInfo(name='Skein-1024', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^grub\.pbkdf2\.sha512\.[0-9]+\.([a-f0-9]{128,2048}|[0-9]+)?\.[a-f0-9]{128}$', re.IGNORECASE),
+        regex=re.compile(r'^grub\.pbkdf2\.sha512\.[0-9]+\.([a-f0-9]{128,2048}\.|[0-9]+\.)?[a-f0-9]{128}$', re.IGNORECASE),
         modes=[
             HashInfo(name='GRUB 2', hashcat=7200, john=None, extended=False)]),
     Prototype(
