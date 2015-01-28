@@ -711,7 +711,7 @@ def writeResult(candidate, identified_modes, outfile, hashcatMode=False, johnFor
     """Write human readable output from identifyHash"""
     count = 0
     hashTypes = ""
-    outfile.write(u"Analyzing '{0}'\n".format(candidate))
+    outfile.write(u"Analyzing '{0}'\n".format(candidate.strip()))
     for mode in identified_modes:
         if not mode.extended or extended:
             count += 1
@@ -749,7 +749,7 @@ def main():
                 line = sys.stdin.readline()
                 if not line:
                     break
-                writeResult(line.strip(), hashID.identifyHash(line.strip()), args.outfile, args.mode, args.john, args.all)
+                writeResult(line, hashID.identifyHash(line), args.outfile, args.mode, args.john, args.all)
                 sys.stdout.flush()
             except KeyboardInterrupt:
                 sys.exit(0)
@@ -761,7 +761,7 @@ def main():
                         print("--File '{0}'--".format(string))
                         for line in infile:
                             if line.strip():
-                                writeResult(line.strip(), hashID.identifyHash(line.strip()), args.outfile, args.mode, args.john, args.all)
+                                writeResult(line, hashID.identifyHash(line), args.outfile, args.mode, args.john, args.all)
                     infile.close()
                 except IOError:
                     print("--File '{0}' - could not open--".format(string))
