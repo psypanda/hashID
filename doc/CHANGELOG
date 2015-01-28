@@ -1,5 +1,11 @@
 ### Changelog
 
+v3.1.0
+- Added new argument "-o FILE / --outfile FILE"
+- Added Cisco Type 7 (Closes #21)
+- Added BigCrypt (Closes #22)
+- Added Cisco Type 4
+
 v3.0.1
 - Added CRAM-MD5 hash format (Closes #17)
 - Added SipHash hash format (Closes #18)
@@ -85,13 +91,13 @@ v2.8.1
 - Renamed Django CMS(SHA-384) to Django(SHA-384)
 
 v2.8.0
-- Added new parameter "-a / --all"
+- Added new argument "-a / --all"
 - PEP8 optimization
 - Renamed xAuth to Minecraft(xAuth)
 
 v2.7.0
 - Major rewrite
-- Dropped obsolete "-f / --file" and "-d / --dir" parameter
+- Dropped obsolete "-f / --file" and "-d / --dir" arguments
 - All output defaults to STDOUT now
 
 v2.6.7
@@ -135,7 +141,7 @@ v2.6.1
 - Renamed Blowfish(Eggdrop) to Eggdrop IRC Bot
 
 v2.6.0
-- Added directory analyze using parameter "-d / --dir"
+- Added directory analyze using argument "-d / --dir"
 - Fixed vBulletin < v3.8.5 regular expression
 - More error checking on user input
 
@@ -189,7 +195,7 @@ v2.4.1
 - Fixed NetNTLMv2 regular expression
 
 v2.4.0
-- Added Hashcat Mode output using parameter "-hc / --hashcat"
+- Added Hashcat Mode output using argument "-hc / --hashcat"
 - Added RACF hash format
 - Added Double MD5 hash format
 - Added Double SHA-1 hash format
