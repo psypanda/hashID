@@ -270,7 +270,7 @@ prototypes = [
         regex=re.compile(r'^0x0100[a-f0-9]{48}$', re.IGNORECASE),
         modes=[
             HashInfo(name='MSSQL(2005)', hashcat=132, john='mssql05', extended=False),
-            HashInfo(name='MSSQL(2008)', hashcat=132, john=None, extended=False)]),
+            HashInfo(name='MSSQL(2008)', hashcat=132, john='mssql05', extended=False)]),
     Prototype(
         regex=re.compile(r'^(\$md5,rounds=[0-9]+\$|\$md5\$rounds=[0-9]+\$|\$md5\$)[a-z0-9\/.]{0,16}(\$|\$\$)[a-z0-9\/.]{22}$', re.IGNORECASE),
         modes=[
