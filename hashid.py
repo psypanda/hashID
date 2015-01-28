@@ -683,7 +683,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^[a-f0-9]{4,}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='Cisco Type 7', hashcat=None, john=None, extended=True)])
+            HashInfo(name='Cisco Type 7', hashcat=None, john=None, extended=True)]),
+    Prototype(
+        regex=re.compile(r'^[a-z0-9\/.]{13,}$', re.IGNORECASE),
+        modes=[
+            HashInfo(name='BigCrypt', hashcat=None, john=None, extended=True)])
 ]
 
 
