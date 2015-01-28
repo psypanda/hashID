@@ -728,15 +728,16 @@ def writeResult(candidate, identified_modes, outfile, hashcatMode=False, johnFor
 
 
 def main():
-    usage = "{0} [-a] [-m] [-j] [--help] [--version] INPUT".format(os.path.basename(__file__))
+    usage = "{0} [-h] [-a] [-m] [-j] [-o FILE] [--version] INPUT".format(os.path.basename(__file__))
     banner = "hashID v{0} by {1} ({2})".format(__version__, __author__, __github__)
     description = "Identify the different types of hashes used to encrypt data"
 
-    parser = argparse.ArgumentParser(usage=usage, description=description, epilog=__license__)
+    parser = argparse.ArgumentParser(usage=usage, formatter_class=lambda prog: argparse.HelpFormatter(prog, max_help_position=27), description=description, epilog=__license__)
     parser.add_argument("strings", metavar="input", type=str, nargs="*", help="string or filename to analyze")
     parser.add_argument("-a", "--all", action="store_true", help="list all possible hash algorithms including salted passwords")
     parser.add_argument("-m", "--mode", action="store_true", help="include corresponding Hashcat mode in output")
     parser.add_argument("-j", "--john", action="store_true", help="include corresponding JohnTheRipper format in output")
+    parser.add_argument("-o", "--outfile", metavar="FILE", type=argparse.FileType('w', encoding='UTF-8'), default=sys.stdout, help="write output to file (default: stdout)")
     parser.add_argument("--version", action="version", version=banner)
     args = parser.parse_args()
 
@@ -748,7 +749,7 @@ def main():
                 line = sys.stdin.readline()
                 if not line:
                     break
-                writeResult(line.strip(), hashID.identifyHash(line.strip()), sys.stdout, args.mode, args.john, args.all)
+                writeResult(line.strip(), hashID.identifyHash(line.strip()), args.outfile, args.mode, args.john, args.all)
                 sys.stdout.flush()
             except KeyboardInterrupt:
                 sys.exit(0)
@@ -760,14 +761,14 @@ def main():
                         print("--File '{0}'--".format(string))
                         for line in infile:
                             if line.strip():
-                                writeResult(line.strip(), hashID.identifyHash(line.strip()), sys.stdout, args.mode, args.john, args.all)
+                                writeResult(line.strip(), hashID.identifyHash(line.strip()), args.outfile, args.mode, args.john, args.all)
                     infile.close()
                 except IOError:
                     print("--File '{0}' - could not open--".format(string))
                 else:
                     print("--End of file '{0}'--".format(string))
             else:
-                writeResult(string, hashID.identifyHash(string), sys.stdout, args.mode, args.john, args.all)
+                writeResult(string, hashID.identifyHash(string), args.outfile, args.mode, args.john, args.all)
 
 
 if __name__ == "__main__":
