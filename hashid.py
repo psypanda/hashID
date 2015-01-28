@@ -743,7 +743,7 @@ def main():
     group.add_argument("-a", "--all", action="store_true", help="list all possible hash algorithms including salted passwords")
     group.add_argument("-m", "--mode", action="store_true", help="include corresponding Hashcat mode in output")
     group.add_argument("-j", "--john", action="store_true", help="include corresponding JohnTheRipper format in output")
-    group.add_argument("-o", "--outfile", metavar="FILE", type=argparse.FileType('w', encoding='UTF-8'), default=sys.stdout, help="write output to file (default: STDOUT)")
+    group.add_argument("-o", "--outfile", metavar="FILE", type=argparse.FileType('w', encoding='utf-8'), default=sys.stdout, help="write output to file (default: STDOUT)")
     parser.add_argument("--version", action="version", version=banner)
     args = parser.parse_args()
 
@@ -764,15 +764,15 @@ def main():
             if os.path.isfile(string):
                 try:
                     with io.open(string, "r", encoding="utf-8") as infile:
-                        print("--File '{0}'--".format(string))
+                        args.outfile.write("--File '{0}'--\n".format(string))
                         for line in infile:
                             if line.strip():
                                 writeResult(line, hashID.identifyHash(line), args.outfile, args.mode, args.john, args.all)
                     infile.close()
-                except IOError:
-                    print("--File '{0}' - could not open--".format(string))
+                except (IOError, UnicodeDecodeError):
+                    args.outfile.write("--File '{0}' - could not open--".format(string))
                 else:
-                    print("--End of file '{0}'--".format(string))
+                    args.outfile.write("--End of file '{0}'--".format(string))
             else:
                 writeResult(string, hashID.identifyHash(string), args.outfile, args.mode, args.john, args.all)
 
