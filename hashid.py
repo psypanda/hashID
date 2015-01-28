@@ -115,6 +115,7 @@ prototypes = [
             HashInfo(name='Skein-256(128)', hashcat=None, john=None, extended=False),
             HashInfo(name='Skein-512(128)', hashcat=None, john=None, extended=False),
             HashInfo(name='Lotus Notes/Domino 5', hashcat=8600, john='lotus5', extended=False),
+            HashInfo(name='Skype', hashcat=23, john=None, extended=False),
             HashInfo(name='ZipMonster', hashcat=None, john=None, extended=True),
             HashInfo(name='md5(md5(md5($pass)))', hashcat=3500, john=None, extended=True),
             HashInfo(name='md5(strtoupper(md5($pass)))', hashcat=4300, john=None, extended=True),
@@ -132,8 +133,7 @@ prototypes = [
             HashInfo(name='md5(md5($pass).md5($salt))', hashcat=3910, john=None, extended=True),
             HashInfo(name='md5($salt.md5($salt.$pass))', hashcat=4010, john=None, extended=True),
             HashInfo(name='md5($salt.md5($pass.$salt))', hashcat=4110, john=None, extended=True),
-            HashInfo(name='md5($username.0.$pass)', hashcat=4210, john=None, extended=True),
-            HashInfo(name='Skype', hashcat=23, john=None, extended=False)]),
+            HashInfo(name='md5($username.0.$pass)', hashcat=4210, john=None, extended=True)]),
     Prototype(
         regex=re.compile(r'^(\$NT\$)?[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
@@ -141,19 +141,16 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^[a-f0-9]{32}(:[^\\\/:*?"<>|]{1,20})?$', re.IGNORECASE),
         modes=[
-            HashInfo(name='Domain Cached Credentials', hashcat=1100, john='mscach', extended=False),
-            HashInfo(name='mscash', hashcat=1100, john='mscach', extended=True)]),
+            HashInfo(name='Domain Cached Credentials', hashcat=1100, john='mscach', extended=False)]),
     Prototype(
         regex=re.compile(r'^(\$DCC2\$10240#[^\\\/:*?"<>|]{1,20}#)?[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='Domain Cached Credentials 2', hashcat=2100, john='mscach2', extended=False),
-            HashInfo(name='mscash2', hashcat=2100, john='mscach2', extended=True)]),
+            HashInfo(name='Domain Cached Credentials 2', hashcat=2100, john='mscach2', extended=False)]),
     Prototype(
         regex=re.compile(r'^{SHA}[a-z0-9\/+]{27}=$', re.IGNORECASE),
         modes=[
             HashInfo(name='SHA-1(Base64)', hashcat=101, john='nsldap', extended=False),
-            HashInfo(name='Netscape LDAP SHA', hashcat=101, john='nsldap', extended=False),
-            HashInfo(name='nsldap', hashcat=101, john='nsldap', extended=True)]),
+            HashInfo(name='Netscape LDAP SHA', hashcat=101, john='nsldap', extended=False)]), 
     Prototype(
         regex=re.compile(r'^\$1\$[a-z0-9\/.]{0,8}\$[a-z0-9\/.]{22}(:.*)?$', re.IGNORECASE),
         modes=[
