@@ -23,6 +23,8 @@ $ sudo install -g 0 -o 0 -m 0644 man/hashid.7 /usr/share/man/man7/
 $ sudo gzip /usr/share/man/man7/hashid.7
 ```
 
+Or you can grab the latest release [here](https://github.com/psypanda/hashID/releases).
+
 Usage
 ------
 ```console
