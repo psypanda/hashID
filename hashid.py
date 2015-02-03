@@ -738,11 +738,11 @@ def main():
     description = "Identify the different types of hashes used to encrypt data"
 
     parser = argparse.ArgumentParser(usage=usage, formatter_class=lambda prog: argparse.HelpFormatter(prog, max_help_position=27), description=description, epilog=__license__, add_help=False)
-    parser.add_argument("strings", metavar="input", type=str, nargs="*", help="string or filename to analyze")
+    parser.add_argument("strings", metavar="INPUT", type=str, nargs="*", help="input to analyze (default: STDIN)")
     group = parser.add_argument_group('options')
     group.add_argument("-a", "--all", action="store_true", help="list all possible hash algorithms including salted passwords")
-    group.add_argument("-m", "--mode", action="store_true", help="include corresponding Hashcat mode in output")
-    group.add_argument("-j", "--john", action="store_true", help="include corresponding JohnTheRipper format in output")
+    group.add_argument("-m", "--mode", action="store_true", help="show corresponding Hashcat mode in output")
+    group.add_argument("-j", "--john", action="store_true", help="show corresponding JohnTheRipper format in output")
     group.add_argument("-o", "--outfile", metavar="FILE", type=argparse.FileType('w', encoding='utf-8'), default=sys.stdout, help="write output to file (default: STDOUT)")
     group.add_argument("-h", "--help", action="help", help="show this help message and exit")
     group.add_argument("--version", action="version", version=banner)

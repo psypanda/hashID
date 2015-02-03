@@ -31,10 +31,10 @@ $ ./hashid.py [-h] [-a] [-m] [-j] [-o FILE] [--version] INPUT
 
 | Parameter                      | Description                                         |
 | :----------------------------- | :-------------------------------------------------- |
-| input                          | input to analyze (default: STDIN)                   |
+| INPUT                          | input to analyze (default: STDIN)                   |
 | -a, --all                      | list all hash algorithms including salted passwords |
-| -m, --mode                     | include corresponding hashcat mode in output        |
-| -j, --john                     | include corresponding JohnTheRipper format in output|
+| -m, --mode                     | show corresponding hashcat mode in output           |
+| -j, --john                     | show corresponding JohnTheRipper format in output   |
 | -o FILE, --outfile FILE        | write output to file (default: STDOUT)              |
 | --help                         | show help message and exit                          |
 | --version                      | show program's version number and exit              |
