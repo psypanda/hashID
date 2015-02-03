@@ -712,11 +712,10 @@ class HashID(object):
                     yield mode
 
 
-def writeResult(candidate, identified_modes, outfile, hashcatMode=False, johnFormat=False, extended=False):
+def writeResult(identified_modes, outfile, hashcatMode=False, johnFormat=False, extended=False):
     """Write human readable output from identifyHash"""
     count = 0
     hashTypes = ""
-    outfile.write(u"Analyzing '{0}'\n".format(candidate.strip()))
     for mode in identified_modes:
         if not mode.extended or extended:
             count += 1
@@ -755,7 +754,8 @@ def main():
             line = sys.stdin.readline()
             if not line:
                 break
-            writeResult(line, hashID.identifyHash(line), args.outfile, args.mode, args.john, args.all)
+            args.outfile.write(u"Analyzing '{0}'\n".format(line.strip()))
+            writeResult(hashID.identifyHash(line), args.outfile, args.mode, args.john, args.all)
             sys.stdout.flush()
     else:
         for string in args.strings:
@@ -765,14 +765,16 @@ def main():
                         args.outfile.write("--File '{0}'--\n".format(string))
                         for line in infile:
                             if line.strip():
-                                writeResult(line, hashID.identifyHash(line), args.outfile, args.mode, args.john, args.all)
+                                args.outfile.write(u"Analyzing '{0}'\n".format(line.strip()))
+                                writeResult(hashID.identifyHash(line), args.outfile, args.mode, args.john, args.all)
                     infile.close()
                 except (IOError, UnicodeDecodeError):
                     args.outfile.write("--File '{0}' - could not open--".format(string))
                 else:
                     args.outfile.write("--End of file '{0}'--".format(string))
             else:
-                writeResult(string, hashID.identifyHash(string), args.outfile, args.mode, args.john, args.all)
+                args.outfile.write(u"Analyzing '{0}'\n".format(string.strip()))
+                writeResult(hashID.identifyHash(string), args.outfile, args.mode, args.john, args.all)
 
 
 if __name__ == "__main__":
