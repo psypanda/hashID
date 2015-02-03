@@ -26,13 +26,13 @@ $ sudo gzip /usr/share/man/man7/hashid.7
 Usage
 ------
 ```console
-$ ./hashid.py [-h] [-a] [-m] [-j] [-o FILE] [--version] INPUT
+$ ./hashid.py [-h] [-e] [-m] [-j] [-o FILE] [--version] INPUT
 ```
 
 | Parameter                      | Description                                         |
 | :----------------------------- | :-------------------------------------------------- |
 | INPUT                          | input to analyze (default: STDIN)                   |
-| -a, --all                      | list all hash algorithms including salted passwords |
+| -e, --extended                 | list all hash algorithms including salted passwords |
 | -m, --mode                     | show corresponding hashcat mode in output           |
 | -j, --john                     | show corresponding JohnTheRipper format in output   |
 | -o FILE, --outfile FILE        | write output to file (default: STDOUT)              |
