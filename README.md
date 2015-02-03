@@ -15,6 +15,7 @@ Altough hashID is written in Python 3.x it should also work using Python 2.7.
 
 Installation
 ------
+You can either install by cloning the repository:
 ```console
 $ sudo apt-get install python3 git
 $ git clone https://github.com/psypanda/hashid.git
@@ -22,7 +23,6 @@ $ cd hashid
 $ sudo install -g 0 -o 0 -m 0644 man/hashid.7 /usr/share/man/man7/
 $ sudo gzip /usr/share/man/man7/hashid.7
 ```
-
 Or you can grab the latest release [here](https://github.com/psypanda/hashID/releases).
 
 Usage
