@@ -554,7 +554,7 @@ prototypes = [
         modes=[
             HashInfo(name='Minecraft(xAuth)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/.]{22}\$([a-z0-9\/.]{27}|[a-z0-9\/.]{43}|[a-z0-9\/.]{86})$', re.IGNORECASE),
+        regex=re.compile(r'^\$pbkdf2-sha(1|256|512)\$[0-9]+\$[a-z0-9\/.]+\$([a-z0-9\/.]{27}|[a-z0-9\/.]{43}|[a-z0-9\/.]{86})$', re.IGNORECASE),
         modes=[
             HashInfo(name='PBKDF2(Generic)', hashcat=None, john='pbkdf2-hmac-sha256', extended=False)]),
     Prototype(
