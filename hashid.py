@@ -696,7 +696,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^(\$cisco4\$)?[a-z0-9\/.]{43}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='Cisco Type 4', hashcat=None, john=None, extended=False)])
+            HashInfo(name='Cisco Type 4', hashcat=None, john=None, extended=False)]),
+    Prototype(
+        regex=re.compile(r'^bcrypt_sha256\$\$(2[axy]|2)\$[0-9]+\$[a-z0-9\/.]{53}$', re.IGNORECASE),
+        modes=[
+            HashInfo(name='Django(bcrypt-SHA256)', hashcat=None, john=None, extended=False)])
 ]
 
 
