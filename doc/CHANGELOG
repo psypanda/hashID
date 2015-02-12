@@ -1,5 +1,23 @@
 ### Changelog
 
+v3.1.1
+- Renamed "-a / --all" argument to "-e / --extended"
+- Added Django(bcrypt-SHA256) hash format
+- Added PostgreSQL hash format
+- Fixed AIX(ssha1) regular expression
+- Fixed AIX(ssha256) regular expression
+- Fixed Django(SHA-1) regular expression
+- Fixed Django(SHA-256) regular expression
+- Fixed Django(SHA-384) regular expression
+- Fixed EPiServer 6.x < v4 regular expression
+- Fixed EPiServer 6.x ≥ v4 regular expression
+- Fixed GRUB 2 regular expression
+- Added JohnTheRipper format for BigCrypt
+- Added JohnTheRipper format for Cisco Type 4,8 & 9
+- Added JohnTheRipper format for MD2
+- Added JohnTheRipper format for MSSQL(2005)
+- Added JohnTheRipper format for Netscape LDAP SSHA
+
 v3.1.0
 - Added new argument "-o FILE / --outfile FILE"
 - Added Cisco Type 7 (Closes #21)
@@ -131,7 +149,7 @@ v2.6.3
 - Renamed Lotus Domino to Lotus Notes/Domino 6
 
 v2.6.2
-- Added JTR formats to hashinfo.xlsx
+- Added JohnTheRipper formats to hashinfo.xlsx
 - Fixed Juniper Netscreen/SSG(ScreenOS) regular expression
 - Fixed NTLM regular expression
 
