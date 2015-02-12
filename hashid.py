@@ -418,7 +418,7 @@ prototypes = [
         modes=[
             HashInfo(name='GRUB 2', hashcat=7200, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^sha1\$[a-f0-9]{1,}\$[a-f0-9]{40}$', re.IGNORECASE),
+        regex=re.compile(r'^sha1\$[a-f0-9]+\$[a-f0-9]{40}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Django(SHA-1)', hashcat=124, john=None, extended=False)]),
     Prototype(
@@ -446,11 +446,11 @@ prototypes = [
         modes=[
             HashInfo(name='Minecraft(AuthMe Reloaded)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^sha256\$[a-f0-9]{1,}\$[a-f0-9]{64}$', re.IGNORECASE),
+        regex=re.compile(r'^sha256\$[a-f0-9]+\$[a-f0-9]{64}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Django(SHA-256)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^sha384\$[a-f0-9]{1,}\$[a-f0-9]{96}$', re.IGNORECASE),
+        regex=re.compile(r'^sha384\$[a-f0-9]+\$[a-f0-9]{96}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Django(SHA-384)', hashcat=None, john=None, extended=False)]),
     Prototype(
@@ -606,11 +606,11 @@ prototypes = [
         modes=[
             HashInfo(name='Django(DES Crypt Wrapper)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^(\$django\$\*1\*)?pbkdf2_sha256\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9\/+]{43}=$', re.IGNORECASE),
+        regex=re.compile(r'^(\$django\$\*1\*)?pbkdf2_sha256\$[0-9]+\$[a-z0-9]+\$[a-z0-9\/+=]{44}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Django(PBKDF2-HMAC-SHA256)', hashcat=10000, john='django', extended=False)]),
     Prototype(
-        regex=re.compile(r'^pbkdf2_sha1\$[0-9]+\$[a-z0-9]{1,}\$[a-z0-9\/+]{27}=$', re.IGNORECASE),
+        regex=re.compile(r'^pbkdf2_sha1\$[0-9]+\$[a-z0-9]+\$[a-z0-9\/+=]{28}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Django(PBKDF2-HMAC-SHA1)', hashcat=None, john=None, extended=False)]),
     Prototype(
@@ -618,7 +618,7 @@ prototypes = [
         modes=[
             HashInfo(name='Django(bcrypt)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^md5\$[a-f0-9]{1,}\$[a-f0-9]{32}$', re.IGNORECASE),
+        regex=re.compile(r'^md5\$[a-f0-9]+\$[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Django(MD5)', hashcat=None, john=None, extended=False)]),
     Prototype(
