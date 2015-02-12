@@ -640,11 +640,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$8\$[a-z0-9\/.]{14}\$[a-z0-9\/.]{43}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='Cisco Type 8', hashcat=9200, john=None, extended=False)]),
+            HashInfo(name='Cisco Type 8', hashcat=9200, john='cisco8', extended=False)]),
     Prototype(
         regex=re.compile(r'^\$9\$[a-z0-9\/.]{14}\$[a-z0-9\/.]{43}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='Cisco Type 9', hashcat=9300, john=None, extended=False)]),
+            HashInfo(name='Cisco Type 9', hashcat=9300, john='cisco9', extended=False)]),
     Prototype(
         regex=re.compile(r'^\$office\$\*2007\*[0-9]{2}\*[0-9]{3}\*[0-9]{2}\*[a-z0-9]{32}\*[a-z0-9]{32}\*[a-z0-9]{40}$', re.IGNORECASE),
         modes=[
@@ -696,7 +696,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^(\$cisco4\$)?[a-z0-9\/.]{43}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='Cisco Type 4', hashcat=None, john=None, extended=False)]),
+            HashInfo(name='Cisco Type 4', hashcat=None, john='cisco4', extended=False)]),
     Prototype(
         regex=re.compile(r'^bcrypt_sha256\$\$(2[axy]|2)\$[0-9]+\$[a-z0-9\/.]{53}$', re.IGNORECASE),
         modes=[
