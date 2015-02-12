@@ -700,7 +700,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^bcrypt_sha256\$\$(2[axy]|2)\$[0-9]+\$[a-z0-9\/.]{53}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='Django(bcrypt-SHA256)', hashcat=None, john=None, extended=False)])
+            HashInfo(name='Django(bcrypt-SHA256)', hashcat=None, john=None, extended=False)]), 
+    Prototype(
+        regex=re.compile(r'^(\$postgres\$.[^\*]+[*:])?[a-f0-9]{1,32}[*:][a-f0-9]{32}$', re.IGNORECASE),
+        modes=[
+            HashInfo(name='PostgreSQL', hashcat=12, john='postgres', extended=False)])
 ]
 
 
