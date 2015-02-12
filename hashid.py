@@ -284,7 +284,7 @@ prototypes = [
             HashInfo(name='Skein-256(224)', hashcat=None, john=None, extended=False),
             HashInfo(name='Skein-512(224)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/.]{53}$', re.IGNORECASE),
+        regex=re.compile(r'^(\$2[axy]|\$2)\$[0-9]{2}\$[a-z0-9\/.]{53}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Blowfish(OpenBSD)', hashcat=3200, john='bcrypt', extended=False),
             HashInfo(name='Woltlab Burning Board 4.x', hashcat=None, john=None, extended=False),
@@ -614,7 +614,7 @@ prototypes = [
         modes=[
             HashInfo(name='Django(PBKDF2-HMAC-SHA1)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^bcrypt(\$2[axy]|\$2)\$[0-9]{0,2}?\$[a-z0-9\/.]{53}$', re.IGNORECASE),
+        regex=re.compile(r'^bcrypt(\$2[axy]|\$2)\$[0-9]{2}\$[a-z0-9\/.]{53}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Django(bcrypt)', hashcat=None, john=None, extended=False)]),
     Prototype(
