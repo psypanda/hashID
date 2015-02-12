@@ -238,9 +238,9 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^{SSHA}[a-z0-9\/+]{38}==$', re.IGNORECASE),
         modes=[
-            HashInfo(name='SSHA-1(Base64)', hashcat=111, john=None, extended=False),
-            HashInfo(name='Netscape LDAP SSHA', hashcat=111, john='ssha', extended=False),
-            HashInfo(name='nsldaps', hashcat=111, john=None, extended=True)]),
+            HashInfo(name='SSHA-1(Base64)', hashcat=111, john='nsldaps', extended=False),
+            HashInfo(name='Netscape LDAP SSHA', hashcat=111, john='nsldaps', extended=False),
+            HashInfo(name='nsldaps', hashcat=111, john='nsldaps', extended=True)]),
     Prototype(
         regex=re.compile(r'^[a-z0-9=]{47}$', re.IGNORECASE),
         modes=[
