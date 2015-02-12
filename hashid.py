@@ -263,7 +263,7 @@ prototypes = [
         modes=[
             HashInfo(name='CryptoCurrency(PrivateKey)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^{ssha1}[a-z0-9$\/.]{47}$', re.IGNORECASE),
+        regex=re.compile(r'^{ssha1}[0-9]{2}\$[a-z0-9$\/.]{44}$', re.IGNORECASE),
         modes=[
             HashInfo(name='AIX(ssha1)', hashcat=6700, john='aix-ssha1', extended=False)]),
     Prototype(
@@ -348,7 +348,7 @@ prototypes = [
         modes=[
             HashInfo(name='EPiServer 6.x < v4', hashcat=141, john='episerver', extended=False)]),
     Prototype(
-        regex=re.compile(r'^{ssha256}[a-z0-9$\/.]{63}$', re.IGNORECASE),
+        regex=re.compile(r'^{ssha256}[0-9]{2}\$[a-z0-9$\/.]{60}$', re.IGNORECASE),
         modes=[
             HashInfo(name='AIX(ssha256)', hashcat=6400, john='aix-ssha256', extended=False)]),
     Prototype(
