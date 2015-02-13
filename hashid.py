@@ -494,7 +494,7 @@ prototypes = [
         modes=[
             HashInfo(name='SAP CODVN F/G (PASSCODE)', hashcat=7800, john='sapg', extended=False)]),
     Prototype(
-        regex=re.compile(r'^(.+\$)?[a-z0-9\/.]{30}(:.+)?$', re.IGNORECASE),
+        regex=re.compile(r'^(.+\$)?[a-z0-9\/.+]{30}(:.+)?$', re.IGNORECASE),
         modes=[
             HashInfo(name='Juniper Netscreen/SSG(ScreenOS)', hashcat=22, john='md5ns', extended=False)]),
     Prototype(
