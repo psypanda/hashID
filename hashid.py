@@ -473,7 +473,7 @@ prototypes = [
         modes=[
             HashInfo(name='NetNTLMv1-VANILLA / NetNTLMv1+ESS', hashcat=5500, john='netntlm', extended=False)]),
     Prototype(
-        regex=re.compile(r'^[^\\\/:*?"<>|]{1,20}::[^\\\/:*?"<>|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$', re.IGNORECASE),
+        regex=re.compile(r'^([^\\\/:*?"<>|]{1,20}\\)?[^\\\/:*?"<>|]{1,20}[:]{2,3}([^\\\/:*?"<>|]{1,20}:)?[^\\\/:*?"<>|]{1,20}:[a-f0-9]{32}:[a-f0-9]+$', re.IGNORECASE),
         modes=[
             HashInfo(name='NetNTLMv2', hashcat=5600, john='netntlmv2', extended=False)]),
     Prototype(
