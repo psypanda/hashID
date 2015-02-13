@@ -469,9 +469,9 @@ prototypes = [
         modes=[
             HashInfo(name='Microsoft MSTSC(RDP-File)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^[^\\\/:*?"<>|]{1,20}::[^\\\/:*?"<>|]{1,20}:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$', re.IGNORECASE),
+        regex=re.compile(r'^[^\\\/:*?"<>|]{1,20}[:]{2,3}([^\\\/:*?"<>|]{1,20})?:[a-f0-9]{48}:[a-f0-9]{48}:[a-f0-9]{16}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='NetNTLMv1-VANILLA / NetNTLMv1+ESS', hashcat=5500, john=None, extended=False)]),
+            HashInfo(name='NetNTLMv1-VANILLA / NetNTLMv1+ESS', hashcat=5500, john='netntlm', extended=False)]),
     Prototype(
         regex=re.compile(r'^[^\\\/:*?"<>|]{1,20}::[^\\\/:*?"<>|]{1,20}:[a-f0-9]{16}:[a-f0-9]{32}:[a-f0-9]+$', re.IGNORECASE),
         modes=[
