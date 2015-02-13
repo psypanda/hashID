@@ -111,7 +111,6 @@ prototypes = [
             HashInfo(name='RIPEMD-128', hashcat=None, john='ripemd-128', extended=False),
             HashInfo(name='Haval-128', hashcat=None, john='haval-128-4', extended=False),
             HashInfo(name='Tiger-128', hashcat=None, john=None, extended=False),
-            HashInfo(name='Snefru-128', hashcat=None, john='snefru-128', extended=False),
             HashInfo(name='Skein-256(128)', hashcat=None, john=None, extended=False),
             HashInfo(name='Skein-512(128)', hashcat=None, john=None, extended=False),
             HashInfo(name='Lotus Notes/Domino 5', hashcat=8600, john='lotus5', extended=False),
@@ -134,6 +133,10 @@ prototypes = [
             HashInfo(name='md5($salt.md5($salt.$pass))', hashcat=4010, john=None, extended=True),
             HashInfo(name='md5($salt.md5($pass.$salt))', hashcat=4110, john=None, extended=True),
             HashInfo(name='md5($username.0.$pass)', hashcat=4210, john=None, extended=True)]),
+    Prototype(
+        regex=re.compile(r'^(\$snefru\$)?[a-f0-9]{32}$', re.IGNORECASE),
+        modes=[
+            HashInfo(name='Snefru-128', hashcat=None, john='snefru-128', extended=False)]),
     Prototype(
         regex=re.compile(r'^(\$NT\$)?[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
