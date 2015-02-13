@@ -123,8 +123,8 @@ prototypes = [
             HashInfo(name='md5($salt.$pass)', hashcat=20, john=None, extended=True),
             HashInfo(name='md5(unicode($pass).$salt)', hashcat=30, john=None, extended=True),
             HashInfo(name='md5($salt.unicode($pass))', hashcat=40, john=None, extended=True),
-            HashInfo(name='HMAC-MD5 (key = $pass)', hashcat=50, john=None, extended=True),
-            HashInfo(name='HMAC-MD5 (key = $salt)', hashcat=60, john=None, extended=True),
+            HashInfo(name='HMAC-MD5 (key = $pass)', hashcat=50, john='hmac-md5', extended=True),
+            HashInfo(name='HMAC-MD5 (key = $salt)', hashcat=60, john='hmac-md5', extended=True),
             HashInfo(name='md5(md5($salt).$pass)', hashcat=3610, john=None, extended=True),
             HashInfo(name='md5($salt.md5($pass))', hashcat=3710, john=None, extended=True),
             HashInfo(name='md5($pass.md5($salt))', hashcat=3720, john=None, extended=True),
@@ -226,8 +226,8 @@ prototypes = [
             HashInfo(name='sha1($salt.$pass)', hashcat=120, john=None, extended=True),
             HashInfo(name='sha1(unicode($pass).$salt)', hashcat=130, john=None, extended=True),
             HashInfo(name='sha1($salt.unicode($pass))', hashcat=140, john=None, extended=True),
-            HashInfo(name='HMAC-SHA1 (key = $pass)', hashcat=150, john=None, extended=True),
-            HashInfo(name='HMAC-SHA1 (key = $salt)', hashcat=160, john=None, extended=True),
+            HashInfo(name='HMAC-SHA1 (key = $pass)', hashcat=150, john='hmac-sha1', extended=True),
+            HashInfo(name='HMAC-SHA1 (key = $salt)', hashcat=160, john='hmac-sha1', extended=True),
             HashInfo(name='sha1($salt.$pass.$salt)', hashcat=4710, john=None, extended=True)]),
     Prototype(
         regex=re.compile(r'^\*[a-f0-9]{40}$', re.IGNORECASE),
@@ -331,8 +331,8 @@ prototypes = [
             HashInfo(name='sha256($salt.$pass)', hashcat=1420, john=None, extended=True),
             HashInfo(name='sha256(unicode($pass).$salt)', hashcat=1430, john=None, extended=True),
             HashInfo(name='sha256($salt.unicode($pass))', hashcat=1440, john=None, extended=True),
-            HashInfo(name='HMAC-SHA256 (key = $pass)', hashcat=1450, john=None, extended=True),
-            HashInfo(name='HMAC-SHA256 (key = $salt)', hashcat=1460, john=None, extended=True)]),
+            HashInfo(name='HMAC-SHA256 (key = $pass)', hashcat=1450, john='hmac-sha256', extended=True),
+            HashInfo(name='HMAC-SHA256 (key = $salt)', hashcat=1460, john='hmac-sha256', extended=True)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{32}:[a-z0-9]{32}$', re.IGNORECASE),
         modes=[
@@ -396,8 +396,8 @@ prototypes = [
             HashInfo(name='sha512($salt.$pass)', hashcat=1720, john=None, extended=True),
             HashInfo(name='sha512(unicode($pass).$salt)', hashcat=1730, john=None, extended=True),
             HashInfo(name='sha512($salt.unicode($pass))', hashcat=1740, john=None, extended=True),
-            HashInfo(name='HMAC-SHA512 (key = $pass)', hashcat=1750, john=None, extended=True),
-            HashInfo(name='HMAC-SHA512 (key = $salt)', hashcat=1760, john=None, extended=True)]),
+            HashInfo(name='HMAC-SHA512 (key = $pass)', hashcat=1750, john='hmac-sha512', extended=True),
+            HashInfo(name='HMAC-SHA512 (key = $salt)', hashcat=1760, john='hmac-sha512', extended=True)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{136}$', re.IGNORECASE),
         modes=[
