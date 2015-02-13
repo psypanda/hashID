@@ -142,11 +142,11 @@ prototypes = [
         modes=[
             HashInfo(name='NTLM', hashcat=1000, john='nt', extended=False)]),
     Prototype(
-        regex=re.compile(r'^[a-f0-9]{32}(:[^\\\/:*?"<>|]{1,20})?$', re.IGNORECASE),
+        regex=re.compile(r'^([^\\\/:*?"<>|]{1,20}:)?[a-f0-9]{32}(:[^\\\/:*?"<>|]{1,20})?$', re.IGNORECASE),
         modes=[
             HashInfo(name='Domain Cached Credentials', hashcat=1100, john='mscach', extended=False)]),
     Prototype(
-        regex=re.compile(r'^(\$DCC2\$10240#[^\\\/:*?"<>|]{1,20}#)?[a-f0-9]{32}$', re.IGNORECASE),
+        regex=re.compile(r'^([^\\\/:*?"<>|]{1,20}:)?(\$DCC2\$10240#[^\\\/:*?"<>|]{1,20}#)?[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Domain Cached Credentials 2', hashcat=2100, john='mscach2', extended=False)]),
     Prototype(
