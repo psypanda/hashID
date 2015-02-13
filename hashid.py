@@ -100,7 +100,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^(\$md2\$)?[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='MD2', hashcat=None, john='rawmd2', extended=False)]),
+            HashInfo(name='MD2', hashcat=None, john='md2', extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{32}(:.+)?$', re.IGNORECASE),
         modes=[
