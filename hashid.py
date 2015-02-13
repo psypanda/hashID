@@ -704,7 +704,11 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^(\$postgres\$.[^\*]+[*:])?[a-f0-9]{1,32}[*:][a-f0-9]{32}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='PostgreSQL', hashcat=12, john='postgres', extended=False)])
+            HashInfo(name='PostgreSQL', hashcat=12, john='postgres', extended=False)]),
+    Prototype(
+        regex=re.compile(r'^\$siemens-s7\$\$[0-9]{1}\$[a-f0-9]{40}\$[a-f0-9]{40}$', re.IGNORECASE),
+        modes=[
+            HashInfo(name='Siemens-S7', hashcat=None, john='siemens-s7', extended=False)])
 ]
 
 
