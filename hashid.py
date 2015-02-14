@@ -361,7 +361,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$episerver\$\*1\*[a-z0-9\/=+]+\*[a-z0-9\/=+]{42,43}$', re.IGNORECASE),
         modes=[
-            HashInfo(name=u'EPiServer 6.x ≥ v4', hashcat=1441, john=None, extended=False)]),
+            HashInfo(name=u'EPiServer 6.x ≥ v4', hashcat=1441, john='episerver', extended=False)]),
     Prototype(
         regex=re.compile(r'^0x0100[a-f0-9]{88}$', re.IGNORECASE),
         modes=[
