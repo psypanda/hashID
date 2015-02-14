@@ -1,5 +1,18 @@
 ### Changelog
 
+v3.1.2
+- Add Microsoft Outlook PST hash format
+- Add Siemens-S7 hash format
+- Fixed Domain Cached Credentials regular expression
+- Fixed Domain Cached Credentials v2 regular expression
+- Fixed Juniper Netscreen/SSG(ScreenOS) regular expression
+- Fixed NetNTLMv1-VANILLA / NetNTLMv1+ESS regular expression
+- Fixed NetNTLMv2 regular expression
+- Fixed Snefru-128 regular expression
+- Add JohnTheRipper format for Android FDE ≤ 4.3
+- Add JohnTheRipper format for EPiServer 6.x ≥ v4 
+- Switch from Markdown to reStructuredText README
+
 v3.1.1
 - Renamed "-a / --all" argument to "-e / --extended"
 - Added Django(bcrypt-SHA256) hash format
