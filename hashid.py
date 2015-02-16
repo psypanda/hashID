@@ -667,11 +667,15 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$oldoffice\$[01]\*[a-f0-9]{32}\*[a-f0-9]{32}\*[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
-            HashInfo(name=u'Microsoft Office ≤ 2003 (MD5+RC4)', hashcat=9700, john='oldoffice', extended=False)]),
+            HashInfo(name=u'Microsoft Office ≤ 2003 (MD5+RC4)', hashcat=9700, john='oldoffice', extended=False),
+            HashInfo(name=u'Microsoft Office ≤ 2003 (MD5+RC4) collider-mode #1', hashcat=9710, john='oldoffice', extended=False),
+            HashInfo(name=u'Microsoft Office ≤ 2003 (MD5+RC4) collider-mode #2', hashcat=9720, john='oldoffice', extended=False)]),
     Prototype(
         regex=re.compile(r'^\$oldoffice\$[34]\*[a-f0-9]{32}\*[a-f0-9]{32}\*[a-f0-9]{40}$', re.IGNORECASE),
         modes=[
-            HashInfo(name=u'Microsoft Office ≤ 2003 (SHA1+RC4)', hashcat=9800, john=None, extended=False)]),
+            HashInfo(name=u'Microsoft Office ≤ 2003 (SHA1+RC4)', hashcat=9800, john=None, extended=False),
+            HashInfo(name=u'Microsoft Office ≤ 2003 (SHA1+RC4) collider-mode #1', hashcat=9810, john=None, extended=False),
+            HashInfo(name=u'Microsoft Office ≤ 2003 (SHA1+RC4) collider-mode #2', hashcat=9820, john=None, extended=False)]),
     Prototype(
         regex=re.compile(r'^(\$radmin2\$)?[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
