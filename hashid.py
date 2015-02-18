@@ -721,6 +721,10 @@ prototypes = [
         modes=[
             HashInfo(name='Microsoft Outlook PST', hashcat=None, john=None, extended=False)]),
     Prototype(
+        regex=re.compile(r'^sha256[:$][0-9]+[:$][a-z0-9\/+]+[:$][a-z0-9\/+]{32,128}$', re.IGNORECASE),
+        modes=[
+            HashInfo(name='PBKDF2-HMAC-SHA256(PHP)', hashcat=10900, john=None, extended=False)]),
+    Prototype(
         regex=re.compile(r'^\$pdf\$2\*3\*128\*[0-9-]{1,5}\*1\*16\*[a-f0-9]{32}\*32\*[a-f0-9]{64}\*(8|16|32)\*[a-f0-9]{16,64}$', re.IGNORECASE),
         modes=[
             HashInfo(name='PDF 1.4 - 1.6 (Acrobat 5 - 8)', hashcat=10500, john='pdf', extended=False)])
