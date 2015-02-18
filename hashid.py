@@ -323,6 +323,7 @@ prototypes = [
             HashInfo(name='RIPEMD-256', hashcat=None, john=None, extended=False),
             HashInfo(name='Haval-256', hashcat=None, john='haval-256-3', extended=False),
             HashInfo(name='GOST R 34.11-94', hashcat=6900, john='gost', extended=False),
+            HashInfo(name='GOST CryptoPro S-Box', hashcat=None, john=None, extended=False),
             HashInfo(name='SHA3-256', hashcat=5000, john='raw-keccak-256', extended=False),
             HashInfo(name='Skein-256', hashcat=None, john='skein-256', extended=False),
             HashInfo(name='Skein-512(256)', hashcat=None, john=None, extended=False),
