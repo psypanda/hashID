@@ -174,7 +174,7 @@ prototypes = [
         regex=re.compile(r'^\$P\$[a-z0-9\/.]{31}$', re.IGNORECASE),
         modes=[
             HashInfo(name=u'Wordpress ≥ v2.6.2', hashcat=400, john='phpass', extended=False),
-            HashInfo(name=u'Joomla ≥ v2.5.18', hashcat=400, john=None, extended=False),
+            HashInfo(name=u'Joomla ≥ v2.5.18', hashcat=400, john='phpass', extended=False),
             HashInfo(name="PHPass' Portable Hash", hashcat=400, john='phpass', extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{32}:[a-z0-9]{2}$', re.IGNORECASE),
