@@ -15,17 +15,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-__author__  = "c0re"
-__version__ = "3.1.2"
-__github__  = "https://github.com/psypanda/hashID"
-__license__ = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-
 import re
 import os
 import io
 import sys
 import argparse
 from collections import namedtuple
+
+__author__  = "c0re"
+__version__ = "3.1.2"
+__github__  = "https://github.com/psypanda/hashID"
+__license__ = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
 Prototype = namedtuple('Prototype', ['regex', 'modes'])
 HashInfo = namedtuple('HashInfo', ['name', 'hashcat', 'john', 'extended'])
@@ -153,7 +153,7 @@ prototypes = [
         regex=re.compile(r'^{SHA}[a-z0-9\/+]{27}=$', re.IGNORECASE),
         modes=[
             HashInfo(name='SHA-1(Base64)', hashcat=101, john='nsldap', extended=False),
-            HashInfo(name='Netscape LDAP SHA', hashcat=101, john='nsldap', extended=False)]), 
+            HashInfo(name='Netscape LDAP SHA', hashcat=101, john='nsldap', extended=False)]),
     Prototype(
         regex=re.compile(r'^\$1\$[a-z0-9\/.]{0,8}\$[a-z0-9\/.]{22}(:.*)?$', re.IGNORECASE),
         modes=[
@@ -560,7 +560,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$pbkdf2(-sha1)?\$[0-9]+\$[a-z0-9\/.]+\$[a-z0-9\/.]{27}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='PBKDF2-SHA1(Generic)', hashcat=None, john=None, extended=False)]),  
+            HashInfo(name='PBKDF2-SHA1(Generic)', hashcat=None, john=None, extended=False)]),
     Prototype(
         regex=re.compile(r'^\$pbkdf2-sha256\$[0-9]+\$[a-z0-9\/.]+\$[a-z0-9\/.]{43}$', re.IGNORECASE),
         modes=[
@@ -568,7 +568,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$pbkdf2-sha512\$[0-9]+\$[a-z0-9\/.]+\$[a-z0-9\/.]{86}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='PBKDF2-SHA512(Generic)', hashcat=None, john=None, extended=False)]),  
+            HashInfo(name='PBKDF2-SHA512(Generic)', hashcat=None, john=None, extended=False)]),
     Prototype(
         regex=re.compile(r'^\$p5k2\$[0-9]+\$[a-z0-9\/+=-]+\$[a-z0-9\/+-]{27}=$', re.IGNORECASE),
         modes=[
@@ -708,7 +708,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^bcrypt_sha256\$\$(2[axy]|2)\$[0-9]+\$[a-z0-9\/.]{53}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='Django(bcrypt-SHA256)', hashcat=None, john=None, extended=False)]), 
+            HashInfo(name='Django(bcrypt-SHA256)', hashcat=None, john=None, extended=False)]),
     Prototype(
         regex=re.compile(r'^(\$postgres\$.[^\*]+[*:])?[a-f0-9]{1,32}[*:][a-f0-9]{32}$', re.IGNORECASE),
         modes=[
