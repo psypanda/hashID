@@ -9,7 +9,7 @@ is outdated!
 hashID is a tool written in Python 3.x which supports the
 identification of over 215 unique hash types using regular expressions.
 A detailed list of supported hashes can be found
-`here <doc/hashinfo.xlsx>`__.
+`here <https://github.com/psypanda/hashID/blob/master/doc/hashinfo.xlsx>`__.
 
 It is able to identify a single hash, parse a file or read multiple
 files in a directory and identify the hashes within them.
