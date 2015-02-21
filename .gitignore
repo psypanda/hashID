@@ -3,7 +3,9 @@ $RECYCLE.BIN/
 .DS_Store
 .~lock*
 Desktop.ini
+dist
 ehthumbs.db
+hashID.egg-info
 js/node_modules
 test/
 Thumbs.db
