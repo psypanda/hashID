@@ -36,9 +36,9 @@ setup(
     py_modules=['hashid'],
     entry_points={
         'console_scripts': [
-        'hashid = hashid:_main',
-    ],
-},
+            'hashid = hashid:_main',
+        ],
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
