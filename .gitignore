@@ -1,12 +1,13 @@
 $RECYCLE.BIN/
 *.bak
+*.egg
+*.egg-info
 .DS_Store
 .~lock*
 build
 Desktop.ini
 dist
 ehthumbs.db
-hashID.egg-info
 js/node_modules
-test/
+test
 Thumbs.db
