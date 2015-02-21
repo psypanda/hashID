@@ -36,7 +36,7 @@ setup(
     py_modules=['hashid'],
     entry_points={
         'console_scripts': [
-            'hashid = hashid:_main',
+            'hashid = hashid:main',
         ],
     },
     classifiers=[
