@@ -2,6 +2,7 @@ $RECYCLE.BIN/
 *.bak
 .DS_Store
 .~lock*
+build
 Desktop.ini
 dist
 ehthumbs.db
