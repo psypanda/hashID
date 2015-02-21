@@ -4,7 +4,7 @@
 import io
 import os
 import re
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(*parts):
@@ -23,7 +23,7 @@ def get_version(*file_paths):
 
 setup(
     name='hashID',
-    packages=['hashID'],
+    packages=find_packages(exclude=['hashinfo.xlsx']),
     version=get_version('hashid.py'),
     description='Software to identify the different types of hashes',
     long_description=read('README.rst'),
@@ -31,10 +31,9 @@ setup(
     author_email='c0re@psypanda.org',
     license='GNU GPL',
     url='https://github.com/psypanda/hashID',
-    download_url=url + '/tarball/v' + get_version('hashid.py'),
+    download_url='https://github.com/psypanda/hashID/tarball/v' + get_version('hashid.py'),
     keywords='hashid hash identifier hash-identifier',
     py_modules=['hashid'],
-    # packages=find_packages(exclude=['man', 'hashinfo.xlsx'])
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
