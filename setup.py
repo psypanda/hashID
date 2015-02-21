@@ -34,6 +34,11 @@ setup(
     download_url='https://github.com/psypanda/hashID/tarball/v' + get_version('hashid.py'),
     keywords='hashid hash identifier hash-identifier',
     py_modules=['hashid'],
+    entry_points={
+        'console_scripts': [
+        'hashid = hashid:_main',
+    ],
+},
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
