@@ -7,7 +7,7 @@ This tool replaces `hash-identifier <http://code.google.com/p/hash-identifier/>`
 is outdated!
 
 hashID is a tool written in Python 3.x which supports the
-identification of over 210 unique hash types using regular expressions.
+identification of over 215 unique hash types using regular expressions.
 A detailed list of supported hashes can be found
 `here <doc/hashinfo.xlsx>`__.
 
@@ -25,7 +25,15 @@ quotes to prevent interpolation*
 Installation
 ------------
 
-You can either install by cloning the repository:
+You can install, upgrade, uninstall hashID with these commands:
+
+.. code:: console
+
+    $ pip install hashid
+    $ pip install --upgrade hashid
+    $ pip uninstall hashid
+
+Or you can install by cloning the repository:
 
 .. code:: console
 
@@ -35,7 +43,7 @@ You can either install by cloning the repository:
     $ sudo install -g 0 -o 0 -m 0644 doc/man/hashid.7 /usr/share/man/man7/
     $ sudo gzip /usr/share/man/man7/hashid.7
 
-Or you can grab the latest release
+Alternatively you can grab the latest release
 `here <https://github.com/psypanda/hashID/releases>`__.
 
 Usage

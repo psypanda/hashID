@@ -1,5 +1,13 @@
 ### Changelog
 
+v3.1.3
+- First release on PyPi
+- Added Dahua hash format
+- Added GOST CryptoPro S-Box hash format
+- Added PBKDF2-HMAC-SHA256(PHP) hash format
+- Added PDF 1.4 - 1.6 (Acrobat 5 - 8) hash format
+- Fix JohnTheRipper format for Joomla ≥ v2.5.18
+
 v3.1.2
 - Add Microsoft Outlook PST hash format
 - Add Siemens-S7 hash format

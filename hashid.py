@@ -23,7 +23,7 @@ import argparse
 from collections import namedtuple
 
 __author__  = "c0re"
-__version__ = "3.1.2"
+__version__ = "3.1.3"
 __github__  = "https://github.com/psypanda/hashID"
 __license__ = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 
