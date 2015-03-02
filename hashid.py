@@ -116,6 +116,7 @@ prototypes = [
             HashInfo(name='Lotus Notes/Domino 5', hashcat=8600, john='lotus5', extended=False),
             HashInfo(name='Skype', hashcat=23, john=None, extended=False),
             HashInfo(name='ZipMonster', hashcat=None, john=None, extended=True),
+            HashInfo(name='PrestaShop', hashcat=11000, john=None, extended=True),
             HashInfo(name='md5(md5(md5($pass)))', hashcat=3500, john=None, extended=True),
             HashInfo(name='md5(strtoupper(md5($pass)))', hashcat=4300, john=None, extended=True),
             HashInfo(name='md5(sha1($pass))', hashcat=4400, john=None, extended=True),
