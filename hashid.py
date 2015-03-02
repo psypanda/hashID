@@ -710,9 +710,9 @@ prototypes = [
         modes=[
             HashInfo(name='Django(bcrypt-SHA256)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^(\$postgres\$.[^\*]+[*:])?[a-f0-9]{1,32}[*:][a-f0-9]{32}$', re.IGNORECASE),
+        regex=re.compile(r'^\$postgres\$.[^\*]+[*:][a-f0-9]{1,32}[*:][a-f0-9]{32}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='PostgreSQL', hashcat=12, john='postgres', extended=False)]),
+            HashInfo(name='PostgreSQL Challenge-Response Auth', hashcat=11100, john='postgres', extended=False)]),
     Prototype(
         regex=re.compile(r'^\$siemens-s7\$\$[0-9]{1}\$[a-f0-9]{40}\$[a-f0-9]{40}$', re.IGNORECASE),
         modes=[
