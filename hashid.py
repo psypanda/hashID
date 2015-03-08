@@ -713,7 +713,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$postgres\$.[^\*]+[*:][a-f0-9]{1,32}[*:][a-f0-9]{32}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='PostgreSQL Challenge-Response Auth', hashcat=11100, john='postgres', extended=False)]),
+            HashInfo(name='PostgreSQL Challenge-Response Authentication (MD5)', hashcat=11100, john='postgres', extended=False)]),
     Prototype(
         regex=re.compile(r'^\$siemens-s7\$\$[0-9]{1}\$[a-f0-9]{40}\$[a-f0-9]{40}$', re.IGNORECASE),
         modes=[
@@ -730,6 +730,10 @@ prototypes = [
         regex=re.compile(r'^(\$dahua\$)?[a-z0-9]{8}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Dahua', hashcat=None, john='dahua', extended=False)]),
+    Prototype(
+        regex=re.compile(r'^\$mysqlna\$[a-f0-9]{40}[:*][a-f0-9]{40}$', re.IGNORECASE),
+        modes=[
+            HashInfo(name='MySQL Challenge-Response Authentication (SHA1)', hashcat=11200, john=None, extended=False)]),
     Prototype(
         regex=re.compile(r'^\$pdf\$[24]\*[34]\*128\*[0-9-]{1,5}\*1\*(16|32)\*[a-f0-9]{32,64}\*32\*[a-f0-9]{64}\*(8|16|32)\*[a-f0-9]{16,64}$', re.IGNORECASE),
         modes=[
