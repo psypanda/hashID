@@ -7,7 +7,7 @@ This tool replaces `hash-identifier <http://code.google.com/p/hash-identifier/>`
 is outdated!
 
 hashID is a tool written in Python 3 which supports the
-identification of over 215 unique hash types using regular expressions.
+identification of over 220 unique hash types using regular expressions.
 A detailed list of supported hashes can be found
 `here <https://github.com/psypanda/hashID/blob/master/doc/hashinfo.xlsx>`__.
 
