@@ -804,8 +804,8 @@ def main():
                        action="store_true",
                        help="show corresponding JohnTheRipper format in output")
     group.add_argument("-o", "--outfile",
-                       metavar="FILE", type=argparse.FileType('w', encoding='utf-8'), default=sys.stdout,
-                       help="write output to file (default: STDOUT)")
+                       metavar="FILE", type=str,
+                       help="write output to file")
     group.add_argument("-h", "--help",
                        action="help",
                        help="show this help message and exit")
@@ -813,33 +813,41 @@ def main():
     args = parser.parse_args()
 
     hashID = HashID()
+    
+    if not args.outfile:
+        outfile = sys.stdout
+    else:
+        try:
+            outfile = io.open(args.outfile, "w", encoding="utf-8")
+        except EnvironmentError:
+            parser.error("Could not open {0}".format(args.output))
 
     if not args.strings or args.strings[0] == "-":
         while True:
             line = sys.stdin.readline()
             if not line:
                 break
-            args.outfile.write(u"Analyzing '{0}'\n".format(line.strip()))
-            writeResult(hashID.identifyHash(line), args.outfile, args.mode, args.john, args.extended)
+            outfile.write(u"Analyzing '{0}'\n".format(line.strip()))
+            writeResult(hashID.identifyHash(line), outfile, args.mode, args.john, args.extended)
             sys.stdout.flush()
     else:
         for string in args.strings:
             if os.path.isfile(string):
                 try:
                     with io.open(string, "r", encoding="utf-8") as infile:
-                        args.outfile.write("--File '{0}'--\n".format(string))
+                        outfile.write("--File '{0}'--\n".format(string))
                         for line in infile:
                             if line.strip():
-                                args.outfile.write(u"Analyzing '{0}'\n".format(line.strip()))
-                                writeResult(hashID.identifyHash(line), args.outfile, args.mode, args.john, args.extended)
+                                outfile.write(u"Analyzing '{0}'\n".format(line.strip()))
+                                writeResult(hashID.identifyHash(line), outfile, args.mode, args.john, args.extended)
                     infile.close()
-                except (IOError, UnicodeDecodeError):
-                    args.outfile.write("--File '{0}' - could not open--".format(string))
+                except (EnvironmentError, UnicodeDecodeError):
+                    outfile.write("--File '{0}' - could not open--".format(string))
                 else:
-                    args.outfile.write("--End of file '{0}'--".format(string))
+                    outfile.write("--End of file '{0}'--".format(string))
             else:
-                args.outfile.write(u"Analyzing '{0}'\n".format(string.strip()))
-                writeResult(hashID.identifyHash(string), args.outfile, args.mode, args.john, args.extended)
+                outfile.write(u"Analyzing '{0}'\n".format(string.strip()))
+                writeResult(hashID.identifyHash(string), outfile, args.mode, args.john, args.extended)
 
 
 if __name__ == "__main__":
