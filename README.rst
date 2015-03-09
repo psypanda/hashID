@@ -6,7 +6,7 @@ Identify the different types of hashes used to encrypt data and especially passw
 This tool replaces `hash-identifier <http://code.google.com/p/hash-identifier/>`__, which
 is outdated!
 
-hashID is a tool written in Python 3.x which supports the
+hashID is a tool written in Python 3 which supports the
 identification of over 215 unique hash types using regular expressions.
 A detailed list of supported hashes can be found
 `here <https://github.com/psypanda/hashID/blob/master/doc/hashinfo.xlsx>`__.
@@ -16,8 +16,8 @@ files in a directory and identify the hashes within them.
 hashID is also capable of including the corresponding
 `hashcat <https://hashcat.net/oclhashcat/>`__ mode and/or
 `JohnTheRipper <http://www.openwall.com/john/>`__ format in its output.
-Altough hashID is written in Python 3.x it should also work using
-Python 2.7.
+
+hashID works out of the box with Python 2 ≥ 2.7.x or Python 3 ≥ 3.3 on any platform.
 
 *Note: When identifying a hash on *nix operating systems use single
 quotes to prevent interpolation*
