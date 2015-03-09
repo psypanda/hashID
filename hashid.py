@@ -840,7 +840,6 @@ def main():
                             if line.strip():
                                 outfile.write(u"Analyzing '{0}'\n".format(line.strip()))
                                 writeResult(hashID.identifyHash(line), outfile, args.mode, args.john, args.extended)
-                    infile.close()
                 except (EnvironmentError, UnicodeDecodeError):
                     outfile.write("--File '{0}' - could not open--".format(string))
                 else:
