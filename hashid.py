@@ -26,6 +26,7 @@ __author__  = "c0re"
 __version__ = "3.2.0-dev"
 __github__  = "https://github.com/psypanda/hashID"
 __license__ = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
+__banner__  = "hashID v{0} by {1} ({2})".format(__version__, __author__, __github__)
 
 Prototype = namedtuple('Prototype', ['regex', 'modes'])
 HashInfo = namedtuple('HashInfo', ['name', 'hashcat', 'john', 'extended'])
@@ -782,7 +783,6 @@ def writeResult(identified_modes, outfile, hashcatMode=False, johnFormat=False, 
 
 def main():
     usage = "{0} [-h] [-e] [-m] [-j] [-o FILE] [--version] INPUT".format(os.path.basename(__file__))
-    banner = "hashID v{0} by {1} ({2})".format(__version__, __author__, __github__)
 
     parser = argparse.ArgumentParser(
         description="Identify the different types of hashes used to encrypt data",
@@ -812,7 +812,7 @@ def main():
                        help="show this help message and exit")
     group.add_argument("--version",
                        action="version",
-                       version=banner)
+                       version=__banner__)
     args = parser.parse_args()
 
     hashID = HashID()
