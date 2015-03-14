@@ -809,7 +809,9 @@ def main():
     group.add_argument("-h", "--help",
                        action="help",
                        help="show this help message and exit")
-    group.add_argument("--version", action="version", version=banner)
+    group.add_argument("--version",
+                       action="version",
+                       version=banner)
     args = parser.parse_args()
 
     hashID = HashID()
