@@ -247,6 +247,9 @@ mark {
 p,
 pre {
   margin: 1em 0;
+  text-align: justify;
+  white-space: pre-line;
+  }
 }
 
 /*
@@ -789,7 +792,7 @@ section {
 section #title {
   border: 0;
   outline: none;
-  margin: 0 0 50px 0;
+  margin: 0 0 10px 0;
   padding: 0 0 5px 0;
 }
 section #title h1 {
@@ -806,32 +809,33 @@ section #title p {
   font-size: 18px;
   text-align: center;
 }
-section #title .credits {
+section #footer .credits {
   font-size: 11px;
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #696969;
   margin-top: -10px;
 }
-section #title .credits.left {
+
+section #footer .credits.left {
   float: left;
 }
-section #title .credits.right {
+section #footer .credits.right {
   float: right;
 }
 
 @media print, screen and (max-width: 720px) {
-  #title .credits {
+  #footer .credits {
     display: block;
     width: 100%;
     line-height: 30px;
     text-align: center;
   }
-  #title .credits .left {
+  #footer .credits .left {
     float: none;
     display: block;
   }
-  #title .credits .right {
+  #footer .credits .right {
     float: none;
     display: block;
   }
