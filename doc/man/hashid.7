@@ -1,4 +1,3 @@
-.\" Manpage for hashid
 .\" This file is part of hashID.
 .\" 
 .\" hashID is free software: you can redistribute it and/or modify
@@ -14,27 +13,30 @@
 .\" You should have received a copy of the GNU General Public License
 .\" along with hashID.  If not, see <http://www.gnu.org/licenses/>.
 
-.TH hashid 7 "28 January 2014" "v1.4" "hashid man page"
+.TH hashid 7 "15 March 2015" "v1.5" "hashid man page"
 .SH NAME
 \fBhashid\fP \- Identify the different types of hashes used to encrypt data
 
 .SH SYNOPSIS
-.br
 .B hashid
 [-h] [-e] [-m] [-j] [-o FILE] [--version] INPUT
 
 .SH DESCRIPTION
 .B hashID 
-is a tool written in Python 3.x which supports the identification of over 210 unique hash types using regular expressions.
-
-It is able to identify a single hash, parse a file or read files in a directory and identify the hashes within them.
+is a tool written in Python 3 which supports the identification of over 220 unique hash types using regular expressions.
+.TP
+It is able to identify a single hash, parse a file or read multiple files in a directory and identify the hashes within them.
 .B hashID
 is also capable of including the corresponding hashcat mode and/or JohnTheRipper format in its output.
-Altough
 .B hashID
-is written in Python 3.x it should also work with Python 2.7.
+works out of the box with Python 2 ≥ 2.7.x or Python 3 ≥ 3.3 on any platform.
+.TP
+.I Note:
+When identifying a hash on *nix operating systems use single quotes to prevent interpolation.
 
 .SH OPTIONS
+\fB\INPUT\fR
+input to analyze (default: STDIN)
 .TP
 \fB\-e, \-\-extended\fR
 list all possible hash algorithms including salted passwords
@@ -46,7 +48,7 @@ include corresponding hashcat mode in output
 include corresponding JohnTheRipper format in output
 .TP
 \fB\-o FILE, \-\-outfile FILE\fR
-write output to file (default: STDOUT)
+write output to file
 .TP
 \fB\-h, \-\-help\fR
 show help message and exit
