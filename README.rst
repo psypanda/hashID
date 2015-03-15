@@ -3,7 +3,7 @@ hashID \| hash-identifier
 
 Identify the different types of hashes used to encrypt data and especially passwords.
 
-This tool replaces `hash-identifier <http://code.google.com/p/hash-identifier/>`__, which
+This replaces `hash-identifier <http://code.google.com/p/hash-identifier/>`__, which
 is outdated!
 
 hashID is a tool written in Python 3 which supports the
@@ -20,7 +20,7 @@ hashID is also capable of including the corresponding
 hashID works out of the box with Python 2 ≥ 2.7.x or Python 3 ≥ 3.3 on any platform.
 
 *Note: When identifying a hash on *nix operating systems use single
-quotes to prevent interpolation*
+quotes to prevent interpolation.*
 
 Installation
 ------------
