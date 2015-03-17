@@ -39,6 +39,7 @@ def get_version(*file_paths):
 setup(
     name='hashID',
     packages=find_packages(exclude=['HASHINFO.xlsx']),
+    include_package_data=True,
     version=get_version('hashid.py'),
     description='Software to identify the different types of hashes',
     long_description=read('README.rst'),
