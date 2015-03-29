@@ -1,2 +1,2 @@
 include doc/LICENSE doc/CHANGELOG
-include hashid_data/prototypes.json
+include hashid/prototypes.json

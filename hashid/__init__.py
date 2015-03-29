@@ -48,7 +48,7 @@ class HashID(object):
             self.prototypes = list(prototypes)
         else:
             self.prototypes = []
-            for prototype in json.loads(pkgutil.get_data('hashid_data', 'prototypes.json')):
+            for prototype in json.loads(pkgutil.get_data('hashid', 'prototypes.json')):
                 self.prototypes.append(Prototype(
                     regex=re.compile(prototype['regex'], re.IGNORECASE),
                     modes=[
