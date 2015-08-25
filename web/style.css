@@ -1,0 +1,45 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    background: #78909C;
+    text-align: center;
+    color: #fff;
+    margin: 5% 0 60px;
+}
+.inputHash {
+    width: 50%;
+    min-width: 300px;
+    margin: 1em auto;
+    font-size: 2em;
+    background: #fff;
+    border: none;
+    padding: .5em;
+}
+.output {
+    display: none;
+    font-size: 1.25em;
+    line-height: 1.5em;
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+}
+footer a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Inconsolata','Consolas',monospace;
+    font-size: 0.75em;
+}
+* {
+    font-family: 'Roboto';font-weight: 300;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+    outline:none;
+}
