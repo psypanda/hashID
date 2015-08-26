@@ -34,7 +34,7 @@ function findMatches(inputHash) {
 
 function getHashTypes() {
     var ret = [];
-    $.getJSON("https://raw.githubusercontent.com/mattfinch/hashID/master/prototypes.json", function(json) {
+    $.getJSON("https://raw.githubusercontent.com/psypanda/hashID/master/prototypes.json", function(json) {
     // Hard link to github due to Cross Origin Same Protocol requirement.
     // If hosted on http server this can be relative ("../prototypes.js")
         $.each(json, function() {

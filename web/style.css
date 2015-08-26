@@ -22,19 +22,6 @@ body {
     font-size: 1.25em;
     line-height: 1.5em;
 }
-footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 50px;
-    width: 100%;
-}
-footer a {
-    text-decoration: none;
-    color: rgba(255,255,255,0.5);
-    font-family: 'Inconsolata','Consolas',monospace;
-    font-size: 0.75em;
-}
 * {
     font-family: 'Roboto';font-weight: 300;
     -webkit-appearance: none;
