@@ -21,6 +21,8 @@ import io
 import os
 import re
 import sys
+import base64
+import binascii
 import argparse
 from collections import namedtuple
 
@@ -30,8 +32,33 @@ __github__  = "https://github.com/psypanda/hashID"
 __license__ = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 __banner__  = "hashID v{0} by {1} ({2})".format(__version__, __author__, __github__)
 
-Prototype = namedtuple('Prototype', ['regex', 'modes'])
+class Prototype:
+    def __init__(self, regex=None, modes=None, callable=None):
+        self.regex = regex
+        self.modes = modes or []
+        self.callable = callable
+        if not (self.regex or self.callable):
+            raise RuntimeError(
+            'At least one of `regex` and `callable` must be defined')
+
 HashInfo = namedtuple('HashInfo', ['name', 'hashcat', 'john', 'extended'])
+
+
+def is_base64(data):
+    try:
+        base64.b64decode(data)
+        return True
+    except (TypeError, binascii.Error):
+        return False
+
+
+def is_hexstring(data):
+    try:
+        binascii.unhexlify(data)
+        return True
+    except binascii.Error:
+        return False
+
 
 prototypes = [
     Prototype(
@@ -740,7 +767,19 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$pdf\$[24]\*[34]\*128\*[0-9-]{1,5}\*1\*(16|32)\*[a-f0-9]{32,64}\*32\*[a-f0-9]{64}\*(8|16|32)\*[a-f0-9]{16,64}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='PDF 1.4 - 1.6 (Acrobat 5 - 8)', hashcat=10500, john='pdf', extended=False)])
+            HashInfo(name='PDF 1.4 - 1.6 (Acrobat 5 - 8)', hashcat=10500, john='pdf', extended=False)]),
+    Prototype(
+        callable=is_base64,
+        modes=[
+            HashInfo(name='Base64', hashcat=None, john=None, extended=False)
+        ],
+    ),
+    Prototype(
+        callable=is_hexstring,
+        modes=[
+            HashInfo(name='Hex string', hashcat=None, john=None, extended=False)
+            ],
+    ),
 ]
 
 
@@ -759,7 +798,8 @@ class HashID(object):
         """Returns identified HashInfo"""
         phash = phash.strip()
         for prototype in self.prototypes:
-            if prototype.regex.match(phash):
+            if (prototype.regex and prototype.regex.match(phash)) or\
+                    (prototype.callable and prototype.callable(phash)):
                 for mode in prototype.modes:
                     yield mode
 
