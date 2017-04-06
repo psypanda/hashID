@@ -32,15 +32,7 @@ __github__  = "https://github.com/psypanda/hashID"
 __license__ = "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
 __banner__  = "hashID v{0} by {1} ({2})".format(__version__, __author__, __github__)
 
-class Prototype:
-    def __init__(self, regex=None, modes=None, callable=None):
-        self.regex = regex
-        self.modes = modes or []
-        self.callable = callable
-        if not (self.regex or self.callable):
-            raise RuntimeError(
-            'At least one of `regex` and `callable` must be defined')
-
+Prototype = namedtuple('Prototype', ['regex', 'modes'])
 HashInfo = namedtuple('HashInfo', ['name', 'hashcat', 'john', 'extended'])
 
 
@@ -769,17 +761,15 @@ prototypes = [
         modes=[
             HashInfo(name='PDF 1.4 - 1.6 (Acrobat 5 - 8)', hashcat=10500, john='pdf', extended=False)]),
     Prototype(
-        callable=is_base64,
+        regex=re.compile(r'^([a-fA-F0-9]{2})+$', re.IGNORECASE),
+        modes=[
+            HashInfo(name='Hex string', hashcat=None, john=None, extended=False),
+        ]),
+    Prototype(
+        regex=re.compile(r'^([a-zA-Z0-9+/]{4})*([a-zA-Z0-9+/]{4}|[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)$'),
         modes=[
             HashInfo(name='Base64', hashcat=None, john=None, extended=False)
-        ],
-    ),
-    Prototype(
-        callable=is_hexstring,
-        modes=[
-            HashInfo(name='Hex string', hashcat=None, john=None, extended=False)
-            ],
-    ),
+        ]),
 ]
 
 
@@ -798,8 +788,7 @@ class HashID(object):
         """Returns identified HashInfo"""
         phash = phash.strip()
         for prototype in self.prototypes:
-            if (prototype.regex and prototype.regex.match(phash)) or\
-                    (prototype.callable and prototype.callable(phash)):
+            if prototype.regex.match(phash):
                 for mode in prototype.modes:
                     yield mode
 
