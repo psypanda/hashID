@@ -642,7 +642,7 @@ prototypes = [
         modes=[
             HashInfo(name='Lotus Notes/Domino 8', hashcat=9100, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^SCRYPT:[0-9]+:[0-9]{1}:[0-9]{1}:[a-z0-9:\/+=]+$', re.IGNORECASE),
+        regex=re.compile(r'^SCRYPT:[0-9]+:[0-9]:[0-9]:[a-z0-9:\/+=]+$', re.IGNORECASE),
         modes=[
             HashInfo(name='scrypt', hashcat=8900, john=None, extended=False)]),
     Prototype(
@@ -718,7 +718,7 @@ prototypes = [
         modes=[
             HashInfo(name='PostgreSQL Challenge-Response Authentication (MD5)', hashcat=11100, john='postgres', extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$siemens-s7\$[0-9]{1}\$[a-f0-9]{40}\$[a-f0-9]{40}$', re.IGNORECASE),
+        regex=re.compile(r'^\$siemens-s7\$[0-9]\$[a-f0-9]{40}\$[a-f0-9]{40}$', re.IGNORECASE),
         modes=[
             HashInfo(name='Siemens-S7', hashcat=None, john='siemens-s7', extended=False)]),
     Prototype(
