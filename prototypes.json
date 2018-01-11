@@ -667,7 +667,7 @@
                 "john": null,
                 "hashcat": null,
                 "extended": false,
-                "name": "CryptoCurrency(Adress)"
+                "name": "CryptoCurrency(Address)"
             }
         ]
     },

@@ -210,7 +210,7 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^[a-z0-9]{34}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='CryptoCurrency(Adress)', hashcat=None, john=None, extended=False)]),
+            HashInfo(name='CryptoCurrency(Address)', hashcat=None, john=None, extended=False)]),
     Prototype(
         regex=re.compile(r'^[a-f0-9]{40}(:.+)?$', re.IGNORECASE),
         modes=[
