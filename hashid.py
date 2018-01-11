@@ -482,7 +482,7 @@ prototypes = [
         modes=[
             HashInfo(name='NetNTLMv2', hashcat=5600, john='netntlmv2', extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$(krb5pa|mskrb5)\$([0-9]{2})?\$.+\$[a-f0-9]{1,}$', re.IGNORECASE),
+        regex=re.compile(r'^\$(krb5pa|mskrb5)\$([0-9]{2})?\$.+\$[a-f0-9]+$', re.IGNORECASE),
         modes=[
             HashInfo(name='Kerberos 5 AS-REQ Pre-Auth', hashcat=7500, john='krb5pa-md5', extended=False)]),
     Prototype(
@@ -526,7 +526,7 @@ prototypes = [
         modes=[
             HashInfo(name='Lastpass', hashcat=6800, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^[a-z0-9\/.]{16}([:$].{1,})?$', re.IGNORECASE),
+        regex=re.compile(r'^[a-z0-9\/.]{16}([:$].+)?$', re.IGNORECASE),
         modes=[
             HashInfo(name='Cisco-ASA(MD5)', hashcat=2410, john='asa-md5', extended=False)]),
     Prototype(
@@ -642,7 +642,7 @@ prototypes = [
         modes=[
             HashInfo(name='Lotus Notes/Domino 8', hashcat=9100, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^SCRYPT:[0-9]{1,}:[0-9]{1}:[0-9]{1}:[a-z0-9:\/+=]{1,}$', re.IGNORECASE),
+        regex=re.compile(r'^SCRYPT:[0-9]+:[0-9]{1}:[0-9]{1}:[a-z0-9:\/+=]+$', re.IGNORECASE),
         modes=[
             HashInfo(name='scrypt', hashcat=8900, john=None, extended=False)]),
     Prototype(
