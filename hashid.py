@@ -305,7 +305,7 @@ prototypes = [
         modes=[
             HashInfo(name='Oracle 11g/12c', hashcat=112, john='oracle11', extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$bcrypt-sha256\$(2[axy]|2)\,[0-9]+\$[a-z0-9\/.]{22}\$[a-z0-9\/.]{31}$', re.IGNORECASE),
+        regex=re.compile(r'^\$bcrypt-sha256\$(2[axy]|2),[0-9]+\$[a-z0-9\/.]{22}\$[a-z0-9\/.]{31}$', re.IGNORECASE),
         modes=[
             HashInfo(name='bcrypt(SHA-256)', hashcat=None, john=None, extended=False)]),
     Prototype(
@@ -347,7 +347,7 @@ prototypes = [
         modes=[
             HashInfo(name='SAM(LM_Hash:NT_Hash)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^(\$chap\$0\*)?[a-f0-9]{32}[\*:][a-f0-9]{32}(:[0-9]{2})?$', re.IGNORECASE),
+        regex=re.compile(r'^(\$chap\$0\*)?[a-f0-9]{32}[*:][a-f0-9]{32}(:[0-9]{2})?$', re.IGNORECASE),
         modes=[
             HashInfo(name='MD5(Chap)', hashcat=4800, john='chap', extended=False),
             HashInfo(name='iSCSI CHAP Authentication', hashcat=4800, john='chap', extended=False)]),
@@ -554,7 +554,7 @@ prototypes = [
         modes=[
             HashInfo(name='hMailServer', hashcat=1421, john='hmailserver', extended=False)]),
     Prototype(
-        regex=re.compile(r'^[:\$][AB][:\$]([a-f0-9]{1,8}[:\$])?[a-f0-9]{32}$', re.IGNORECASE),
+        regex=re.compile(r'^[:$][AB][:$]([a-f0-9]{1,8}[:$])?[a-f0-9]{32}$', re.IGNORECASE),
         modes=[
             HashInfo(name='MediaWiki', hashcat=3711, john='mediawiki', extended=False)]),
     Prototype(
@@ -630,7 +630,7 @@ prototypes = [
         modes=[
             HashInfo(name='Django(MD5)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^\{PKCS5S2\}[a-z0-9\/+]{64}$', re.IGNORECASE),
+        regex=re.compile(r'^{PKCS5S2\}[a-z0-9\/+]{64}$', re.IGNORECASE),
         modes=[
             HashInfo(name='PBKDF2(Atlassian)', hashcat=None, john=None, extended=False)]),
     Prototype(
@@ -714,7 +714,7 @@ prototypes = [
         modes=[
             HashInfo(name='Django(bcrypt-SHA256)', hashcat=None, john=None, extended=False)]),
     Prototype(
-        regex=re.compile(r'^\$postgres\$.[^\*]+[*:][a-f0-9]{1,32}[*:][a-f0-9]{32}$', re.IGNORECASE),
+        regex=re.compile(r'^\$postgres\$.[^*]+[*:][a-f0-9]{1,32}[*:][a-f0-9]{32}$', re.IGNORECASE),
         modes=[
             HashInfo(name='PostgreSQL Challenge-Response Authentication (MD5)', hashcat=11100, john='postgres', extended=False)]),
     Prototype(
