@@ -780,7 +780,7 @@ def writeResult(identified_modes, outfile, hashcatMode=False, johnFormat=False, 
     outfile.write(hashTypes)
     if count == 0:
         outfile.write(u"[+] Unknown hash\n")
-    return (count > 0)
+    return count > 0
 
 
 def main():
