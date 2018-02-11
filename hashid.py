@@ -740,7 +740,12 @@ prototypes = [
     Prototype(
         regex=re.compile(r'^\$pdf\$[24]\*[34]\*128\*[0-9-]{1,5}\*1\*(16|32)\*[a-f0-9]{32,64}\*32\*[a-f0-9]{64}\*(8|16|32)\*[a-f0-9]{16,64}$', re.IGNORECASE),
         modes=[
-            HashInfo(name='PDF 1.4 - 1.6 (Acrobat 5 - 8)', hashcat=10500, john='pdf', extended=False)])
+            HashInfo(name='PDF 1.4 - 1.6 (Acrobat 5 - 8)', hashcat=10500, john='pdf', extended=False)]),
+    Prototype(
+        regex=re.compile(r'^3u\+U[A-Za-z0-9+/=]+$'),
+        modes=[
+            HashInfo(name='Juniper IVE', hashcat=501, john=None, extended=False)])
+
 ]
 
 
