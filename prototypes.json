@@ -2355,5 +2355,16 @@
                 "name": "PDF 1.4 - 1.6 (Acrobat 5 - 8)"
             }
         ]
+    },
+    {
+        "regex": "^3u\+U[A-Za-z0-9+/=]+$",
+        "modes": [
+            {
+                "john": null,
+                "hashcat": 501,
+                "extended": false,
+                "name": "Juniper IVE"
+            }
+        ]
     }
 ]
