@@ -764,27 +764,39 @@ class HashID(object):
                     yield mode
 
 
-def writeResult(identified_modes, outfile, hashcatMode=False, johnFormat=False, extended=False):
+def writeResult(hashValue, identified_modes, srcfile, outfile,
+                hashcatMode=False, johnFormat=False,
+                extended=False, grepable=False, quiet=False):
     """Write human readable output from identifyHash"""
     count = 0
     hashTypes = ""
+
     for mode in identified_modes:
         if not mode.extended or extended:
             count += 1
-            hashTypes += u"[+] {0} ".format(mode.name)
-            if hashcatMode and mode.hashcat is not None:
-                hashTypes += "[Hashcat Mode: {0}]".format(mode.hashcat)
-            if johnFormat and mode.john is not None:
-                hashTypes += "[JtR Format: {0}]".format(mode.john)
+            if grepable:
+                hashTypes += u"[+] {0} // {1}".format(hashValue, mode.name)
+                if hashcatMode and mode.hashcat is not None:
+                    hashTypes += " // Hashcat Mode: {0}".format(mode.hashcat)
+                if johnFormat and mode.john is not None:
+                    hashTypes += " // JtR Format: {0}".format(mode.john)
+                if srcfile:
+                    hashTypes += " // Source: {0}".format(srcfile)
+            else:
+                hashTypes += u"[+] {0} ".format(mode.name)
+                if hashcatMode and mode.hashcat is not None:
+                    hashTypes += "[Hashcat Mode: {0}]".format(mode.hashcat)
+                if johnFormat and mode.john is not None:
+                    hashTypes += "[JtR Format: {0}]".format(mode.john)
             hashTypes += "\n"
     outfile.write(hashTypes)
-    if count == 0:
+    if count == 0 and not quiet:
         outfile.write(u"[+] Unknown hash\n")
     return (count > 0)
 
 
 def main():
-    usage = "{0} [-h] [-e] [-m] [-j] [-o FILE] [--version] INPUT".format(os.path.basename(__file__))
+    usage = "{0} [-h] [-e] [-m] [-j] [-g] [-q] [-o FILE] [--version] INPUT".format(os.path.basename(__file__))
 
     parser = argparse.ArgumentParser(
         description="Identify the different types of hashes used to encrypt data",
@@ -806,6 +818,12 @@ def main():
     group.add_argument("-j", "--john",
                        action="store_true",
                        help="show corresponding JohnTheRipper format in output")
+    group.add_argument("-g", "--grepable",
+                       action="store_true",
+                       help="show output in grepable format")
+    group.add_argument("-q", "--quiet",
+                       action="store_true",
+                       help="hide unknown hashes and file messages in grepable output")
     group.add_argument("-o", "--outfile",
                        metavar="FILE", type=str,
                        help="write output to file")
@@ -827,31 +845,49 @@ def main():
         except EnvironmentError:
             parser.error("Could not open {0}".format(args.output))
 
+    # No flags, just read hash from command line.
     if not args.strings or args.strings[0] == "-":
         while True:
             line = sys.stdin.readline()
             if not line:
                 break
-            outfile.write(u"Analyzing '{0}'\n".format(line.strip()))
-            writeResult(hashID.identifyHash(line), outfile, args.mode, args.john, args.extended)
+            hashValue = line.strip()
+            outfile.write(u"Analyzing '{0}'\n".format(hashValue))
+            srcfile = None
+            writeResult(hashValue, hashID.identifyHash(line),
+                        srcfile, outfile, args.mode, args.john,
+                        args.extended, args.grepable, args.quiet)
             sys.stdout.flush()
+    # Flags.
     else:
         for string in args.strings:
             if os.path.isfile(string):
+                srcfile = string
                 try:
                     with io.open(string, "r", encoding="utf-8") as infile:
-                        outfile.write("--File '{0}'--\n".format(string))
+                        if not args.grepable:
+                            outfile.write("--File '{0}'--\n".format(srcfile))
                         for line in infile:
                             if line.strip():
-                                outfile.write(u"Analyzing '{0}'\n".format(line.strip()))
-                                writeResult(hashID.identifyHash(line), outfile, args.mode, args.john, args.extended)
+                                hashValue = line.strip()
+                                if not args.grepable:
+                                    outfile.write(u"Analyzing '{0}'\n".format(hashValue))
+                                writeResult(hashValue, hashID.identifyHash(line),
+                                            srcfile, outfile, args.mode, args.john,
+                                            args.extended, args.grepable, args.quiet)
                 except (EnvironmentError, UnicodeDecodeError):
                     outfile.write("--File '{0}' - could not open--".format(string))
                 else:
-                    outfile.write("--End of file '{0}'--".format(string))
+                    if not args.grepable:
+                        outfile.write("--End of file '{0}'--".format(string))
             else:
-                outfile.write(u"Analyzing '{0}'\n".format(string.strip()))
-                writeResult(hashID.identifyHash(string), outfile, args.mode, args.john, args.extended)
+                srcfile = None
+                hashValue = string.strip()
+                if not args.grepable:
+                    outfile.write(u"Analyzing '{0}'\n".format(hashValue))
+                writeResult(hashValue, hashID.identifyHash(string),
+                            srcfile, outfile, args.mode, args.john,
+                            args.extended, args.grepable, args.quiet)
 
 
 if __name__ == "__main__":
