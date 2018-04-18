@@ -766,7 +766,7 @@ class HashID(object):
 
 def writeResult(hashValue, identified_modes, srcfile, outfile,
                 hashcatMode=False, johnFormat=False,
-                extended=False, grepable=False):
+                extended=False, grepable=False, quiet=False):
     """Write human readable output from identifyHash"""
     count = 0
     hashTypes = ""
@@ -790,13 +790,13 @@ def writeResult(hashValue, identified_modes, srcfile, outfile,
                     hashTypes += "[JtR Format: {0}]".format(mode.john)
             hashTypes += "\n"
     outfile.write(hashTypes)
-    if count == 0:
+    if count == 0 and not quiet:
         outfile.write(u"[+] Unknown hash\n")
     return (count > 0)
 
 
 def main():
-    usage = "{0} [-h] [-e] [-m] [-j] [-g] [-o FILE] [--version] INPUT".format(os.path.basename(__file__))
+    usage = "{0} [-h] [-e] [-m] [-j] [-g] [-q] [-o FILE] [--version] INPUT".format(os.path.basename(__file__))
 
     parser = argparse.ArgumentParser(
         description="Identify the different types of hashes used to encrypt data",
@@ -821,6 +821,9 @@ def main():
     group.add_argument("-g", "--grepable",
                        action="store_true",
                        help="show output in grepable format")
+    group.add_argument("-q", "--quiet",
+                       action="store_true",
+                       help="hide unknown hashes and file messages in grepable output")
     group.add_argument("-o", "--outfile",
                        metavar="FILE", type=str,
                        help="write output to file")
@@ -853,7 +856,7 @@ def main():
             srcfile = None
             writeResult(hashValue, hashID.identifyHash(line),
                         srcfile, outfile, args.mode, args.john,
-                        args.extended, args.grepable)
+                        args.extended, args.grepable, args.quiet)
             sys.stdout.flush()
     # Flags.
     else:
@@ -871,7 +874,7 @@ def main():
                                     outfile.write(u"Analyzing '{0}'\n".format(hashValue))
                                 writeResult(hashValue, hashID.identifyHash(line),
                                             srcfile, outfile, args.mode, args.john,
-                                            args.extended, args.grepable)
+                                            args.extended, args.grepable, args.quiet)
                 except (EnvironmentError, UnicodeDecodeError):
                     outfile.write("--File '{0}' - could not open--".format(string))
                 else:
@@ -884,7 +887,7 @@ def main():
                     outfile.write(u"Analyzing '{0}'\n".format(hashValue))
                 writeResult(hashValue, hashID.identifyHash(string),
                             srcfile, outfile, args.mode, args.john,
-                            args.extended, args.grepable)
+                            args.extended, args.grepable, args.quiet)
 
 
 if __name__ == "__main__":
