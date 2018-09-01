@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<br>
+{% assign hashlist = site.data.hashtypes %}
+<ul>
+    {% for hash in hashlist %}
+    <li>{{ hash.regex }}</li>
+    {% endfor %}
+</ul>

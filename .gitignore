@@ -1,13 +1,3 @@
-$RECYCLE.BIN/
-*.bak
-*.egg
-*.egg-info
-.DS_Store
-.~lock*
-build
-Desktop.ini
-dist
-ehthumbs.db
-js/node_modules
-test
-Thumbs.db
+_site
+.git
+.idea
