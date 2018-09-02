@@ -1,10 +1,37 @@
 ---
 layout: default
 ---
-<br>
-{% assign hashlist = site.data.hashtypes %}
-<ul>
-    {% for hash in hashlist %}
-    <li>{{ hash.regex }}</li>
+<div class="sectionA">
+    <div class="container">
+        <br>
+        <br>
+        <h3>List of Hash Types</h3>
+        <br>
+        <br>
+    </div>
+</div>
+<div class="container">
+    <br>
+    {% assign hashlist = site.data.hashtypes %}
+    {% for regex in hashlist %}
+    <div class="results">
+        <ul>
+            {% for hash_type in regex.modes %}
+            <li>{{hash_type.name}}</li>
+            {% endfor %}
+        </ul>
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group mb-2" style="color:#212529">
+                <input type="text" class="form-control"
+                       id="inlineFormInputGroup" value="{{ regex.regex | escape }}" readonly>
+                <div class="input-group-prepend">
+                    <button class="btn btn-dark">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
     {% endfor %}
-</ul>
+</div>
+<br>

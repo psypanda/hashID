@@ -1,7 +1,28 @@
 ---
 layout: default
 ---
-Here's the content!
-<script>
-    hashID.loadFromURL();
-</script>
+<div class="sectionA">
+    <div class="container">
+        <br>
+        <div class="form-group">
+            <label for="hashes"><h3>Input hash(es):</h3></label>
+            <textarea class="form-control" rows="5" id="hashes" spellcheck="false"
+                      placeholder="d41d8cd98f00b204e9800998ecf8427e">d41d8cd98f00b204e9800998ecf8427e</textarea>
+        </div>
+        <div class="form-group" align="RIGHT">
+            <button id="submit" class="btn btn-primary" onclick="hashID.submit()" disabled>Submit</button>
+        </div>
+        <hr>
+    </div>
+</div>
+<div class="container">
+    <div class="results">
+        <div id="loading" style="display: none !important;">
+            <div class="spinner">
+                <div class="cube1"></div>
+                <div class="cube2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

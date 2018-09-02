@@ -1,6 +1,6 @@
 encoding : UTF-8
 title    : hashID
-data_dir : _data
+data_dir : data
 
 orig_author : c0re@psypanda.org
 orig_github : https://github.com/psypanda/hashID/

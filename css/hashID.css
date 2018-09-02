@@ -1,7 +1,31 @@
-body, html {
-    background-color: #BEB7A4;
-    color: #FFFFFC;
+.sectionA {
+    background: url('../img/headbg.png') repeat-x;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
 }
 .navbar-brand {
     font-family: 'Poppins', sans-serif;
+}
+html {
+    height: 100%;
+    background-color: #4A0284;
+}
+body {
+    color: #FFFFFC;
+    height: 100%;
+    background: url("../img/bodybg.png") repeat;
+}
+.btn-primary {
+    background-color: #FF9228;
+}
+.btn-primary:hover {
+    background-color: #FF6A04;
+}
+.btn-primary:disabled {
+    background-color: #c16104;
+}
+.results {
+    background-color: rgba(0,0,0,0.4);
+    border: #FF9228 solid;
+    border-width: 0 0 0 4px;
+    padding: 25px;
 }
