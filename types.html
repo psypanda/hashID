@@ -12,8 +12,8 @@ layout: default
 </div>
 <div class="container">
     <br>
-    {% assign hashlist = site.data.hashtypes %}
-    {% for regex in hashlist %}
+    {% assign definitions = site.data.hash_definitions %}
+    {% for regex in definitions %}
     <div class="results">
         <ul>
             {% for hash_type in regex.modes %}

@@ -49,7 +49,7 @@ let hashID = (function () {
 
         $.ajax({
             dataType: 'json',
-            url: './data/hashtypes.json'
+            url: './data/hash_definitions.json'
         }).done((defs) => {
             hashDefs = defs;
             btnSubmit.attr("disabled", false);
@@ -61,13 +61,41 @@ let hashID = (function () {
     module.submit = function () {
         loader.show();
         if(defsLoaded) {
+            let tempid = 0;
             function toHtml(hash) {
+                tempid++;
                 const template = `
-                <h4>${hash.value}</h4>
-                <ul>
-                    ${hash.matches.map(match => `<li>${match}</li>`).join('')}
-                </ul>
-                `;
+<div class="input-group">
+    <div class="input-group-prepend">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" 
+            data-target=".multi-collapse-${tempid}" aria-controls="collapse1-${tempid} collapse2-${tempid}">
+            Show matches for:
+        </button>
+    </div>
+    <input type="text" class="form-control"
+           id="inlineFormInputGroup" value="${encodeURI(hash.value)}" readonly>
+</div>
+<div class="collapse multi-collapse-${tempid} show" id="collapse1-${tempid}">
+    <div class="alert alert-success" role="alert">
+        ${hash.matches.length} matches
+    </div>
+    <hr>
+</div>
+<div class="collapse multi-collapse-${tempid}" id="collapse2-${tempid}">
+    <table class="table" style="margin-top: 16px;">
+        <thead>
+            <tr>
+                <th scope="col">Match</th>
+                <th scope="col">Hashcat</th>
+                <th scope="col">JohnTheRipper</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${hash.matches.map(match => `<tr><td>${match.name}</td><td>${match.hashcat != null ? match.hashcat : ''}</td><td>${match.john != null ? match.john : ''}</td></tr>`).join('')}
+        </tbody>
+    </table>
+</div>
+`;
                 return template;
             }
 
@@ -82,8 +110,8 @@ let hashID = (function () {
                 hashDefs.forEach(def => {
                     let regex = new RegExp(def.regex);
                     if(regex.test(hash.value)) {
-                        def.modes.forEach(mode => {
-                            hash.matches.push(mode.name);
+                        def.modes.forEach(def => {
+                            hash.matches.push(def);
                         });
                     }
                 });

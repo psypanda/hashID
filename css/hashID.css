@@ -5,6 +5,9 @@
 .navbar-brand {
     font-family: 'Poppins', sans-serif;
 }
+hr {
+    margin-bottom: 0;
+}
 html {
     height: 100%;
     background-color: #4A0284;
@@ -16,6 +19,7 @@ body {
 }
 .btn-primary {
     background-color: #FF9228;
+    border-color: #FF6A04;
 }
 .btn-primary:hover {
     background-color: #FF6A04;
@@ -27,5 +31,17 @@ body {
     background-color: rgba(0,0,0,0.4);
     border: #FF9228 solid;
     border-width: 0 0 0 4px;
-    padding: 25px;
+    padding: 20px;
+}
+.container {
+    margin-top: 0;
+}
+.alert {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin: 0;
+}
+.input-group input, .input-group button {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
