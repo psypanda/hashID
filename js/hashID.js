@@ -84,8 +84,8 @@ let hashID = (function () {
     </div>
     <hr>
 </div>
-<div class="collapse multi-collapse-${tempid}" id="collapse2-${tempid}">
-    <table class="table table-responsive" style="margin-top: 16px;">
+<div class="collapse multi-collapse-${tempid} table-responsive" id="collapse2-${tempid}">
+    <table class="table" style="margin-top: 16px;">
         <thead>
             <tr>
                 <th scope="col">Match</th>
