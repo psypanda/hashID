@@ -18,6 +18,9 @@ let hashID = (function () {
     let loader;
     let results;
     let hashInput;
+    let btnShare;
+    let tempid = 0;
+    let listed = [];
 
     // Source: https://stackoverflow.com/a/13419367/2650847
     function parseQuery(queryString) {
@@ -46,6 +49,7 @@ let hashID = (function () {
         btnSubmit = $("#submit");
         results = $(".results");
         hashInput = $("#hashes");
+        btnShare = $("#share");
 
         $.ajax({
             dataType: 'json',
@@ -61,7 +65,6 @@ let hashID = (function () {
     module.submit = function () {
         loader.show();
         if(defsLoaded) {
-            let tempid = 0;
             function toHtml(hash) {
                 tempid++;
                 const template = `
@@ -76,7 +79,7 @@ let hashID = (function () {
            id="inlineFormInputGroup" value="${encodeURI(hash.value)}" readonly>
 </div>
 <div class="collapse multi-collapse-${tempid} show" id="collapse1-${tempid}">
-    <div class="alert alert-success" role="alert">
+    <div class="alert ${hash.matches.length > 0 ? 'alert-success' : 'alert-light'}" role="alert" align="CENTER">
         ${hash.matches.length} matches
     </div>
     <hr>
@@ -102,31 +105,48 @@ let hashID = (function () {
             let hashes = hashInput.val().split("\n");
             let resultList = [];
             hashes.forEach(hash => {
-                console.log(hash);
-                hash = {
-                    value: hash,
-                    matches: []
-                };
-                hashDefs.forEach(def => {
-                    let regex = new RegExp(def.regex);
-                    if(regex.test(hash.value)) {
-                        def.modes.forEach(def => {
-                            hash.matches.push(def);
-                        });
-                    }
-                });
-                resultList.push(hash);
+                let isEmpty = hash.trim() === '';
+                if(!isEmpty && $.inArray(hash, listed) === -1) {
+                    listed.push(hash);
+                    hash = {
+                        value: hash,
+                        matches: []
+                    };
+                    hashDefs.forEach(def => {
+                        var regex = new RegExp(def.regex, 'i')
+                        if(decodeURI(hash.value).match(regex)) {
+                            def.modes.forEach(def => {
+                                hash.matches.push(def);
+                            });
+                        }
+                    });
+                    resultList.push(hash);
+                }
             });
             loader.hide();
             resultList.forEach(result => {
-                results.append(toHtml(result));
+                btnShare.before(toHtml(result));
+                btnShare.show();
             });
         } else {
             console.log("Definitions not loaded.");
         }
     };
-    module.getShareURL = function () {
+    module.copyShareURL = function () {
+        function textToClipboard (text) {
+            var dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+        }
+        let shareURL = window.location.href;
 
+        shareURL += '?hashes=';
+        shareURL += listed.map(hash => encodeURI(hash)).join(',');
+
+        textToClipboard(shareURL);
     };
     return module;
 }());
