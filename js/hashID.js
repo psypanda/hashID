@@ -141,7 +141,8 @@ let hashID = (function () {
             document.execCommand("copy");
             document.body.removeChild(dummy);
         }
-        let shareURL = window.location.href;
+        let location = window.location;
+        let shareURL = location.origin+location.pathname;
 
         shareURL += '?hashes=';
         shareURL += listed.map(hash => encodeURI(hash)).join(',');
