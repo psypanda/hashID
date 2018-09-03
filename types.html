@@ -5,33 +5,36 @@ layout: default
     <div class="container">
         <br>
         <br>
-        <h3>List of Hash Types</h3>
+        <h3>Supported Hash Types</h3>
         <br>
         <br>
     </div>
 </div>
 <div class="container">
     <br>
-    {% assign definitions = site.data.hash_definitions %}
-    {% for regex in definitions %}
-    <div class="results">
-        <ul>
-            {% for hash_type in regex.modes %}
-            <li>{{hash_type.name}}</li>
+    <div class="options table-responsive">
+        <table class="table" style="margin-top: 16px;">
+            <thead>
+            <tr>
+                <th scope="col">Hash</th>
+                <th scope="col">Hashcat</th>
+                <th scope="col">JohnTheRipper</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% assign definitions = site.data.hash_definitions %}
+            {% for regex in definitions %}
+                {% for hash_type in regex.modes %}
+                <tr>
+                    <td>{{hash_type.name}}</td>
+                    <td>{{hash_type.hashcat}}</td>
+                    <td>{{hash_type.john}}</td>
+                </tr>
+                {% endfor %}
             {% endfor %}
-        </ul>
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
-            <div class="input-group mb-2" style="color:#212529">
-                <input type="text" class="form-control"
-                       id="inlineFormInputGroup" value="{{ regex.regex | escape }}" readonly>
-                <div class="input-group-prepend">
-                    <button class="btn btn-dark">Copy</button>
-                </div>
-            </div>
-        </div>
+            </tbody>
+        </table>
     </div>
     <br>
-    {% endfor %}
 </div>
 <br>
