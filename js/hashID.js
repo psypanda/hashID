@@ -9,6 +9,17 @@ Loader.prototype = {
         this.element.attr("style", "display: none !important;")
     }
 };
+let CheckBox = function(id) {
+    this.element = $(id+" *");
+};
+CheckBox.prototype = {
+    setSelected: function(select) {
+        this.element.prop("checked",select);
+    },
+    isSelected: function() {
+        return this.element.is(":checked");
+    }
+};
 
 let hashID = (function () {
     let module = {};
@@ -21,6 +32,7 @@ let hashID = (function () {
     let btnShare;
     let tempid = 0;
     let listed = [];
+    let extended;
 
     // Source: https://stackoverflow.com/a/13419367/2650847
     function parseQuery(queryString) {
@@ -35,11 +47,32 @@ let hashID = (function () {
     function loadFromURL() {
         var query = window.location.search;
         var queryParams = parseQuery(query);
-        if (queryParams["hashes"]) {
+        var regex = new RegExp('t(rue)?', 'i');
+        if(regex.test(queryParams["extended"])) {
+            extended.setSelected(true);
+        }
+        if(queryParams["hashes"]) {
             let input = queryParams["hashes"].split(",").join("\n");
             if(input) {
                 hashInput.val(input);
                 btnSubmit.click();
+            }
+        }
+    }
+
+    function updateExtendedView() {
+        let matchCounts = $(".match-count");
+        console.log(matchCounts);
+        for(var i=0; i<matchCounts.length; i++) {
+            let matchCount = $(matchCounts[i]);
+            matchCount.text((extended.isSelected() ? matchCount.attr("data-total-extended") : matchCount.attr("data-total")) + " matches");
+
+            let tbody = $("#"+matchCount.attr("for"));
+            let extendedResults = tbody.find('[data-extended="true"]');
+            if(extended.isSelected()) {
+                extendedResults.show();
+            } else {
+                extendedResults.hide();
             }
         }
     }
@@ -50,6 +83,11 @@ let hashID = (function () {
         results = $(".results");
         hashInput = $("#hashes");
         btnShare = $("#share");
+        extended = new CheckBox("#extended");
+
+        extended.element.change(function() {
+            updateExtendedView();
+        });
 
         $.ajax({
             dataType: 'json',
@@ -79,8 +117,10 @@ let hashID = (function () {
            id="inlineFormInputGroup" value="${encodeURI(hash.value)}" readonly>
 </div>
 <div class="collapse multi-collapse-${tempid} show" id="collapse1-${tempid}">
-    <div class="alert ${hash.matches.length > 0 ? 'alert-success' : 'alert-light'}" role="alert" align="CENTER">
-        ${hash.matches.length} matches
+    <div class="alert ${hash.matches.length > 0 ? 'alert-success' : 'alert-light'} match-count" role="alert" align="CENTER"
+        for="tbody-${tempid}"
+        data-total="${hash.matches.filter(match => match.extended === false).length}" data-total-extended="${hash.matches.length}">
+        $1 matches
     </div>
     <hr>
 </div>
@@ -93,8 +133,8 @@ let hashID = (function () {
                 <th scope="col">JohnTheRipper</th>
             </tr>
         </thead>
-        <tbody>
-            ${hash.matches.map(match => `<tr><td>${match.name}</td><td>${match.hashcat != null ? match.hashcat : ''}</td><td>${match.john != null ? match.john : ''}</td></tr>`).join('')}
+        <tbody id="tbody-${tempid}">
+            ${hash.matches.map(match => `<tr data-extended="${match.extended}"><td>${match.name}</td><td>${match.hashcat != null ? match.hashcat : ''}</td><td>${match.john != null ? match.john : ''}</td></tr>`).join('')}
         </tbody>
     </table>
 </div>
@@ -126,7 +166,8 @@ let hashID = (function () {
             loader.hide();
             resultList.forEach(result => {
                 btnShare.before(toHtml(result));
-                btnShare.show();
+                updateExtendedView();
+                btnShare.attr("disabled", false);
             });
         } else {
             console.log("Definitions not loaded.");
@@ -146,6 +187,9 @@ let hashID = (function () {
 
         shareURL += '?hashes=';
         shareURL += listed.map(hash => encodeURI(hash)).join(',');
+        if(extended.isSelected()) {
+            shareURL += "&extended=true";
+        }
 
         textToClipboard(shareURL);
     };
