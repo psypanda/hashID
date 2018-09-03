@@ -33,6 +33,7 @@ let hashID = (function () {
     let tempid = 0;
     let listed = [];
     let extended;
+    let expanded;
 
     // Source: https://stackoverflow.com/a/13419367/2650847
     function parseQuery(queryString) {
@@ -50,6 +51,9 @@ let hashID = (function () {
         var regex = new RegExp('t(rue)?', 'i');
         if(regex.test(queryParams["extended"])) {
             extended.setSelected(true);
+        }
+        if(regex.test(queryParams["expanded"])) {
+            expanded.setSelected(true);
         }
         if(queryParams["hashes"]) {
             let input = queryParams["hashes"].split(",").join("\n");
@@ -84,6 +88,7 @@ let hashID = (function () {
         hashInput = $("#hashes");
         btnShare = $("#share");
         extended = new CheckBox("#extended");
+        expanded = new CheckBox("#expanded");
 
         extended.element.change(function() {
             updateExtendedView();
@@ -116,7 +121,7 @@ let hashID = (function () {
     <input type="text" class="form-control"
            id="inlineFormInputGroup" value="${encodeURI(hash.value)}" readonly>
 </div>
-<div class="collapse multi-collapse-${tempid} show" id="collapse1-${tempid}">
+<div class="collapse multi-collapse-${tempid} ${expanded.isSelected() ? '' : 'show'}" id="collapse1-${tempid}">
     <div class="alert ${hash.matches.length > 0 ? 'alert-success' : 'alert-light'} match-count" role="alert" align="CENTER"
         for="tbody-${tempid}"
         data-total="${hash.matches.filter(match => match.extended === false).length}" data-total-extended="${hash.matches.length}">
@@ -124,7 +129,7 @@ let hashID = (function () {
     </div>
     <hr>
 </div>
-<div class="collapse multi-collapse-${tempid} table-responsive" id="collapse2-${tempid}">
+<div class="collapse multi-collapse-${tempid} table-responsive ${expanded.isSelected() ? 'show' : ''}" id="collapse2-${tempid}">
     <table class="table" style="margin-top: 16px;">
         <thead>
             <tr>
@@ -189,6 +194,9 @@ let hashID = (function () {
         shareURL += listed.map(hash => encodeURI(hash)).join(',');
         if(extended.isSelected()) {
             shareURL += "&extended=true";
+        }
+        if(expanded.isSelected()) {
+            shareURL += "&expanded=true";
         }
 
         textToClipboard(shareURL);
