@@ -131,7 +131,7 @@ let hashID = (function () {
 </div>
 <div class="collapse multi-collapse-${tempid} table-responsive ${expanded.isSelected() ? 'show' : ''}" id="collapse2-${tempid}">
     <table class="table" style="margin-top: 16px;">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th scope="col">Match</th>
                 <th scope="col">Hashcat</th>

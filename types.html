@@ -13,8 +13,11 @@ layout: default
 <div class="container">
     <br>
     <div class="options table-responsive">
+        <p style="font-size: 1.15em">
+            Hash-types highlighted in <strong style="color: green">green</strong> are shown in extended mode.
+        </p>
         <table class="table" style="margin-top: 16px;">
-            <thead>
+            <thead class="thead-dark">
             <tr>
                 <th scope="col">Hash</th>
                 <th scope="col">Hashcat</th>
@@ -25,7 +28,7 @@ layout: default
             {% assign definitions = site.data.hash_definitions %}
             {% for regex in definitions %}
                 {% for hash_type in regex.modes %}
-                <tr>
+                <tr data-extended="{{ hash_type.extended }}">
                     <td>{{hash_type.name}}</td>
                     <td>{{hash_type.hashcat}}</td>
                     <td>{{hash_type.john}}</td>
