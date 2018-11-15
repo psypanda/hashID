@@ -14,13 +14,13 @@ Identify hashes on any system with a browser and even share your findings! Appen
 `?hashes=<comma separated list>` as the query params will allow you to share the findings.
 A button to copy the shareable-link to your clipboard can be found at the bottom of the results.
 
-* https://mattwright324.github.io/hashID
+* https://mattw.io/hashID
 
 ### Try me out!
 
-* [MD5: d41d8cd98f00b204e9800998ecf8427e](https://mattwright324.github.io/hashID/?hashes=d41d8cd98f00b204e9800998ecf8427e&expanded=true)
-* [BigCrypt: aqOVVs0V.cVbQ and Dahua: $dahua$mmAkfwg0](https://mattwright324.github.io/hashID/?hashes=aqOVVs0V.cVbQ,$dahua$mmAkfwg0&expanded=true)
-* [Traditional-DES: JQMuyS6H.AGMo](https://mattwright324.github.io/hashID/?hashes=JQMuyS6H.AGMo&expanded=true)
+* [MD5: d41d8cd98f00b204e9800998ecf8427e](https://mattw.io/hashID/?hashes=d41d8cd98f00b204e9800998ecf8427e&expanded=true)
+* [BigCrypt: aqOVVs0V.cVbQ and Dahua: $dahua$mmAkfwg0](https://mattw.io/hashID/?hashes=aqOVVs0V.cVbQ,$dahua$mmAkfwg0&expanded=true)
+* [Traditional-DES: JQMuyS6H.AGMo](https://mattw.io/hashID/?hashes=JQMuyS6H.AGMo&expanded=true)
 
 # Resources
 
