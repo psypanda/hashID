@@ -846,9 +846,9 @@ def main():
                                 outfile.write(u"Analyzing '{0}'\n".format(line.strip()))
                                 writeResult(hashID.identifyHash(line), outfile, args.mode, args.john, args.extended)
                 except (EnvironmentError, UnicodeDecodeError):
-                    outfile.write("--File '{0}' - could not open--".format(string))
+                    outfile.write("--File '{0}' - could not open--\n".format(string))
                 else:
-                    outfile.write("--End of file '{0}'--".format(string))
+                    outfile.write("--End of file '{0}'--\n".format(string))
             else:
                 outfile.write(u"Analyzing '{0}'\n".format(string.strip()))
                 writeResult(hashID.identifyHash(string), outfile, args.mode, args.john, args.extended)
