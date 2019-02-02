@@ -89,6 +89,7 @@ let hashID = (function () {
         btnShare = $("#share");
         extended = new CheckBox("#extended");
         expanded = new CheckBox("#expanded");
+        expanded.setSelected(true);
 
         extended.element.change(function() {
             updateExtendedView();
