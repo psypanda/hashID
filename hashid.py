@@ -394,6 +394,7 @@ prototypes = [
             HashInfo(name='Whirlpool', hashcat=6100, john='whirlpool', extended=False),
             HashInfo(name='Salsa10', hashcat=None, john=None, extended=False),
             HashInfo(name='Salsa20', hashcat=None, john=None, extended=False),
+            HashInfo(name='Blake2', hashcat=600, john='raw-blake2', extended=False),
             HashInfo(name='SHA3-512', hashcat=None, john='raw-keccak', extended=False),
             HashInfo(name='Skein-512', hashcat=None, john='skein-512', extended=False),
             HashInfo(name='Skein-1024(512)', hashcat=None, john=None, extended=False),
