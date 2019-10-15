@@ -971,9 +971,15 @@
             },
             {
                 "john": null,
-                "hashcat": null,
+                "hashcat": 17300,
                 "extended": false,
                 "name": "SHA3-224"
+            },
+            {
+                "john": null,
+                "hashcat": 17700,
+                "extended": false,
+                "name": "Keccak-224"
             },
             {
                 "john": null,
@@ -1112,10 +1118,16 @@
                 "name": "GOST CryptoPro S-Box"
             },
             {
-                "john": "raw-keccak-256",
-                "hashcat": 5000,
+                "john": null,
+                "hashcat": 17400,
                 "extended": false,
                 "name": "SHA3-256"
+            },
+            {
+                "john": "raw-keccak-256",
+                "hashcat": 17800,
+                "extended": false,
+                "name": "Keccak-256"
             },
             {
                 "john": "skein-256",
@@ -1278,9 +1290,15 @@
             },
             {
                 "john": null,
-                "hashcat": null,
+                "hashcat": 17500,
                 "extended": false,
                 "name": "SHA3-384"
+            },
+            {
+                "john": null,
+                "hashcat": 17900,
+                "extended": false,
+                "name": "Keccak-384"
             },
             {
                 "john": null,
@@ -1352,10 +1370,16 @@
                 "name": "Salsa20"
             },
             {
-                "john": "raw-keccak",
-                "hashcat": null,
+                "john": "raw-sha3",
+                "hashcat": 17600,
                 "extended": false,
                 "name": "SHA3-512"
+            },
+            {
+                "john": "raw-keccak",
+                "hashcat": 18000,
+                "extended": false,
+                "name": "Keccak-512"
             },
             {
                 "john": "skein-512",
