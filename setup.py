@@ -44,7 +44,7 @@ setup(
     long_description=read('README.rst'),
     author='c0re',
     author_email='c0re@psypanda.org',
-    license='GNU GPL',
+    license='GPLv3+',
     url='https://github.com/psypanda/hashID',
     download_url='https://github.com/psypanda/hashID/tarball/v' + get_version('hashid.py'),
     keywords='hashid hash identifier hash-identifier',
