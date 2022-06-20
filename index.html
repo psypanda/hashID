@@ -1,49 +1,30 @@
 ---
 layout: default
+subtitle: Identify hashes in the browser
 ---
-<div class="sectionA">
-    <div class="container">
-        <br>
-        <div class="form-group">
-            <label for="hashes"><h3>Input hash(es):</h3></label>
-            <textarea class="form-control" rows="5" id="hashes" spellcheck="false"
-                      placeholder="d41d8cd98f00b204e9800998ecf8427e">d41d8cd98f00b204e9800998ecf8427e</textarea>
-        </div>
-        <div align="RIGHT">
-            <button id="submit" class="btn btn-primary" onclick="hashID.submit()" disabled>Submit</button>
-        </div>
-        <hr>
-    </div>
-</div>
-<br>
 <div class="container">
-    <div class="options">
-        <h4>Options</h4>
-        <hr>
-        <div id="expanded" class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="expandedCheck">
-            <label class="custom-control-label" for="expandedCheck">Expand match results automatically.</label>
-        </div>
-        <div id="extended" class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="extendedCheck">
-            <label class="custom-control-label" for="extendedCheck">Show all hash algorithms (extended mode)</label>
-        </div>
-        <small class="text-muted">Extended results are shown in green.</small>
-    </div>
-    <div class="results">
-        <h4>Results</h4>
-        <hr>
-        <div id="loading" style="display: none !important;">
-            <div class="spinner">
-                <div class="cube1"></div>
-                <div class="cube2"></div>
-            </div>
-        </div>
-        <div align="RIGHT">
-            <button id="share" class="btn btn-light" onclick="hashID.copyShareURL()" disabled>
-                Copy shareable-link to clipboard
-            </button>
-        </div>
+    <p>
+        Submit a line separated list of hash(es) to identify.
+    </p>
+</div>
+<div class="container mb-15">
+    <div class="input-group">
+        <textarea class="form-control" rows="7" id="hashes" spellcheck="false"
+                  placeholder="d41d8cd98f00b204e9800998ecf8427e"></textarea>
+        <button id="submit" class="btn btn-primary" onclick="hashID.submit()" disabled>Submit</button>
     </div>
 </div>
-<br>
+<div class="container mb-15">
+    <h4>Results</h4>
+    <div id="loading" style="display: none !important;">
+        <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
+    </div>
+    <div id="results"></div>
+    <div id="nothing">You haven't submitted anything yet</div>
+<!--    <button id="share" class="btn btn-light" onclick="hashID.copyShareURL()" disabled>-->
+<!--        Copy shareable-link to clipboard-->
+<!--    </button>-->
+</div>

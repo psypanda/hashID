@@ -1,43 +1,62 @@
 ---
 layout: default
+subtitle: Hash types
 ---
-<div class="sectionA">
-    <div class="container">
-        <br>
-        <br>
-        <h3>Supported Hash Types</h3>
-        <br>
-        <br>
-    </div>
+<div class="container mb-15">
+    <h3>Resources</h3>
+    <p>
+        Various useful resources
+    </p>
+    <ul>
+        <li><a target="_blank" href="https://github.com/psypanda/hashID">psypanda/hashID (original hashID)</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/List_of_hash_functions">wikipedia.org - List of hash functions</a></li>
+        <li><a target="_blank" href="https://hashcat.net/hashcat/">hashcat.net</a>
+            <ul>
+                <li><a target="_blank" href="https://hashcat.net/wiki/">wiki</a></li>
+                <li><a target="_blank" href="https://hashcat.net/wiki/doku.php?id=example_hashes">wiki example hashes</a></li>
+            </ul>
+        </li>
+        <li><a target="_blank" href="https://www.openwall.com/john/">openwall.com - John the Ripper</a>
+            <ul>
+                <li><a target="_blank" href="https://openwall.info/wiki/">community wiki</a></li>
+            </ul>
+        </li>
+    </ul>
 </div>
 <div class="container">
-    <br>
+    <h3>Hash Types</h3>
+    <p>
+        Quick reference for all hash types checked by this application and values for hashcat and John the Ripper.
+    </p>
+    <p style="font-family: Consolas">
+        > ./hashcat.exe -m {mode}
+        <br>
+        $ john --format={format}
+    </p>
+</div>
+<div class="container">
     <div class="options table-responsive">
-        <p style="font-size: 1.15em">
-            Hash-types highlighted in <strong style="color: green">green</strong> are shown in extended mode.
-        </p>
-        <table class="table" style="margin-top: 16px;">
+        <table id="typesTable" class="table" style="margin-top: 16px;">
             <thead class="thead-dark">
             <tr>
-                <th scope="col">Hash</th>
-                <th scope="col">Hashcat</th>
-                <th scope="col">JohnTheRipper</th>
+                <th scope="col">Type</th>
+                <th scope="col">hashcat</th>
+                <th scope="col">John</th>
             </tr>
             </thead>
             <tbody>
             {% assign definitions = site.data.hash_definitions %}
             {% for regex in definitions %}
-                {% for hash_type in regex.modes %}
-                <tr data-extended="{{ hash_type.extended }}">
-                    <td>{{hash_type.name}}</td>
-                    <td>{{hash_type.hashcat}}</td>
-                    <td>{{hash_type.john}}</td>
-                </tr>
-                {% endfor %}
+            {% for hash_type in regex.modes %}
+            <tr data-extended="{{ hash_type.extended }}">
+                <td>{{hash_type.name}}</td>
+                <td>{{hash_type.hashcat}}</td>
+                <td>{{hash_type.john}}</td>
+            </tr>
+            {% endfor %}
             {% endfor %}
             </tbody>
         </table>
     </div>
-    <br>
 </div>
 <br>
